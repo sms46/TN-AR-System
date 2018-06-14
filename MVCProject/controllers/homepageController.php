@@ -12,12 +12,19 @@ class homepageController extends http\controller
     public static function showDesign()
     {
         $designRecords = DesignCourseMaster::findAll();
-        self::getTemplate('homepage', $designRecords);
+        self::getTemplate('homepage', $designRecords, $designRecords );
     }
 
-    public static function register()
+    public static function registerArchitecture()
     {
-        self::getTemplate('register');
+        $architectureRecordsRegister = ArchitectureCourseMaster::findCourses();
+        self::getTemplate('courseRegistration',null,$architectureRecordsRegister);
+    }
+
+    public static function registerDesign()
+    {
+        $designRecordsRegister = DesignCourseMaster::findAll();
+        self::getTemplate('courseRegistration',null,$designRecordsRegister);
     }
 
     public static function addCourses()
@@ -61,8 +68,8 @@ class homepageController extends http\controller
             }
         }
 
-        $architectureRecords = ArchitectureCourseMaster::findAll();
-        self::getTemplate('homepage', $_SESSION["cart_item"],$architectureRecords);
+        $architectureRecordsRegister = ArchitectureCourseMaster::findCourses();
+        self::getTemplate('courseRegistration', $_SESSION["cart_item"],$architectureRecordsRegister);
     }
 
     public static function removeCourses()

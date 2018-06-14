@@ -17,7 +17,6 @@ class htmlTable
                         <th>End Date</th>
                         <th>Residential Price</th>
                         <th>Commuter Price</th>
-                        <th>Select Course</th>
                  </tr>";
             echo "</thead>";
 

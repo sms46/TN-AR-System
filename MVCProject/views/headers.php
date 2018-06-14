@@ -57,8 +57,7 @@
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
         }
-
-        body{width:610px;font-family:calibri;}
+        
         #shopping-cart table{width:100%;background-color:#F0F0F0;}
         #shopping-cart table td{background-color:#FFFFFF;}
 

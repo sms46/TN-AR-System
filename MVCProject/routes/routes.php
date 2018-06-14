@@ -4,6 +4,7 @@ class routes
 {
     public static function getRoutes()
     {
+        //routing the default homepage
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'show';
@@ -12,6 +13,7 @@ class routes
         $route->method = 'show';
         $routes[] = $route;
 
+        // Design Course view
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'showDesign';
@@ -20,14 +22,36 @@ class routes
         $route->method = 'showDesign';
         $routes[] = $route;
 
+        //Route to the Course Registration page
+        //GET Architecture Courses
         $route = new route();
         $route->http_method = 'GET';
-        $route->action = 'register';
+        $route->action = 'registerArchitecture';
         $route->page = 'homepage';
         $route->controller = 'homepageController';
-        $route->method = 'register';
+        $route->method = 'registerArchitecture';
         $routes[] = $route;
 
+        //Route to the Course Registration page
+        //GET Design Courses
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'registerDesign';
+        $route->page = 'homepage';
+        $route->controller = 'homepageController';
+        $route->method = 'registerDesign';
+        $routes[] = $route;
+
+        // Add Courses in cart
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'add';
+        $route->page = 'homepage';
+        $route->controller = 'homepageController';
+        $route->method = 'addCourses';
+        $routes[] = $route;
+
+        //----------------------------------------------
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'create';
@@ -67,19 +91,6 @@ class routes
         $route->controller = 'accountsController';
         $route->method = 'createTable';
         $routes[] = $route;
-
-
-
-
-        ///// ADD COURSES
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'add';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
-        $route->method = 'addCourses';
-        $routes[] = $route;
-
 
         /////REMOVE COURSES
 

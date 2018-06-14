@@ -1,3 +1,8 @@
+<?php
+session_start(); // DO CALL ON TOP OF BOTH PAGES
+$_SESSION['array'] = $data;
+?>
+
 <?php include 'headers.php';?>
 
 <body xmlns="http://www.w3.org/1999/html">
@@ -36,60 +41,39 @@
 </script>
 </body>
 
+<div class="container">
 
+    <h3 class="text-danger".text-danger>Pricing Information and Dates for 2018</h3></br>
 
+    <div class="dropdown">
 
-<div id="shopping-cart">
-    <div class="txt-heading">Courses Added <a id="btnEmpty" href="index.php?action=empty">Empty Cart</a></div>
-    <?php
-    if(isset($_SESSION["cart_item"])){
-        //$item_total = 0;
-        ?>
-        <table cellpadding="10" cellspacing="1">
-            <tbody>
-            <tr>
-                <th style="text-align:left;"><strong>Session</strong></th>
-                <th style="text-align:left;"><strong>Description</strong></th>
-                <th style="text-align:right;"><strong>Start Date</strong></th>
-            </tr>
-            <?php
-            foreach ($_SESSION["cart_item"] as $item){
-                ?>
-                <tr>
-                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["Session"]; ?></strong></td>
-                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
-                    <td style="text-align:right;border-bottom:#F0F0F0 1px solid;"><?php echo $item["StartDate"]; ?></td>
-                    <td style="text-align:center;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=homepage&action=remove&code=<?php echo $item["Session"]; ?>" class="btnRemoveAction">Remove Item</a></td>
-                </tr>
-                <?php
-                //$item_total += ($item["price"]*$item["quantity"]);
-            }
-            ?>
-            </tbody>
-        </table>
-        <?php
-    }
-    ?>
-</div>
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Browse Courses
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="index.php?page=homepage&action=show">Architecture and Interiors</a>
+                    <a class="dropdown-item" href="index.php?page=homepage&action=showDesign">Design + Make</a>
+                </div>
+            </div>
 
-<div id="product-grid">
-    <div class="txt-heading">Courses</div>
-    <?php
-        $product_array = $data;
-        if (!empty($product_array)) {
-    foreach($product_array as $key=>$value){
-    ?>
-    <div class="product-item">
-        <form action="index.php?page=homepage&action=add&code=<?php echo $product_array[$key]["Session"]; ?>" method="post">
-            <div><strong><?php echo $product_array[$key]["Description"]; ?></strong></div>
-            <div><strong><?php echo $product_array[$key]["StartDate"]; ?></strong></div>
-            <div><input type="submit" value="Add to cart" class="btnAddAction" /></div>
-        </form>
     </div>
+    <br>
+
+    <h4 class="text-danger".text-danger> <?php
+
+    foreach ($data as $row) {
+        echo $row['Description'];
+        break;
+    }?> </h4>
+
     <?php
-    }
-        }
+        print utility\htmlTable::genarateTableForCourses($data);
     ?>
+
+    </br>
+    <a class="btn btn-primary" href="index.php?page=homepage&action=registerArchitecture" role="button">Register for Courses</a>
+
 </div>
 
 </html>

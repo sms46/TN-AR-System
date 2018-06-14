@@ -18,9 +18,16 @@ abstract class collection
         return self::getResults($sql);
     }
 
+    static public function findCourses()
+    {
+        $tableName = 'Courses';
+        $sql = 'SELECT * FROM ' . $tableName;
+        return self::getResults($sql);
+    }
+
     static public function findOneSession($sessionId)
     {
-        $tableName = get_called_class();
+        $tableName = 'Courses';
         $sql = 'SELECT * FROM ' . $tableName . ' WHERE Session = ?';
         //grab the only record for find one and return as an object
         $recordsSet = self::getResults($sql, $sessionId);
