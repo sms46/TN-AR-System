@@ -50,24 +50,24 @@ class homepageController extends http\controller
     public static function removeCourses()
     {
         session_start();
-        print_r($_SESSION["cart_item"]);
+        //print_r($_SESSION["cart_item"]);
+            if(isset($_GET["action"]))
+            {
+                if($_GET["action"] == "remove")
+                {
+                    foreach($_SESSION["cart_item"] as $keys => $values)
+                    {
+                        if($values["Session"] == $_GET["code"])
+                        {
+                            unset($_SESSION["cart_item"][$keys]);
+                            echo '<script>alert("Item Removed")</script>';
 
-        if(!empty($_SESSION["cart_item"])) {
-            foreach($_SESSION["cart_item"] as $k => $v) {
-                if($_REQUEST['code'] == $k) {
-
-                    print 'hit here';
-                    unset($_SESSION["cart_item"][$k]);
-                    print_r($_SESSION["cart_item"]);
+                            $architectureRecordsRegister = ArchitectureCourseMaster::findCourses();
+                            self::getTemplate('courseRegistration', $_SESSION["cart_item"],$architectureRecordsRegister);
+                        }
+                    }
                 }
             }
-            $architectureRecordsRegister = ArchitectureCourseMaster::findCourses();
-            self::getTemplate('courseRegistration', $_SESSION["cart_item"],$architectureRecordsRegister);
-        }
-        else{
-            print 'hit else';
-        }
-
     }
 
     public static function emptyCart()

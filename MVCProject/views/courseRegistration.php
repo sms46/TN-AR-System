@@ -43,7 +43,6 @@
     ?>
 </div>
 
-
 <div id="product-grid">
     <div class="txt-heading">Courses</div>
 
