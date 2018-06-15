@@ -11,7 +11,7 @@
 </body>
 
 <div id="shopping-cart" class="table-responsive">
-    <div class="txt-heading">Courses Added <a id="btnEmpty" href="index.php?action=empty">Empty Cart</a></div>
+    <div class="txt-heading">Courses Added <a id="btnEmpty" href="index.php?page=homepage&action=empty">Empty Cart</a></div>
     <?php
     if(isset($_SESSION["cart_item"])){
     //$item_total = 0;
@@ -30,7 +30,7 @@
             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["Session"]; ?></strong></td>
             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
             <td style="text-align:right;border-bottom:#F0F0F0 1px solid;"><?php echo $item["StartDate"]; ?></td>
-            <td style="text-align:center;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=homepage&action=remove&code=<?php echo $item["Session"]; ?>" class="btnRemoveAction">Remove Item</a></td>
+            <td style="text-align:center;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=homepage&action=remove&code=<?php echo $item["Session"]; ?>" class="btnRemoveAction">Remove Course</a></td>
         </tr>
         <?php
         //$item_total += ($item["price"]*$item["quantity"]);
@@ -56,7 +56,7 @@
                             <form action="index.php?page=homepage&action=add&code=<?php echo $product_array[$key]["Session"]; ?>" method="post">
                                     <div><strong><?php echo $product_array[$key]["Description"]; ?></strong></div>
                                     <div><strong><?php echo $product_array[$key]["StartDate"]; ?></strong></div>
-                                    <div><input type="submit" value="Add to cart" class="btnAddAction" /></div>
+                                    <div><input type="submit" name="add_to_cart" value="Add to cart" class="btnAddAction" /></div>
                             </form>
                     </div>
             <?php

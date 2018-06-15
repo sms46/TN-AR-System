@@ -32,16 +32,6 @@ class routes
         $route->method = 'registerArchitecture';
         $routes[] = $route;
 
-        //Route to the Course Registration page
-        //GET Design Courses
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'registerDesign';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
-        $route->method = 'registerDesign';
-        $routes[] = $route;
-
         // Add Courses in cart
         $route = new route();
         $route->http_method = 'POST';
@@ -49,6 +39,24 @@ class routes
         $route->page = 'homepage';
         $route->controller = 'homepageController';
         $route->method = 'addCourses';
+        $routes[] = $route;
+
+        //Remove Courses
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'remove';
+        $route->page = 'homepage';
+        $route->controller = 'homepageController';
+        $route->method = 'removeCourses';
+        $routes[] = $route;
+
+        //Empty Cart
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'empty';
+        $route->page = 'homepage';
+        $route->controller = 'homepageController';
+        $route->method = 'emptyCart';
         $routes[] = $route;
 
         //----------------------------------------------
@@ -90,16 +98,6 @@ class routes
         $route->page = 'accounts';
         $route->controller = 'accountsController';
         $route->method = 'createTable';
-        $routes[] = $route;
-
-        /////REMOVE COURSES
-
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'remove';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
-        $route->method = 'removeCourses';
         $routes[] = $route;
 
         return $routes;
