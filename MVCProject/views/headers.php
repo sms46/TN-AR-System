@@ -3,10 +3,13 @@
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <style>
         body {
@@ -57,7 +60,7 @@
             .sidenav {padding-top: 15px;}
             .sidenav a {font-size: 18px;}
         }
-        
+
         #shopping-cart table{width:100%;background-color:#F0F0F0;}
         #shopping-cart table td{background-color:#FFFFFF;}
 
@@ -89,22 +92,21 @@
             border-radius: 2px;
         }
         #shopping-cart {margin-bottom:30px;}
-        .cart-item {border-bottom: #79b946 1px dotted;padding: 10px;}
-        #product-grid {margin-bottom:30px;}
+        .cart-item {border-bottom: #79b946 1px dotted;padding: 20px;}
+        #product-grid {margin-bottom:50px;}
+
         .product-item {	float:left;	background: #ffffff;margin:15px 10px;	padding:5px;border:#CCC 1px solid;border-radius:4px;}
-        .product-item div{text-align:center;	margin:10px;}
+        .product-item div{text-align:center;	margin:20px;}
+        .product-item2 div{text-align:center;	margin:20px;}
+
         .product-price {
             color: #005dbb;
             font-weight: 600;
         }
         .product-image {height:100px;background-color:#FFF;}
-        .clear-float{clear:both;}
+        .clear-float{clear: both;}
         .demo-input-box{border-radius:2px;border:#CCC 1px solid;padding:2px 1px;}
 
-
-
     </style>
-
-
 </head>
 

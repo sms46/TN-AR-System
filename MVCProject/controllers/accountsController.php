@@ -3,6 +3,12 @@
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class accountsController extends http\controller
 {
+
+    public static function register()
+    {
+        self::getTemplate('register',NULL, NULL);
+    }
+
     public static function store(){
 
         $user = new studentInfoModel();
@@ -60,13 +66,6 @@ class accountsController extends http\controller
         $records = accounts::findAll();
         self::getTemplate('all_accounts', $records);
 
-    }
-
-    public static function register()
-    {
-        //https://www.sitepoint.com/why-you-should-use-bcrypt-to-hash-stored-passwords/
-        //USE THE ABOVE TO SEE HOW TO USE Bcrypt
-        self::getTemplate('register');
     }
 
     public static function edit()

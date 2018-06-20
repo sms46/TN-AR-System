@@ -10,58 +10,84 @@
 
 </body>
 
-<div id="shopping-cart" class="table-responsive">
-    <div class="txt-heading">Courses Added <a id="btnEmpty" href="index.php?page=homepage&action=empty">Empty Cart</a></div>
-    <?php
-    if(isset($_SESSION["cart_item"])){
-    //$item_total = 0;
-    ?>
-    <table cellpadding="10" cellspacing="1" class="table table-striped">
-        <tbody class="thead-dark">
-        <tr>
-            <th style="text-align:left;"><strong>Session</strong></th>
-            <th style="text-align:left;"><strong>Description</strong></th>
-            <th style="text-align:right;"><strong>Start Date</strong></th>
-        </tr>
-        <?php
-        foreach ($_SESSION["cart_item"] as $item){
-        ?>
-        <tr>
-            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["Session"]; ?></strong></td>
-            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
-            <td style="text-align:right;border-bottom:#F0F0F0 1px solid;"><?php echo $item["StartDate"]; ?></td>
-            <td style="text-align:center;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=homepage&action=remove&code=<?php echo $item["Session"]; ?>" class="btnRemoveAction">Remove Course</a></td>
-        </tr>
-        <?php
-        //$item_total += ($item["price"]*$item["quantity"]);
-        }
-        ?>
-        </tbody>
-    </table>
-    <?php
-    }
-    ?>
+<div class="container" style="width:1260px;">
+    <nav class="navbar navbar-inverse" style="background:#FFFFFF;">
+        <div class="container-fluid pull-left"  style="width:200px;">
+            <div class="navbar-header"> <a class="navbar-brand" href="#" style="color:black;">List of Courses Added</a> </div>
+        </div>
+        <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=homepage&action=empty" class="btn btn-info">Empty cart</a></div>
+    </nav>
+
+    <?php if(!empty($_SESSION['cart_item'])):?>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Session</th>
+                    <th>Description</th>
+                    <th>StartDate</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
+                <tr>
+                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["Session"]; ?></strong></td>
+                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
+                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["StartDate"]; ?></td>
+                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=homepage&action=remove&code=<?php echo $item["Session"]; ?>" class="btn btn-info">Remove Course</a></td>
+                </tr>
+            <?php endforeach;?>
+        </table>
+    <?php endif;?>
 </div>
 
-<div id="product-grid">
-    <div class="txt-heading">Courses</div>
+<div class="container" style="width:1260px;">
 
-    <?php
+<nav class="navbar navbar-inverse" style="background:#FFFFFF;">
+    <div class="container-fluid">
+        <div class="navbar-header"> <a class="navbar-brand" href="#" style="color:black;">Courses</a> </div>
+    </div>
+</nav>
+
+<div class="row">
+    <div class="container" style="width:1020px;">
+        <?php
         $product_array = $data;
-        if (!empty($product_array)) {
-             foreach($product_array as $key=>$value){
-    ?>
-                    <div class="product-item">
-                            <form action="index.php?page=homepage&action=add&code=<?php echo $product_array[$key]["Session"]; ?>" method="post">
-                                    <div><strong><?php echo $product_array[$key]["Description"]; ?></strong></div>
-                                    <div><strong><?php echo $product_array[$key]["StartDate"]; ?></strong></div>
-                                    <div><input type="submit" name="add_to_cart" value="Add to cart" class="btnAddAction" /></div>
-                            </form>
+        foreach($product_array as $key=>$value):?>
+            <div class="col-md-4">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <form method="post" action="index.php?page=homepage&action=add&code=<?php echo $product_array[$key]["Session"]; ?>">
+                            <p style="text-align:center;"><?php echo $product_array[$key]["Description"];?></p>
+                            <p style="text-align:center;"><b><?php echo $product_array[$key]["StartDate"];?></b></p>
+                            <p style="text-align:center;color:#04B745;">
+                                <button type="submit" name="add_to_cart" class="btn btn-warning">Add To Cart</button>
+                            </p>
+                        </form>
                     </div>
-            <?php
-            }
-        }
-            ?>
+                </div>
+            </div>
+        <?php endforeach;?>
+    </div>
+</div>
+
+</div>
+
+<div class="container" style="width:1260px;">
+
+    <legend><h4>Select Payment Type:</h4></legend>
+    <select class="btn btn-default dropdown-toggle" id="paymentTypeSelect" name="paymentTypeSelect">
+        <option>Deposit</option>
+        <option>Full Payment</option>
+    </select>
+</div>
+
+</br>
+<div class="container" style="width:1260px;" align="center">
+    <form action="index.php?page=accounts&action=register" method="POST">
+        <button type="submit" name="proceed_to_payment" class="btn btn-success">Proceed to Payment</button>
+    </form>
 </div>
 
 </html>

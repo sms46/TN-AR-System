@@ -25,7 +25,7 @@ class homepageController extends http\controller
     {
         session_start();
         $actionName= $_REQUEST['action'];
-        print_r($actionName);
+       // print_r($actionName);
 
         if(isset($_POST["add_to_cart"])) {
             $productByCode = ArchitectureCourseMaster::findOneSession($_REQUEST['code']);
