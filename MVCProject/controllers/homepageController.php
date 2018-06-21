@@ -2,7 +2,6 @@
 
 class homepageController extends http\controller
 {
-
     public static function show()
     {
         $architectureRecords = ArchitectureCourseMaster::findAll();
@@ -80,10 +79,8 @@ class homepageController extends http\controller
         self::getTemplate('courseRegistration', null ,$architectureRecordsRegister);
     }
 
-
     public static function create()
     {
         print_r($_POST);
     }
-
 }

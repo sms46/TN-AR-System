@@ -11,11 +11,10 @@
 
     </body>
 </br>
-<h2 align="center">COURSE REGISTRATION</h2>
 
     </br>
-    <div class="container">
-        <h4>Student Information</h4>
+    <div class="container" style="width:1260px;">
+        <legend><h3>STUDENT INFORMATION</h3></legend>
         <form action="index.php?page=accounts&action=create" method="post">
 
             <div class="form-row">
@@ -42,7 +41,7 @@
             </div>
 
             <br>
-            <h4>Address</h4>
+            <legend><h3>ADDRESS</h3></legend>
 
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -70,8 +69,20 @@
             <div class="checkbox">
                 <label><input type="checkbox" name="remember"> Remember me</label>
             </div>
-            <button type="submit" class="btn btn-success" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-success">Submit</button>
         </form>
+
+        </br>
+        <div class="container" style="width:1260px;" align="center">
+            <form action="https://test.secure.touchnet.net:8443/C20146test_upay/web/index.jsp" method="POST">
+                <button type="submit" name="proceed_to_payment" class="btn btn-warning">Checkout</button>
+                <input type="hidden" name="UPAY_SITE_ID" value="8">
+                <input type="hidden" name="AMT" value="400">
+                <input type="hidden" name="EXT_TRANS_ID" value="123">
+            </form>
+        </div>
+
+
     </div>
 
     <?php include 'footer.php';?>

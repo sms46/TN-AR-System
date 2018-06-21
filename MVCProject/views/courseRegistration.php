@@ -10,6 +10,9 @@
 
 </body>
 
+<legend><h2 align="center">COURSE REGISTRATION</h2></legend>
+<br>
+
 <div class="container" style="width:1260px;">
     <nav class="navbar navbar-inverse" style="background:#FFFFFF;">
         <div class="container-fluid pull-left"  style="width:200px;">
