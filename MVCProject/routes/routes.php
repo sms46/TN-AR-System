@@ -64,11 +64,11 @@ class routes
         $route->http_method = 'POST';
         $route->action = 'register';
         $route->page = 'accounts';
-        $route->controller = 'accountsController';
+        $route->controller = 'registrationController';
         $route->method = 'register';
         $routes[] = $route;
 
-        //----------------------------------------------
+        //-------------------------------------------------------------------------------------------
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'create';

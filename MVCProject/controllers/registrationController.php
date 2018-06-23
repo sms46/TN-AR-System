@@ -1,7 +1,7 @@
 <?php
 
 //each page extends controller and the index.php?page=tasks causes the controller to be called
-class accountsController extends http\controller
+class registrationController extends http\controller
 {
 
     public static function register()

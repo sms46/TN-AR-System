@@ -21,39 +21,61 @@
         <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=homepage&action=empty" class="btn btn-info">Empty cart</a></div>
     </nav>
 
-    <?php if(!empty($_SESSION['cart_item'])):?>
+    <?php $total = 0;
+        if(!empty($_SESSION['cart_item'])):?>
 
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Session</th>
-                    <th>Description</th>
-                    <th>StartDate</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Sr.No</th>
+                        <th>Description</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Amount</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
             <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
                 <tr>
-                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["Session"]; ?></strong></td>
+                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["Session"] + 1; ?></strong></td>
                     <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
                     <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["StartDate"]; ?></td>
-                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=homepage&action=remove&code=<?php echo $item["Session"]; ?>" class="btn btn-info">Remove Course</a></td>
+                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["EndDate"]; ?></td>
+                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;">$<?php echo $item["Price"]; ?></td>
+                    <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=homepage&action=remove&code=<?php echo $item["Session"]; ?>" class="btn btn-danger">Remove Course</a></td>
                 </tr>
+                <?php $total = $total+$item['Price'];?>
             <?php endforeach;?>
-        </table>
-    <?php endif;?>
+
+                <form action="index.php?page=accounts&action=register" method="POST">
+                    <tr>
+                        <td colspan="4" align="center">
+                        <select class="btn btn-default dropdown-toggle" id="paymentTypeSelect" name="paymentTypeSelect">
+                            <option>Select Payment Type</option>
+                            <option>Deposit</option>
+                            <option>Full Payment</option>
+                        </select>
+                        </td>
+                        <td colspan="5" align="left"><h4>Total: $<?php print $total?></h4></td>
+                    </tr>
+                    <tr>
+                        <td colspan="10" align="center"><button type="submit" name="proceed_to_payment" class="btn btn-success">Proceed to Payment</button></td>
+                    </tr>
+                </form>
+            </table>
+        <?php endif;?>
 </div>
 
 <div class="container" style="width:1260px;">
 
-<nav class="navbar navbar-inverse" style="background:#FFFFFF;">
+    <nav class="navbar navbar-inverse" style="background:#FFFFFF;">
     <div class="container-fluid">
-        <div class="navbar-header"> <a class="navbar-brand" href="#" style="color:black;">Courses</a> </div>
+        <div class="navbar-header"> <a class="navbar-brand" href="#" style="color:black;">Course Selection</a> </div>
     </div>
 </nav>
 
-<div class="row">
+    <div class="row">
     <div class="container" style="width:1020px;">
         <?php
         $product_array = $data;
@@ -63,7 +85,13 @@
                     <div class="caption">
                         <form method="post" action="index.php?page=homepage&action=add&code=<?php echo $product_array[$key]["Session"]; ?>">
                             <p style="text-align:center;"><?php echo $product_array[$key]["Description"];?></p>
-                            <p style="text-align:center;"><b><?php echo $product_array[$key]["StartDate"];?></b></p>
+                            <p style="text-align:center;"><b><?php echo $product_array[$key]["StartDate"];?> - <?php echo $product_array[$key]["EndDate"];?> </b></p>
+                            <p style="text-align:center;">
+                                 <select class="btn btn-default dropdown-toggle" id="priceType" name="priceType">
+                                     <option>Residential Amount</option>
+                                     <option>Commuter Amount</option>
+                                 </select>
+                            </p>
                             <p style="text-align:center;color:#04B745;">
                                 <button type="submit" name="add_to_cart" class="btn btn-warning">Add To Cart</button>
                             </p>
@@ -73,24 +101,8 @@
             </div>
         <?php endforeach;?>
     </div>
-</div>
+    </div>
 
-</div>
-
-<div class="container" style="width:1260px;">
-
-    <legend><h4>Select Payment Type:</h4></legend>
-    <select class="btn btn-default dropdown-toggle" id="paymentTypeSelect" name="paymentTypeSelect">
-        <option>Deposit</option>
-        <option>Full Payment</option>
-    </select>
-</div>
-
-</br>
-<div class="container" style="width:1260px;" align="center">
-    <form action="index.php?page=accounts&action=register" method="POST">
-        <button type="submit" name="proceed_to_payment" class="btn btn-success">Proceed to Payment</button>
-    </form>
 </div>
 
 </html>
