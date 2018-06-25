@@ -43,7 +43,7 @@ $_SESSION['array'] = $data;
 
 <div class="container" style="width:1260px;">
 
-    <h3 class="text-danger".text-danger>Pricing Information and Dates for 2018</h3></br>
+    <legend><h3 class="text-danger".text-danger>Pricing Information and Dates for 2018</h3></legend></br>
 
     <div class="dropdown">
 

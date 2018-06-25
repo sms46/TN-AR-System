@@ -61,6 +61,7 @@
                     </tr>
                     <tr>
                         <td colspan="10" align="center"><button type="submit" name="proceed_to_payment" class="btn btn-success">Proceed to Payment</button></td>
+                        <input type="hidden"  name="totalAmt" value= "<?php print $total ?>" >
                     </tr>
                 </form>
             </table>

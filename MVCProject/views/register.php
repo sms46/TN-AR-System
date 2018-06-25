@@ -13,6 +13,7 @@
 </br>
 
     </br>
+    <?php echo 'The total amount due is'.' '.$_REQUEST["totalAmt"]?>
     <div class="container" style="width:1260px;">
         <legend><h3>STUDENT INFORMATION</h3></legend>
         <form action="index.php?page=accounts&action=create" method="post">

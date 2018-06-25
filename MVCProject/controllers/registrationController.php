@@ -6,7 +6,9 @@ class registrationController extends http\controller
 
     public static function register()
     {
-        self::getTemplate('register',NULL, NULL);
+        if(isset($_POST["proceed_to_payment"])) {
+            self::getTemplate('show_profile',NULL, NULL);
+        }
     }
 
     public static function store(){
