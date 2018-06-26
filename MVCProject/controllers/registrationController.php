@@ -6,8 +6,8 @@ class registrationController extends http\controller
 
     public static function register()
     {
-        if(isset($_POST["proceed_to_payment"])) {
-            self::getTemplate('show_profile',NULL, NULL);
+        if(isset($_POST["proceed_to_payment"]) && isset ($_POST["paymentTypeSelect"])) {
+            self::getTemplate('studentRegistration',NULL, NULL);
         }
     }
 

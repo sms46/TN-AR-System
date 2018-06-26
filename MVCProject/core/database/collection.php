@@ -41,15 +41,11 @@ abstract class collection
 
     //you can use this to run other queries in on classes that extend the collection class because this is protected
     protected static function getResults($sql, $parameters = null) {
-
-
         if (!is_array($parameters)) {
             $parameters = (array) $parameters;
-
         }
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
-
 
         $statement->execute($parameters);
         $class = static::$modelName;
@@ -67,7 +63,6 @@ abstract class collection
 
     static public function findOne($id)
     {
-
         $tableName = get_called_class();
         $sql = 'SELECT * FROM ' . $tableName . ' WHERE id = ?';
         //grab the only record for find one and return as an object

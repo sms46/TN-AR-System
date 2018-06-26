@@ -59,7 +59,7 @@ class routes
         $route->method = 'emptyCart';
         $routes[] = $route;
 
-        //Redirect to Register
+        //Redirect to Student Registration page
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'register';
