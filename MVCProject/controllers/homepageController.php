@@ -11,7 +11,7 @@ class homepageController extends http\controller
     public static function showDesign()
     {
         $designRecords = DesignCourseMaster::findAll();
-        self::getTemplate('homepage', $designRecords, $designRecords );
+        self::getTemplate('homepage', $designRecords, $designRecords);
     }
 
     public static function registerArchitecture()

@@ -16,13 +16,13 @@
             <ul class="list-group mb-3">
 
                 <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0"><?php echo $item["Description"];?></h6>
-                        <small class="text-muted"><?php echo $item["StartDate"]. '-' .$item["EndDate"] ;?></small>
-                    </div>
-                    <span class="text-muted"><?php echo '$'. $item["Price"];?></span>
-                </li>
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <h6 class="my-0"><?php echo $item["Description"];?></h6>
+                            <small class="text-muted"><?php echo $item["StartDate"]. '-' .$item["EndDate"] ;?></small>
+                        </div>
+                        <span class="text-muted"><?php echo '$'. $item["Price"];?></span>
+                    </li>
                 <?php endforeach;?>
 
                 <li class="list-group-item d-flex justify-content-between">
@@ -36,16 +36,16 @@
                         <h6 class="my-0">Payment Type Selected</h6>
 
                         <?php
-                             $paymentTypeAmt = null;
-                             $paymentTypeSelect = null;
-                             if($_POST["paymentTypeSelect"] == 'Deposit'){
-                                 $paymentTypeAmt = 200;
-                                 $paymentTypeSelect = 'Deposit';
-                             }
-                             elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
-                                 $paymentTypeAmt = $_REQUEST["totalAmt"] - (0.1 * $_REQUEST["totalAmt"]);
-                                 $paymentTypeSelect = 'Full Payment - (10% discount applied)';
-                             }
+                        $paymentTypeAmt = null;
+                        $paymentTypeSelect = null;
+                        if($_POST["paymentTypeSelect"] == 'Deposit'){
+                            $paymentTypeAmt = 200;
+                            $paymentTypeSelect = 'Deposit';
+                        }
+                        elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
+                            $paymentTypeAmt = $_REQUEST["totalAmt"] - (0.1 * $_REQUEST["totalAmt"]);
+                            $paymentTypeSelect = 'Full Payment - (10% discount applied)';
+                        }
                         ?>
                         <small class="text-muted"><em><?php echo $paymentTypeSelect?></em></small>
                     </div>
@@ -59,8 +59,8 @@
                     </div>
                     <span class="text-muted">
                         <?php
-                            $applicationAmt = 40;
-                            echo '$' .$applicationAmt;
+                        $applicationAmt = 40;
+                        echo '$' .$applicationAmt;
                         ?></span>
                 </li>
 
@@ -68,8 +68,8 @@
                     <span>Total (USD)</span>
                     <strong>
                         <?php
-                            $finalAmt = $paymentTypeAmt + $applicationAmt;
-                            print '$'. $finalAmt?>
+                        $finalAmt = $paymentTypeAmt + $applicationAmt;
+                        print '$'. $finalAmt?>
                     </strong>
                 </li>
 
@@ -92,11 +92,11 @@
 
         <div class="col-md-8 order-md-1">
             <legend> <h3 class="mb-3">STUDENT INFORMATION</h3> </legend>
-            <form class="needs-validation" novalidate>
+            <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="studentName">Student's Full Name</label>
-                        <input type="text" class="form-control" id="studentName" placeholder="Enter Student's Full Name" value="" required>
+                        <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required>
                         <div class="invalid-feedback">
                             Your Full Name is required.
                         </div>
@@ -104,7 +104,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="email">Email </label>
-                        <input type="email" class="form-control" id="email" placeholder="you@example.com" required>
+                        <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
                         <div class="invalid-feedback">
                             Please enter a valid email address.
                         </div>
@@ -114,7 +114,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="parentName">Parent/Guardian Name</label>
-                        <input type="text" class="form-control" id="parentName" placeholder="Enter Parent/Guardian Name" value="" required>
+                        <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="" required>
                         <div class="invalid-feedback">
                             Your Parent/Guardian Name is required.
                         </div>
@@ -122,7 +122,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="highSchool">High School </label>
-                        <input type="text" class="form-control" id="highSchool" placeholder="Enter High School" required>
+                        <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" required>
                         <div class="invalid-feedback">
                             Your High School Name is required.
                         </div>
@@ -135,7 +135,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="streetAddress">Street Address</label>
-                        <input type="text" class="form-control" id="streetAddress" placeholder="Enter Street Address" value="" required>
+                        <input type="text" class="form-control" name="streetAddress" placeholder="Enter Street Address" value="" required>
                         <div class="invalid-feedback">
                             Street Address is required.
                         </div>
@@ -143,7 +143,7 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="city">City</label>
-                        <input type="text" class="form-control" id="city" placeholder="Enter City" required>
+                        <input type="text" class="form-control" name="city" placeholder="Enter City" required>
                         <div class="invalid-feedback">
                             City Name is required.
                         </div>
@@ -153,7 +153,7 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="state">State</label>
-                        <input type="text" class="form-control" id="state" placeholder="Enter State" value="" required>
+                        <input type="text" class="form-control" name="state" placeholder="Enter State" value="" required>
                         <div class="invalid-feedback">
                             State Name is required.
                         </div>
@@ -161,20 +161,21 @@
 
                     <div class="col-md-6 mb-3">
                         <label for="zipCode">Zip Code</label>
-                        <input type="text" class="form-control" id="zipCode" placeholder="Enter Zip Code" required>
+                        <input type="text" class="form-control" name="zipCode" placeholder="Enter Zip Code" required>
                         <div class="invalid-feedback">
                             Zip Code is required.
                         </div>
                     </div>
                 </div>
 
+                <br>
+                <button type="submit" name="save_details" class="btn btn-success">Save Details</button>
+                <input type="hidden"  name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
+                <input type="hidden"  name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
             </form>
         </div>
 
     </div>
-
-    <button type="submit" class="btn btn-success">Save Details</button>
-
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -189,11 +190,9 @@
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     (function() {
         'use strict';
-
         window.addEventListener('load', function() {
             // Fetch all the forms we want to apply custom Bootstrap validation styles to
             var forms = document.getElementsByClassName('needs-validation');
-
             // Loop over them and prevent submission
             var validation = Array.prototype.filter.call(forms, function(form) {
                 form.addEventListener('submit', function(event) {

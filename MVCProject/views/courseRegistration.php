@@ -48,14 +48,14 @@
                 <?php $total = $total+$item['Price'];?>
             <?php endforeach;?>
 
-                <form action="index.php?page=accounts&action=register" method="POST">
+                <form action="index.php?page=studentRegistration&action=register" method="POST">
                     <tr>
                         <td colspan="4" align="center">
-                        <select class="btn btn-default dropdown-toggle" id="paymentTypeSelect" name="paymentTypeSelect">
-                            <option>Select Payment Type</option>
-                            <option>Deposit</option>
-                            <option>Full Payment</option>
-                        </select>
+                                <select class="btn btn-default" id="paymentTypeSelect" name="paymentTypeSelect" required>
+                                     <option value="">Select Payment Type</option>
+                                     <option value="Deposit">Deposit</option>
+                                     <option value="Full Payment">Full Payment</option>
+                                 </select>
                         </td>
                         <td colspan="5" align="left"><h4>Total: $<?php print $total?></h4></td>
                     </tr>

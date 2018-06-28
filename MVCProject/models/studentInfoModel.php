@@ -2,6 +2,7 @@
 
 final class studentInfoModel extends \database\model
 {
+    public $id;
     public $studentName;
     public $studentEmail;
     public $parentName;

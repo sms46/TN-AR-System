@@ -5,7 +5,6 @@ use http\controller;
 
 abstract class model
 {
-
     public function save()
     {
         if($this->validate() == FALSE) {
@@ -26,7 +25,6 @@ abstract class model
         if ($INSERT == TRUE) {
 
             unset($array['id']);
-
         }
 
         foreach (array_flip($array) as $key => $value) {

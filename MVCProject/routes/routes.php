@@ -63,50 +63,18 @@ class routes
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'register';
-        $route->page = 'accounts';
+        $route->page = 'studentRegistration';
         $route->controller = 'registrationController';
         $route->method = 'register';
         $routes[] = $route;
 
-        //-------------------------------------------------------------------------------------------
+        //Store Student Information
         $route = new route();
         $route->http_method = 'POST';
-        $route->action = 'create';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'store';
-        $routes[] = $route;
-
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'showProfile';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'showProfile';
-        $routes[] = $route;
-
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'selectArchitectureCourses';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'selectArchitectureCourses';
-        $routes[] = $route;
-
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'selectDesignCourses';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'selectDesignCourses';
-        $routes[] = $route;
-
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'createTable';
-        $route->page = 'accounts';
-        $route->controller = 'accountsController';
-        $route->method = 'createTable';
+        $route->action = 'storeStudentInfo';
+        $route->page = 'studentRegistration';
+        $route->controller = 'registrationController';
+        $route->method = 'storeStudentInfo';
         $routes[] = $route;
 
         return $routes;
