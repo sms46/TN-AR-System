@@ -9,9 +9,10 @@
 
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-                <span class="text-muted">&nbsp;&nbsp;&nbsp;YOUR CART</span>
-                <span class="badge badge-secondary badge-pill"><?php print count($_SESSION['cart_item'])?></span>
+
+            <legend><h4 align="center">Order No: <?php echo $data ?></h4></legend>
+            <h4 class="list-group-item d-flex justify-content-between">
+                <span class="badge badge-secondary badge-pill">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
             </h4>
             <ul class="list-group mb-3">
 
@@ -26,7 +27,7 @@
                 <?php endforeach;?>
 
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
+                    <span>Total Amount(USD)</span>
                     <strong><?php print '$'. $_REQUEST["totalAmt"]?></strong>
                 </li>
 
@@ -61,16 +62,38 @@
                         <?php
                         $applicationAmt = 40;
                         echo '$' .$applicationAmt;
-                        ?></span>
+                        ?>
+                    </span>
                 </li>
 
                 <li class="list-group-item d-flex justify-content-between">
-                    <span>Total (USD)</span>
+                    <span>Total Amount Due(USD)</span>
                     <strong>
                         <?php
                         $finalAmt = $paymentTypeAmt + $applicationAmt;
                         print '$'. $finalAmt?>
                     </strong>
+                </li>
+
+                <br><br>
+                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div>
+                        <h6 class="my-0">Remaining Balance Due</h6>
+                        <small class="text-muted"><em>Amount to be paid later</em></small>
+                    </div>
+                    <span class="text-muted">
+                        <?php
+                        $balanceAmt = 0;
+                        if($_POST["paymentTypeSelect"] == 'Deposit'){
+                            $balanceAmt = $_REQUEST["totalAmt"] - $finalAmt;
+                            echo '$' .$balanceAmt;
+                        }
+                        elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
+                            echo '$' .$balanceAmt;
+                        }
+
+                        ?>
+                    </span>
                 </li>
 
                 <hr class="mb-4">
@@ -111,6 +134,7 @@
                     </div>
                 </div>
 
+                <br>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="parentName">Parent/Guardian Name</label>
@@ -129,7 +153,7 @@
                     </div>
                 </div>
 
-                <br>
+                <br><br>
                 <legend> <h3 class="mb-3">ADDRESS</h3> </legend>
 
                 <div class="row">
@@ -150,6 +174,7 @@
                     </div>
                 </div>
 
+                <br>
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="state">State</label>
@@ -169,7 +194,7 @@
                 </div>
 
                 <br>
-                <button type="submit" name="save_details" class="btn btn-success">Save Details</button>
+                <button type="submit" name="save_details" class="btn btn-primary">Save Details</button>
                 <input type="hidden"  name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
                 <input type="hidden"  name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
             </form>

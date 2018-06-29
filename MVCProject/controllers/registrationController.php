@@ -1,5 +1,4 @@
 <?php
-
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class registrationController extends http\controller
 {
@@ -7,7 +6,9 @@ class registrationController extends http\controller
     public static function register()
     {
         if(isset($_POST["proceed_to_payment"]) && isset ($_POST["paymentTypeSelect"])) {
-            self::getTemplate('studentRegistration',NULL, NULL);
+
+            $orderNo = strtoupper(studentInfo::randomCode(6));
+            self::getTemplate('studentRegistration',$orderNo, $orderNo);
         }
     }
 
@@ -15,6 +16,7 @@ class registrationController extends http\controller
 
         if(isset($_POST["save_details"])) {
 
+            //Insert into the student info table
             $user = new studentInfoModel();
             $user->studentName = $_POST['studentName'];
             $user->studentEmail = $_POST['email'];
@@ -25,6 +27,21 @@ class registrationController extends http\controller
             $user->state = $_POST['state'];
             $user->zipCode = $_POST['zipCode'];
             $user->save();
+
+            //Insert into the student - order table
+            $order = new studentOrderInfoModel();
+
+            $order->orderNum = $_POST['orderNum'];
+            $order->studentName = $_POST['studentName'];
+            $order->studentEmail = $_POST['email'];
+            $order->parentName = $_POST['parentName'];
+
+            //$order->schoolName = $_POST['highSchool'];
+            $order->streetAddress = $_POST['streetAddress'];
+            $order->city = $_POST['city'];
+            $order->state = $_POST['state'];
+            $order->zipCode = $_POST['zipCode'];
+            $order->save();
 
             self::getTemplate('studentRegistration',NULL, NULL);
        }
