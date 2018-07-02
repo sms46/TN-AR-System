@@ -30,17 +30,19 @@ class registrationController extends http\controller
 
             //Insert into the student - order table
             $order = new studentOrderInfoModel();
-
             $order->orderNum = $_POST['orderNum'];
             $order->studentName = $_POST['studentName'];
             $order->studentEmail = $_POST['email'];
             $order->parentName = $_POST['parentName'];
-
-            //$order->schoolName = $_POST['highSchool'];
+            $order->courseAmt = $_POST['courseAmt'];
+            $order->paymentType = $_POST['paymentTypeSelect'];
+            $order->dueAmt = $_POST['dueAmt'];
+            $order->schoolName = $_POST['highSchool'];
             $order->streetAddress = $_POST['streetAddress'];
-            $order->city = $_POST['city'];
-            $order->state = $_POST['state'];
             $order->zipCode = $_POST['zipCode'];
+            $order->timestamp = studentInfo::getTimestamp();
+            $order->orderConfirmed = 'N';
+            $order->paymentStatus = '0';
             $order->save();
 
             self::getTemplate('studentRegistration',NULL, NULL);

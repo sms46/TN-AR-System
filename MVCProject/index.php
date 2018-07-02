@@ -2,7 +2,7 @@
 
 //turn on debugging messages
 ini_set('display_errors', 'On');
-error_reporting(E_ALL);
+error_reporting(E_ALL ^ E_WARNING);
 
 //Autoloader class to load all the different directories
 include_once "autoload.php";

@@ -5,7 +5,7 @@ $_SESSION['array'] = $data;
 
 <?php include 'headers.php';?>
 
-<body xmlns="http://www.w3.org/1999/html">
+<body xmlns="http://www.w3.org/1999/html" class="bg-light">
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -39,7 +39,7 @@ $_SESSION['array'] = $data;
     }
 
 </script>
-</body>
+
 
 <div class="container" style="width:1260px;">
 
@@ -75,5 +75,5 @@ $_SESSION['array'] = $data;
     <a class="btn btn-primary" href="index.php?page=homepage&action=registerArchitecture" role="button">Register for Courses</a>
 
 </div>
-
+</body>
 </html>

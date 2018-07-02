@@ -2,6 +2,7 @@
 
 final class studentOrderInfoModel extends \database\model
 {
+    public $id;
     public $orderId;
     public $orderNum;
     public $studentName;
@@ -14,7 +15,7 @@ final class studentOrderInfoModel extends \database\model
     public $streetAddress;
     public $zipCode;
     public $timestamp;
-    public $orderStatus;
+    public $orderConfirmed;
     public $paymentStatus;
 
     protected static $modelName = 'studentOrderInfoModel';

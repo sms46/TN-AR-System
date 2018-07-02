@@ -3,16 +3,16 @@
 
 <body class="bg-light">
 
-<legend><h2 align="center">COURSE CHECKOUT</h2></legend>
+<h2 align="center">COURSE CHECKOUT</h2><hr>
 <br>
 <div div class="container" style="width:1260px;">
 
     <div class="row">
         <div class="col-md-4 order-md-2 mb-4">
 
-            <legend><h4 align="center">Order No: <?php echo $data ?></h4></legend>
+            <h4 align="center">Order No: <?php echo $data ?></h4><hr>
             <h4 class="list-group-item d-flex justify-content-between">
-                <span class="badge badge-secondary badge-pill">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
+                <span class="badge badge-pill badge-info">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
             </h4>
             <ul class="list-group mb-3">
 
@@ -98,10 +98,19 @@
 
                 <hr class="mb-4">
                 <form action="https://test.secure.touchnet.net:8443/C20146test_upay/web/index.jsp" method="POST">
+
+                    <?php
+                        $passedAmt = '87ABD23777';
+                        $validationKeyString = $passedAmt .$data .$finalAmt;
+                        $hashedValidationKey = studentInfo::getHash($validationKeyString);
+                        //print $hashedValidationKey;
+                    ?>
+
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to Pay <?php echo '$'. $finalAmt?></button>
                     <input type="hidden" name="UPAY_SITE_ID" value="8">
-                    <input type="hidden" name="AMT" value="<?php print $finalAmt?>">
-                    <input type="hidden" name="EXT_TRANS_ID" value="123">
+                    <input type="hidden" name="AMT" value="<?php print $finalAmt ?>">
+                    <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data ?>">
+                    <input type="hidden" name="VALIDATION_KEY" value="<?php print $hashedValidationKey ?>">
                     <input type="hidden" name="EXT_TRANS_ID_LABEL" value="Your Invoice Number is:">
                     <input type="hidden" name="SUCCESS_LINK_TEXT" value="Click here to confirm your payment.">
                     <input type="hidden" name="SUCCESS_LINK" size="10" value="">
@@ -114,7 +123,7 @@
         </div>
 
         <div class="col-md-8 order-md-1">
-            <legend> <h3 class="mb-3">STUDENT INFORMATION</h3> </legend>
+            <h3 class="mb-3">STUDENT INFORMATION</h3> <hr>
             <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -154,7 +163,7 @@
                 </div>
 
                 <br><br>
-                <legend> <h3 class="mb-3">ADDRESS</h3> </legend>
+                <h3 class="mb-3">ADDRESS</h3><hr>
 
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -195,8 +204,11 @@
 
                 <br>
                 <button type="submit" name="save_details" class="btn btn-primary">Save Details</button>
-                <input type="hidden"  name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
-                <input type="hidden"  name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
+                <input type="hidden" name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
+                <input type="hidden" name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
+                <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
+                <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
+                <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
             </form>
         </div>
 
