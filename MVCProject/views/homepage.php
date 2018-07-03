@@ -73,7 +73,8 @@ $_SESSION['array'] = $data;
 
     </br>
     <a class="btn btn-primary" href="index.php?page=homepage&action=registerArchitecture" role="button">Register for Courses</a>
-
+    </br>
+    <a class="btn btn-primary" href="" role="button">Pay Balance Due</a>
 </div>
 </body>
 </html>
