@@ -27,8 +27,8 @@ class htmlTable
                   <td>" . $row['Description'] . "</td>
                   <td>" . $row['StartDate'] . "</td>
                   <td>" . $row['EndDate'] . "</td>
-                  <td>" . $row['ResidentialPrice'] . "</td>
-                  <td>" . $row['CommuterPrice'] . "</td>
+                  <td>" .'$' .$row['ResidentialPrice'] . "</td>
+                  <td>" . '$'. $row['CommuterPrice'] . "</td>
                 </tr>";
             }
 
