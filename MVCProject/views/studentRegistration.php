@@ -1,21 +1,52 @@
-<?php include 'headers.php';?>
-<?php session_start();?>
+<!DOCTYPE html>
+<html>
 
-<body class="bg-light">
+<?php
 
-<h2 align="center">COURSE CHECKOUT</h2><hr>
-<br>
-<div div class="container" style="width:1260px;">
+    //Session start initiated on top of the page
+    session_start();
 
-    <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
+    //Included header tag
+    include 'headers.php';
+?>
 
-            <h4 align="center">Order No: <?php echo $data ?></h4><hr>
-            <h4 class="list-group-item d-flex justify-content-between">
-                <span class="badge badge-pill badge-info">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
-            </h4>
-            <ul class="list-group mb-3">
+<div class="wrapper">
 
+    <!-- Navigation Side bar-->
+    <?php include 'navSideBar.php';?>
+
+    <div id="content">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-default">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-align-justify"></i>
+                </button>
+
+                <h2><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design </strong></h2>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="nav navbar-nav ml-auto">
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <h3 class="text-danger".text-danger align="center"><strong>COURSE CHECKOUT</strong></h3><hr></br>
+
+        <div class="row">
+             <div class="col-md-4 order-md-2 mb-4 shadow-lg p-3 mb-5 bg-white rounded ">
+
+                    <h4 align="center">Order No: <?php echo $data ?></h4><hr>
+                    <h4 class="list-group-item d-flex justify-content-between">
+                        <span class="badge badge-pill badge-info">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
+                    </h4>
+
+             <ul class="list-group mb-3">
                 <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                         <div>
@@ -119,130 +150,109 @@
                     <input type="hidden" name="CANCEL_LINK_TEXT" size="10" value="New Cancel Link Text">
                     <input type="hidden" name="CANCEL_LINK" size="10" value="">
                 </form>
-            </ul>
-        </div>
+             </ul>
+             </div>
 
-        <div class="col-md-8 order-md-1">
-            <h3 class="mb-3">STUDENT INFORMATION</h3> <hr>
-            <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="studentName">Student's Full Name</label>
-                        <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required>
-                        <div class="invalid-feedback">
-                            Your Full Name is required.
-                        </div>
-                    </div>
+             <div class="col-md-8 order-md-1 ">
+                    <h3 class="mb-3">STUDENT INFORMATION</h3> <hr>
+                    <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="studentName">Student's Full Name</label>
+                                <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required>
+                                <div class="invalid-feedback">
+                                    Your Full Name is required.
+                                </div>
+                            </div>
 
-                    <div class="col-md-6 mb-3">
-                        <label for="email">Email </label>
-                        <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
-                        <div class="invalid-feedback">
-                            Please enter a valid email address.
+                            <div class="col-md-5 mb-3">
+                                <label for="email">Email </label>
+                                <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
                         </div>
-                    </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="parentName">Parent/Guardian Name</label>
+                                <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="" required>
+                                <div class="invalid-feedback">
+                                    Your Parent/Guardian Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-3">
+                                <label for="highSchool">High School </label>
+                                <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" required>
+                                <div class="invalid-feedback">
+                                    Your High School Name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <h3 class="mb-3">ADDRESS</h3><hr>
+
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="streetAddress">Street Address</label>
+                                <input type="text" class="form-control" name="streetAddress" placeholder="Enter Street Address" value="" required>
+                                <div class="invalid-feedback">
+                                    Street Address is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-3">
+                                <label for="city">City</label>
+                                <input type="text" class="form-control" name="city" placeholder="Enter City" required>
+                                <div class="invalid-feedback">
+                                    City Name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5 mb-3">
+                                <label for="state">State</label>
+                                <input type="text" class="form-control" name="state" placeholder="Enter State" value="" required>
+                                <div class="invalid-feedback">
+                                    State Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-3">
+                                <label for="zipCode">Zip Code</label>
+                                <input type="text" class="form-control" name="zipCode" placeholder="Enter Zip Code" required>
+                                <div class="invalid-feedback">
+                                    Zip Code is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <button type="submit" name="save_details" class="btn btn-primary">Save Details</button>
+                        <input type="hidden" name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
+                        <input type="hidden" name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
+                        <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
+                        <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
+                        <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
+                    </form>
                 </div>
-
-                <br>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="parentName">Parent/Guardian Name</label>
-                        <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="" required>
-                        <div class="invalid-feedback">
-                            Your Parent/Guardian Name is required.
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="highSchool">High School </label>
-                        <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" required>
-                        <div class="invalid-feedback">
-                            Your High School Name is required.
-                        </div>
-                    </div>
-                </div>
-
-                <br><br>
-                <h3 class="mb-3">ADDRESS</h3><hr>
-
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="streetAddress">Street Address</label>
-                        <input type="text" class="form-control" name="streetAddress" placeholder="Enter Street Address" value="" required>
-                        <div class="invalid-feedback">
-                            Street Address is required.
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="city">City</label>
-                        <input type="text" class="form-control" name="city" placeholder="Enter City" required>
-                        <div class="invalid-feedback">
-                            City Name is required.
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-                <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="state">State</label>
-                        <input type="text" class="form-control" name="state" placeholder="Enter State" value="" required>
-                        <div class="invalid-feedback">
-                            State Name is required.
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="zipCode">Zip Code</label>
-                        <input type="text" class="form-control" name="zipCode" placeholder="Enter Zip Code" required>
-                        <div class="invalid-feedback">
-                            Zip Code is required.
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-                <button type="submit" name="save_details" class="btn btn-primary">Save Details</button>
-                <input type="hidden" name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
-                <input type="hidden" name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
-                <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
-                <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
-                <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
-            </form>
         </div>
 
     </div>
+
 </div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-<script src="../../assets/js/vendor/popper.min.js"></script>
-<script src="../../dist/js/bootstrap.min.js"></script>
-<script src="../../assets/js/vendor/holder.min.js"></script>
-<script>
-    // Example starter JavaScript for disabling form submissions if there are invalid fields
-    (function() {
-        'use strict';
-        window.addEventListener('load', function() {
-            // Fetch all the forms we want to apply custom Bootstrap validation styles to
-            var forms = document.getElementsByClassName('needs-validation');
-            // Loop over them and prevent submission
-            var validation = Array.prototype.filter.call(forms, function(form) {
-                form.addEventListener('submit', function(event) {
-                    if (form.checkValidity() === false) {
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    form.classList.add('was-validated');
-                }, false);
-            });
-        }, false);
-    })();
-</script>
+<!--Included javascript code for form Validation-->
+<?php include 'formValidation.php';?>
+
+<!--Included javascript code for event click-->
+<?php include 'footer.php';?>
 
 </body>
 </html>

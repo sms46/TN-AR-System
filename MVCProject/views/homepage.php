@@ -2,53 +2,21 @@
 <html>
 
 <?php
-session_start(); // DO CALL ON TOP OF BOTH PAGES
-$_SESSION['array'] = $data;
+
+    //Session start initiated on top of the page
+    session_start();
+    $_SESSION['array'] = $data;
+
+    //Included header tag
+    include 'headers.php';
 ?>
 
-<?php include 'headers.php';?>
-
-<body>
+<body class="bg-light">
 
 <div class="wrapper">
-    <!-- Sidebar  -->
-    <nav id="sidebar">
-        <div id="dismiss">
-            <!--<i class="fas fa-arrow-left"></i>-->
-            <label> <strong>x</strong></label>
-        </div>
 
-        <div class="sidebar-header">
-            <h6>College of Architecture and Design</h6>
-        </div>
-
-        <ul class="list-unstyled components">
-            <li class="active">
-                <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-                <ul class="collapse list-unstyled" id="homeSubmenu">
-                    <li>
-                        <a href="#">Home 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Home 3</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#">About</a>
-            </li>
-            <li>
-                <a href="#">Services</a>
-            </li>
-            <li>
-                <a href="#">Contact</a>
-            </li>
-        </ul>
-
-    </nav>
+    <!-- Navigation Side bar-->
+    <?php include 'navSideBar.php';?>
 
     <!-- Page Content  -->
     <div id="content">
@@ -64,7 +32,7 @@ $_SESSION['array'] = $data;
                     <i class="fas fa-align-justify"></i>
                 </button>
 
-                <h1><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design </strong></h1>
+                <h2><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design </strong></h2>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
 
@@ -80,7 +48,7 @@ $_SESSION['array'] = $data;
         </nav>
 
         <!--Homepage main body starts from here -->
-            <h3 class="text-danger".text-danger>Pricing Information and Dates for 2018</h3><hr></br>
+            <h4 class="text-danger".text-danger>Pricing Information and Dates for 2018</h4><hr></br>
 
             <div class="dropdown">
 
@@ -103,8 +71,10 @@ $_SESSION['array'] = $data;
                     break;
                 }?> </h4>
             <hr>
+
             <?php
-            print utility\htmlTable::genarateTableForCourses($data);
+                //Print HTML Table
+                print utility\htmlTable::genarateTableForCourses($data);
             ?>
 
             </br>
@@ -115,6 +85,7 @@ $_SESSION['array'] = $data;
 
 <div class="overlay"></div>
 
+<!--Included javascript code for event click-->
 <?php include 'footer.php';?>
 
 </body>
