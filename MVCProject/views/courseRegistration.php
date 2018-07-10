@@ -104,7 +104,7 @@
                     $product_array = $data;
                     foreach($product_array as $key=>$value):?>
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card shadow-lg p-3 mb-1 bg-white rounded">
                                 <figure class="card-body">
                                     <form method="post" action="index.php?page=homepage&action=add&code=<?php echo $product_array[$key]["Session"]; ?>">
                                         <p style="text-align:center;" class="card-title"><strong><?php echo $product_array[$key]["Description"];?></strong></p>

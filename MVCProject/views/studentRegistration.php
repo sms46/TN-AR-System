@@ -41,9 +41,10 @@
         <div class="row">
              <div class="col-md-4 order-md-2 mb-4 shadow-lg p-3 mb-5 bg-white rounded ">
 
-                    <h4 align="center">Order No: <?php echo $data ?></h4><hr>
+                    <h4 align="center" class="text-primary">Order No: <?php echo $data ?></h4><hr>
                     <h4 class="list-group-item d-flex justify-content-between">
-                        <span class="badge badge-pill badge-info">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
+                        <span class="text-primary">STEP 2:</span>
+                        <span class="badge badge-pill badge-primary">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
                     </h4>
 
              <ul class="list-group mb-3">
@@ -154,7 +155,7 @@
              </div>
 
              <div class="col-md-8 order-md-1 ">
-                    <h3 class="mb-3">STUDENT INFORMATION</h3> <hr>
+                    <h3 class="mb-3 text-primary">STEP 1: STUDENT INFORMATION</h3> <hr>
                     <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
                         <div class="row">
                             <div class="col-md-5 mb-3">
@@ -194,7 +195,7 @@
                         </div>
 
                         <br><br>
-                        <h3 class="mb-3">ADDRESS</h3><hr>
+                        <h3 class="mb-3 text-primary">ADDRESS</h3><hr>
 
                         <div class="row">
                             <div class="col-md-5 mb-3">
@@ -243,9 +244,7 @@
                     </form>
                 </div>
         </div>
-
     </div>
-
 </div>
 
 <!--Included javascript code for form Validation-->
