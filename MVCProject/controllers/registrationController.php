@@ -1,4 +1,4 @@
-<?php
+ <?php
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class registrationController extends http\controller
 {
@@ -44,6 +44,24 @@ class registrationController extends http\controller
             $order->orderConfirmed = 'N';
             $order->paymentStatus = '0';
             $order->save();
+
+
+            foreach($_SESSION['cart_item'] as $key=>$item)
+            {
+                //Insert into the student course info table
+                $studentInfo = new studentCourseInfoModel();
+                $studentInfo->studentName = $_POST['studentName'];
+                $studentInfo->studentEmail = $_POST['email'];
+                $studentInfo->parentName = $_POST['parentName'];
+                $studentInfo->course = $item['Description'];
+                $studentInfo->year = studentCourseInfo::getCurrentYear();
+                $studentInfo->schoolName = $_POST['highSchool'];
+                $studentInfo->streetAddress = $_POST['streetAddress'];
+                $studentInfo->zipCode = $_POST['zipCode'];
+                $studentInfo->timestamp = studentInfo::getTimestamp();
+                $studentInfo->appName = 'COAD';
+                $studentInfo->save();
+            }
 
             self::getTemplate('studentRegistration',NULL, NULL);
        }

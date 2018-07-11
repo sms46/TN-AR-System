@@ -135,7 +135,6 @@
                         $passedAmt = '87ABD23777';
                         $validationKeyString = $passedAmt .$data .$finalAmt;
                         $hashedValidationKey = studentInfo::getHash($validationKeyString);
-                        //print $hashedValidationKey;
                     ?>
 
                     <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to Pay <?php echo '$'. $finalAmt?></button>

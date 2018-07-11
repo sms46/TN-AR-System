@@ -19,6 +19,7 @@ class studentInfo extends \database\collection
 
     public static function getHash($string)
     {
-        return base64_encode(md5($string));
+        //Need to convert it into hex string to pass to touchnet
+        return base64_encode( pack('H*', md5($string)));
     }
 }

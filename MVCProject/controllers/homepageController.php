@@ -79,7 +79,7 @@ class homepageController extends http\controller
                             unset($_SESSION["cart_item"][$keys]);
                             echo '<script>alert("Course Removed")</script>';
 
-                            $architectureRecordsRegister = ArchitectureCourseMaster::findCourses();
+                            $architectureRecordsRegister = Courses::findCourses();
                             self::getTemplate('courseRegistration', $_SESSION["cart_item"],$architectureRecordsRegister);
                         }
                     }
@@ -92,7 +92,7 @@ class homepageController extends http\controller
         session_start();
         unset($_SESSION["cart_item"]);
 
-        $architectureRecordsRegister = ArchitectureCourseMaster::findCourses();
+        $architectureRecordsRegister = Courses::findCourses();
         self::getTemplate('courseRegistration', null ,$architectureRecordsRegister);
     }
 
