@@ -18,19 +18,12 @@ abstract class collection
         return self::getResults($sql);
     }
 
-    static public function findCourses()
+    static public function findOne($id)
     {
-        $tableName = 'Courses';
-        $sql = 'SELECT * FROM ' . $tableName;
-        return self::getResults($sql);
-    }
-
-    static public function findOneSession($sessionId)
-    {
-        $tableName = 'Courses';
-        $sql = 'SELECT * FROM ' . $tableName . ' WHERE Session = ?';
+        $tableName = get_called_class();
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE id = ?';
         //grab the only record for find one and return as an object
-        $recordsSet = self::getResults($sql, $sessionId);
+        $recordsSet = self::getResults($sql, $id);
 
         if (is_null($recordsSet)) {
             return FALSE;
@@ -59,20 +52,6 @@ abstract class collection
         }
 
         return $recordsSet;
-    }
-
-    static public function findOne($id)
-    {
-        $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName . ' WHERE id = ?';
-        //grab the only record for find one and return as an object
-        $recordsSet = self::getResults($sql, $id);
-
-        if (is_null($recordsSet)) {
-            return FALSE;
-        } else {
-            return $recordsSet[0];
-        }
     }
 }
 

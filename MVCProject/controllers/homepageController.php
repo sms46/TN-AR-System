@@ -16,7 +16,7 @@ class homepageController extends http\controller
 
     public static function registerArchitecture()
     {
-        $architectureRecordsRegister = ArchitectureCourseMaster::findCourses();
+        $architectureRecordsRegister = Courses::findCourses();
         self::getTemplate('courseRegistration',null,$architectureRecordsRegister);
     }
 
@@ -25,7 +25,7 @@ class homepageController extends http\controller
         session_start();
 
         if(isset($_POST["add_to_cart"])) {
-            $productByCode = ArchitectureCourseMaster::findOneSession($_REQUEST['code']);
+            $productByCode = Courses::findOneSession($_REQUEST['code']);
 
             //Display the price based on selection by the user
             if($_POST["priceType"] == 'Residential Amount')
@@ -60,7 +60,7 @@ class homepageController extends http\controller
                 }
             }
         }
-            $architectureRecordsRegister = ArchitectureCourseMaster::findCourses();
+            $architectureRecordsRegister = Courses::findCourses();
             self::getTemplate('courseRegistration', $_SESSION["cart_item"], $architectureRecordsRegister);
     }
 
