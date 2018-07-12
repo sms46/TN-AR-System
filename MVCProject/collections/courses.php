@@ -1,10 +1,24 @@
 <?php
 
-class Courses extends database\collection
+class courses extends database\collection
 {
     protected static $modelName = 'CoursesModel';
 
     //Static Functions
+    static public function findArchitectureCourses($dept)
+    {
+        $tableName = get_called_class();
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE Department = ?';
+        return self::getResults($sql, $dept);
+    }
+
+    static public function findDesignCourses($dept)
+    {
+        $tableName = get_called_class();
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE Department = ?';
+        return self::getResults($sql, $dept );
+    }
+
     static public function findCourses()
     {
         $tableName = get_called_class();

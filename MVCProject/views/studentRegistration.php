@@ -3,9 +3,6 @@
 
 <?php
 
-    //Session start initiated on top of the page
-    session_start();
-
     //Included header tag
     include 'headers.php';
 ?>
@@ -13,11 +10,11 @@
 <div class="wrapper">
 
     <!-- Navigation Side bar-->
-    <?php include 'navSideBar.php';?>
+    <?php //include 'navSideBar.php';?>
 
     <div id="content">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!--<nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
 
                 <button type="button" id="sidebarCollapse" class="btn btn-default">
@@ -34,7 +31,7 @@
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav>-->
 
         <h3 class="text-danger".text-danger align="center"><strong>COURSE CHECKOUT</strong></h3><hr></br>
 

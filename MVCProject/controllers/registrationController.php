@@ -1,10 +1,16 @@
  <?php
+
+ //Session start initiated on top of the page
+  session_start();
+
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class registrationController extends http\controller
 {
 
+
     public static function register()
     {
+
         if(isset($_POST["proceed_to_payment"]) && isset ($_POST["paymentTypeSelect"])) {
 
             $orderNo = strtoupper(studentInfo::randomCode(6));
@@ -15,7 +21,7 @@ class registrationController extends http\controller
     public static function storeStudentInfo(){
 
         if(isset($_POST["save_details"])) {
-
+            
             //Insert into the student info table
             $user = new studentInfoModel();
             $user->studentName = $_POST['studentName'];
@@ -45,15 +51,16 @@ class registrationController extends http\controller
             $order->paymentStatus = '0';
             $order->save();
 
-
+            //Insert into the student course info table
             foreach($_SESSION['cart_item'] as $key=>$item)
             {
-                //Insert into the student course info table
                 $studentInfo = new studentCourseInfoModel();
                 $studentInfo->studentName = $_POST['studentName'];
                 $studentInfo->studentEmail = $_POST['email'];
                 $studentInfo->parentName = $_POST['parentName'];
                 $studentInfo->course = $item['Description'];
+                $studentInfo->department = $item['Department'];
+                $studentInfo->startDate = $item['StartDate'];
                 $studentInfo->year = studentCourseInfo::getCurrentYear();
                 $studentInfo->schoolName = $_POST['highSchool'];
                 $studentInfo->streetAddress = $_POST['streetAddress'];
