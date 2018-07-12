@@ -21,7 +21,7 @@ class registrationController extends http\controller
     public static function storeStudentInfo(){
 
         if(isset($_POST["save_details"])) {
-            
+
             //Insert into the student info table
             $user = new studentInfoModel();
             $user->studentName = $_POST['studentName'];
@@ -42,6 +42,7 @@ class registrationController extends http\controller
             $order->parentName = $_POST['parentName'];
             $order->courseAmt = $_POST['courseAmt'];
             $order->paymentType = $_POST['paymentTypeSelect'];
+            $order->amtPaid = $_POST['totalAmtPaid'];
             $order->dueAmt = $_POST['dueAmt'];
             $order->schoolName = $_POST['highSchool'];
             $order->streetAddress = $_POST['streetAddress'];
@@ -70,7 +71,9 @@ class registrationController extends http\controller
                 $studentInfo->save();
             }
 
-            self::getTemplate('studentRegistration',NULL, NULL);
+            //FIX: Need to save the order no in a variable to pass the same no throughout a session.
+            $orderNum = $_POST['orderNum'];
+            self::getTemplate('studentRegistration',$orderNum, $orderNum);
        }
     }
 

@@ -10,6 +10,7 @@ final class studentOrderInfoModel extends \database\model
     public $parentName;
     public $courseAmt;
     public $paymentType;
+    public $amtPaid;
     public $dueAmt;
     public $schoolName;
     public $streetAddress;
