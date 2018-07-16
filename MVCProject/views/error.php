@@ -3,7 +3,7 @@
 
 <?php include 'headers.php';?>
 
-<body>
+<body class="bg-light">
 
 <h1><?php echo $data ?></h1>
 

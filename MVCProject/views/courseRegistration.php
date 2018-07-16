@@ -41,7 +41,7 @@
                     <div class="container-fluid pull-left"  style="width:200px;">
                          <div class="navbar-header"> <a class="navbar-brand text-primary" href="#" style="color:black;">COURSES ADDED</a> </div>
                     </div>
-                 <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=homepage&action=empty" class="btn btn-info">Empty cart</a></div>
+                 <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=courseRegistration&action=empty" class="btn btn-info btn-rounded mb-4">Empty cart</a></div>
              </nav>
 
         <!-- Table that will show the list of courses added by the user-->
@@ -61,12 +61,12 @@
 
                     <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
                         <tr>
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["Session"] + 1; ?></strong></td>
+                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["Session"]; ?></strong></td>
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["StartDate"]; ?></td>
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["EndDate"]; ?></td>
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;">$<?php echo $item["Price"]; ?></td>
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=homepage&action=remove&code=<?php echo $item["Session"]; ?>" class="btn btn-danger">Remove Course</a></td>
+                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=courseRegistration&action=remove&code=<?php echo $item["Session"]; ?>" class="btn btn-danger">Remove</a></td>
                         </tr>
                         <?php $total = $total+$item['Price'];?>
                     <?php endforeach;?>
@@ -106,7 +106,7 @@
                         <div class="col-md-4">
                             <div class="card shadow-lg p-3 mb-1 bg-white rounded">
                                 <figure class="card-body">
-                                    <form method="post" action="index.php?page=homepage&action=add&code=<?php echo $product_array[$key]["Session"]; ?>">
+                                    <form method="post" action="index.php?page=courseRegistration&action=add&code=<?php echo $product_array[$key]["Session"]; ?>">
                                         <p style="text-align:center;" class="card-title"><strong><?php echo $product_array[$key]["Description"];?></strong></p>
                                         <p style="text-align:center;" class="card-subtitle mb-2 text-muted"><b><?php echo $product_array[$key]["StartDate"];?> - <?php echo $product_array[$key]["EndDate"];?> </b></p>
                                         <p style="text-align:center;" class="card-text">

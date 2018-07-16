@@ -53,17 +53,18 @@
             <div class="dropdown">
 
                 <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Browse Courses                      --
+                    <button  class="btn btn-outline-primary dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Browse Courses &nbsp; &nbsp; &nbsp;
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="index.php?page=homepage&action=show">Architecture and Interiors</a>
                         <a class="dropdown-item" href="index.php?page=homepage&action=showDesign">Design + Make</a>
                     </div>
                 </div>
 
             </div>
-            <br>
+
+        <br>
 
             <h4 class="text-danger".text-danger> <?php
                 foreach ($data as $row) {
@@ -78,7 +79,7 @@
             ?>
 
             </br>
-            <a class="btn btn-primary" href="index.php?page=homepage&action=registerArchitecture" role="button">Register for Courses</a>
+            <a class="btn btn-outline-primary" href="index.php?page=homepage&action=registerArchitecture" role="button">Register for Courses</a>
     </div>
 
 </div>

@@ -36,8 +36,8 @@ class routes
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'add';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
+        $route->page = 'courseRegistration';
+        $route->controller = 'courseRegistrationController';
         $route->method = 'addCourses';
         $routes[] = $route;
 
@@ -45,8 +45,8 @@ class routes
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'remove';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
+        $route->page = 'courseRegistration';
+        $route->controller = 'courseRegistrationController';
         $route->method = 'removeCourses';
         $routes[] = $route;
 
@@ -54,8 +54,8 @@ class routes
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'empty';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
+        $route->page = 'courseRegistration';
+        $route->controller = 'courseRegistrationController';
         $route->method = 'emptyCart';
         $routes[] = $route;
 
@@ -64,7 +64,7 @@ class routes
         $route->http_method = 'POST';
         $route->action = 'register';
         $route->page = 'studentRegistration';
-        $route->controller = 'registrationController';
+        $route->controller = 'studentRegistrationController';
         $route->method = 'register';
         $routes[] = $route;
 
@@ -73,8 +73,17 @@ class routes
         $route->http_method = 'POST';
         $route->action = 'storeStudentInfo';
         $route->page = 'studentRegistration';
-        $route->controller = 'registrationController';
+        $route->controller = 'studentRegistrationController';
         $route->method = 'storeStudentInfo';
+        $routes[] = $route;
+
+        // Post URL route back from successful transaction from TouchNet.
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'register';
+        $route->page = 'studentRegistration';
+        $route->controller = 'transactionStatusController';
+        $route->method = 'displayTranStatus';
         $routes[] = $route;
 
         return $routes;

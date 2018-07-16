@@ -4,13 +4,12 @@
   session_start();
 
 //each page extends controller and the index.php?page=tasks causes the controller to be called
-class registrationController extends http\controller
+class studentRegistrationController extends http\controller
 {
 
 
     public static function register()
     {
-
         if(isset($_POST["proceed_to_payment"]) && isset ($_POST["paymentTypeSelect"])) {
 
             $orderNo = strtoupper(studentInfo::randomCode(6));
@@ -77,6 +76,7 @@ class registrationController extends http\controller
        }
     }
 
+    //TO-DO: REMOVE METHOD
     public static function delete() {
 
         $record = accounts::findOne($_REQUEST['id']);
