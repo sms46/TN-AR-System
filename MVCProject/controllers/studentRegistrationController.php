@@ -6,8 +6,6 @@
 //each page extends controller and the index.php?page=tasks causes the controller to be called
 class studentRegistrationController extends http\controller
 {
-
-
     public static function register()
     {
         if(isset($_POST["proceed_to_payment"]) && isset ($_POST["paymentTypeSelect"])) {

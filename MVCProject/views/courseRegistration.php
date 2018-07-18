@@ -116,7 +116,8 @@
                                             </select>
                                         </p>
                                         <p style="text-align:center;color:#04B745;" class="card-text">
-                                            <button type="submit" name="add_to_cart" class="btn btn-warning">Add To Cart</button>
+                                            <button type="submit" name="add_to_cart" class="btn btn-warning btn-rounded" data-toggle="modal" data-target="#modalRegisterForm">Add To Cart</button>
+                                            <input type="hidden" name="modal" value="modalRegisterForm">
                                         </p>
                                     </form>
                                 </figure>
@@ -124,7 +125,9 @@
                         </div>
                     <?php endforeach;?>
             </div>
+
     </div>
+
 </div>
 
 <!--Included javascript code for event click-->

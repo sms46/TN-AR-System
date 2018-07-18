@@ -134,7 +134,7 @@
                         $hashedValidationKey = studentInfo::getHash($validationKeyString);
                     ?>
 
-                    <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to Pay <?php echo '$'. $finalAmt?></button>
+                    <button class="btn btn-primary btn-lg btn-block" name="btnPayment" type="submit">Continue to Pay <?php echo '$'. $finalAmt?></button>
                     <input type="hidden" name="UPAY_SITE_ID" value="8">
                     <input type="hidden" name="AMT" value="<?php print $finalAmt ?>">
                     <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data ?>">

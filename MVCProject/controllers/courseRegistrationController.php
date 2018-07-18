@@ -5,16 +5,13 @@ class courseRegistrationController extends http\controller
     public static function addCourses()
     {
         session_start();
-
         if(isset($_POST["add_to_cart"])) {
             $productByCode = courses::findOneSession($_REQUEST['code']);
-
             //Display the price based on selection by the user
             if($_POST["priceType"] == 'Residential Amount')
             {
                 $itemArrayResPrice = array($productByCode['Session'] => array('Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
                     'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["ResidentialPrice"], 'Department' => $productByCode["Department"]));
-
                 //Condition to check if the course has been previously added
                 if (!empty($_SESSION["cart_item"])) {
                     if (in_array($productByCode["Session"], array_keys($_SESSION["cart_item"]))) {
@@ -26,10 +23,8 @@ class courseRegistrationController extends http\controller
                     $_SESSION["cart_item"] = $itemArrayResPrice;
                 }
             } else {
-
                 $itemArrayComPrice = array($productByCode['Session'] => array('Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
                     'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["CommuterPrice"], 'Department' => $productByCode["Department"]));
-
                 //Condition to check if the course has been previously added
                 if (!empty($_SESSION["cart_item"])) {
                     if (in_array($productByCode["Session"], array_keys($_SESSION["cart_item"]))) {
@@ -60,7 +55,6 @@ class courseRegistrationController extends http\controller
                     {
                         unset($_SESSION["cart_item"][$keys]);
                         echo '<script>alert("Course Removed")</script>';
-
                         $architectureRecordsRegister = courses::findCourses();
                         self::getTemplate('courseRegistration', $_SESSION["cart_item"],$architectureRecordsRegister);
                     }
@@ -73,7 +67,6 @@ class courseRegistrationController extends http\controller
     {
         session_start();
         unset($_SESSION["cart_item"]);
-
         $architectureRecordsRegister = courses::findCourses();
         self::getTemplate('courseRegistration', null ,$architectureRecordsRegister);
     }
