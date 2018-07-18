@@ -18,6 +18,7 @@ final class studentOrderInfoModel extends \database\model
     public $timestamp;
     public $orderConfirmed;
     public $paymentStatus;
+    public $confirmedTimestamp;
 
     protected static $modelName = 'studentOrderInfoModel';
 

@@ -11,8 +11,8 @@
 <div class="container" style="width:1280px;">
     <div class="card shadow-lg p-3 mb-1 bg-white rounded">
         <figure class="card-body">
-            <p style="text-align:center;" class="card-title"><strong><h3>Your Payment has been received</h3></strong></p>
-            <p style="text-align:center;" class="card-text">
+            <p style="text-align:center; color: dodgerblue" class="card-title"><strong>Your Payment has been received</strong></p>
+            <p style="text-align:center; color: dodgerblue" class="card-text">
                 <strong> Your Order No is:</strong>
             </p>
             <p style="text-align:center;color:#04B745;" class="card-text">

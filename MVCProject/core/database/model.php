@@ -16,27 +16,16 @@ abstract class model
             $sql = $this->update();
         } else {
             $sql = $this->insert();
-            $INSERT = TRUE;
+            //$INSERT = TRUE;
         }
         $db = dbConn::getConnection();
         $statement = $db->prepare($sql);
         $array = get_object_vars($this);
 
-        if ($INSERT == TRUE) {
-
-            unset($array['id']);
-        }
-
         foreach (array_flip($array) as $key => $value) {
             $statement->bindParam(":$value", $this->$value);
         }
         $statement->execute();
-        if ($INSERT == TRUE) {
-
-            $this->id = $db->lastInsertId();
-
-        }
-
         return $this->id;
         }
 
@@ -67,11 +56,8 @@ abstract class model
         $comma = " ";
         $sql = 'UPDATE ' . $tableName . ' SET ';
         foreach ($array as $key => $value) {
-            echo 'key is: '.$key;
-            echo 'value is: '.$value;
-            //to fix error to save 0 isdone value
-            //if (!empty($value))
-            if(isset($value))
+            if (!empty($value))
+            //if(isset($value))
             {
                 $sql .= $comma . $key . ' = "' . $value . '"';
                 $comma = ", ";
