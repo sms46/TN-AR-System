@@ -239,7 +239,7 @@
                         <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
                         <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
                     </form>
-                </div>
+             </div>
         </div>
     </div>
 </div>

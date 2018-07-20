@@ -31,4 +31,30 @@ class studentOrderInfo extends \database\collection
             return $recordsSet[0];
         }
     }
+
+    public static function retrieveUpdatedStudentOrder($OrderNum)
+    {
+        $sql = 'SELECT TempTable.studentName , TempTable.studentEmail , TempTable.course, TempTable.startDate,TempTable.timestamp,
+                  TempTable.orderConfirmed, TempTable.paymentStatus, TempTable.confirmedTimestamp, C.appName, C.SeatAvailable
+                FROM
+                    (
+                        SELECT SC.studentName, SC.studentEmail, SC.course, SC.startDate,
+                        SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp
+                        FROM studentOrderInfo SO JOIN studentCourseInfo SC
+                        ON SO.studentName = SC.studentName
+                        AND SO.studentEmail = SC.studentEmail
+            
+                        WHERE SO.orderConfirmed = \'Y\'
+                        AND SO.paymentStatus = 1
+                        AND SO.orderNum = ?
+                        
+                    ) TempTable
+                    
+                JOIN courses C
+                ON  TempTable.course = C.Description
+                AND TempTable.startDate = C.StartDate';
+
+        return self::getResults($sql, $OrderNum);
+    }
+
 }
