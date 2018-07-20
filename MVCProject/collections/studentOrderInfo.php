@@ -57,4 +57,26 @@ class studentOrderInfo extends \database\collection
         return self::getResults($sql, $OrderNum);
     }
 
+    public static function updateNoOfSeats($courseName, $startDate, $seatsAvailable)
+    {
+        if($seatsAvailable > 0){
+
+            //Update the courses table with seats availability after successful payment
+            $seats = new courseModel();
+
+            //get the course id from the courses table
+            $courseId = studentOrderInfo::getCourseId($courseName,$startDate);
+            $seats->id = $courseId[0]->id;
+            $seats->SeatAvailable = $seatsAvailable - 1;
+            $seats->save();
+        }
+    }
+
+    public static function getCourseId($courseName,$startDate)
+    {
+        $sql = "SELECT * FROM courses WHERE Description = '$courseName' AND StartDate = '$startDate'";
+
+        return self::getResults($sql);
+    }
+
 }

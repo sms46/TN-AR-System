@@ -29,7 +29,7 @@ class courses extends database\collection
     static public function findOneSession($sessionId)
     {
         $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName . ' WHERE Session = ?';
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE id = ?';
         //grab the only record for find one and return as an object
         $recordsSet = self::getResults($sql, $sessionId);
 

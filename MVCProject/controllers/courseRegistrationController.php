@@ -10,11 +10,11 @@ class courseRegistrationController extends http\controller
             //Display the price based on selection by the user
             if($_POST["priceType"] == 'Residential Amount')
             {
-                $itemArrayResPrice = array($productByCode['Session'] => array('Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
+                $itemArrayResPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Description' => $productByCode["Description"],
                     'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["ResidentialPrice"], 'Department' => $productByCode["Department"]));
                 //Condition to check if the course has been previously added
                 if (!empty($_SESSION["cart_item"])) {
-                    if (in_array($productByCode["Session"], array_keys($_SESSION["cart_item"]))) {
+                    if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
                         echo '<script>alert("Course has already been added")</script>';
                     } else {
                         $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArrayResPrice);
@@ -23,11 +23,11 @@ class courseRegistrationController extends http\controller
                     $_SESSION["cart_item"] = $itemArrayResPrice;
                 }
             } else {
-                $itemArrayComPrice = array($productByCode['Session'] => array('Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
+                $itemArrayComPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Description' => $productByCode["Description"],
                     'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["CommuterPrice"], 'Department' => $productByCode["Department"]));
                 //Condition to check if the course has been previously added
                 if (!empty($_SESSION["cart_item"])) {
-                    if (in_array($productByCode["Session"], array_keys($_SESSION["cart_item"]))) {
+                    if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
                         echo '<script>alert("Course has already been added")</script>';
                     } else {
                         $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArrayComPrice);
@@ -51,7 +51,7 @@ class courseRegistrationController extends http\controller
             {
                 foreach($_SESSION["cart_item"] as $keys => $values)
                 {
-                    if($values["Session"] == $_GET["code"])
+                    if($values["id"] == $_GET["code"])
                     {
                         unset($_SESSION["cart_item"][$keys]);
                         echo '<script>alert("Course Removed")</script>';

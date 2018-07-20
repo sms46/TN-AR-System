@@ -12,14 +12,19 @@ class transactionStatusController extends http\controller
 
         //Retrieve the student info after successful payment
         $studentOrder = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
-        print_r($studentOrder);
 
-        //$courses =  $studentOrder[2];
-        //sprintf($courses);
-        //foreach($studentOrder as $key=>$value){
-           // echo $value["course"];
-            //echo $studentOrder[$key]["startDate"];
-        //}
+        // echo '<pre>'; var_dump($studentOrder);
+
+        // loop through all the courses taken by the student
+        for ($i=0; $i< count($studentOrder); $i++)
+        {
+            $confirmedCourses = $studentOrder[$i]->course;
+            $confirmedDates = $studentOrder[$i]->startDate;
+            $seatsCount = $studentOrder[$i]->SeatAvailable;
+
+            //Update the no of seats available for all courses taken by the student to total count
+            studentOrderInfo::updateNoOfSeats($confirmedCourses,$confirmedDates,$seatsCount);
+        }
 
         //Redirect to the transaction status page
         transactionStatusController::displayTranStatus();
