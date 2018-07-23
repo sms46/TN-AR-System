@@ -9,7 +9,7 @@
     </div>
 
     <div class="sidebar-header">
-        <h5>College of Architecture and Design</h5>
+        <a style="font-size: medium" href="index.php">College of Architecture and Design</a>
     </div>
 
     <ul class="list-unstyled components">
@@ -18,12 +18,6 @@
             <ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
                     <a href="#">Home 1</a>
-                </li>
-                <li>
-                    <a href="#">Home 2</a>
-                </li>
-                <li>
-                    <a href="#">Home 3</a>
                 </li>
             </ul>
         </li>

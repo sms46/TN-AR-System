@@ -32,17 +32,38 @@
                     <i class="fas fa-align-justify"></i>
                 </button>
 
-                <h2><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design </strong></h2>
+                <a style="font-size: xx-large" href="index.php"><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design</strong></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
 
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Check Balance Due |</a>
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalCheckBalance">Check Balance Due |</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Register for Classes</a>
+                            <a class="nav-link" href="index.php?page=homepage&action=registerArchitecture">Register for Classes</a>
                         </li>
                     </ul>
+
+                    <!-- Check Balance Due Modal -->
+                    <div class="modal" id="modalCheckBalance" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Check Balance Due</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </nav>

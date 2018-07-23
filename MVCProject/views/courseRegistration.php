@@ -26,7 +26,7 @@
                      <i class="fas fa-align-justify"></i>
                  </button>
 
-                <h2><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design </strong></h2>
+                <a style="font-size: xx-large" href="index.php"><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design</strong></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                     </ul>
