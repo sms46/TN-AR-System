@@ -39,5 +39,21 @@ class courses extends database\collection
             return $recordsSet[0];
         }
     }
+
+    static public function findAvailableSeats($course, $startDate)
+    {
+        //to-do: pass appName for diffrent application
+        $appName = 'COAD';
+        $availableSeats  =  courses::getAvailableSeats($course,$startDate,$appName);
+        $seats = $availableSeats[0];
+        $string = implode($seats);
+        return $string;
+    }
+
+    static public function getAvailableSeats($course, $startDate,$appName)
+    {
+        $sql = "SELECT SeatAvailable FROM courses WHERE Description = '$course' AND StartDate = '$startDate' AND appName = '$appName'";
+        return self::getResults($sql);
+    }
 }
 ?>

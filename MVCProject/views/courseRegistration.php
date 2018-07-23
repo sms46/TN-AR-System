@@ -107,7 +107,7 @@
                             <div class="card shadow-lg p-3 mb-1 bg-white rounded">
                                 <figure class="card-body">
                                     <form method="post" action="index.php?page=courseRegistration&action=add&code=<?php echo $product_array[$key]["id"]; ?>">
-                                        <p style="text-align:center;" class="card-title"><strong><?php echo $product_array[$key]["Description"];?></strong></p>
+                                        <p style="text-align:center; color: black" class="card-title"><strong><?php echo $product_array[$key]["Description"];?></strong></p>
                                         <p style="text-align:center;" class="card-subtitle mb-2 text-muted"><b><?php echo $product_array[$key]["StartDate"];?> - <?php echo $product_array[$key]["EndDate"];?> </b></p>
                                         <p style="text-align:center;" class="card-text">
                                             <select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" id="priceType" name="priceType">
@@ -115,9 +115,11 @@
                                                 <option>Commuter Amount</option>
                                             </select>
                                         </p>
+                                        <p style="text-align:center; color:red" class="card-text"><strong> Seats Available: <?php echo $product_array[$key]["SeatAvailable"];?></strong></p>
                                         <p style="text-align:center;color:#04B745;" class="card-text">
                                             <button type="submit" name="add_to_cart" class="btn btn-warning btn-rounded"id="myBtn">Add To Cart</button>
-                                            <input type="hidden" name="modal" value="modalRegisterForm">
+                                            <input type="hidden" name="description" value="<?php echo $product_array[$key]["Description"];?>">
+                                            <input type="hidden" name="startDate" value="<?php echo $product_array[$key]["StartDate"];?>">
                                         </p>
                                     </form>
                                 </figure>
