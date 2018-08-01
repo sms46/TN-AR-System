@@ -35,11 +35,11 @@ class studentOrderInfo extends \database\collection
     public static function retrieveUpdatedStudentOrder($OrderNum)
     {
         $sql = 'SELECT TempTable.studentName , TempTable.studentEmail , TempTable.course, TempTable.startDate,TempTable.timestamp,
-                  TempTable.orderConfirmed, TempTable.paymentStatus, TempTable.confirmedTimestamp, C.appName, C.SeatAvailable
+                  TempTable.orderConfirmed, TempTable.paymentStatus, TempTable.confirmedTimestamp, TempTable.courseAmt, TempTable.amtPaid,TempTable.dueAmt, C.appName, C.SeatAvailable
                 FROM
                     (
                         SELECT SC.studentName, SC.studentEmail, SC.course, SC.startDate,
-                        SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp
+                        SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp,SO.courseAmt, SO.amtPaid, SO.dueAmt
                         FROM studentOrderInfo SO JOIN studentCourseInfo SC
                         ON SO.studentName = SC.studentName
                         AND SO.studentEmail = SC.studentEmail

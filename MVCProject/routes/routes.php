@@ -59,15 +59,6 @@ class routes
         $route->method = 'emptyCart';
         $routes[] = $route;
 
-        //Redirect to modal
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'showModal';
-        $route->page = 'courseRegistration';
-        $route->controller = 'courseRegistrationController';
-        $route->method = 'displayModal';
-        $routes[] = $route;
-
         //Redirect to Student Registration page
         $route = new route();
         $route->http_method = 'POST';
@@ -93,6 +84,15 @@ class routes
         $route->page = 'studentRegistration';
         $route->controller = 'transactionStatusController';
         $route->method = 'updateTranStatus';
+        $routes[] = $route;
+
+        //Redirect to modal
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'checkBalance';
+        $route->page = 'homepage';
+        $route->controller = 'checkBalanceController';
+        $route->method = 'checkBalance';
         $routes[] = $route;
 
         return $routes;

@@ -26,6 +26,8 @@
             $('.collapse.in').toggleClass('in');
             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
         });
+        
     });
+
 </script>
 

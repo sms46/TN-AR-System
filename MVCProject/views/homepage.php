@@ -14,7 +14,7 @@
 <body class="bg-light">
 
 <div class="wrapper">
-
+    
     <!-- Navigation Side bar-->
     <?php include 'navSideBar.php';?>
 
@@ -54,12 +54,20 @@
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                </div>
+
+                                <form action="index.php?page=homepage&action=checkBalance" method="post">
+                                    <div class="modal-body">
+
+                                          Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>
+                                          Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required><br/>
+                                          Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required><br/>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                         <input type="submit" value="Check" name="checkBalance" class="btn btn-success"</input>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -71,19 +79,19 @@
         <!--Homepage main body starts from here -->
             <h4 class="text-danger".text-danger>Pricing Information and Dates for 2018</h4><hr></br>
 
-            <div class="dropdown">
+        <div class="dropdown">
 
-                <div class="btn-group">
-                    <button  class="btn btn-outline-primary dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Browse Courses &nbsp; &nbsp; &nbsp;
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="index.php?page=homepage&action=show">Architecture and Interiors</a>
-                        <a class="dropdown-item" href="index.php?page=homepage&action=showDesign">Design + Make</a>
-                    </div>
+            <div class="btn-group">
+                <button  class="btn btn-outline-primary dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Browse Courses &nbsp; &nbsp; &nbsp;
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="index.php?page=homepage&action=show">Architecture and Interiors</a>
+                    <a class="dropdown-item" href="index.php?page=homepage&action=showDesign">Design + Make</a>
                 </div>
-
             </div>
+
+        </div>
 
         <br>
 
@@ -106,6 +114,7 @@
 </div>
 
 <div class="overlay"></div>
+
 
 <!--Included javascript code for event click-->
 <?php include 'footer.php';?>

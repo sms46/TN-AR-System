@@ -60,7 +60,8 @@ class courseRegistrationController extends http\controller
 
         if(!empty($_SESSION["cart_item"])) {
             self::getTemplate('courseRegistration', $_SESSION["cart_item"], $architectureRecordsRegister);
-        } else{
+        }
+        else{
             self::getTemplate('courseRegistration', $architectureRecordsRegister, $architectureRecordsRegister);
         }
     }
