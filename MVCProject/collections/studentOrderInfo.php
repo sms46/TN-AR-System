@@ -35,11 +35,13 @@ class studentOrderInfo extends \database\collection
     public static function retrieveUpdatedStudentOrder($OrderNum)
     {
         $sql = 'SELECT TempTable.studentName , TempTable.studentEmail , TempTable.course, TempTable.startDate,TempTable.timestamp,
-                  TempTable.orderConfirmed, TempTable.paymentStatus, TempTable.confirmedTimestamp, TempTable.courseAmt, TempTable.amtPaid,TempTable.dueAmt, C.appName, C.SeatAvailable
+                  TempTable.orderConfirmed, TempTable.paymentStatus, TempTable.confirmedTimestamp, TempTable.courseAmt, TempTable.amtPaid,
+                  TempTable.dueAmt,TempTable.city, TempTable.state, TempTable.streetAddress, TempTable.zipCode, C.appName, C.SeatAvailable
                 FROM
                     (
                         SELECT SC.studentName, SC.studentEmail, SC.course, SC.startDate,
-                        SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp,SO.courseAmt, SO.amtPaid, SO.dueAmt
+                        SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp,SO.courseAmt, SO.amtPaid, SO.dueAmt, SO.city, SO.state,
+                        SO.streetAddress, SO.zipCode
                         FROM studentOrderInfo SO JOIN studentCourseInfo SC
                         ON SO.studentName = SC.studentName
                         AND SO.studentEmail = SC.studentEmail
@@ -75,6 +77,13 @@ class studentOrderInfo extends \database\collection
     public static function getCourseId($courseName,$startDate)
     {
         $sql = "SELECT * FROM courses WHERE Description = '$courseName' AND StartDate = '$startDate'";
+
+        return self::getResults($sql);
+    }
+
+    public static function getStudentDetails($OrderNum)
+    {
+        $sql = "SELECT studentName, studentEmail, orderNum FROM studentOrderInfo WHERE orderNum  = '$OrderNum' ";
 
         return self::getResults($sql);
     }

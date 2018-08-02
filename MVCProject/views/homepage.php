@@ -32,15 +32,18 @@
                     <i class="fas fa-align-justify"></i>
                 </button>
 
-                <a style="font-size: xx-large" href="index.php"><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design</strong></a>
+                <a style="font-size: xx-large" href="index.php"><h2>&nbsp;&nbsp;&nbsp;<span class="badge badge-light">College of Architecture and Design</span></h2></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
 
                         <li class="nav-item active">
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalCheckBalance">Check Balance Due |</a>
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalCheckBalance"><h5><span class="badge badge-light">Check Balance Due</span></h5></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="index.php?page=homepage&action=registerArchitecture">Register for Classes</a>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.php?page=homepage&action=registerArchitecture"><h5><span class="badge badge-light">Register</span></h5></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.php?page=homepage&action=registerArchitecture"><h5><span class="badge badge-primary">Sign In</span></h5></a>
                         </li>
                     </ul>
 

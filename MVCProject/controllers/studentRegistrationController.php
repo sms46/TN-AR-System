@@ -43,6 +43,8 @@ class studentRegistrationController extends http\controller
             $order->dueAmt = $_POST['dueAmt'];
             $order->schoolName = $_POST['highSchool'];
             $order->streetAddress = $_POST['streetAddress'];
+            $order->city = $_POST['city'];
+            $order->state = $_POST['state'];
             $order->zipCode = $_POST['zipCode'];
             $order->timestamp = studentInfo::getTimestamp();
             $order->orderConfirmed = 'N';

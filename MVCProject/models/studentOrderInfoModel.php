@@ -14,6 +14,8 @@ final class studentOrderInfoModel extends \database\model
     public $dueAmt;
     public $schoolName;
     public $streetAddress;
+    public $city;
+    public $state;
     public $zipCode;
     public $timestamp;
     public $orderConfirmed;

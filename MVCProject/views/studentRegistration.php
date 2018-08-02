@@ -36,11 +36,11 @@
         <h3 class="text-danger".text-danger align="center"><strong>COURSE CHECKOUT</strong></h3><hr></br>
 
         <div class="row">
-             <div class="col-md-4 order-md-2 mb-4 shadow-lg p-3 mb-5 bg-white rounded ">
+             <div class="col-md-4 order-md-2 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
 
                     <h4 align="center" class="text-primary">Order No: <?php echo $data ?></h4><hr>
                     <h4 class="list-group-item d-flex justify-content-between">
-                        <span class="text-primary">STEP 2:</span>
+                        <span class="badge badge-pill badge-primary">STEP 2:</span>
                         <span class="badge badge-pill badge-primary">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
                     </h4>
 
@@ -150,20 +150,21 @@
              </ul>
              </div>
 
-             <div class="col-md-8 order-md-1 ">
-                    <h3 class="mb-3 text-primary">STEP 1: STUDENT INFORMATION</h3> <hr>
+             <div class="col-md-7 order-md-1 ">
+                 <h2><span class="badge badge-pill badge-primary">STEP 1:</span>&nbsp;<span class="badge badge-pill badge-primary">STUDENT INFORMATION</span></h2><br>
+
                     <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
                         <div class="row">
-                            <div class="col-md-5 mb-3">
-                                <label for="studentName">Student's Full Name</label>
+                            <div class="col-md-5 mb-2">
+                                <h4><span class="badge badge-light">Student's Full Name :</span></h4>
                                 <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required>
                                 <div class="invalid-feedback">
                                     Your Full Name is required.
                                 </div>
                             </div>
 
-                            <div class="col-md-5 mb-3">
-                                <label for="email">Email </label>
+                            <div class="col-md-5 mb-2">
+                                <h4><span class="badge badge-light">Email :</span></h4>
                                 <input type="email" class="form-control" name="email" placeholder="you@example.com" required>
                                 <div class="invalid-feedback">
                                     Please enter a valid email address.
@@ -173,16 +174,16 @@
 
                         <br>
                         <div class="row">
-                            <div class="col-md-5 mb-3">
-                                <label for="parentName">Parent/Guardian Name</label>
+                            <div class="col-md-5 mb-2">
+                                <h4><span class="badge badge-light">Parent/Guardian Name :</span></h4>
                                 <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="" required>
                                 <div class="invalid-feedback">
                                     Your Parent/Guardian Name is required.
                                 </div>
                             </div>
 
-                            <div class="col-md-5 mb-3">
-                                <label for="highSchool">High School </label>
+                            <div class="col-md-5 mb-2">
+                                <h4><span class="badge badge-light">High School :</span></h4>
                                 <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" required>
                                 <div class="invalid-feedback">
                                     Your High School Name is required.
@@ -191,19 +192,19 @@
                         </div>
 
                         <br><br>
-                        <h3 class="mb-3 text-primary">ADDRESS</h3><hr>
+                        <h2><span class="badge badge-pill badge-primary">ADDRESS</span></h2><br>
 
                         <div class="row">
-                            <div class="col-md-5 mb-3">
-                                <label for="streetAddress">Street Address</label>
+                            <div class="col-md-5 mb-2">
+                                <h4><span class="badge badge-light">Street Address :</span></h4>
                                 <input type="text" class="form-control" name="streetAddress" placeholder="Enter Street Address" value="" required>
                                 <div class="invalid-feedback">
                                     Street Address is required.
                                 </div>
                             </div>
 
-                            <div class="col-md-5 mb-3">
-                                <label for="city">City</label>
+                            <div class="col-md-5 mb-2">
+                                <h4><span class="badge badge-light">City :</span></h4>
                                 <input type="text" class="form-control" name="city" placeholder="Enter City" required>
                                 <div class="invalid-feedback">
                                     City Name is required.
@@ -213,16 +214,16 @@
 
                         <br>
                         <div class="row">
-                            <div class="col-md-5 mb-3">
-                                <label for="state">State</label>
+                            <div class="col-md-5 mb-2">
+                                <h4><span class="badge badge-light">State :</span></h4>
                                 <input type="text" class="form-control" name="state" placeholder="Enter State" value="" required>
                                 <div class="invalid-feedback">
                                     State Name is required.
                                 </div>
                             </div>
 
-                            <div class="col-md-5 mb-3">
-                                <label for="zipCode">Zip Code</label>
+                            <div class="col-md-5 mb-2">
+                                <h4><span class="badge badge-light">Zip Code :</span></h4>
                                 <input type="text" class="form-control" name="zipCode" placeholder="Enter Zip Code" required>
                                 <div class="invalid-feedback">
                                     Zip Code is required.
@@ -231,17 +232,24 @@
                         </div>
 
                         <br>
-                        <button type="submit" name="save_details" class="btn btn-primary">Save Details</button>
-                        <input type="hidden" name="totalAmtPaid" value= "<?php print $finalAmt ?>" >
-                        <input type="hidden" name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
-                        <input type="hidden" name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
-                        <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
-                        <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
-                        <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
+
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <button type="submit" name="save_details" class="btn btn-primary  btn-lg ">Save Details</button>
+                                <input type="hidden" name="totalAmtPaid" value= "<?php print $finalAmt ?>" >
+                                <input type="hidden" name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
+                                <input type="hidden" name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
+                                <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
+                                <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
+                                <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
+                            </div>
+                        </div>
+
                     </form>
              </div>
         </div>
     </div>
+
 </div>
 
 <!--Included javascript code for form Validation-->
