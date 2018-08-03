@@ -26,7 +26,7 @@ include 'headers.php';
                     <i class="fas fa-align-justify"></i>
                 </button>
 
-                <a style="font-size: xx-large" href="index.php"><strong>&nbsp;&nbsp;&nbsp;College of Architecture and Design</strong></a>
+                <a style="font-size: xx-large" href="index.php"><h2>&nbsp;&nbsp;&nbsp;<span class="badge badge-light">College of Architecture and Design</span></h2></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
                     </ul>
@@ -166,9 +166,6 @@ include 'headers.php';
     </div>
 
 </div>
-
-<!--Included javascript code for form Validation-->
-<?php include 'formValidation.php';?>
 
 <!--Included javascript code for event click-->
 <?php include 'footer.php';?>

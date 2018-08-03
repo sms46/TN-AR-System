@@ -43,7 +43,7 @@
                             <a class="nav-link" href="index.php?page=homepage&action=registerArchitecture"><h5><span class="badge badge-light">Register</span></h5></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.php?page=homepage&action=registerArchitecture"><h5><span class="badge badge-primary">Sign In</span></h5></a>
+                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalSignIn"><h5><span class="badge badge-primary">Sign In</span></h5></a>
                         </li>
                     </ul>
 
@@ -71,6 +71,29 @@
                                          <input type="submit" value="Check" name="checkBalance" class="btn btn-success"</input>
                                     </div>
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sign In Modal -->
+                    <div class="modal" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Sign In As</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+
+
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <input type="submit" value="Sign In" name="signIn" class="btn btn-success"</input>
+                                </div>
                             </div>
                         </div>
                     </div>
