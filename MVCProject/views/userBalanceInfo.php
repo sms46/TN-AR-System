@@ -34,167 +34,133 @@ include 'headers.php';
             </div>
         </nav>
 
-        <h3 class="text-danger".text-danger align="center"><strong>BALANCE INFO</strong></h3><hr></br>
+        <h3 class="text-danger".text-danger align="center"><strong>USER PROFILE</strong></h3><hr></br>
 
-        <div class="row">
-            <div class="col-md-4 order-md-2 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
+        <div class="container" style="width:1400px;">
+            <div class="row">
+                <div class="col-md-4 order-md-2 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
 
-                <h4 align="center" class="text-primary">Order No: <?php echo $data ?></h4><hr>
-                <h4 class="list-group-item d-flex justify-content-between">
-                    <span class="badge badge-pill badge-primary">STEP 2:</span>
-                    <span class="badge badge-pill badge-primary">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
-                </h4>
+                    <h4 align="center" class="text-primary">Balance Info</h4><hr>
+                    <h4 class="list-group-item d-flex justify-content-between">
+                        <span class="badge badge-pill badge-primary">Courses Taken</span>
+                    </h4>
 
-                <ul class="list-group mb-3">
-                    <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
+                    <ul class="list-group mb-3">
+                        <?php  for ($i=0; $i< count($data); $i++){?>
+                            <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                <div>
+                                    <h6 class="my-0"><?php echo $data[$i]->course;?></h6>
+                                    <small class="text-muted"><?php echo $data[$i]->startDate;?></small>
+                                </div>
+                            </li>
+                        <?php }?>
+
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total Amount(USD)</span>
+                            <strong><?php print '$'. $data[0]->courseAmt?></strong>
+                        </li>
+
+                        <br><br>
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
-                                <h6 class="my-0"><?php echo $item["Description"];?></h6>
-                                <small class="text-muted"><?php echo $item["StartDate"]. '-' .$item["EndDate"] ;?></small>
+                                <h6 class="my-0">Payment Type Selected</h6>
+                                <small class="text-muted"><em><?php print $data[0]->paymentType?></em></small>
                             </div>
-                            <span class="text-muted"><?php echo '$'. $item["Price"];?></span>
                         </li>
-                    <?php endforeach;?>
 
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total Amount(USD)</span>
-                        <strong><?php print '$'. $_REQUEST["totalAmt"]?></strong>
-                    </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                            <span>Total Amount Paid(USD)</span>
+                            <strong>
+                                <?php
+                                    print '$'. $data[0]->amtPaid?>
+                            </strong>
+                        </li>
 
-                    <br><br>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Payment Type Selected</h6>
+                        <br><br>
+                        <li class="list-group-item d-flex justify-content-between lh-condensed">
+                            <div>
+                                <h6 class="my-0">Remaining Balance Due</h6>
+                            </div>
+                            <span class="text-danger">
+                                <strong>
+                                    <?php print '$'. $data[0]->dueAmt?>
+                                </strong>
+                            </span>
 
-                            <?php
-                            $paymentTypeAmt = null;
-                            $paymentTypeSelect = null;
-                            if($_POST["paymentTypeSelect"] == 'Deposit'){
-                                $paymentTypeAmt = 200;
-                                $paymentTypeSelect = 'Deposit';
-                            }
-                            elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
-                                $paymentTypeAmt = $_REQUEST["totalAmt"] - (0.1 * $_REQUEST["totalAmt"]);
-                                $paymentTypeSelect = 'Full Payment - (10% discount applied)';
-                            }
-                            ?>
-                            <small class="text-muted"><em><?php echo $paymentTypeSelect?></em></small>
-                        </div>
-                        <span class="text-muted"><?php echo '$'. $paymentTypeAmt;?></span>
-                    </li>
+                        </li>
 
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Application Fee</h6>
-                            <small class="text-muted"><em>(Non-refundable)</em></small>
-                        </div>
-                        <span class="text-muted">
-                        <?php
-                        $applicationAmt = 40;
-                        echo '$' .$applicationAmt;
-                        ?>
-                    </span>
-                    </li>
+                        <hr class="mb-4">
+                            <form action="https://test.secure.touchnet.net:8443/C20146test_upay/web/index.jsp" method="POST">
 
-                    <li class="list-group-item d-flex justify-content-between">
-                        <span>Total Amount Due(USD)</span>
-                        <strong>
-                            <?php
-                            $finalAmt = $paymentTypeAmt + $applicationAmt;
-                            print '$'. $finalAmt?>
-                        </strong>
-                    </li>
+                                <?php
+                                $passedAmt = '87ABD23777';
+                                $validationKeyString = $passedAmt .$data[0]->orderNum .$data[0]->dueAmt;
+                                $hashedValidationKey = studentInfo::getHash($validationKeyString);
+                                ?>
 
-                    <br><br>
-                    <li class="list-group-item d-flex justify-content-between lh-condensed">
-                        <div>
-                            <h6 class="my-0">Remaining Balance Due</h6>
-                            <small class="text-muted"><em>Amount to be paid later</em></small>
-                        </div>
-                        <span class="text-muted">
-                        <?php
-                        $balanceAmt = 0;
-                        if($_POST["paymentTypeSelect"] == 'Deposit'){
-                            $balanceAmt = $_REQUEST["totalAmt"] - $finalAmt;
-                            echo '$' .$balanceAmt;
-                        }
-                        elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
-                            echo '$' .$balanceAmt;
-                        }
+                                <button class="btn btn-primary btn-lg btn-block" name="btnPayment" type="submit" <?php if ($data[0]->dueAmt == '0'){ ?> disabled <?php } ?> >Continue to Pay </button>
+                                <input type="hidden" name="UPAY_SITE_ID" value="8">
+                                <input type="hidden" name="AMT" value="<?php print $data[0]->dueAmt ?>">
+                                <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data[0]->orderNum ?>">
+                                <input type="hidden" name="VALIDATION_KEY" value="<?php print $hashedValidationKey ?>">
+                                <input type="hidden" name="EXT_TRANS_ID_LABEL" value="Your Invoice Number is:">
+                                <input type="hidden" name="SUCCESS_LINK_TEXT" value="Click here to confirm your payment.">
+                                <input type="hidden" name="SUCCESS_LINK" size="10" value="">
+                                <input type="hidden" name="ERROR_LINK_TEXT" size="10" value="New Error Link Text">
+                                <input type="hidden" name="ERROR_LINK" size="10" value="">
+                                <input type="hidden" name="CANCEL_LINK_TEXT" size="10" value="New Cancel Link Text">
+                                <input type="hidden" name="CANCEL_LINK" size="10" value="">
+                            </form>
+                    </ul>
+                </div>
 
-                        ?>
-                    </span>
-                    </li>
+                <div class="col-md-7 order-md-1">
+                    <div class="card shadow-lg p-3 mb-1 bg-white rounded">
+                        <p class="card-body">
+                            <p class="card-title"><h2><span class="badge badge-primary">STUDENT INFORMATION</span></h2></p>
 
-                    <hr class="mb-4">
-                    <form action="https://test.secure.touchnet.net:8443/C20146test_upay/web/index.jsp" method="POST">
+                            <p class="card-text">
+                                <div class="row">
+                                    <div class="col-md-5 mb-2">
+                                        <h4><span class="badge badge-secondary">Student's Full Name :</span></h4>
+                                        <h5><span class="badge badge-light"><?php print $data[0]->studentName?></span></h5>
+                                    </div>
 
-                        <?php
-                        $passedAmt = '87ABD23777';
-                        $validationKeyString = $passedAmt .$data .$finalAmt;
-                        $hashedValidationKey = studentInfo::getHash($validationKeyString);
-                        ?>
+                                    <div class="col-md-5 mb-2">
+                                        <h4><span class="badge badge-secondary">Email :</span></h4>
+                                        <h5><span class="badge badge-light"><?php print $data[0]->studentEmail?></span></h5>
+                                    </div>
+                                </div>
 
-                        <button class="btn btn-primary btn-lg btn-block" name="btnPayment" type="submit">Continue to Pay <?php echo '$'. $finalAmt?></button>
-                        <input type="hidden" name="UPAY_SITE_ID" value="8">
-                        <input type="hidden" name="AMT" value="<?php print $finalAmt ?>">
-                        <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data ?>">
-                        <input type="hidden" name="VALIDATION_KEY" value="<?php print $hashedValidationKey ?>">
-                        <input type="hidden" name="EXT_TRANS_ID_LABEL" value="Your Invoice Number is:">
-                        <input type="hidden" name="SUCCESS_LINK_TEXT" value="Click here to confirm your payment.">
-                        <input type="hidden" name="SUCCESS_LINK" size="10" value="">
-                        <input type="hidden" name="ERROR_LINK_TEXT" size="10" value="New Error Link Text">
-                        <input type="hidden" name="ERROR_LINK" size="10" value="">
-                        <input type="hidden" name="CANCEL_LINK_TEXT" size="10" value="New Cancel Link Text">
-                        <input type="hidden" name="CANCEL_LINK" size="10" value="">
-                    </form>
-                </ul>
-            </div>
+                                <br>
+                                <p class="card-title"><h2><span class="badge badge-primary">ADDRESS</span></h2></p>
 
-            <div class="col-md-7 order-md-1">
-                <h2><span class="badge badge-pill badge-primary">STUDENT INFORMATION</span></h2><br>
+                                <div class="row">
+                                    <div class="col-md-5 mb-2">
+                                        <h4><span class="badge badge-secondary">Street Address :</span></h4>
+                                        <h5><span class="badge badge-light"><?php print $data[0]->streetAddress?></span></h5>
+                                    </div>
 
-                    <div class="row">
-                        <div class="col-md-5 mb-2">
-                            <h4><span class="badge badge-dark">Student's Full Name :</span></h4>
-                            <h4><span class="badge badge-light"><?php print $data[0]->studentName?></span></h4>
-                        </div>
+                                    <div class="col-md-5 mb-2">
+                                        <h4><span class="badge badge-secondary">City :</span></h4>
+                                        <h5><span class="badge badge-light"><?php print $data[0]->city?></span></h5>
+                                    </div>
 
-                        <div class="col-md-5 mb-2">
-                            <h4><span class="badge badge-dark">Email :</span></h4>
-                            <h4><span class="badge badge-light"><?php print $data[0]->studentEmail?></span></h4>
-                        </div>
+                                    <div class="col-md-5 mb-2">
+                                        <h4><span class="badge badge-secondary">State :</span></h4>
+                                        <h5><span class="badge badge-light"><?php print $data[0]->state?></span></h5>
+                                    </div>
+
+                                    <div class="col-md-5 mb-2">
+                                        <h4><span class="badge badge-secondary">Zip Code :</span></h4>
+                                        <h5><span class="badge badge-light"><?php print $data[0]->zipCode?></span></h5>
+                                    </div>
+
+                                </div>
+                            </p>
+                        </figure>
                     </div>
-
-                    <br>
-                    <h2><span class="badge badge-pill badge-primary">ADDRESS</span></h2><br>
-
-                    <div class="row">
-                        <div class="col-md-5 mb-2">
-                            <h4><span class="badge badge-dark">Street Address :</span></h4>
-                            <h4><span class="badge badge-light"><?php print $data[0]->streetAddress?></span></h4>
-                        </div>
-
-                        <div class="col-md-5 mb-2">
-                            <h4><span class="badge badge-dark">City :</span></h4>
-                            <h4><span class="badge badge-light"><?php print $data[0]->city?></span></h4>
-                        </div>
-
-                        <div class="col-md-5 mb-2">
-                            <h4><span class="badge badge-dark">State :</span></h4>
-                            <h4><span class="badge badge-light"><?php print $data[0]->state?></span></h4>
-                        </div>
-
-                        <div class="col-md-5 mb-2">
-                            <h4><span class="badge badge-dark">Zip Code :</span></h4>
-                            <h4><span class="badge badge-light"><?php print $data[0]->zipCode?></span></h4>
-                        </div>
-
-                    </div>
-
-                    <br>
-                    <h2><span class="badge badge-pill badge-primary">COURSES TAKEN</span></h2><br>
-
+                </div>
             </div>
         </div>
     </div>
