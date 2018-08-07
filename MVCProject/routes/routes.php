@@ -86,13 +86,22 @@ class routes
         $route->method = 'updateTranStatus';
         $routes[] = $route;
 
-        //Redirect to modal
+        //Redirect to check balance page.
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'checkBalance';
         $route->page = 'homepage';
         $route->controller = 'checkBalanceController';
         $route->method = 'checkBalance';
+        $routes[] = $route;
+
+        //Validate the admin login credentials
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'validateLogin';
+        $route->page = 'homepage';
+        $route->controller = 'adminController';
+        $route->method = 'validateLogin';
         $routes[] = $route;
 
         return $routes;

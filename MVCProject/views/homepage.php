@@ -80,30 +80,70 @@
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Sign In As</h5>
+                                    <h4 class="modal-title" id="exampleModalLabel">SIGN IN AS AN:</h4>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
                                 </div>
                                 <div class="modal-body">
-
-
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                    <input type="submit" value="Sign In" name="signIn" class="btn btn-success"</input>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="card bg-light mb-3 shadow-lg p-3 mb-2 bg-white rounded">
+                                                <div class="card-body text-center">
+                                                    <a href="#"><h4><span class="text-primary" data-toggle="modal" data-target="#modalLogIn">ADMIN</span></h4></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="card bg-light mb-3 shadow-lg p-3 mb-2 bg-white rounded">
+                                                <div class="card-body text-center">
+                                                    <a href="#"><h4><span class="text-primary">USER</span></h4></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
 
+                    <!-- Log In Modal -->
+                    <div class="modal fade" id="modalLogIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-login" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="exampleModalLabel">LOGIN</h4>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <form action="index.php?page=homepage&action=validateLogin" method="POST">
+                                        <div class="form-group">
+                                            <i class="fa fa-user"></i><input type="text" class="form-control" placeholder="Username" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <i class="fa fa-lock"></i>
+                                            <input type="password" class="form-control" placeholder="Password" required="required">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign In">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#">Forgot Password?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
 
         <!--Homepage main body starts from here -->
-            <h4 class="text-danger".text-danger>Pricing Information and Dates for 2018</h4><hr></br>
+        <h4 class="text-danger".text-danger>Pricing Information and Dates for 2018</h4><hr></br>
 
         <div class="dropdown">
 
@@ -121,20 +161,21 @@
 
         <br>
 
-            <h4 class="text-danger".text-danger> <?php
+        <h4 class="text-danger".text-danger> <?php
                 foreach ($data as $row) {
                     echo $row['Description'];
                     break;
                 }?> </h4>
-            <hr>
+        <hr>
 
-            <?php
-                //Print HTML Table
-                print utility\htmlTable::genarateTableForCourses($data);
-            ?>
+        <?php
+            //Print HTML Table
+            print utility\htmlTable::genarateTableForCourses($data);
+        ?>
 
-            </br>
-            <a class="btn btn-outline-primary" href="index.php?page=homepage&action=registerArchitecture" role="button">Register for Courses</a>
+        </br>
+        <a class="btn btn-outline-primary" href="index.php?page=homepage&action=registerArchitecture" role="button">Register for Courses</a>
+
     </div>
 
 </div>
