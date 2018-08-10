@@ -5,7 +5,7 @@ class routes
     public static function getRoutes()
     {
 
-        //routing the default homepage
+        //routing the default landing page
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'show';
@@ -16,30 +16,20 @@ class routes
 
         //routing the default homepage
         $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'show';
+        $route->http_method = 'POST';
+        $route->action = 'redirectToCoad';
         $route->page = 'homepage';
         $route->controller = 'homepageController';
-        $route->method = 'show';
-        $routes[] = $route;
-
-        // Design Course view
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'showDesign';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
-        $route->method = 'showDesign';
+        $route->method = 'redirectToCoad';
         $routes[] = $route;
 
         //Route to the Course Registration page
-        //GET Architecture Courses
         $route = new route();
         $route->http_method = 'GET';
-        $route->action = 'registerArchitecture';
+        $route->action = 'redirectToCourse';
         $route->page = 'homepage';
         $route->controller = 'homepageController';
-        $route->method = 'registerArchitecture';
+        $route->method = 'redirectToCourse';
         $routes[] = $route;
 
         // Add Courses in cart

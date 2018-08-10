@@ -8,7 +8,7 @@ class adminController extends http\controller
             $adminName = $_POST['userName'];
             $password = $_POST['password'];
             print 
-            self::getTemplate('adminHomepage', null, null);
+            self::getTemplate('adminHomepage', NULL, NULL);
         }
     }
 }

@@ -2,11 +2,11 @@
 <html>
 
 <?php
-//Session start initiated on top of the page
-session_start();
-$_SESSION['array'] = $data;
-//Included header tag
-include 'headers.php';
+    //Session start initiated on top of the page
+    session_start();
+
+    //Included header tag
+    include 'headers.php';
 ?>
 
 <body class="bg-light">
@@ -30,7 +30,7 @@ include 'headers.php';
                     <i class="fas fa-align-justify"></i>
                 </button>
 
-                <a style="font-size: xx-large" href="index.php"><h2>&nbsp;&nbsp;&nbsp;<span class="badge badge-light">College of Architecture and Design</span></h2></a>
+                <a style="font-size: xx-large" href="index.php"><h1>&nbsp;&nbsp;&nbsp;<span class="badge badge-light"><?php print $_POST['title'];?></span></h1></a>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto">
 
@@ -38,10 +38,7 @@ include 'headers.php';
                             <a class="nav-link" href="#" data-toggle="modal" data-target="#modalCheckBalance"><h5><span class="badge badge-light">Check Balance Due</span></h5></a>
                         </li>
                         <li class="nav-item active">
-                            <a class="nav-link" href="index.php?page=homepage&action=registerArchitecture"><h5><span class="badge badge-light">Register</span></h5></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#" data-toggle="modal" data-target="#modalSignIn"><h5><span class="badge badge-primary">Sign In</span></h5></a>
+                            <a class="nav-link" href="index.php?page=homepage&action=redirectToCourse"><h5><span class="badge badge-light">Register</span></h5></a>
                         </li>
                     </ul>
 
@@ -72,117 +69,55 @@ include 'headers.php';
                             </div>
                         </div>
                     </div>
-
-                    <!-- Sign In Modal -->
-                    <div class="modal" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel">SIGN IN AS AN:</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="card bg-light mb-3 shadow-lg p-3 mb-2 bg-white rounded">
-                                                <div class="card-body text-center">
-                                                    <a href="#"><h4><span class="text-primary" data-toggle="modal" data-target="#modalLogIn">ADMIN</span></h4></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="card bg-light mb-3 shadow-lg p-3 mb-2 bg-white rounded">
-                                                <div class="card-body text-center">
-                                                    <a href="#"><h4><span class="text-primary">USER</span></h4></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Log In Modal -->
-                    <div class="modal fade" id="modalLogIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-login" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title" id="exampleModalLabel">LOGIN</h4>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-
-                                <div class="modal-body">
-                                    <form action="index.php?page=homepage&action=validateLogin" method="POST">
-                                        <div class="form-group">
-                                            <i class="fa fa-user"></i><input type="text" class="form-control" placeholder="Username" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <i class="fa fa-lock"></i>
-                                            <input type="password" class="form-control" placeholder="Password" required="required">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign In">
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <a href="#">Forgot Password?</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </nav>
 
         <!--Homepage main body starts from here -->
-        <h4 class="text-danger".text-danger>Pricing Information and Dates for 2018</h4><hr></br>
-
-        <div class="dropdown">
-
-            <div class="btn-group">
-                <button  class="btn btn-outline-primary dropdown-toggle" role="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Browse Courses &nbsp; &nbsp; &nbsp;
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="index.php?page=homepage&action=show">Architecture and Interiors</a>
-                    <a class="dropdown-item" href="index.php?page=homepage&action=showDesign">Design + Make</a>
-                </div>
-            </div>
-
-        </div>
-
-        <br>
-
-        <h4 class="text-danger".text-danger> <?php
-            foreach ($data as $row) {
-                echo $row['Description'];
-                break;
-            }?> </h4>
+        <h2><span class="badge badge-primary">Pricing Information and Dates for 2018</span></h2>
         <hr>
 
         <?php
-        //Print HTML Table
-        print utility\htmlTable::genarateTableForCourses($data);
-        ?>
+        $value = $_POST['appName'];
+        switch ($value) {
+            case "COAD":?>
+                <h5 class="text-danger" .text-dark> <?php print $_POST['courseOne']; ?> </h5>
+                <?php
+                    $arcRecords = homepageController::getArchitectureCourses();
 
-        </br>
-        <a class="btn btn-outline-primary" href="index.php?page=homepage&action=registerArchitecture" role="button">Register for Courses</a>
+                    //Print HTML Table
+                    print utility\htmlTable::genarateTableForCourses($arcRecords);
+                ?>
+
+                <hr>
+                <h5 class="text-danger" .text-dark> <?php print $_POST['courseTwo']; ?> </h5>
+
+                <?php
+                    $desRecords = homepageController::getDesignCourses();
+
+                    //Print HTML Table
+                    print utility\htmlTable::genarateTableForCourses($desRecords);
+                ?>
+
+                 </br>
+                 <a class="btn btn-outline-primary" href="index.php?page=homepage&action=redirectToCourse" role="button">Register or Courses</a>
+
+                <?php break;
+
+                default:
+                echo "Error in code";
+        }?>
 
     </div>
 
 </div>
 
-<div class="overlay"></div>
+    <!--Overlay effect for modal-->
+    <div class="overlay"></div>
 
-
-<!--Included javascript code for event click-->
-<?php include 'footer.php';?>
+    <!--Included javascript code for event click-->
+    <?php include 'footer.php';?>
 
 </body>
 </html>

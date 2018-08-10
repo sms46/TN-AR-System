@@ -4,26 +4,31 @@ class homepageController extends http\controller
 {
     public static function showDefault()
     {
-        //$architectureRecords = courses::findArchitectureCourses('Architecture');
-        self::getTemplate('landingPage', null,null);
+        self::getTemplate('landingPage', NULL, NULL);
     }
-    
-    public static function show()
+
+    public static function redirectToCoad()
+    {
+        $records = courses::findCourses();
+        self::getTemplate('homepage', NULL, $records);
+    }
+
+    public static function getArchitectureCourses()
     {
         $architectureRecords = courses::findArchitectureCourses('Architecture');
-        self::getTemplate('homepage', $architectureRecords,$architectureRecords);
+        return $architectureRecords;
     }
 
-    public static function showDesign()
+    public static function getDesignCourses()
     {
         $designRecords = courses::findDesignCourses('Design');
-        self::getTemplate('homepage', $designRecords, $designRecords);
+        return $designRecords;
     }
 
-    public static function registerArchitecture()
+    public static function redirectToCourse()
     {
-        $architectureRecordsRegister = courses::findCourses();
-        self::getTemplate('courseRegistration',null,$architectureRecordsRegister);
+        $courseRegister = courses::findCourses();
+        self::getTemplate('courseRegistration',NULL,$courseRegister);
     }
 
     public static function create()

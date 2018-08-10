@@ -24,12 +24,12 @@ class checkBalanceController extends http\controller
                     self::getTemplate('userBalanceInfo',$studentDetailsArray,$studentDetailsArray);
                 } else {
                         $data = 'No matching records found. Please try again.';
-                        self::getTemplate('error',$data,$data);
+                        self::getTemplate('error', NULL, $data);
                 }
 
             } else{
                 $data = 'No records available for the user. Please Try Again';
-                self::getTemplate('error',$data,$data);
+                self::getTemplate('error',NULL, NULL);
             }
         }
     }

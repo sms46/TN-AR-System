@@ -7,7 +7,7 @@ class htmlTable
     public static function genarateTableForCourses($array)
     {
         if($array!= null) {
-            echo "<table class=\"table table-striped\ table-responsive\">";
+            echo "<table class=\"table table-striped\">";
 
             echo "<thead class=\"thead-dark shadow-lg p-3 mb-5 bg-white rounded \">";
             echo "<tr>
