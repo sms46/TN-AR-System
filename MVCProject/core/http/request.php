@@ -16,7 +16,7 @@ class request
     static public function getPage()
     {
         //this sets the default page for the app to index
-        $page = 'homepage';
+        $page = 'landingPage';
 
         //this checks if page is set
         if (!empty($_GET['page'])) {

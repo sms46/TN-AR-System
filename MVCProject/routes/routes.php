@@ -4,6 +4,16 @@ class routes
 {
     public static function getRoutes()
     {
+
+        //routing the default homepage
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'show';
+        $route->page = 'landingPage';
+        $route->controller = 'homepageController';
+        $route->method = 'showDefault';
+        $routes[] = $route;
+
         //routing the default homepage
         $route = new route();
         $route->http_method = 'GET';

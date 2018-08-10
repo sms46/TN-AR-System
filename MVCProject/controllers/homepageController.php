@@ -2,6 +2,12 @@
 
 class homepageController extends http\controller
 {
+    public static function showDefault()
+    {
+        //$architectureRecords = courses::findArchitectureCourses('Architecture');
+        self::getTemplate('landingPage', null,null);
+    }
+    
     public static function show()
     {
         $architectureRecords = courses::findArchitectureCourses('Architecture');

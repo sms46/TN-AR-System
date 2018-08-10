@@ -2,19 +2,17 @@
 <html>
 
 <?php
-
-    //Session start initiated on top of the page
-    session_start();
-    $_SESSION['array'] = $data;
-
-    //Included header tag
-    include 'headers.php';
+//Session start initiated on top of the page
+session_start();
+$_SESSION['array'] = $data;
+//Included header tag
+include 'headers.php';
 ?>
 
 <body class="bg-light">
 
 <div class="wrapper">
-    
+
     <!-- Navigation Side bar-->
     <?php include 'navSideBar.php';?>
 
@@ -61,14 +59,14 @@
                                 <form action="index.php?page=homepage&action=checkBalance" method="post">
                                     <div class="modal-body">
 
-                                          Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>
-                                          Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required><br/>
-                                          Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required><br/>
+                                        Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>
+                                        Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required><br/>
+                                        Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required><br/>
 
                                     </div>
                                     <div class="modal-footer">
-                                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                         <input type="submit" value="Check" name="checkBalance" class="btn btn-success"</input>
+                                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                        <input type="submit" value="Check" name="checkBalance" class="btn btn-success"</input>
                                     </div>
                                 </form>
                             </div>
@@ -162,15 +160,15 @@
         <br>
 
         <h4 class="text-danger".text-danger> <?php
-                foreach ($data as $row) {
-                    echo $row['Description'];
-                    break;
-                }?> </h4>
+            foreach ($data as $row) {
+                echo $row['Description'];
+                break;
+            }?> </h4>
         <hr>
 
         <?php
-            //Print HTML Table
-            print utility\htmlTable::genarateTableForCourses($data);
+        //Print HTML Table
+        print utility\htmlTable::genarateTableForCourses($data);
         ?>
 
         </br>
