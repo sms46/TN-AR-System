@@ -24,7 +24,7 @@
 
         .modal-login {
             color: #636363;
-            width: 550px;
+            width: 600px;
         }
         .modal-login .modal-content {
             padding: 20px;

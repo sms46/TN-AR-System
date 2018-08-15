@@ -4,11 +4,11 @@ class adminController extends http\controller
 {
     public static function validateLogin()
     {
-        if(isset($_POST["btnSignIn"])) {
-            $adminName = $_POST['userName'];
-            $password = $_POST['password'];
-            print 
+        //if(isset($_POST["btnSignIn"])) {
+            //$adminName = $_POST['userName'];
+            //$password = $_POST['password'];
+            //print
             self::getTemplate('adminHomepage', NULL, NULL);
-        }
+        //}
     }
 }
