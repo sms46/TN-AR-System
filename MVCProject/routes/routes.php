@@ -99,7 +99,7 @@ class routes
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'validateLogin';
-        $route->page = 'homepage';
+        $route->page = 'adminHomepage';
         $route->controller = 'adminController';
         $route->method = 'validateLogin';
         $routes[] = $route;

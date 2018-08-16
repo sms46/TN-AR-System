@@ -154,17 +154,29 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="index.php?page=homepage&action=validateLogin" method="POST">
+                    <form action="index.php?page=adminHomepage&action=validateLogin" method="POST">
                         <div class="form-group">
-                            <i class="fa fa-user"></i><input type="text" class="form-control" placeholder="Username" required="required">
+                            <i class="fa fa-user"></i><input type="text" class="form-control" placeholder="Username" name="userName" required="required">
                         </div>
                         <div class="form-group">
                             <i class="fa fa-lock"></i>
-                            <input type="password" class="form-control" placeholder="Password" required="required">
+                            <input type="password" class="form-control" placeholder="Password" name="password" required="required">
                         </div>
+
                         <div class="form-group">
-                            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign In">
+                            <select class=" form-control" id="adminDropDown" name="adminDropDown" required>
+                                <option value="">Select a Department</option>
+                                <option value="COAD">College of Architecture and Design</option>
+                                <option value="YWCC">Ying Wu School of Computing</option>
+                                <option value="SM">School of Management</option>
+                            </select>
+                            <i class="fas fa-chevron-circle-down"></i>
                         </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary btn-block btn-lg" value="Sign In" name="btnSignIn">
+                        </div>
+
                     </form>
                 </div>
                 <div class="modal-footer">
