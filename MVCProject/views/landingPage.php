@@ -123,16 +123,16 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-sm-6">
-                            <div class="card bg-light mb-3 shadow-lg p-3 mb-2 bg-white rounded">
-                                <div class="card-body text-center">
-                                    <a href="#"><h4><span class="text-primary" data-toggle="modal" data-target="#modalLogIn">ADMIN</span></h4></a>
+                            <div class="bg-info text-white shadow-lg p-3 mb-2 bg-info rounded">
+                                <div class="card-body bg-info text-center">
+                                    <a href="#"><h4><span data-toggle="modal" data-target="#modalLogIn">USER</span></h4></a>
                                 </div>
                             </div>
                         </div>
                         <div class="col-sm-6">
-                            <div class="card bg-light mb-3 shadow-lg p-3 mb-2 bg-white rounded">
-                                <div class="card-body text-center">
-                                    <a href="#"><h4><span class="text-primary">USER</span></h4></a>
+                            <div class="bg-info text-white shadow-lg p-3 mb-2 bg-info rounded">
+                                <div class="card-body bg-info text-center">
+                                    <a href="#"><h4><span>ADMIN</span></h4></a>
                                 </div>
                             </div>
                         </div>
