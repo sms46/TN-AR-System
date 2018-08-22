@@ -13,8 +13,8 @@ class adminController extends http\controller
             //PRINT $drpDown;
 
 
-            $architectureRecords = courses::findArchitectureCourses('Architecture');
-            self::getTemplate('adminHomepage', NULL, $architectureRecords);
+            $resultSet = studentOrderInfo::getDataForExcel();
+            self::getTemplate('adminHomepage', NULL, $resultSet);
             
         }
     }

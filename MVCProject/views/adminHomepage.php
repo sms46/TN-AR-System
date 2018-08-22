@@ -122,20 +122,23 @@
 
             <hr>
 
+            <form action="index.php?page=adminHomepage&action=export" method="POST">
+                <button id="btnExport" type="submit" name="btnExport" class="btn btn-lg btn-success clearfix">
+                    <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
+            </form>
+
+            <hr>
+
             <div class="row my-4">
                 <div class="col-lg-10 col-md-8">
                     <?php
                         //Print HTML Table
-                        print utility\htmlTable::genarateTableForCourses($data);
+                        print utility\htmlTable::genarateTableForAdmin($data);
                     ?>
 
                 </div>
             </div class="col-lg-4 col-md-4">
 
-            <form action="index.php?page=adminHomepage&action=export" method="POST">
-                <button id="btnExport" type="submit" name="btnExport" class="btn btn-lg btn-success clearfix">
-                    <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
-            </form>
         </div><!--/row-->
 
     </div>
