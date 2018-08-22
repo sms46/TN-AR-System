@@ -50,7 +50,7 @@ abstract class collection
         } else {
             $recordsSet = NULL;
         }
-
+        
         return $recordsSet;
     }
 }

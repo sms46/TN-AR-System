@@ -23,14 +23,14 @@ class htmlTable
             foreach ($array as $row) {
                 echo
                     "<tr>
-                  <td>" . $row['id'] . "</td>
-                  <td>" . $row['Description'] . "</td>
-                  <td>" . $row['StartDate'] . "</td>
-                  <td>" . $row['EndDate'] . "</td>
-                  <td>" .'$' .$row['ResidentialPrice'] . "</td>
-                  <td>" . '$'. $row['CommuterPrice'] . "</td>
-                </tr>";
-            }
+                          <td>" . $row['id'] . "</td>
+                          <td>" . $row['Description'] . "</td>
+                          <td>" . $row['StartDate'] . "</td>
+                          <td>" . $row['EndDate'] . "</td>
+                          <td>" .'$'. $row['ResidentialPrice'] . "</td>
+                          <td>" .'$'. $row['CommuterPrice'] . "</td>
+                    </tr>";
+             }
 
             echo "</table>";
         }

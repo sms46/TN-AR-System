@@ -88,4 +88,11 @@ class studentOrderInfo extends \database\collection
         return self::getResults($sql);
     }
 
+    public static function getDataForExcel()
+    {
+        $sql = "SELECT * FROM studentOrderInfo";
+
+        return self::getResults($sql);
+    }
+
 }

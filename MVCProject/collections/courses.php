@@ -42,7 +42,7 @@ class courses extends database\collection
 
     static public function findAvailableSeats($course, $startDate)
     {
-        //to-do: pass appName for diffrent application
+        //to-do: pass appName for different application
         $appName = 'COAD';
         $availableSeats  =  courses::getAvailableSeats($course,$startDate,$appName);
         $seats = $availableSeats[0];

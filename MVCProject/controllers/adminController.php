@@ -13,8 +13,8 @@ class adminController extends http\controller
             //PRINT $drpDown;
 
 
-            $data = courses::findArchitectureCourses('Architecture');
-            self::getTemplate('adminHomepage', NULL, $data);
+            $architectureRecords = courses::findArchitectureCourses('Architecture');
+            self::getTemplate('adminHomepage', NULL, $architectureRecords);
             
         }
     }
@@ -23,29 +23,42 @@ class adminController extends http\controller
     public static function export()
     {
 
-        $data = courses::findArchitectureCourses('Architecture');
-        
         if(isset($_POST["btnExport"])) {
+
+            //$resultSet =  courses::findArchitectureCourses('Architecture');
+            $resultSet = studentOrderInfo::getDataForExcel();
+            $finalArray = array();
+
+            foreach ($resultSet as $item){
+                $itemArray = array( array('ID' => $item->id,'Order Number' => $item->orderNum,'Student Name' => $item->studentName,'Student Email' => $item ->studentEmail,
+                    'Parent Name' => $item->parentName, 'Course Amount' => $item ->courseAmt, 'Payment Type' => $item ->paymentType,'Amount Paid' => $item ->amtPaid,
+                    'Due Amount' => $item ->dueAmt, 'School Name' => $item ->schoolName, 'Street Address' => $item ->streetAddress,'city' => $item ->city,
+                    'Payment Status' => $item ->paymentStatus));
+
+                $finalArray[] = $itemArray;
+            }
+
             $filename = "NJIT_File_Test".date('Ymd') . ".xls";
             header("Content-Type: application/vnd.ms-excel");
             header("Content-Disposition: attachment; filename=\"$filename\"");
 
             //echo var_dump($itemArray)."<br>";
             $is_coloumn = false;
-            if(!empty($data)) {
-                foreach($data as $key =>$value) {
+            if(!empty($finalArray)) {
+                foreach($finalArray as $value) {
 
-                    //print_r($value);
-                    if(!$is_coloumn) {
-                        echo implode("\t", array_keys($value)) . "\n";
-                        $is_coloumn = true;
+                        if(!$is_coloumn) {
+                            print implode("\t", array_keys($value[0])) . "\n";
+                            $is_coloumn = true;
+                        }
+
+                        print implode("\t", array_values($value[0])) . "\n";
                     }
-                    echo implode("\t", array_values($value)) . "\n";
                 }
             }
             exit;
         }
-    }
+
             //$data = courses::findArchitectureCourses('Architecture');
             //self::getTemplate('adminHomepage', NULL, $data);
 }
