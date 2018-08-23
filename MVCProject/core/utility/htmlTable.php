@@ -41,12 +41,12 @@ class htmlTable
     }
 
     public static function genarateTableForAdmin($array)
-    {
-        if($array!= null) {
-            echo "<table class=\"table table-striped\">";
+{
+    if($array!= null) {
+        echo "<table class=\"table table-striped\">";
 
-            echo "<thead class=\"thead-dark shadow-lg p-3 mb-5 bg-white rounded \">";
-            echo "<tr>
+        echo "<thead class=\"thead-dark shadow-lg p-3 mb-5 bg-white rounded \">";
+        echo "<tr>
                         <th>ID</th>
                         <th>Student Name</th>
                         <th>Email</th>
@@ -54,11 +54,11 @@ class htmlTable
                         <th>Order Status</th>
                         <th>Payment Status</th>
                  </tr>";
-            echo "</thead>";
+        echo "</thead>";
 
-            foreach ($array as $row) {
-                echo
-                    "<tr>
+        foreach ($array as $row) {
+            echo
+                "<tr>
                           <td>" . $row->id . "</td>
                           <td>" . $row->studentName . "</td>
                           <td>" . $row->studentEmail . "</td>
@@ -66,9 +66,35 @@ class htmlTable
                           <td>" . $row-> orderConfirmed . "</td>
                           <td>" . $row->paymentStatus . "</td>
                     </tr>";
-            }
+        }
 
-            echo "</table>";
+        echo "</table>";
+    }
+    else{
+        $text = 'No Records present.Please Insert the records';
+        print $text;
+    }
+}
+
+    public static function genarateTableForTest($array)
+    {
+        if($array!= null) {
+            $columns = array();
+
+            echo "<table class=\"table table-striped\"><tbody>";
+            foreach ($array as $name => $values) {
+                echo "<tr><td>$name</td>";
+                foreach ($values as $k => $v) {
+                    echo "<td>$v</td>";
+                    $columns[$k] = $k;
+                }
+                echo "</tr>";
+            }
+            echo "</tbody><thead class=\"thead-dark shadow-lg p-3 mb-5 bg-white rounded \"><tr>";
+            foreach ($columns as $column) {
+                echo "<th>$column</th>";
+            }
+            echo "</thead></table>";
         }
         else{
             $text = 'No Records present.Please Insert the records';

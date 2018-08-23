@@ -19,7 +19,6 @@ class adminController extends http\controller
         }
     }
 
-
     public static function export()
     {
 
@@ -61,4 +60,10 @@ class adminController extends http\controller
 
             //$data = courses::findArchitectureCourses('Architecture');
             //self::getTemplate('adminHomepage', NULL, $data);
+
+    public static function viewRegistrations()
+    {
+        $resultSet = studentOrderInfo::getDataForExcel();
+        self::getTemplate('adminHomepage', NULL, $resultSet);
+    }
 }

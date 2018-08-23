@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body >
-<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-primary mb-3">
+<nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark mb-3">
     <div class="flex-row d-flex">
         <button type="button" class="navbar-toggler mr-2 " data-toggle="offcanvas" title="Toggle responsive left sidebar">
             <span class="navbar-toggler-icon"></span>
@@ -44,24 +44,23 @@
     <div class="row row-offcanvas row-offcanvas-left">
         <div class="col-md-3 col-lg-2 sidebar-offcanvas bg-light pl-0" id="sidebar" role="navigation">
             <ul class="nav flex-column sticky-top pl-0 pt-5 mt-3">
-                <li class="nav-item"><a class="nav-link" href="#">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
                 <li class="nav-item">
                     <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports▾</a>
                     <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="">Report 1</a></li>
-                        <li class="nav-item"><a class="nav-link" href="">Report 2</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Student Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Course Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="">Student Order Info</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#">Analytics</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Export</a></li>
-
+                <li class="nav-item"><a class="nav-link" href="#">Grant Access</a></li>
             </ul>
         </div>
         <!--/col-->
 
         <div class="col main pt-5 mt-3">
             <h1 class="display-4 d-none d-sm-block">
-                User Dashboard
+                College of Architecture and Design
             </h1>
             <p class="lead d-none d-sm-block">This is User Dashboard</p>
 
@@ -74,13 +73,14 @@
             </div>
             <div class="row mb-3">
                 <div class="col-xl-3 col-sm-6 py-2">
-                    <div class="card bg-success text-white h-100">
-                        <div class="card-body bg-success">
+                    <div class="card bg-info text-white h-100">
+                        <div class="card-body bg-info">
                             <div class="rotate">
-                                <i class="fa fa-user fa-4x"></i>
+                                <i class="fa fa-user fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase">Users</h6>
-                            <h1 class="display-4">134</h1>
+                            <h6 class="text-uppercase" align="center">Registered Students</h6>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php print count($data)?></a></h1>
+
                         </div>
                     </div>
                 </div>
@@ -88,32 +88,32 @@
                     <div class="card text-white bg-danger h-100">
                         <div class="card-body bg-danger">
                             <div class="rotate">
-                                <i class="fa fa-list fa-4x"></i>
+                                <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase">Posts</h6>
-                            <h1 class="display-4">87</h1>
+                            <h6 class="text-uppercase" align="center">Partial Payment</h6>
+                            <h1 class="display-4" align="center">87</h1>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 py-2">
-                    <div class="card text-white bg-info h-100">
-                        <div class="card-body bg-info">
+                    <div class="card text-white bg-success h-100">
+                        <div class="card-body bg-success">
                             <div class="rotate">
-                                <i class="fa fa-twitter fa-4x"></i>
+                                <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase">Tweets</h6>
-                            <h1 class="display-4">125</h1>
+                            <h6 class="text-uppercase" align="center">Full Payment</h6>
+                            <h1 class="display-4" align="center">125</h1>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-sm-6 py-2">
-                    <div class="card text-white bg-warning h-100">
-                        <div class="card-body">
+                    <div class="card text-white bg-primary h-100">
+                        <div class="card-body  bg-primary">
                             <div class="rotate">
-                                <i class="fa fa-share fa-4x"></i>
+                                <i class="fas fa-book fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase">Shares</h6>
-                            <h1 class="display-4">36</h1>
+                            <h6 class="text-uppercase" align="center">Courses</h6>
+                            <h1 class="display-4" align="center">5</h1>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                 <div class="col-lg-10 col-md-8">
                     <?php
                         //Print HTML Table
-                        print utility\htmlTable::genarateTableForAdmin($data);
+                        print utility\htmlTable::genarateTableForTest($data);
                     ?>
 
                 </div>
@@ -170,6 +170,12 @@
         </div>
     </div>
 </div>
+
+
+<!--scripts loaded here-->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 
 </body>
 </html>

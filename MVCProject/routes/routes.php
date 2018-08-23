@@ -113,6 +113,15 @@ class routes
         $route->method = 'export';
         $routes[] = $route;
 
+        //Validate the admin login credentials
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'viewRegistrations';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'viewRegistrations';
+        $routes[] = $route;
+
         return $routes;
     }
     
