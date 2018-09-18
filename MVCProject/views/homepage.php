@@ -74,40 +74,42 @@
             </div>
         </nav>
 
-        <!--Homepage main body starts from here -->
-        <h2><span class="badge badge-primary">Pricing Information and Dates for 2018</span></h2>
-        <hr>
+        <div class="container">
+            <!--Homepage main body starts from here -->
+            <h2><span class="badge badge-primary">Pricing Information and Dates for 2018</span></h2>
+            <hr>
 
-        <?php
-        $value = $_POST['appName'];
-        switch ($value) {
-            case "COAD":?>
-                <h5 class="text-danger" .text-dark> <?php print $_POST['courseOne']; ?> </h5>
-                <?php
-                    $arcRecords = homepageController::getArchitectureCourses();
+            <?php
+                $value = $_POST['appName'];
+                switch ($value) {
+                    case "COAD":?>
+                        <h5 class="text-danger" .text-dark> <?php print $_POST['courseOne']; ?> </h5>
+                        <?php
+                            $arcRecords = courses::findArchitectureCourses();
 
-                    //Print HTML Table
-                    print utility\htmlTable::genarateTableForCourses($arcRecords);
-                ?>
+                            //Print HTML Table
+                            print utility\htmlTable::generateTableForCourses($arcRecords);
+                        ?>
 
-                <hr>
-                <h5 class="text-danger" .text-dark> <?php print $_POST['courseTwo']; ?> </h5>
+                        <hr>
+                        <h5 class="text-danger" .text-dark> <?php print $_POST['courseTwo']; ?> </h5>
 
-                <?php
-                    $desRecords = homepageController::getDesignCourses();
+                        <?php
+                            $desRecords = courses::findDesignCourses();
 
-                    //Print HTML Table
-                    print utility\htmlTable::genarateTableForCourses($desRecords);
-                ?>
+                            //Print HTML Table
+                            print utility\htmlTable::generateTableForCourses($desRecords);
+                        ?>
 
-                 </br>
-                 <a class="btn btn-outline-primary" href="index.php?page=homepage&action=redirectToCourse" role="button">Register or Courses</a>
+                         </br>
+                         <a class="btn btn-outline-primary" href="index.php?page=homepage&action=redirectToCourse" role="button">Register or Courses</a>
 
-                <?php break;
+                        <?php break;
 
-                default:
-                echo "Error in code";
-        }?>
+                        default:
+                        echo "Error in code";
+                } ?>
+        </div>
 
     </div>
 

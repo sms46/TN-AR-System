@@ -34,7 +34,8 @@
             </div>
         </nav>
 
-        <h3 class="text-danger".text-danger align="center"><strong>COURSE REGISTRATION</strong></h3><hr></br>
+        <div class="container">
+            <h3 class="text-danger".text-danger align="center"><strong>COURSE REGISTRATION</strong></h3><hr></br>
 
         <!--Added courses navbar-->
              <nav class="navbar navbar-inverse" style="background:#FFFFFF;">
@@ -128,6 +129,7 @@
                     <?php endforeach;?>
 
             </div>
+        </div>
     </div>
 </div>
 

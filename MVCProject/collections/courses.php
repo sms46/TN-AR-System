@@ -5,24 +5,22 @@ class courses extends database\collection
     protected static $modelName = 'CoursesModel';
 
     //Static Functions
-    static public function findArchitectureCourses($dept)
+    static public function findArchitectureCourses()
     {
-        $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName . ' WHERE Department = ?';
-        return self::getResults($sql, $dept);
+        $sql = "SELECT * FROM courses WHERE Department = 'Architecture'";
+        return self::getResults($sql,NULL);
     }
 
-    static public function findDesignCourses($dept)
+    static public function findDesignCourses()
     {
-        $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName . ' WHERE Department = ?';
-        return self::getResults($sql, $dept );
+        $sql = "SELECT * FROM courses WHERE Department = 'Design'";
+        return self::getResults($sql,NULL);
     }
+
 
     static public function findCourses()
     {
-        $tableName = get_called_class();
-        $sql = 'SELECT * FROM ' . $tableName;
+        $sql = "SELECT * FROM courses";
         return self::getResults($sql);
     }
 

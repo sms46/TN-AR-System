@@ -4,7 +4,7 @@ namespace utility;
 
 class htmlTable
 {
-    public static function genarateTableForCourses($array)
+    public static function generateTableForCourses($array)
     {
         if($array!= null) {
             echo "<table class=\"table table-striped\">";
@@ -40,7 +40,8 @@ class htmlTable
         }
     }
 
-    public static function genarateTableForAdmin($array)
+    //TO-DO: Remove this function later
+    public static function generateTableForAdmin($array)
 {
     if($array!= null) {
         echo "<table class=\"table table-striped\">";
@@ -76,14 +77,15 @@ class htmlTable
     }
 }
 
-    public static function genarateTableForTest($array)
+    public static function generateTableForTest($array)
     {
         if($array!= null) {
             $columns = array();
 
-            echo "<table class=\"table table-striped\"><tbody>";
+            echo "<table class=\"table table-striped table-responsive\"><tbody>";
+
             foreach ($array as $name => $values) {
-                echo "<tr><td>$name</td>";
+                echo "<tr>";
                 foreach ($values as $k => $v) {
                     echo "<td>$v</td>";
                     $columns[$k] = $k;

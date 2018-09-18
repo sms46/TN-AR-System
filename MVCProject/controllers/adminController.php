@@ -63,7 +63,7 @@ class adminController extends http\controller
 
     public static function viewRegistrations()
     {
-        $resultSet = studentOrderInfo::getDataForExcel();
+        $resultSet = studentInfo::getStudentInfo();
         self::getTemplate('adminHomepage', NULL, $resultSet);
     }
 }

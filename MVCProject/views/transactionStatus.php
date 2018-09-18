@@ -6,7 +6,12 @@
 <body class="bg-light">
 
 
-<?php $orderNo = $_REQUEST['EXT_TRANS_ID'];?>
+<?php $orderNo = $_REQUEST['EXT_TRANS_ID'];
+
+echo '<pre>'; var_dump($_GET);
+
+?>
+
 
 <div class="container" style="width:1280px;">
     <div class="card shadow-lg p-3 mb-1 bg-white rounded">

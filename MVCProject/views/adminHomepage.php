@@ -130,7 +130,7 @@
             <hr>
 
             <div class="row my-4">
-                <div class="col-lg-10 col-md-8">
+                <div class="col-lg-10 col-md-8 table-responsive">
                     <?php
                         //Print HTML Table
                         print utility\htmlTable::genarateTableForTest($data);
@@ -170,7 +170,6 @@
         </div>
     </div>
 </div>
-
 
 <!--scripts loaded here-->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
