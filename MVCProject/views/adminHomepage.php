@@ -18,8 +18,8 @@
 
     <link rel="stylesheet" href="css/styles.css" />
 
-    <script type="text/javascript" src="uploads/bootstrap-datepicker.js"></script>
-    <link rel="stylesheet" type="text/css" href="uploads/bootstrap-datepicker.css" >
+    <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css" >
 
     <script>
         $(function() {
