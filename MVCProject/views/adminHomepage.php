@@ -17,7 +17,21 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
     <link rel="stylesheet" href="css/styles.css" />
+
+    <script type="text/javascript" src="uploads/bootstrap-datepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="uploads/bootstrap-datepicker.css" >
+
+    <script>
+        $(function() {
+            $('.dates #usr1').datepicker({
+                'format': 'yyyy-mm-dd',
+                'autoclose': true
+            });
+        });
+    </script>
+
 </head>
+
 <body >
 <nav class="navbar fixed-top navbar-expand-md navbar-dark bg-dark mb-3">
     <div class="flex-row d-flex">
@@ -122,10 +136,32 @@
 
             <hr>
 
-            <form action="index.php?page=adminHomepage&action=export" method="POST">
-                <button id="btnExport" type="submit" name="btnExport" class="btn btn-lg btn-success clearfix">
-                    <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
+           <form action="index.php?page=adminHomepage&action=export" method="POST">
+               <h4>Export data</h4>
+                <div class="row mb-3">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="dates" style="margin-top:10px;color:#2471a3;">
+                        <label>Start Date:</label>
+                        <span class="far fa-calendar-alt"></span>
+                        <input type="text" style="background-color:#aed6f1;" class="form-control" id="usr1" name="event_date" placeholder="YYYY-MM-DD" autocomplete="off">
+
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <div class="dates" style="margin-top:10px;color:#2471a3;">
+                        <label>End Date:</label>
+                        <span class="far fa-calendar-alt"></span>
+                        <input type="text" style="background-color:#aed6f1;" class="form-control" id="usr1" name="event_date" placeholder="YYYY-MM-DD" autocomplete="off" >
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                    <div class="dates" style="margin-top:40px;color:#2471a3;">
+                    <button id="btnExport" type="submit" name="btnExport" class="btn btn-success clearfix">
+                        <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
+                    </div>
+                </div>
+                &nbsp;
             </form>
+
 
             <hr>
 
@@ -133,7 +169,7 @@
                 <div class="col-lg-10 col-md-8 table-responsive">
                     <?php
                         //Print HTML Table
-                        print utility\htmlTable::genarateTableForTest($data);
+                        print utility\htmlTable::generateTableForAdmin($data);
                     ?>
 
                 </div>
@@ -171,10 +207,12 @@
     </div>
 </div>
 
+
 <!--scripts loaded here-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+
+
 
 </body>
 </html>
