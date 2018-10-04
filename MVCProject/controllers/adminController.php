@@ -24,6 +24,8 @@ class adminController extends http\controller
 
         if(isset($_POST["btnExport"])) {
 
+            $startDate = $_POST['event_startDate'];
+            print $startDate;
             //$resultSet =  courses::findArchitectureCourses('Architecture');
             $resultSet = studentOrderInfo::getDataForExcel();
             $finalArray = array();

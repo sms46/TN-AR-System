@@ -76,8 +76,7 @@ class routes
         $route->controller = 'studentRegistrationController';
         $route->method = 'storeStudentInfo';
         $routes[] = $route;
-
-
+        
         //Post URL route back from successful transaction from TouchNet.
         $route = new route();
         $route->http_method = 'POST';

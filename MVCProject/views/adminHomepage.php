@@ -49,7 +49,7 @@
                 <a class="nav-link" href="#myAlert" data-toggle="collapse">Alert</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">About</a>
+                <a class="nav-link" href="" data-target="#myModal" data-toggle="modal">Log Out</a>
             </li>
         </ul>
     </div>
@@ -83,7 +83,7 @@
                     <span aria-hidden="true">×</span>
                     <span class="sr-only">Close</span>
                 </button>
-                <strong>Holy guacamole!</strong> It's free.. this is an example theme.
+                <strong>This is the admin page.</strong>
             </div>
             <div class="row mb-3">
                 <div class="col-xl-3 col-sm-6 py-2">
@@ -143,14 +143,14 @@
                     <div class="dates" style="margin-top:10px;color:#2471a3;">
                         <label>Start Date:</label>
                         <span class="far fa-calendar-alt"></span>
-                        <input type="text" style="background-color:#aed6f1;" class="form-control" id="usr1" name="event_date" placeholder="YYYY-MM-DD" autocomplete="off">
+                        <input type="text" style="background-color:#aed6f1;" class="form-control" id="usr1" name="event_startDate" placeholder="YYYY-MM-DD" autocomplete="off">
 
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <div class="dates" style="margin-top:10px;color:#2471a3;">
                         <label>End Date:</label>
                         <span class="far fa-calendar-alt"></span>
-                        <input type="text" style="background-color:#aed6f1;" class="form-control" id="usr1" name="event_date" placeholder="YYYY-MM-DD" autocomplete="off" >
+                        <input type="text" style="background-color:#aed6f1;" class="form-control" id="usr1" name="event_endDate" placeholder="YYYY-MM-DD" autocomplete="off" >
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -182,11 +182,11 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+ <!--<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="myModalLabel">Modal</h4>
+                <h4 class="modal-title" id="myModalLabel">Log Out</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                     <span class="sr-only">Close</span>
@@ -205,7 +205,7 @@
             </div>
         </div>
     </div>
-</div>
+</div>-->
 
 
 <!--scripts loaded here-->

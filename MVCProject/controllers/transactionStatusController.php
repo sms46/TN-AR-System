@@ -41,65 +41,21 @@ class transactionStatusController extends http\controller
 
         //Insert into the student - order table
         $post = new postBackInfoModel();
+        $post->EXT_TRANS_ID = $_POST['EXT_TRANS_ID'];
+        $post->UPAY_SITE_ID = $_POST['UPAY_SITE_ID'];
+        $post->sys_tracking_id = $_POST['sys_tracking_id'];
         $post->tpg_trans_id = $_POST['tpg_trans_id'];
+        $post->name_on_acct = $_POST['name_on_acct'];
+        $post->acct_email_address = $_POST['acct_email_address'];
         $post->pmt_status = $_POST['pmt_status'];
         $post->pmt_amt = $_POST['pmt_amt'];
+        $post->acct_addr = $_POST['acct_addr'];
+        $post->acct_addr2 = $_POST['acct_addr2'];
+        $post->acct_city = $_POST['acct_city'];
+        $post->acct_state = $_POST['acct_state'];
+        $post->acct_zip = $_POST['acct_zip'];
+        $post->pmt_date = $_POST['pmt_date'];
         $post->save();
 
-
-       // $file = '.txt';
-        // Open the file to get existing content
-       // $current = file_get_contents($file);
-        // Append a new person to the file
-        //$current .= "John Smith\n";
-        // Write the contents back to the file
-        //file_put_contents($file, $current);
-        //print 'hit here';
-
-        //$filename = "NJIT_File_Test".date('Ymd') . ".xls";
-        //header("Content-Type: application/vnd.ms-excel");
-        //header("Content-Disposition: attachment; filename=\"$filename\"");
-
-        //$target_dir = "./uploads/";
-        //$target_file = $target_dir . basename($_FILES['fileToUpload']['name']);
-        //$dump = $_REQUEST;
-
-
-       // $filename = "NJIT_File_Test".date('Ymd') . ".xls";
-        //header("Content-Type: application/vnd.ms-excel");
-       // header("Content-Disposition: attachment; filename=\"$filename\"");
-
-
-        //$csv_handler = fopen ($_SERVER['DOCUMENT_ROOT'] .'/uploads/'.'csvfile.csv','wb');
-        //fwrite ($csv_handler, $dump);
-        //fclose ($csv_handler);
-
-
-        //NAME OF THE DIRECTORY WHERE THE FILES SHOULD BE STORED
-       // $file_name = 'csvfile.csv';
-       // $target_dir = "./uploads/";
-        //$target_file = $target_dir . basename($file_name);
-        // echo $targetfile;
-
-        // SAVE THE FILE IN THE SERVER
-        //if($dump != null)
-        //{
-            //$csvFileName = $_FILES['fileToUpload']['name'];
-            //header('Location: readCsv.php');
-            //header('Location: readCsv.php?filename='.$csvFileName.'&file=' .$targetfile);
-            //move_uploaded_file($file_name, $target_file);
-           // print var_dump($dump)."<br>";
-       // }
-        //else
-        //{
-           // echo 'File Upload Failed';
-        //}
-
-       // content = "some text here";
-        //$fp = fopen("./uploads/" . "/myText.txt","wb");
-        //fwrite($fp,$content);
-        //fclose($fp);
-
-        //header("Location: index.php");
     }
 }

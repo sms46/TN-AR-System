@@ -8,7 +8,7 @@
 
 <?php $orderNo = $_REQUEST['EXT_TRANS_ID'];
 
-echo '<pre>'; var_dump($_GET);
+//echo '<pre>'; var_dump($_GET);
 
 ?>
 
@@ -26,7 +26,7 @@ echo '<pre>'; var_dump($_GET);
 
             <br>
             <p style="text-align:center;color:#04B745;" class="card-text">
-                <a class="btn btn-outline-success" href="index.php?page=homepage&action=show" role="button">Go to Homepage</a>
+                <a class="btn btn-outline-success" href="index.php" role="button">Go to Homepage</a>
             </p>
          </figure>
     </div>
