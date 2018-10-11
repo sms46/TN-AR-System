@@ -24,6 +24,10 @@
                 <strong><?php print $orderNo;?></strong>
             </p>
 
+            <p style="text-align:center;color:#04B745;" class="card-text">
+                <strong>The Remaining Balance is:</strong>
+            </p>
+
             <br>
             <p style="text-align:center;color:#04B745;" class="card-text">
                 <a class="btn btn-outline-success" href="index.php" role="button">Go to Homepage</a>

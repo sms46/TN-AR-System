@@ -92,7 +92,7 @@ class routes
         $route->action = 'storeStudentInfo';
         $route->page = 'studentRegistration';
         $route->controller = 'transactionStatusController';
-        $route->method = 'updateTranStatus';
+        $route->method = 'displayTranStatus';
         $routes[] = $route;
 
         //Redirect to check balance page.

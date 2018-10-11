@@ -2,36 +2,6 @@
 
 class transactionStatusController extends http\controller
 {
-    public static function updateTranStatus() {
-
-        //Retrieve Order No from touchnet
-        $orderNo = $_REQUEST['EXT_TRANS_ID'];
-
-        //Update the order status if successful payment done via touchnet
-        studentOrderInfo::updateStudentOrder($orderNo);
-
-        //Retrieve the student info after successful payment
-        $studentOrder = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
-
-        //echo '<pre>'; var_dump($studentOrder);
-        //echo '<pre>'; var_dump($_REQUEST);
-        //echo $_GET['tpg_trans_id '];
-
-        // loop through all the courses taken by the student
-        for ($i=0; $i< count($studentOrder); $i++)
-        {
-            $confirmedCourses = $studentOrder[$i]->course;
-            $confirmedDates = $studentOrder[$i]->startDate;
-            $seatsCount = $studentOrder[$i]->SeatAvailable;
-
-            //Update the no of seats available for all courses taken by the student to total count
-            studentOrderInfo::updateNoOfSeats($confirmedCourses,$confirmedDates,$seatsCount);
-        }
-
-        //Redirect to the transaction status page
-        transactionStatusController::displayTranStatus();
-    }
-
     public static function displayTranStatus() {
 
         self::getTemplate('transactionStatus',Null, Null);
@@ -57,5 +27,41 @@ class transactionStatusController extends http\controller
         $post->pmt_date = $_POST['pmt_date'];
         $post->save();
 
+        //Retrieve Order No from touchnet
+        $orderNo = $_REQUEST['EXT_TRANS_ID'];
+
+        //Update the order status if successful payment done via touchnet
+        studentOrderInfo::updateStudentOrder($orderNo);
+
+        //Retrieve the student info after successful payment
+        $studentOrder = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
+
+        //echo '<pre>'; var_dump($studentOrder);
+        //echo '<pre>'; var_dump($_REQUEST);
+        //echo $_GET['tpg_trans_id '];
+
+        // loop through all the courses taken by the student
+        for ($i=0; $i< count($studentOrder); $i++)
+        {
+            $confirmedCourses = $studentOrder[$i]->course;
+            $confirmedDates = $studentOrder[$i]->startDate;
+            $seatsCount = $studentOrder[$i]->SeatAvailable;
+
+            //Update the no of seats available for all courses taken by the student to total count
+            studentOrderInfo::updateNoOfSeats($confirmedCourses,$confirmedDates,$seatsCount);
+        }
+
+        //LOG USER INFO
+        $log = new userLogsModel();
+        $log->EXT_TRANS_ID = $_POST['EXT_TRANS_ID'];
+        $log->studentName = $studentOrder->studentName;
+        $log->studentEmail = $studentOrder->studentEmail;
+        $log->tpg_trans_id = $_POST['tpg_trans_id'];
+        $log->amtPaid = $_POST['pmt_amt'];
+        $log->balanceAmt = $studentOrder->amtDue;
+        $log->paymentStatus = 'Transaction complete using Touchnet';
+        $log->description = 'Payment Success';
+        $log->currentTimestamp = studentInfo::getTimestamp();
+        $log->save();
     }
 }

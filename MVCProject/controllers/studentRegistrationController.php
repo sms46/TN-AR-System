@@ -70,6 +70,18 @@ class studentRegistrationController extends http\controller
                 $studentInfo->save();
             }
 
+            //LOG USER INFO
+            $log = new userLogsModel();
+            $log->EXT_TRANS_ID = $_POST['orderNum'];
+            $log->studentName = $_POST['studentName'];
+            $log->studentEmail = $_POST['email'];
+            $log->amtPaid = $_POST['totalAmtPaid'];
+            $log->balanceAmt = $_POST['dueAmt'];
+            $log->paymentStatus = 'Ready to pay using Touchnet';
+            $log->description = 'Student data saved. Pending Payment';
+            $log->currentTimestamp = studentInfo::getTimestamp();
+            $log->save();
+
             //FIX: Need to save the order no in a variable to pass the same no throughout a session.
             $orderNum = $_POST['orderNum'];
             self::getTemplate('studentRegistration',$orderNum, $orderNum);
