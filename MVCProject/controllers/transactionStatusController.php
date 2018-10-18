@@ -27,8 +27,12 @@ class transactionStatusController extends http\controller
         $post->pmt_date = $_POST['pmt_date'];
         $post->save();
 
-        //Retrieve Order No from touchnet
+        //Retrieve Order No and Amt Paid from touchnet
         $orderNo = $_REQUEST['EXT_TRANS_ID'];
+        $amtPaid = $_POST['pmt_amt'];
+
+        //Update Amt Paid and Balance Amt if Ext Id exists
+        studentOrderInfo::updateStudentAmt($orderNo, $amtPaid);
 
         //Update the order status if successful payment done via touchnet
         studentOrderInfo::updateStudentOrder($orderNo);
@@ -40,28 +44,37 @@ class transactionStatusController extends http\controller
         //echo '<pre>'; var_dump($_REQUEST);
         //echo $_GET['tpg_trans_id '];
 
-        // loop through all the courses taken by the student
-        for ($i=0; $i< count($studentOrder); $i++)
-        {
-            $confirmedCourses = $studentOrder[$i]->course;
-            $confirmedDates = $studentOrder[$i]->startDate;
-            $seatsCount = $studentOrder[$i]->SeatAvailable;
-
-            //Update the no of seats available for all courses taken by the student to total count
-            studentOrderInfo::updateNoOfSeats($confirmedCourses,$confirmedDates,$seatsCount);
-        }
+        //Retrieve Student Info for logs
+        $studentInfo = userLogs::retrieveStudentInfoForLogs($orderNo);
 
         //LOG USER INFO
         $log = new userLogsModel();
         $log->EXT_TRANS_ID = $_POST['EXT_TRANS_ID'];
-        $log->studentName = $studentOrder->studentName;
-        $log->studentEmail = $studentOrder->studentEmail;
+        $log->studentName = $studentInfo[0]->studentName;
+        $log->studentEmail = $studentInfo[0]->studentEmail;
         $log->tpg_trans_id = $_POST['tpg_trans_id'];
         $log->amtPaid = $_POST['pmt_amt'];
-        $log->balanceAmt = $studentOrder->amtDue;
+        $log->balanceAmt = $studentInfo[0]->dueAmt;
         $log->paymentStatus = 'Transaction complete using Touchnet';
         $log->description = 'Payment Success';
         $log->currentTimestamp = studentInfo::getTimestamp();
         $log->save();
+
+        //get log data for particular order num
+        $userLogs = userLogs::getLogData($orderNo);
+        $countData = count($userLogs);
+
+        if($countData < 3 && $countData > 0){
+            // loop through all the courses taken by the student
+            for ($i=0; $i< count($studentOrder); $i++)
+            {
+                $confirmedCourses = $studentOrder[$i]->course;
+                $confirmedDates = $studentOrder[$i]->startDate;
+                $seatsCount = $studentOrder[$i]->SeatAvailable;
+
+                //Update the no of seats available for all courses taken by the student to total count
+                studentOrderInfo::updateNoOfSeats($confirmedCourses,$confirmedDates,$seatsCount);
+            }
+        }
     }
 }

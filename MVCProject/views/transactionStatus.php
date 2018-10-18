@@ -8,6 +8,8 @@
 
 <?php $orderNo = $_REQUEST['EXT_TRANS_ID'];
 
+$studentInfo = studentOrderInfo::getOrderId($orderNo);
+$dueAmt = $studentInfo->dueAmt;
 //echo '<pre>'; var_dump($_GET);
 
 ?>
@@ -26,6 +28,7 @@
 
             <p style="text-align:center;color:#04B745;" class="card-text">
                 <strong>The Remaining Balance is:</strong>
+                $<?php print $dueAmt;?>
             </p>
 
             <br>

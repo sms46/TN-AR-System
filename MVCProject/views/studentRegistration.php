@@ -132,9 +132,21 @@
                         $passedAmt = '87ABD23777';
                         $validationKeyString = $passedAmt .$data .$finalAmt;
                         $hashedValidationKey = studentInfo::getHash($validationKeyString);
-                    ?>
 
-                    <button class="btn btn-primary btn-lg btn-block" name="btnPayment" type="submit">Continue to Pay <?php echo '$'. $finalAmt?></button>
+
+                    if(isset($_POST["save_details"])) {
+                        ?>
+                        <button class="btn btn-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
+                            Pay <?php echo '$' . $finalAmt ?></button>
+
+                        <?php
+                    }else{
+                        ?>
+                        <button class="btn btn-primary btn-lg btn-block " name="btnPayment" type="submit" disabled>Continue to
+                            Pay <?php echo '$' . $finalAmt ?></button>
+                        <?php
+                    }
+                    ?>
                     <input type="hidden" name="UPAY_SITE_ID" value="8">
                     <input type="hidden" name="AMT" value="<?php print $finalAmt ?>">
                     <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data ?>">

@@ -5,6 +5,42 @@ class studentOrderInfo extends \database\collection
     protected static $modelName = 'studentOrderInfo';
 
     // Static Functions
+
+    public static function updateStudentAmt($OrderNum, $amtPaid)
+    {
+        //Update the student order table with the balance amt after successful payment
+
+        $orderId = studentOrderInfo::getOrderId($OrderNum);
+        $studentAmt = studentOrderInfo::retrieveStudentAmt($OrderNum);
+        $paymentStatus = studentOrderInfo::retrievePaymentStatus($OrderNum);
+        //UPDATE IF DUE AMT IS GREATER THAN 0
+        if(($studentAmt[0]->dueAmt > 0) && ($paymentStatus[0]->paymentStatus == 1))
+        {
+            $updatedAmtPaid = ($studentAmt[0]->amtPaid) + $amtPaid;
+            //$updatedBalDue = ($studentAmt[0]->dueAmt) - ($amtPaid);
+            $order = new studentOrderInfoModel();
+            $order->id = $orderId->id;
+            $order->amtPaid = 0;
+            $order->dueAmt = 0;
+            $order->confirmedTimestamp = studentInfo::getTimestamp();
+            $order->save();
+        }
+    }
+
+    public static function retrieveStudentAmt($OrderNum)
+    {
+        $sql = "SELECT courseAmt, amtPaid, dueAmt FROM studentOrderInfo WHERE orderNum = '$OrderNum'";
+
+        return self::getResults($sql);
+    }
+
+    public static function retrievePaymentStatus($OrderNum)
+    {
+        $sql = "SELECT paymentStatus FROM studentOrderInfo WHERE orderNum = '$OrderNum'";
+
+        return self::getResults($sql);
+    }
+
     public static function updateStudentOrder($num)
     {
         //Update the student order table after successful payment

@@ -23,13 +23,15 @@ class checkBalanceController extends http\controller
                     $studentDetailsArray = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
                     self::getTemplate('userBalanceInfo',$studentDetailsArray,$studentDetailsArray);
                 } else {
-                        $data = 'No matching records found. Please try again.';
-                        self::getTemplate('error', NULL, $data);
+                        //$data = 'No matching records found. Please try again.';
+                    echo '<script>alert("No matching records found. Please try again.")</script>';
+                        //self::getTemplate('error', NULL, $data);
                 }
 
             } else{
-                $data = 'No records available for the user. Please Try Again';
-                self::getTemplate('error',NULL, NULL);
+                //$data = 'No records available for the user. Please Try Again';
+                echo '<script>alert("No records available for the user. Please Try Again")</script>';
+                //self::getTemplate('error',NULL, NULL);
             }
         }
     }
