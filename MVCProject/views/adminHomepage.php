@@ -143,7 +143,7 @@
                     <div class="dates" style="margin-top:10px;color:#2471a3;">
                         <label>Start Date:</label>
                         <span class="far fa-calendar-alt"></span>
-                        <input type="text" style="background-color:#aed6f1;" class="form-control" id="usr1" name="event_startDate" placeholder="YYYY-MM-DD" autocomplete="off">
+                        <input type="text" style="background-color:#aed6f1;" class="form-control" id="usr1" name="event_startDate" placeholder="YYYY-MM-DD" autocomplete="off" required>
 
                     </div>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -165,6 +165,7 @@
 
             <hr>
 
+           <?php //if(isset($_POST["add_to_cart"])) {?>
             <div class="row my-4">
                 <div class="col-lg-10 col-md-8 table-responsive">
                     <?php

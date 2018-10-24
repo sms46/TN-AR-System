@@ -26,15 +26,18 @@ class adminController extends http\controller
 
             $startDate = $_POST['event_startDate'];
             print $startDate;
+            $endDate = $_POST['event_endDate'];
+            print $endDate;
             //$resultSet =  courses::findArchitectureCourses('Architecture');
-            $resultSet = studentOrderInfo::getDataForExcel();
+            $resultSet = studentOrderInfo::getDataForExcel($startDate,$endDate);
             $finalArray = array();
 
             foreach ($resultSet as $item){
-                $itemArray = array( array('ID' => $item->id,'Order Number' => $item->orderNum,'Student Name' => $item->studentName,'Student Email' => $item ->studentEmail,
+                $itemArray = array( array('Order Number' => $item->orderNum,'Student Name' => $item->studentName,'Student Email' => $item ->studentEmail,
                     'Parent Name' => $item->parentName, 'Course Amount' => $item ->courseAmt, 'Payment Type' => $item ->paymentType,'Amount Paid' => $item ->amtPaid,
                     'Due Amount' => $item ->dueAmt, 'School Name' => $item ->schoolName, 'Street Address' => $item ->streetAddress,'city' => $item ->city,
-                    'Payment Status' => $item ->paymentStatus));
+                    'State' => $item ->state,'Zip Code' => $item ->zipCode,'Order Confirmed' => $item ->orderConfirmed,'Timestamp' => $item ->timestamp,
+                    'Payment Status' => $item ->paymentStatus,'Confirmed Timestamp' => $item ->confirmedTimestamp));
 
                 $finalArray[] = $itemArray;
             }
@@ -44,13 +47,13 @@ class adminController extends http\controller
             header("Content-Disposition: attachment; filename=\"$filename\"");
 
             //echo var_dump($itemArray)."<br>";
-            $is_coloumn = false;
+            $isColumn = false;
             if(!empty($finalArray)) {
                 foreach($finalArray as $value) {
 
-                        if(!$is_coloumn) {
+                        if(!$isColumn) {
                             print implode("\t", array_keys($value[0])) . "\n";
-                            $is_coloumn = true;
+                            $isColumn = true;
                         }
 
                         print implode("\t", array_values($value[0])) . "\n";

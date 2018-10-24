@@ -12,16 +12,17 @@ class studentOrderInfo extends \database\collection
 
         $orderId = studentOrderInfo::getOrderId($OrderNum);
         $studentAmt = studentOrderInfo::retrieveStudentAmt($OrderNum);
-        $paymentStatus = studentOrderInfo::retrievePaymentStatus($OrderNum);
+        $studentLog = userLogs::retrieveStudentInfoForLogs($OrderNum);
+
         //UPDATE IF DUE AMT IS GREATER THAN 0
-        if(($studentAmt[0]->dueAmt > 0) && ($paymentStatus[0]->paymentStatus == 1))
+        if($studentLog[0]->tpg_trans_id != NULL)
         {
             $updatedAmtPaid = ($studentAmt[0]->amtPaid) + $amtPaid;
-            //$updatedBalDue = ($studentAmt[0]->dueAmt) - ($amtPaid);
+            $updatedBalDue = ($studentAmt[0]->dueAmt) - ($amtPaid);
             $order = new studentOrderInfoModel();
             $order->id = $orderId->id;
-            $order->amtPaid = 0;
-            $order->dueAmt = 0;
+            $order->amtPaid = $updatedAmtPaid;
+            $order->dueAmt = $updatedBalDue;
             $order->confirmedTimestamp = studentInfo::getTimestamp();
             $order->save();
         }
@@ -30,13 +31,6 @@ class studentOrderInfo extends \database\collection
     public static function retrieveStudentAmt($OrderNum)
     {
         $sql = "SELECT courseAmt, amtPaid, dueAmt FROM studentOrderInfo WHERE orderNum = '$OrderNum'";
-
-        return self::getResults($sql);
-    }
-
-    public static function retrievePaymentStatus($OrderNum)
-    {
-        $sql = "SELECT paymentStatus FROM studentOrderInfo WHERE orderNum = '$OrderNum'";
 
         return self::getResults($sql);
     }
@@ -124,10 +118,10 @@ class studentOrderInfo extends \database\collection
         return self::getResults($sql);
     }
 
-    public static function getDataForExcel()
+    public static function getDataForExcel($startDate, $endDate)
     {
+        //$sql = "SELECT * FROM studentOrderInfo WHERE confirmedTimestamp BETWEEN '$startDate' AND ' $endDate'";
         $sql = "SELECT * FROM studentOrderInfo";
-
         return self::getResults($sql);
     }
 

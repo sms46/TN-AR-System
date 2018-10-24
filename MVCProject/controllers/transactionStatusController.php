@@ -54,7 +54,7 @@ class transactionStatusController extends http\controller
         $log->studentEmail = $studentInfo[0]->studentEmail;
         $log->tpg_trans_id = $_POST['tpg_trans_id'];
         $log->amtPaid = $_POST['pmt_amt'];
-        $log->balanceAmt = $studentInfo[0]->dueAmt;
+        $log->balanceAmt = ($studentInfo[0]->dueAmt);
         $log->paymentStatus = 'Transaction complete using Touchnet';
         $log->description = 'Payment Success';
         $log->currentTimestamp = studentInfo::getTimestamp();
