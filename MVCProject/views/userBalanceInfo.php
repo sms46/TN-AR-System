@@ -103,13 +103,13 @@ include 'headers.php';
                                 <input type="hidden" name="AMT" value="<?php print $data[0]->dueAmt ?>">
                                 <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data[0]->orderNum ?>">
                                 <input type="hidden" name="VALIDATION_KEY" value="<?php print $hashedValidationKey ?>">
-                                <input type="hidden" name="EXT_TRANS_ID_LABEL" value="Your Invoice Number is:">
+                                <!--<input type="hidden" name="EXT_TRANS_ID_LABEL" value="Your Invoice Number is:">
                                 <input type="hidden" name="SUCCESS_LINK_TEXT" value="Click here to confirm your payment.">
                                 <input type="hidden" name="SUCCESS_LINK" size="10" value="">
                                 <input type="hidden" name="ERROR_LINK_TEXT" size="10" value="New Error Link Text">
                                 <input type="hidden" name="ERROR_LINK" size="10" value="">
                                 <input type="hidden" name="CANCEL_LINK_TEXT" size="10" value="New Cancel Link Text">
-                                <input type="hidden" name="CANCEL_LINK" size="10" value="">
+                                <input type="hidden" name="CANCEL_LINK" size="10" value="">-->
                             </form>
                     </ul>
                 </div>

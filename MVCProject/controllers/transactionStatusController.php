@@ -31,8 +31,23 @@ class transactionStatusController extends http\controller
         $orderNo = $_REQUEST['EXT_TRANS_ID'];
         $amtPaid = $_POST['pmt_amt'];
 
-        //Update Amt Paid and Balance Amt if Ext Id exists
-        studentOrderInfo::updateStudentAmt($orderNo, $amtPaid);
+        //get log data for particular order num
+        $userLogsBef = userLogs::getLogData($orderNo);
+        $countData = count($userLogsBef);
+
+        //UPDATE IF DUE AMT IS GREATER THAN 0
+        if($countData > 1)
+        {
+            $orderInfo =studentOrderInfo::getOrderId($orderNo);
+            $updatedAmtPaid = ($orderInfo->amtPaid) + $amtPaid;
+            $updatedBalDue = ($orderInfo->courseAmt) - $updatedAmtPaid;
+            $order = new studentOrderInfoModel();
+            $order->id = $orderInfo->id;
+            $order->amtPaid = $updatedAmtPaid;
+            $order->dueAmt = $updatedBalDue;
+            $order->confirmedTimestamp = studentInfo::getTimestamp();
+            $order->save();
+        }
 
         //Update the order status if successful payment done via touchnet
         studentOrderInfo::updateStudentOrder($orderNo);
@@ -45,26 +60,27 @@ class transactionStatusController extends http\controller
         //echo $_GET['tpg_trans_id '];
 
         //Retrieve Student Info for logs
-        $studentInfo = userLogs::retrieveStudentInfoForLogs($orderNo);
+        $studentInfoLogs = userLogs::retrieveStudentInfoForLogs($orderNo);
 
         //LOG USER INFO
         $log = new userLogsModel();
         $log->EXT_TRANS_ID = $_POST['EXT_TRANS_ID'];
-        $log->studentName = $studentInfo[0]->studentName;
-        $log->studentEmail = $studentInfo[0]->studentEmail;
+        $log->studentName = $studentInfoLogs[0]->studentName;
+        $log->studentEmail = $studentInfoLogs[0]->studentEmail;
         $log->tpg_trans_id = $_POST['tpg_trans_id'];
         $log->amtPaid = $_POST['pmt_amt'];
-        $log->balanceAmt = ($studentInfo[0]->dueAmt);
+        $log->balanceAmt = ($studentInfoLogs[0]->dueAmt);
         $log->paymentStatus = 'Transaction complete using Touchnet';
         $log->description = 'Payment Success';
         $log->currentTimestamp = studentInfo::getTimestamp();
         $log->save();
 
         //get log data for particular order num
-        $userLogs = userLogs::getLogData($orderNo);
-        $countData = count($userLogs);
+        $userLogsAf = userLogs::getLogData($orderNo);
+        $countDataAf = count($userLogsAf);
 
-        if($countData < 3 && $countData > 0){
+
+        if($countDataAf < 3 && $countDataAf > 0){
             // loop through all the courses taken by the student
             for ($i=0; $i< count($studentOrder); $i++)
             {

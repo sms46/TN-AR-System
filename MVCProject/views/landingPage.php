@@ -65,7 +65,16 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">College of Architecture and Design</h2>
+                        <!--<h2 class="card-title">College of Architecture and Design</h2>-->
+
+                        <form id="myform" method="post" action="index.php?page=homepage&action=redirectToCoad">
+                            <input type="hidden" name="name" value="value" />
+                            <input type="hidden" name="title" value="College of Architecture and Design">
+                            <input type="hidden" name="appName" value="COAD">
+                            <input type="hidden" name="courseOne" value="Intro to Architecture + Interiors">
+                            <input type="hidden" name="courseTwo" value="Design + Make">
+                            <a onclick="document.getElementById('myform').submit();">College of Architecture and Design</a>
+                        </form>
                     </div>
                     <div class="card-footer">
                         <form action="index.php?page=homepage&action=redirectToCoad" method="POST">

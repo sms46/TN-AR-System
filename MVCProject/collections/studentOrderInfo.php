@@ -6,35 +6,6 @@ class studentOrderInfo extends \database\collection
 
     // Static Functions
 
-    public static function updateStudentAmt($OrderNum, $amtPaid)
-    {
-        //Update the student order table with the balance amt after successful payment
-
-        $orderId = studentOrderInfo::getOrderId($OrderNum);
-        $studentAmt = studentOrderInfo::retrieveStudentAmt($OrderNum);
-        $studentLog = userLogs::retrieveStudentInfoForLogs($OrderNum);
-
-        //UPDATE IF DUE AMT IS GREATER THAN 0
-        if($studentLog[0]->tpg_trans_id != NULL)
-        {
-            $updatedAmtPaid = ($studentAmt[0]->amtPaid) + $amtPaid;
-            $updatedBalDue = ($studentAmt[0]->dueAmt) - ($amtPaid);
-            $order = new studentOrderInfoModel();
-            $order->id = $orderId->id;
-            $order->amtPaid = $updatedAmtPaid;
-            $order->dueAmt = $updatedBalDue;
-            $order->confirmedTimestamp = studentInfo::getTimestamp();
-            $order->save();
-        }
-    }
-
-    public static function retrieveStudentAmt($OrderNum)
-    {
-        $sql = "SELECT courseAmt, amtPaid, dueAmt FROM studentOrderInfo WHERE orderNum = '$OrderNum'";
-
-        return self::getResults($sql);
-    }
-
     public static function updateStudentOrder($num)
     {
         //Update the student order table after successful payment

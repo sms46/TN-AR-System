@@ -9,7 +9,10 @@
 <?php $orderNo = $_REQUEST['EXT_TRANS_ID'];
 
 $studentInfo = studentOrderInfo::getOrderId($orderNo);
-$dueAmt = $studentInfo->dueAmt;
+$courseAmt = $studentInfo->courseAmt;
+$amtPaid = $studentInfo->amtPaid;
+
+$dueAmt = $courseAmt - $amtPaid;
 //echo '<pre>'; var_dump($_GET);
 
 ?>
