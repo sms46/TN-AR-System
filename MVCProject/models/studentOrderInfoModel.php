@@ -8,8 +8,8 @@ final class studentOrderInfoModel extends \database\model
     public $studentName;
     public $studentEmail;
     public $parentName;
-    public $courseAmt;
     public $paymentType;
+    public $courseAmt;
     public $amtPaid;
     public $dueAmt;
     public $schoolName;

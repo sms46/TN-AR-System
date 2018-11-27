@@ -32,22 +32,11 @@ class transactionStatusController extends http\controller
         $amtPaid = $_POST['pmt_amt'];
 
         //get log data for particular order num
-        $userLogsBef = userLogs::getLogData($orderNo);
-        $countData = count($userLogsBef);
+        //$userLogsBef = userLogs::getLogData($orderNo);
+        //$countData = count($userLogsBef);
 
-        //UPDATE IF DUE AMT IS GREATER THAN 0
-        if($countData > 1)
-        {
-            $orderInfo =studentOrderInfo::getOrderId($orderNo);
-            $updatedAmtPaid = ($orderInfo->amtPaid) + $amtPaid;
-            $updatedBalDue = ($orderInfo->courseAmt) - $updatedAmtPaid;
-            $order = new studentOrderInfoModel();
-            $order->id = $orderInfo->id;
-            $order->amtPaid = $updatedAmtPaid;
-            $order->dueAmt = $updatedBalDue;
-            $order->confirmedTimestamp = studentInfo::getTimestamp();
-            $order->save();
-        }
+        //Update the Amt Paid and balance info of the transaction
+        studentOrderInfo::updateTransaction($orderNo, $amtPaid);
 
         //Update the order status if successful payment done via touchnet
         studentOrderInfo::updateStudentOrder($orderNo);

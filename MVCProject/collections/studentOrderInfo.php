@@ -96,4 +96,21 @@ class studentOrderInfo extends \database\collection
         return self::getResults($sql);
     }
 
+    public static function updateTransaction($OrderNum, $AmtPaid)
+    {
+        $orderInfo =studentOrderInfo::getOrderId($OrderNum);
+        $dueAmt = $orderInfo->dueAmt;
+        $float_value_of_var = floatval($dueAmt);
+
+        $updatedAmtPaid = ($orderInfo->amtPaid) + $AmtPaid;
+        $updatedBalDue = $float_value_of_var - $AmtPaid;
+
+        $order = new studentOrderInfoModel();
+        $order->id = $orderInfo->id;
+        $order->amtPaid = $updatedAmtPaid;
+        $order->dueAmt = $updatedBalDue;
+        $order->confirmedTimestamp = studentInfo::getTimestamp();
+        $order->save();
+    }
+
 }

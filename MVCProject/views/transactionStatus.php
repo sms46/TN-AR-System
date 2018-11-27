@@ -12,7 +12,7 @@ $studentInfo = studentOrderInfo::getOrderId($orderNo);
 $courseAmt = $studentInfo->courseAmt;
 $amtPaid = $studentInfo->amtPaid;
 
-$dueAmt = $courseAmt - $amtPaid;
+$dueAmt = $studentInfo->dueAmt;
 //echo '<pre>'; var_dump($_GET);
 
 ?>

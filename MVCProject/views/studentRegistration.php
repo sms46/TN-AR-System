@@ -43,115 +43,6 @@
                     </div>
                 <?php } ?>
 
-                <!--Step 1: Enter the Student Information-->
-                <div class="col-md-7 order-md-1 ">
-                     <h2><span class="badge badge-pill badge-primary">STEP 1:</span>&nbsp;<span class="badge badge-pill badge-primary">STUDENT INFORMATION</span></h2><br>
-
-                        <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
-                            <div class="row">
-                                <div class="col-md-5 mb-2">
-                                    <h5><span class="badge badge-light">Student's Full Name :</span></h5>
-                                    <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="<?php if (isset($_POST['studentName'])) echo $_POST['studentName']; ?>" required>
-                                    <div class="invalid-feedback">
-                                        Your Full Name is required.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5 mb-2">
-                                    <h5><span class="badge badge-light">Email :</span></h5>
-                                    <input type="email" class="form-control" name="email" placeholder="you@example.com" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" required>
-                                    <div class="invalid-feedback">
-                                        Please enter a valid email address.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <br>
-                            <div class="row">
-                                <div class="col-md-5 mb-2">
-                                    <h5><span class="badge badge-light">Parent/Guardian Name :</span></h5>
-                                    <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="<?php if (isset($_POST['parentName'])) echo $_POST['parentName']; ?>" required>
-                                    <div class="invalid-feedback">
-                                        Your Parent/Guardian Name is required.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5 mb-2">
-                                    <h5><span class="badge badge-light">High School :</span></h5>
-                                    <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" value="<?php if (isset($_POST['highSchool'])) echo $_POST['highSchool']; ?>" required>
-                                    <div class="invalid-feedback">
-                                        Your High School Name is required.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <br><br>
-                            <h2><span class="badge badge-pill badge-primary">ADDRESS</span></h2><br>
-
-                            <div class="row">
-                                <div class="col-md-5 mb-2">
-                                    <h5><span class="badge badge-light">Street Address :</span></h5>
-                                    <input type="text" class="form-control" name="streetAddress" placeholder="Enter Street Address" value="<?php if (isset($_POST['streetAddress'])) echo $_POST['streetAddress']; ?>" required>
-                                    <div class="invalid-feedback">
-                                        Street Address is required.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5 mb-2">
-                                    <h5><span class="badge badge-light">City :</span></h5>
-                                    <input type="text" class="form-control" name="city" placeholder="Enter City" value="<?php if (isset($_POST['city'])) echo $_POST['city']; ?>" required>
-                                    <div class="invalid-feedback">
-                                        City Name is required.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <br>
-                            <div class="row">
-                                <div class="col-md-5 mb-2">
-                                    <h5><span class="badge badge-light">State :</span></h5>
-                                    <input type="text" class="form-control" name="state" placeholder="Enter State" value="<?php if (isset($_POST['state'])) echo $_POST['state']; ?>" required>
-                                    <div class="invalid-feedback">
-                                        State Name is required.
-                                    </div>
-                                </div>
-
-                                <div class="col-md-5 mb-2">
-                                    <h5><span class="badge badge-light">Zip Code :</span></h5>
-                                    <input type="text" class="form-control" name="zipCode" placeholder="Enter Zip Code" value="<?php if (isset($_POST['zipCode'])) echo $_POST['zipCode']; ?>" required>
-                                    <div class="invalid-feedback">
-                                        Zip Code is required.
-                                    </div>
-                                </div>
-                            </div>
-
-                            <br>
-
-                            <div class="row">
-                                <div class="col-md-5 mb-2">
-                                    <?php if(isset($_POST["save_details"])) {?>
-                                        <button type="submit" name="save_details" class="btn btn-primary  btn-lg " disabled>Save Details</button>
-
-                                    <?php
-                            }else{
-                                ?>
-                                        <button type="submit" name="save_details" class="btn btn-primary  btn-lg ">Save Details</button>
-                                    <?php
-                                    }
-                                    ?>
-
-                                    <input type="hidden" name="totalAmtPaid" value= "<?php print $finalAmt ?>" >
-                                    <input type="hidden" name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
-                                    <input type="hidden" name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
-                                    <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
-                                    <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
-                                    <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
-                                </div>
-                            </div>
-
-                        </form>
-                 </div>
-
                 <!--Step 2: Order Cart-->
                 <div class="col-md-4 order-md-2 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
 
@@ -279,6 +170,114 @@
                     </ul>
                 </div>
 
+                <!--Step 1: Enter the Student Information-->
+                <div class="col-md-7 order-md-1 ">
+                    <h2><span class="badge badge-pill badge-primary">STEP 1:</span>&nbsp;<span class="badge badge-pill badge-primary">STUDENT INFORMATION</span></h2><br>
+
+                    <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Student's Full Name :</span></h5>
+                                <input type="text" class="form-control" name="studentName" placeholder="Enter Full Name" value="<?php if (isset($_POST['studentName'])) echo $_POST['studentName']; ?>" required>
+                                <div class="invalid-feedback">
+                                    Your Full Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Email :</span></h5>
+                                <input type="email" class="form-control" name="email" placeholder="you@example.com" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" required>
+                                <div class="invalid-feedback">
+                                    Please enter a valid email address.
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Parent/Guardian Name :</span></h5>
+                                <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="<?php if (isset($_POST['parentName'])) echo $_POST['parentName']; ?>" required>
+                                <div class="invalid-feedback">
+                                    Your Parent/Guardian Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">High School :</span></h5>
+                                <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" value="<?php if (isset($_POST['highSchool'])) echo $_POST['highSchool']; ?>" required>
+                                <div class="invalid-feedback">
+                                    Your High School Name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <br><br>
+                        <h2><span class="badge badge-pill badge-primary">ADDRESS</span></h2><br>
+
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Street Address :</span></h5>
+                                <input type="text" class="form-control" name="streetAddress" placeholder="Enter Street Address" value="<?php if (isset($_POST['streetAddress'])) echo $_POST['streetAddress']; ?>" required>
+                                <div class="invalid-feedback">
+                                    Street Address is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">City :</span></h5>
+                                <input type="text" class="form-control" name="city" placeholder="Enter City" value="<?php if (isset($_POST['city'])) echo $_POST['city']; ?>" required>
+                                <div class="invalid-feedback">
+                                    City Name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">State :</span></h5>
+                                <input type="text" class="form-control" name="state" placeholder="Enter State" value="<?php if (isset($_POST['state'])) echo $_POST['state']; ?>" required>
+                                <div class="invalid-feedback">
+                                    State Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Zip Code :</span></h5>
+                                <input type="text" class="form-control" name="zipCode" placeholder="Enter Zip Code" value="<?php if (isset($_POST['zipCode'])) echo $_POST['zipCode']; ?>" required>
+                                <div class="invalid-feedback">
+                                    Zip Code is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <?php if(isset($_POST["save_details"])) {?>
+                                    <button type="submit" name="save_details" class="btn btn-primary  btn-lg " disabled>Save Details</button>
+
+                                    <?php
+                                }else{
+                                    ?>
+                                    <button type="submit" name="save_details" class="btn btn-primary  btn-lg ">Save Details</button>
+                                    <?php
+                                }
+                                ?>
+
+                                <input type="hidden" name="totalAmtPaid" value= "<?php print $finalAmt ?>" >
+                                <input type="hidden" name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
+                                <input type="hidden" name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
+                                <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
+                                <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
+                                <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
             </div>
         </div>
     </div>
