@@ -100,10 +100,10 @@ class studentOrderInfo extends \database\collection
     {
         $orderInfo =studentOrderInfo::getOrderId($OrderNum);
         $dueAmt = $orderInfo->dueAmt;
-        $float_value_of_var = floatval($dueAmt);
+        //$float_value_of_var = floatval($dueAmt);
 
+        $updatedBalDue = $dueAmt - $AmtPaid;
         $updatedAmtPaid = ($orderInfo->amtPaid) + $AmtPaid;
-        $updatedBalDue = $float_value_of_var - $AmtPaid;
 
         $order = new studentOrderInfoModel();
         $order->id = $orderInfo->id;

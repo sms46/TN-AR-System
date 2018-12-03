@@ -56,8 +56,10 @@ abstract class model
         $comma = " ";
         $sql = 'UPDATE ' . $tableName . ' SET ';
         foreach ($array as $key => $value) {
-            if (!empty($value))
-            //if(isset($value))
+            //if (!empty($value))
+
+            //FIX: To handle 0 for any column in a database.
+            if(isset($value))
             {
                 $sql .= $comma . $key . ' = "' . $value . '"';
                 $comma = ", ";

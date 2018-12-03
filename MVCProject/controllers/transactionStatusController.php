@@ -30,11 +30,7 @@ class transactionStatusController extends http\controller
         //Retrieve Order No and Amt Paid from touchnet
         $orderNo = $_REQUEST['EXT_TRANS_ID'];
         $amtPaid = $_POST['pmt_amt'];
-
-        //get log data for particular order num
-        //$userLogsBef = userLogs::getLogData($orderNo);
-        //$countData = count($userLogsBef);
-
+        
         //Update the Amt Paid and balance info of the transaction
         studentOrderInfo::updateTransaction($orderNo, $amtPaid);
 
@@ -43,10 +39,6 @@ class transactionStatusController extends http\controller
 
         //Retrieve the student info after successful payment
         $studentOrder = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
-
-        //echo '<pre>'; var_dump($studentOrder);
-        //echo '<pre>'; var_dump($_REQUEST);
-        //echo $_GET['tpg_trans_id '];
 
         //Retrieve Student Info for logs
         $studentInfoLogs = userLogs::retrieveStudentInfoForLogs($orderNo);
