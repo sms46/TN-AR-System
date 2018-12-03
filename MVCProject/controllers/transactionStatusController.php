@@ -30,7 +30,7 @@ class transactionStatusController extends http\controller
         //Retrieve Order No and Amt Paid from touchnet
         $orderNo = $_REQUEST['EXT_TRANS_ID'];
         $amtPaid = $_POST['pmt_amt'];
-        
+
         //Update the Amt Paid and balance info of the transaction
         studentOrderInfo::updateTransaction($orderNo, $amtPaid);
 

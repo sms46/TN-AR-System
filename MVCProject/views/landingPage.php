@@ -73,16 +73,7 @@
                             <input type="hidden" name="appName" value="COAD">
                             <input type="hidden" name="courseOne" value="Intro to Architecture + Interiors">
                             <input type="hidden" name="courseTwo" value="Design + Make">
-                            <a onclick="document.getElementById('myform').submit();">College of Architecture and Design</a>
-                        </form>
-                    </div>
-                    <div class="card-footer">
-                        <form action="index.php?page=homepage&action=redirectToCoad" method="POST">
-                            <input type="submit" value="Register" name="redirectToCoad" class="btn btn-primary"</input>
-                            <input type="hidden" name="title" value="College of Architecture and Design">
-                            <input type="hidden" name="appName" value="COAD">
-                            <input type="hidden" name="courseOne" value="Intro to Architecture + Interiors">
-                            <input type="hidden" name="courseTwo" value="Design + Make">
+                            <a href="#" onclick="document.getElementById('myform').submit();"><h2>College of Architecture and Design</h2></a>
                         </form>
                     </div>
                 </div>
@@ -93,9 +84,6 @@
                     <div class="card-body">
                         <h2 class="card-title">Ying Wu School of Computing</h2>
                     </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Register</a>
-                    </div>
                 </div>
             </div>
 
@@ -103,9 +91,6 @@
                 <div class="card h-100">
                     <div class="card-body">
                         <h2 class="card-title">School of Management</h2>
-                    </div>
-                    <div class="card-footer">
-                        <a href="#" class="btn btn-primary">Register</a>
                     </div>
                 </div>
             </div>
