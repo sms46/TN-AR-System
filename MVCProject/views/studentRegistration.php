@@ -82,14 +82,14 @@
                                 $paymentTypeSelect = null;
                                 if($_POST["paymentTypeSelect"] == 'Deposit'){
 
-                                    //Get Value from the config file
+                                    //Get Deposit Amount from the config file
                                     $depositAmt = $configs->depositAmt;
                                     $paymentTypeAmt = $depositAmt * count($_SESSION['cart_item']);
                                     $paymentTypeSelect = 'Deposit: ($'.$depositAmt.' per course)';
                                 }
                                 elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
 
-                                    //Get Value from the config file
+                                    //Get Discount Percent from the config file
                                     $discount = $configs->discountPer;
                                     $paymentTypeAmt = $_REQUEST["totalAmt"] - ($discount * $_REQUEST["totalAmt"]);
                                     $paymentTypeSelect = 'Full Payment - (10% discount applied)';
@@ -107,7 +107,7 @@
                             </div>
                             <span class="text-muted">
                             <?php
-                                //Get Value from the config file
+                                //Get Application Fee from the config file
                                 $applicationAmt = $configs->appFee;
                                 echo '$' .$applicationAmt;
                             ?>
@@ -133,7 +133,9 @@
                             <?php
                             $balanceAmt = 0;
                             if($_POST["paymentTypeSelect"] == 'Deposit'){
-                                $balanceAmt = $_REQUEST["totalAmt"] - $finalAmt;
+
+                                //Didn't include App Fee in the transaction
+                                $balanceAmt = $_REQUEST["totalAmt"] - $paymentTypeAmt;
                                 echo '$' .$balanceAmt;
                             }
                             elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){

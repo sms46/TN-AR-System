@@ -98,13 +98,46 @@ class studentOrderInfo extends \database\collection
 
     public static function updateTransaction($OrderNum, $AmtPaid)
     {
+        //Get values from the config File
+        $configs = include('config.php');
+
+        //Get Application Fee from the config file
+        $applicationAmt = $configs->appFee;
+
+        //Subtracting Aff Fee from the Amount Paid:
+        $totalAmtPaid = $AmtPaid - $applicationAmt;
+
         $orderInfo =studentOrderInfo::getOrderId($OrderNum);
-        $dueAmt = $orderInfo->dueAmt;
-        //$float_value_of_var = floatval($dueAmt);
 
-        $updatedBalDue = $dueAmt - $AmtPaid;
-        $updatedAmtPaid = ($orderInfo->amtPaid) + $AmtPaid;
+        //Get the Payment type selected by the user
+        $payType = $orderInfo->paymentType;
 
+        if($payType == 'Deposit'){
+
+            //Get Order Confirmation Status
+            $status = $orderInfo->orderConfirmed;
+
+            if($status == 'N'){
+
+                //Update the Balance Due for deposit
+                $updatedBalDue = ($orderInfo->dueAmt) - $totalAmtPaid;
+            }else{
+
+                //Update the Balance Due for deposit
+                $updatedBalDue = ($orderInfo->dueAmt) - $AmtPaid;
+            }
+
+            //Update the Amount Due for deposit
+            $updatedAmtPaid = ($orderInfo->amtPaid) + $AmtPaid;
+
+        }else{
+
+            //Update the Amount Paid and Balance Due for deposit
+            $updatedBalDue = 0;
+            $updatedAmtPaid = $AmtPaid;
+        }
+
+        //Update the Student Order Info Table
         $order = new studentOrderInfoModel();
         $order->id = $orderInfo->id;
         $order->amtPaid = $updatedAmtPaid;
