@@ -4,6 +4,9 @@
 <?php
     //Included header tag
     include 'headers.php';
+
+    //Get values from the config File
+    $configs = include('config.php');
 ?>
 
 <div class="wrapper">
@@ -43,6 +46,7 @@
                     </div>
                 <?php } ?>
 
+                <!-- Wilfred-NOTE: Do Not change the positions of the below div-->
                 <!--Step 2: Order Cart-->
                 <div class="col-md-4 order-md-2 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
 
@@ -77,11 +81,17 @@
                                 $paymentTypeAmt = null;
                                 $paymentTypeSelect = null;
                                 if($_POST["paymentTypeSelect"] == 'Deposit'){
-                                    $paymentTypeAmt = 200 * count($_SESSION['cart_item']);
-                                    $paymentTypeSelect = 'Deposit: ($200 per course)';
+
+                                    //Get Value from the config file
+                                    $depositAmt = $configs->depositAmt;
+                                    $paymentTypeAmt = $depositAmt * count($_SESSION['cart_item']);
+                                    $paymentTypeSelect = 'Deposit: ($'.$depositAmt.' per course)';
                                 }
                                 elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
-                                    $paymentTypeAmt = $_REQUEST["totalAmt"] - (0.1 * $_REQUEST["totalAmt"]);
+
+                                    //Get Value from the config file
+                                    $discount = $configs->discountPer;
+                                    $paymentTypeAmt = $_REQUEST["totalAmt"] - ($discount * $_REQUEST["totalAmt"]);
                                     $paymentTypeSelect = 'Full Payment - (10% discount applied)';
                                 }
                                 ?>
@@ -97,8 +107,9 @@
                             </div>
                             <span class="text-muted">
                             <?php
-                            $applicationAmt = 40;
-                            echo '$' .$applicationAmt;
+                                //Get Value from the config file
+                                $applicationAmt = $configs->appFee;
+                                echo '$' .$applicationAmt;
                             ?>
                         </span>
                         </li>

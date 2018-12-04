@@ -17,11 +17,11 @@ class dbConn
 
         } catch (\Exception $exception) {
             //echo "Connection Error: " . $e->getMessage();?>
-        <html>
-            <?php include 'headers.php';?>
-            <h1 class="text-danger"> We are facing Technical Issues. Please Try again later</h1>
-        </html>
-        <?php
+            <html>
+                <?php include 'headers.php';?>
+                <h1 class="text-danger"> We are facing Technical Issues. Please Try again later</h1>
+            </html>
+            <?php
         }
     }
 

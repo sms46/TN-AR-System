@@ -102,7 +102,7 @@
                         ?>
 
                          </br>
-                         <a class="btn btn-outline-primary" href="index.php?page=homepage&action=redirectToCourse" role="button">Register to Courses</a>
+                         <a class="btn btn-outline-primary" href="index.php?page=homepage&action=redirectToCourse" role="button">Register for Courses</a>
 
                         <?php break;
 
