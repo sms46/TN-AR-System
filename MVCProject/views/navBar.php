@@ -1,3 +1,9 @@
+<?php
+        //Get values from the config File
+        $configs = include('config.php');
+        $titleName = $configs->title;
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -12,7 +18,7 @@
             <i class="fas fa-align-justify"></i>
         </button>
 
-        <a style="font-size: xx-large" href="index.php"><h1>&nbsp;&nbsp;&nbsp;<span class="badge badge-light"><?php print $_POST['title'];?></span></h1></a>
+        <a style="font-size: xx-large" href="index.php"><h1>&nbsp;&nbsp;&nbsp;<span class="badge badge-light"><?php print $titleName;?></span></h1></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
 
@@ -38,7 +44,7 @@
                         <form action="index.php?page=homepage&action=checkBalance" method="post">
                             <div class="modal-body">
 
-                                Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>
+                                <!--Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>-->
                                 Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required><br/>
                                 Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required><br/>
 

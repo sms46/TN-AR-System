@@ -16,24 +16,8 @@
 
     <div id="content">
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container-fluid">
-
-                <button type="button" id="sidebarCollapse" class="btn btn-default">
-                    <i class="fas fa-align-justify"></i>
-                </button>
-
-                <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <i class="fas fa-align-justify"></i>
-                </button>
-
-                <a style="font-size: xx-large" href="index.php"><h2>&nbsp;&nbsp;&nbsp;<span class="badge badge-light">College of Architecture and Design</span></h2></a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="nav navbar-nav ml-auto">
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <!-- Navigation bar-->
+        <?php include 'navBar.php';?>
 
         <div class="container">
             <h3 class="text-danger".text-danger align="center"><strong>COURSE CHECKOUT</strong></h3><hr></br>
@@ -48,7 +32,7 @@
 
                 <!-- Wilfred-NOTE: Do Not change the positions of the below div-->
                 <!--Step 2: Order Cart-->
-                <div class="col-md-4 order-md-2 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
+                <div class="col-md-5 order-md-3 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
 
                     <h4 align="center" class="text-primary">Order No: <?php echo $data ?></h4><hr>
                     <h4 class="list-group-item d-flex justify-content-between">

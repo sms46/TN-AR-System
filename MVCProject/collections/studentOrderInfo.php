@@ -84,7 +84,7 @@ class studentOrderInfo extends \database\collection
 
     public static function getStudentDetails($OrderNum)
     {
-        $sql = "SELECT studentName, studentEmail, orderNum FROM studentOrderInfo WHERE orderNum  = '$OrderNum' ";
+        $sql = "SELECT studentEmail, orderNum FROM studentOrderInfo WHERE orderNum  = '$OrderNum' ";
 
         return self::getResults($sql);
     }

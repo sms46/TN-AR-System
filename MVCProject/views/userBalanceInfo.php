@@ -38,7 +38,7 @@ include 'headers.php';
 
         <div class="container" style="width:1400px;">
             <div class="row">
-                <div class="col-md-4 order-md-2 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
+                <div class="col-md-5 order-md-3 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
 
                     <h4 align="center" class="text-primary">Balance Info</h4><hr>
                     <h4 class="list-group-item d-flex justify-content-between">
@@ -68,13 +68,15 @@ include 'headers.php';
                             </div>
                         </li>
 
-                        <li class="list-group-item d-flex justify-content-between">
+                        <!-- Commented the Amount Paid so that user is not confused,
+                             Amount paid is updated in the DB though-->
+                       <!-- <li class="list-group-item d-flex justify-content-between">
                             <span>Total Amount Paid(USD)</span>
                             <strong>
                                 <?php
-                                    print '$'. $data[0]->amtPaid?>
+                                    //print '$'. $data[0]->amtPaid?>
                             </strong>
-                        </li>
+                        </li>-->
 
                         <br><br>
                         <li class="list-group-item d-flex justify-content-between lh-condensed">

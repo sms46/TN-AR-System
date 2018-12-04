@@ -24,7 +24,9 @@
 
         <div class="container">
             <!--Homepage main body starts from here -->
-            <h2><span class="badge badge-primary">Pricing Information and Dates for 2018</span></h2>
+
+            <?php $currentYear = studentCourseInfo::getCurrentYear();?>
+            <h2><span class="badge badge-primary">Pricing Information and Dates for <?php print $currentYear;?></span></h2>
             <hr>
 
             <?php

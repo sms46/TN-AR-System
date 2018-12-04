@@ -31,11 +31,9 @@ class studentRegistrationController extends http\controller
             $user->zipCode = $_POST['zipCode'];
             $user->save();
 
+            //fix: Course Amt Update for Student Order Table
             $number = $_POST['courseAmt'];
             $english_format_number = number_format($number, 2, '.', '');
-
-            //$dueNumber = $_POST['totalAmt'];
-            //$dueTotal = number_format($dueNumber, 2, '.', '');
 
             //Insert into the student - order table
             $order = new studentOrderInfoModel();
