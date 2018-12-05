@@ -4,6 +4,13 @@
 <?php
     //Included header tag
     include 'headers.php';
+
+    //Fix: Reset the session on every instance when user tries to register the course
+    if(isset($_POST["btnRegister"])) {
+
+        session_start();
+        unset($_SESSION["cart_item"]);
+    }
 ?>
 
 <body class="bg-light">
@@ -26,7 +33,7 @@
                     <div class="container-fluid pull-left"  style="width:200px;">
                          <div class="navbar-header"> <a class="navbar-brand text-primary" href="#" style="color:black;">COURSES ADDED</a> </div>
                     </div>
-                 <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=courseRegistration&action=empty" class="btn btn-info btn-rounded mb-4">Empty Cart</a></div>
+                 <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=courseRegistration&action=empty" class="btn btn-outline-info btn-rounded mb-4">Empty Cart</a></div>
              </nav>
 
         <!-- Table that will show the list of courses added by the user-->

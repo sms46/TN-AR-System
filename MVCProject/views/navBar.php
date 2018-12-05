@@ -26,7 +26,9 @@
                     <a class="nav-link" href="#" data-toggle="modal" data-target="#modalCheckBalance"><h5><span class="badge badge-light">Check Balance Due</span></h5></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php?page=homepage&action=redirectToCourse"><h5><span class="badge badge-light">Register</span></h5></a>
+                    <form action="index.php?page=homepage&action=redirectToCourse" method="POST">
+                        <button class="btn btn-outline-primary" name="btnRegister" type="submit">Register</button>
+                    </form>
                 </li>
             </ul>
 

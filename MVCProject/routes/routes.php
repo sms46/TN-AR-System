@@ -25,7 +25,7 @@ class routes
 
         //Route to the Course Registration page
         $route = new route();
-        $route->http_method = 'GET';
+        $route->http_method = 'POST';
         $route->action = 'redirectToCourse';
         $route->page = 'homepage';
         $route->controller = 'homepageController';

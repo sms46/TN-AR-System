@@ -36,8 +36,8 @@
 
                     <h4 align="center" class="text-primary">Order No: <?php echo $data ?></h4><hr>
                     <h4 class="list-group-item d-flex justify-content-between">
-                        <span class="badge badge-pill badge-primary">STEP 2:</span>
-                        <span class="badge badge-pill badge-primary">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
+                        <span class="badge badge-pill badge-dark">STEP 2:</span>
+                        <span class="badge badge-pill badge-dark">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
                     </h4>
 
                     <ul class="list-group mb-3">
@@ -141,13 +141,13 @@
 
                             if(isset($_POST["save_details"])) {
                                 ?>
-                                <button class="btn btn-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
+                                <button class="btn btn-outline-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
                                     Pay <?php echo '$' . $finalAmt ?></button>
 
                                 <?php
                             }else{
                                 ?>
-                                <button class="btn btn-primary btn-lg btn-block " name="btnPayment" type="submit" disabled>Continue to
+                                <button class="btn btn-outline-primary btn-lg btn-block " name="btnPayment" type="submit" disabled>Continue to
                                     Pay <?php echo '$' . $finalAmt ?></button>
                                 <?php
                             }
@@ -169,7 +169,7 @@
 
                 <!--Step 1: Enter the Student Information-->
                 <div class="col-md-7 order-md-1 ">
-                    <h2><span class="badge badge-pill badge-primary">STEP 1:</span>&nbsp;<span class="badge badge-pill badge-primary">STUDENT INFORMATION</span></h2><br>
+                    <h2><span class="badge badge-pill badge-dark">STEP 1:</span>&nbsp;<span class="badge badge-pill badge-dark">STUDENT INFORMATION</span></h2><br>
 
                     <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
                         <div class="row">
@@ -210,7 +210,7 @@
                         </div>
 
                         <br><br>
-                        <h2><span class="badge badge-pill badge-primary">ADDRESS</span></h2><br>
+                        <h2><span class="badge badge-pill badge-dark">ADDRESS</span></h2><br>
 
                         <div class="row">
                             <div class="col-md-5 mb-2">
@@ -254,12 +254,12 @@
                         <div class="row">
                             <div class="col-md-5 mb-2">
                                 <?php if(isset($_POST["save_details"])) {?>
-                                    <button type="submit" name="save_details" class="btn btn-primary  btn-lg " disabled>Save Details</button>
+                                    <button type="submit" name="save_details" class="btn btn-outline-primary btn-lg " disabled>Save Details</button>
 
                                     <?php
                                 }else{
                                     ?>
-                                    <button type="submit" name="save_details" class="btn btn-primary  btn-lg ">Save Details</button>
+                                    <button type="submit" name="save_details" class="btn btn-outline-primary btn-lg ">Save Details</button>
                                     <?php
                                 }
                                 ?>
