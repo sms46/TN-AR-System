@@ -46,6 +46,7 @@ class studentOrderInfo extends \database\collection
                         FROM studentOrderInfo SO JOIN studentCourseInfo SC
                         ON SO.studentName = SC.studentName
                         AND SO.studentEmail = SC.studentEmail
+						AND SO.orderNum = SC.orderNum
             
                         WHERE SO.orderConfirmed = \'Y\'
                         AND SO.paymentStatus = 1

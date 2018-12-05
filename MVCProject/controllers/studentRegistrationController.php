@@ -58,7 +58,10 @@ class studentRegistrationController extends http\controller
             //Insert into the student course info table
             foreach($_SESSION['cart_item'] as $key=>$item)
             {
+
+                //Insert into the course Info table
                 $studentInfo = new studentCourseInfoModel();
+                $studentInfo->orderNum = $_POST['orderNum'];
                 $studentInfo->studentName = $_POST['studentName'];
                 $studentInfo->studentEmail = $_POST['email'];
                 $studentInfo->parentName = $_POST['parentName'];
@@ -90,13 +93,5 @@ class studentRegistrationController extends http\controller
             $orderNum = $_POST['orderNum'];
             self::getTemplate('studentRegistration',$orderNum, $orderNum);
        }
-    }
-
-    //TO-DO: REMOVE METHOD
-    public static function delete() {
-
-        $record = accounts::findOne($_REQUEST['id']);
-        $record->delete();
-        header("Location: index.php?page=accounts&action=all");
     }
 }

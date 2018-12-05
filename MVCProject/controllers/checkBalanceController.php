@@ -20,6 +20,7 @@ class checkBalanceController extends http\controller
 
                 if(($email == $queryStdEmail)&&($orderNo == $queryStdOrdNum)){
 
+                    //FIX: Added a condition to handle multiple records having same email address
                     $studentDetailsArray = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
                     self::getTemplate('userBalanceInfo',$studentDetailsArray,$studentDetailsArray);
 
