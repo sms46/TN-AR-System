@@ -14,12 +14,22 @@
 
     <ul class="list-unstyled components">
         <li class="active">
-            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">Home</a>
-            <ul class="collapse list-unstyled" id="homeSubmenu">
+
+            <form id="myform" method="post" action="index.php?page=homepage&action=redirectToCoad">
+                <input type="hidden" name="name" value="value" />
+                <input type="hidden" name="title" value="College of Architecture and Design">
+                <input type="hidden" name="appName" value="COAD">
+                <input type="hidden" name="courseOne" value="Intro to Architecture + Interiors">
+                <input type="hidden" name="courseTwo" value="Design + Make">
+                <a href="#homeSubmenu" onclick="document.getElementById('myform').submit();" data-toggle="collapse" aria-expanded="false">Home</a>
+            </form>
+
+            <!--<ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>
                     <a href="#">Home 1</a>
                 </li>
-            </ul>
+            </ul>-->
+
         </li>
         <li>
             <a href="#" data-toggle="modal" data-target="#aboutModal">About</a>
@@ -28,7 +38,7 @@
             <a href="#" data-toggle="modal" data-target="#cancelModal">Cancellation Policy</a>
         </li>
         <li>
-            <a href="#">Contact</a>
+            <a href="#">Contact Us</a>
         </li>
     </ul>
 

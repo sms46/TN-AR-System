@@ -26,7 +26,7 @@
             <!--Homepage main body starts from here -->
 
             <?php $currentYear = studentCourseInfo::getCurrentYear();?>
-            <h2><span class="badge badge-danger">Pricing Information and Dates for <?php print $currentYear;?></span></h2>
+            <h2><span class="badge badge-dark">Pricing Information and Dates for <?php print $currentYear;?></span></h2>
             <hr>
 
             <?php

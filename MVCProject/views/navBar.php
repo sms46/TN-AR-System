@@ -23,8 +23,10 @@
             <ul class="nav navbar-nav ml-auto">
 
                 <li class="nav-item active">
-                    <a class="nav-link" href="#" data-toggle="modal" data-target="#modalCheckBalance"><h5><span class="badge badge-light">Check Balance Due</span></h5></a>
+                    <a class="btn btn-outline-primary" href="#" data-toggle="modal" data-target="#modalCheckBalance">Check Balance Due</a>
+                    <br>
                 </li>
+
                 <li class="nav-item active">
                     <form action="index.php?page=homepage&action=redirectToCourse" method="POST">
                         <button class="btn btn-outline-primary" name="btnRegister" type="submit">Register</button>
