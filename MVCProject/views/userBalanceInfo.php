@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
 
+
 <?php
 
+print_r($data);
 //Included header tag
 include 'headers.php';
 

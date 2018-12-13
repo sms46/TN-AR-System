@@ -105,7 +105,7 @@
                                 <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Partial Payment</h6>
-                            <h1 class="display-4" align="center">87</h1>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php print count($data)?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                                 <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Full Payment</h6>
-                            <h1 class="display-4" align="center">125</h1>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php print count($data)?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -132,6 +132,8 @@
                     </div>
                 </div>
             </div>
+
+            <?php print_r($data->dueAmt);?>
             <!--/row-->
 
             <hr>

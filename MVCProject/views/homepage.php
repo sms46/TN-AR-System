@@ -30,10 +30,11 @@
             <hr>
 
             <?php
-                $value = $_POST['appName'];
+                //$value = $_REQUEST['appName'];
+            $value = 'COAD';
                 switch ($value) {
                     case "COAD":?>
-                        <h5 class="text-danger" .text-dark> <?php print $_POST['courseOne']; ?> </h5>
+                        <h5 class="text-danger" .text-dark> <?php //print $_REQUEST['courseOne']; ?> </h5>
                         <?php
                             $arcRecords = courses::findArchitectureCourses();
 
@@ -42,7 +43,7 @@
                         ?>
 
                         <hr>
-                        <h5 class="text-danger" .text-dark> <?php print $_POST['courseTwo']; ?> </h5>
+                        <h5 class="text-danger" .text-dark> <?php //print $_REQUEST['courseTwo']; ?> </h5>
 
                         <?php
                             $desRecords = courses::findDesignCourses();

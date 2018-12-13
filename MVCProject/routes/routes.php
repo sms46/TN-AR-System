@@ -16,7 +16,7 @@ class routes
 
         //routing the default homepage
         $route = new route();
-        $route->http_method = 'POST';
+        $route->http_method = 'GET';
         $route->action = 'redirectToCoad';
         $route->page = 'homepage';
         $route->controller = 'homepageController';

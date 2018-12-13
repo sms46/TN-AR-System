@@ -147,4 +147,11 @@ class studentOrderInfo extends \database\collection
         $order->save();
     }
 
+    public static function getPartialPayment()
+    {
+        $sql = "SELECT * FROM studentOrderInfo WHERE dueAmt > 0 ";
+
+        return self::getResults($sql);
+    }
+
 }

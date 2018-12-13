@@ -29,7 +29,7 @@
                         <a class="nav-link" href="#">Contact Us</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalSignIn"><h5><span class="badge badge-dark">Sign In</span></h5></a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogIn"><h5><span class="badge badge-dark">Sign In</span></h5></a>
                     </li>
                 </ul>
             </div>
@@ -67,14 +67,13 @@
                     <div class="card-body">
                         <!--<h2 class="card-title">College of Architecture and Design</h2>-->
 
-                        <form id="myform" method="post" action="index.php?page=homepage&action=redirectToCoad">
-                            <input type="hidden" name="name" value="value" />
-                            <input type="hidden" name="title" value="College of Architecture and Design">
+                        <!--<form id="myform" method="GET" action="index.php?page=homepage&action=redirectToCoad">
+                            <!--<input type="hidden" name="title" value="College of Architecture and Design">
                             <input type="hidden" name="appName" value="COAD">
                             <input type="hidden" name="courseOne" value="Intro to Architecture + Interiors">
-                            <input type="hidden" name="courseTwo" value="Design + Make">
-                            <a href="#" onclick="document.getElementById('myform').submit();"><h2>College of Architecture and Design</h2></a>
-                        </form>
+                            <input type="hidden" name="courseTwo" value="Design + Make">-->
+                            <a href="index.php?page=homepage&action=redirectToCoad" onclick="document.getElementById('myform').submit();"><h2>College of Architecture and Design</h2></a>
+                        <!--</form>-->
                     </div>
                 </div>
             </div>
@@ -105,7 +104,7 @@
     <?php include 'footer.php';?>
 
     <!-- Sign In Modal -->
-    <div class="modal" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!--<div class="modal" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -134,7 +133,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 
     <!-- Log In Modal -->
     <div class="modal fade" id="modalLogIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

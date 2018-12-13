@@ -71,4 +71,10 @@ class adminController extends http\controller
         $resultSet = studentInfo::getStudentInfo();
         self::getTemplate('adminHomepage', NULL, $resultSet);
     }
+
+    public static function viewPartialPayment()
+    {
+        $result = studentOrderInfo::getPartialPayment();
+        self::getTemplate('adminHomepage', NULL, $result);
+    }
 }
