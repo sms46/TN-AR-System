@@ -4,7 +4,7 @@
 
 <?php
 
-print_r($data);
+//print_r($data);
 //Included header tag
 include 'headers.php';
 

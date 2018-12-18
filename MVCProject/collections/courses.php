@@ -13,10 +13,27 @@ class courses extends database\collection
 
     static public function findDesignCourses()
     {
-        $sql = "SELECT * FROM courses WHERE Department = 'Design'";
+        $sql = "SELECT * FROM courses WHERE Department = 'Design + Make'";
         return self::getResults($sql,NULL);
     }
 
+    static public function findInteriorCourses()
+    {
+        $sql = "SELECT * FROM courses WHERE Department = 'Interior Design'";
+        return self::getResults($sql, NULL);
+    }
+
+    static public function findGraphicDesignCourses()
+    {
+        $sql = "SELECT * FROM courses WHERE Department = 'Graphic Design'";
+        return self::getResults($sql,NULL);
+    }
+
+    static public function findDigitalDesignCourses()
+    {
+        $sql = "SELECT * FROM courses WHERE Department = 'Digital Design'";
+        return self::getResults($sql, NULL);
+    }
 
     static public function findCourses()
     {

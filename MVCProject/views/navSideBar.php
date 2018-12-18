@@ -15,14 +15,7 @@
     <ul class="list-unstyled components">
         <li class="active">
 
-            <form id="myform" method="post" action="index.php?page=homepage&action=redirectToCoad">
-                <input type="hidden" name="name" value="value" />
-                <input type="hidden" name="title" value="College of Architecture and Design">
-                <input type="hidden" name="appName" value="COAD">
-                <input type="hidden" name="courseOne" value="Intro to Architecture + Interiors">
-                <input type="hidden" name="courseTwo" value="Design + Make">
-                <a href="#homeSubmenu" onclick="document.getElementById('myform').submit();" data-toggle="collapse" aria-expanded="false">Home</a>
-            </form>
+                <a href="index.php?page=homepage&action=redirectToCoad"  aria-expanded="false">Home</a>
 
             <!--<ul class="collapse list-unstyled" id="homeSubmenu">
                 <li>

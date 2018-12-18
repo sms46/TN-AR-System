@@ -37,6 +37,9 @@
 
                         $arcRecords = courses::findArchitectureCourses();
                         $desRecords = courses::findDesignCourses();
+                        $interiorRecords = courses::findInteriorCourses();
+                        $graphDesRecords = courses::findGraphicDesignCourses();
+                        $digitDesRecords = courses::findDigitalDesignCourses();
 
                         ?>
 
@@ -53,6 +56,30 @@
                         <?php
                             //Print HTML Table
                             print utility\htmlTable::generateTableForCourses($desRecords);
+                        ?>
+
+                        <hr>
+                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($interiorRecords);?> </h4>
+
+                        <?php
+                            //Print HTML Table
+                            print utility\htmlTable::generateTableForCourses($interiorRecords);
+                        ?>
+
+                        <hr>
+                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($graphDesRecords);?> </h4>
+
+                        <?php
+                        //Print HTML Table
+                        print utility\htmlTable::generateTableForCourses($graphDesRecords);
+                        ?>
+
+                        <hr>
+                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($digitDesRecords);?> </h4>
+
+                        <?php
+                        //Print HTML Table
+                        print utility\htmlTable::generateTableForCourses($digitDesRecords);
                         ?>
 
                          </br>
