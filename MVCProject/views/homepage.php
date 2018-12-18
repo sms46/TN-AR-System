@@ -33,21 +33,24 @@
                 //$value = $_REQUEST['appName'];
             $value = 'COAD';
                 switch ($value) {
-                    case "COAD":?>
-                        <h5 class="text-danger" .text-dark> <?php //print $_REQUEST['courseOne']; ?> </h5>
-                        <?php
-                            $arcRecords = courses::findArchitectureCourses();
+                    case "COAD":
 
+                        $arcRecords = courses::findArchitectureCourses();
+                        $desRecords = courses::findDesignCourses();
+
+                        ?>
+
+
+                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($arcRecords);?> </h4>
+                        <?php
                             //Print HTML Table
                             print utility\htmlTable::generateTableForCourses($arcRecords);
                         ?>
 
                         <hr>
-                        <h5 class="text-danger" .text-dark> <?php //print $_REQUEST['courseTwo']; ?> </h5>
+                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($desRecords);?> </h4>
 
                         <?php
-                            $desRecords = courses::findDesignCourses();
-
                             //Print HTML Table
                             print utility\htmlTable::generateTableForCourses($desRecords);
                         ?>
