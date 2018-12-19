@@ -23,7 +23,7 @@ class htmlTable
             foreach ($array as $row) {
                 echo
                     "<tr>
-                          <td>" . $row['id'] . "</td>
+                          <td>" . $row['Session'] . "</td>
                           <td>" . $row['Description'] . "</td>
                           <td>" . $row['StartDate'] . "</td>
                           <td>" . $row['EndDate'] . "</td>

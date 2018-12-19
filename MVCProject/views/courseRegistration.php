@@ -90,10 +90,30 @@
                 <div class="pull-right" style="margin-top:7px;margin-right:7px;"><span class="btn btn-info">Total - <?php print count($data)?></span></div>
             </nav>
 
+            <!--<select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" onchange="myFunction()" id="category" name="category">
+                <option value="">Select Category</option>
+                <option>Architecture</option>
+                <option>Design + Make</option>
+            </select>
+
+            <p id="showCategory"></p>
+
+            <script>
+                function myFunction() {
+                    var x = document.getElementById("category").value;
+                    document.getElementById("showCategory").innerHTML = x;
+                }
+            </script>
+
+
+            <br><br>-->
+
+
         <!--Display list of courses in a card-->
             <div class="row">
                     <?php
                     $product_array = $data;
+                    // print_r($product_array);
                     foreach($product_array as $key=>$value):?>
                         <div class="col-md-4">
                             <div class="card shadow-lg p-3 mb-1 bg-white rounded">

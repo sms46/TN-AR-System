@@ -70,5 +70,11 @@ class courses extends database\collection
         $sql = "SELECT SeatAvailable FROM courses WHERE Description = '$course' AND StartDate = '$startDate' AND appName = '$appName'";
         return self::getResults($sql);
     }
+
+    static public function getCourses($course)
+    {
+        $sql = "SELECT * FROM courses WHERE Department = '$course'";
+        return self::getResults($sql);
+    }
 }
 ?>
