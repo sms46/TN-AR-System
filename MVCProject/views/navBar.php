@@ -18,7 +18,7 @@
             <i class="fas fa-align-justify"></i>
         </button>
 
-        <a style="font-size: xx-large" href="index.php"><h1>&nbsp;&nbsp;&nbsp;<span class="badge badge-light"><?php print $titleName;?></span></h1></a>
+        <a style="font-size: xx-large" href="index.php?page=homepage&action=redirectToCoad"><h1>&nbsp;&nbsp;&nbsp;<span class="badge badge-light"><?php print $titleName;?></span></h1></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
 
