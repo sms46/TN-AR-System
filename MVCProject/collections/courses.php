@@ -71,9 +71,9 @@ class courses extends database\collection
         return self::getResults($sql);
     }
 
-    static public function getMaxSession()
+    static public function getCourses($course)
     {
-        $sql = "SELECT MAX(Session) FROM courses";
+        $sql = "SELECT * FROM courses WHERE Department = '$course'";
         return self::getResults($sql);
     }
 }
