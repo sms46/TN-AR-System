@@ -18,7 +18,7 @@ class courseRegistrationController extends http\controller
                 //Display the price based on selection by the user
                 if($_POST["priceType"] == 'Residential Amount')
                 {
-                    $itemArrayResPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
+                    $itemArrayResPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Description' => $productByCode["Description"],
                         'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["ResidentialPrice"],
                         'Department' => $productByCode["Department"], 'appName' => $productByCode["appName"],'SeatAvailable' => $productByCode["SeatAvailable"]));
 
@@ -34,7 +34,7 @@ class courseRegistrationController extends http\controller
                     }
                 } else {
 
-                    $itemArrayComPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
+                    $itemArrayComPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Description' => $productByCode["Description"],
                         'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["CommuterPrice"],
                         'Department' => $productByCode["Department"], 'appName' => $productByCode["appName"],'SeatAvailable' => $productByCode["SeatAvailable"]));
 

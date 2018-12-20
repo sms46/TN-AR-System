@@ -70,11 +70,14 @@ class courses extends database\collection
         $sql = "SELECT SeatAvailable FROM courses WHERE Description = '$course' AND StartDate = '$startDate' AND appName = '$appName'";
         return self::getResults($sql);
     }
+<<<<<<< HEAD
 
     static public function getMaxSession()
     {
         $sql = "SELECT MAX(Session) FROM courses";
         return self::getResults($sql);
     }
+=======
+>>>>>>> parent of 8fc4375... Changed id to session
 }
 ?>

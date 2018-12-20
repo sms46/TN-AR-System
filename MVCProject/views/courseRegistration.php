@@ -90,11 +90,15 @@
                 <div class="pull-right" style="margin-top:7px;margin-right:7px;"><span class="btn btn-info">Total - <?php print count($data)?></span></div>
             </nav>
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 8fc4375... Changed id to session
         <!--Display list of courses in a card-->
             <div class="row">
                     <?php
                     $product_array = $data;
+<<<<<<< HEAD
 
                     for($sessionId = 1; $sessionId <= courses::getMaxSession(); $sessionId++){
                          foreach($product_array as $key=>$value):
@@ -121,6 +125,30 @@
                                         </form>
                                     </figure>
                                 </div>
+=======
+                    foreach($product_array as $key=>$value):?>
+                        <div class="col-md-4">
+                            <div class="card shadow-lg p-3 mb-1 bg-white rounded">
+                                <figure class="card-body">
+                                    <form method="post" action="index.php?page=courseRegistration&action=add&code=<?php echo $product_array[$key]["id"]; ?>">
+                                        <p style="text-align:center; color: black" class="card-title"><strong><?php echo $product_array[$key]["Description"];?></strong></p>
+                                        <p style="text-align:center;" class="card-subtitle mb-2 text-muted"><b><?php echo $product_array[$key]["StartDate"];?> - <?php echo $product_array[$key]["EndDate"];?> </b></p>
+                                        <p style="text-align:center;" class="card-text">
+                                            <select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" id="priceType" name="priceType" required>
+                                                <option value="">Select Amount Type</option>
+                                                <option>Residential Amount</option>
+                                                <option>Commuter Amount</option>
+                                            </select>
+                                        </p>
+                                        <p style="text-align:center; color:red" class="card-text"><strong> Seats Available: <?php echo $product_array[$key]["SeatAvailable"];?></strong></p>
+                                        <p style="text-align:center;color:#04B745;" class="card-text">
+                                            <button type="submit" name="add_to_cart" class="btn btn-warning btn-rounded" id="myBtn">Add Course</button>
+                                            <input type="hidden" name="description" value="<?php echo $product_array[$key]["Description"];?>">
+                                            <input type="hidden" name="startDate" value="<?php echo $product_array[$key]["StartDate"];?>">
+                                        </p>
+                                    </form>
+                                </figure>
+>>>>>>> parent of 8fc4375... Changed id to session
                             </div>
                         <?php }?>
                         <?php endforeach;}?>
