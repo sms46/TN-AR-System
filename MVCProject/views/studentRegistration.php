@@ -20,7 +20,7 @@
         <?php include 'navBar.php';?>
 
         <div class="container">
-            <h3 class="text-danger".text-danger align="center"><strong>COURSE CHECKOUT</strong></h3><hr></br>
+            <h3 class="text-danger" align="center"><strong>COURSE CHECKOUT</strong></h3><hr/><br/>
 
             <div class="row">
 
@@ -205,6 +205,18 @@
                                 <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" value="<?php if (isset($_POST['highSchool'])) echo $_POST['highSchool']; ?>" required>
                                 <div class="invalid-feedback">
                                     Your High School Name is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-5 mb-2"></div>
+
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Graduation Year :</span></h5>
+                                <input type="text" class="form-control" name="gradYear" placeholder="Graduation Year" value="<?php if (isset($_POST['gradYear'])) echo $_POST['gradYear']; ?>" required>
+                                <div class="invalid-feedback">
+                                    Your Graduation Year is required.
                                 </div>
                             </div>
                         </div>
