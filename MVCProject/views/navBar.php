@@ -10,15 +10,16 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
 
-        <button type="button" id="sidebarCollapse" class="btn btn-default">
+        <!-- Suppressed the sideNav-->
+        <!--<button type="button" id="sidebarCollapse" class="btn btn-default">
             <i class="fas fa-align-justify"></i>
-        </button>
+        </button>-->
 
         <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-align-justify"></i>
         </button>
 
-        <a style="font-size: xx-large" href="index.php?page=homepage&action=redirectToCoad"><h1>&nbsp;&nbsp;&nbsp;<span class="badge badge-light"><?php print $titleName;?></span></h1></a>
+        <a style="font-size: xx-large" href="index.php?page=homepage&action=redirectToCoad"><h1>&nbsp;&nbsp;&nbsp;<?php print $titleName;?></h1></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
 
@@ -49,13 +50,13 @@
                             <div class="modal-body">
 
                                 <!--Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>-->
-                                Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required><br/>
-                                Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required><br/>
+                                Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required/><br/>
+                                Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required/><br/>
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <input type="submit" value="Check" name="checkBalance" class="btn btn-success"</input>
+                                <input type="submit" value="Check" name="checkBalance" class="btn btn-success"/>
                             </div>
                         </form>
                     </div>

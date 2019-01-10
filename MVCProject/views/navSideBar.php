@@ -48,7 +48,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p class="text-primary".text-primary>
+                <p class="text-primary">
                     The College of Architecture and Design offers residential summer programs in a state-of-the-art university setting for exceptional high school students interested in architecture, interior design, and industrial design.
                     The programs offer a week of design exploration on a variety of scales organized around an introduction to each discipline.
                     The College has offered summer programs for over a decade and draws future designers from across the United States and Europe.
@@ -73,7 +73,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p class="text-primary".text-primary>
+                <p class="text-primary">
                     The College of Architecture and Design offers residential summer programs in a state-of-the-art university setting for exceptional high school students interested in architecture, interior design, and industrial design.
                     The programs offer a week of design exploration on a variety of scales organized around an introduction to each discipline.
                     The College has offered summer programs for over a decade and draws future designers from across the United States and Europe.
@@ -86,9 +86,4 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 </html>

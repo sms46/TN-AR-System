@@ -26,7 +26,8 @@
             <!--Homepage main body starts from here -->
 
             <?php $currentYear = studentCourseInfo::getCurrentYear();?>
-            <h2><span class="badge badge-dark">Pricing Information and Dates for <?php print $currentYear;?></span></h2>
+            <h2>Pricing Information and Dates for <?php print $currentYear;?></h2>
+            <!--<h2><span class="badge badge-dark">Pricing Information and Dates for <?php print $currentYear;?></span></h2>-->
             <hr>
 
             <?php
@@ -44,14 +45,14 @@
                         ?>
 
 
-                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($arcRecords);?> </h4>
+                        <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($arcRecords);?> </h4>
                         <?php
                             //Print HTML Table
                             print utility\htmlTable::generateTableForCourses($arcRecords);
                         ?>
 
                         <hr>
-                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($desRecords);?> </h4>
+                        <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($desRecords);?> </h4>
 
                         <?php
                             //Print HTML Table
@@ -59,7 +60,7 @@
                         ?>
 
                         <hr>
-                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($interiorRecords);?> </h4>
+                        <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($interiorRecords);?> </h4>
 
                         <?php
                             //Print HTML Table
@@ -67,7 +68,7 @@
                         ?>
 
                         <hr>
-                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($graphDesRecords);?> </h4>
+                        <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($graphDesRecords);?> </h4>
 
                         <?php
                         //Print HTML Table
@@ -75,7 +76,7 @@
                         ?>
 
                         <hr>
-                        <h4 class="text-danger" .text-dark> <?php print utility\getTitle::getTitleForCourses($digitDesRecords);?> </h4>
+                        <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($digitDesRecords);?> </h4>
 
                         <?php
                         //Print HTML Table

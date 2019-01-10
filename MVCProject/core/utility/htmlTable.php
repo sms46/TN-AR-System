@@ -7,6 +7,7 @@ class htmlTable
     public static function generateTableForCourses($array)
     {
         if($array!= null) {
+            echo "<div class=\"table-responsive\">";
             echo "<table class=\"table table-striped\">";
 
             echo "<thead class=\"thead-dark shadow-lg p-3 mb-5 bg-white rounded \">";
@@ -33,6 +34,7 @@ class htmlTable
              }
 
             echo "</table>";
+            echo "</div>";
         }
         else{
                 $text = 'No Records present.Please Insert the records';
