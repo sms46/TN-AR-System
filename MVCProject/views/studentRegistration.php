@@ -152,10 +152,10 @@
                                 <?php
                             }
                             ?>
-                            <input type="hidden" name="UPAY_SITE_ID" value="8">
-                            <input type="hidden" name="AMT" value="<?php print $finalAmt ?>">
-                            <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data ?>">
-                            <input type="hidden" name="VALIDATION_KEY" value="<?php print $hashedValidationKey ?>">
+                            <input type="hidden" name="UPAY_SITE_ID" value="8"/>
+                            <input type="hidden" name="AMT" value="<?php print $finalAmt ?>"/>
+                            <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data ?>"/>
+                            <input type="hidden" name="VALIDATION_KEY" value="<?php print $hashedValidationKey ?>"/>
                             <!--<input type="hidden" name="EXT_TRANS_ID_LABEL" value="Your Invoice Number is:">
                             <input type="hidden" name="SUCCESS_LINK_TEXT" value="Click here to confirm your payment.">
                             <input type="hidden" name="SUCCESS_LINK" size="10" value="">
@@ -175,7 +175,7 @@
                         <div class="row">
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">Student's Full Name :</span></h5>
-                                <input type="text" class="form-control" name="studentName" placeholder="Enter Full Name" value="<?php if (isset($_POST['studentName'])) echo $_POST['studentName']; ?>" required>
+                                <input type="text" class="form-control" name="studentName" placeholder="Enter Full Name" value="<?php if (isset($_POST['studentName'])) echo $_POST['studentName']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Your Full Name is required.
                                 </div>
@@ -183,51 +183,66 @@
 
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">Email :</span></h5>
-                                <input type="email" class="form-control" name="email" placeholder="you@example.com" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" required>
+                                <input type="email" class="form-control" name="email" placeholder="you@example.com" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Please enter a valid email address.
                                 </div>
                             </div>
                         </div>
 
-                        <br>
                         <div class="row">
                             <div class="col-md-5 mb-2">
-                                <h5><span class="badge badge-light">Parent/Guardian Name :</span></h5>
-                                <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="<?php if (isset($_POST['parentName'])) echo $_POST['parentName']; ?>" required>
-                                <div class="invalid-feedback">
-                                    Your Parent/Guardian Name is required.
-                                </div>
-                            </div>
-
-                            <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">High School :</span></h5>
-                                <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" value="<?php if (isset($_POST['highSchool'])) echo $_POST['highSchool']; ?>" required>
+                                <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" value="<?php if (isset($_POST['highSchool'])) echo $_POST['highSchool']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Your High School Name is required.
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-5 mb-2"></div>
 
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">Graduation Year :</span></h5>
-                                <input type="text" class="form-control" name="gradYear" placeholder="Graduation Year" value="<?php if (isset($_POST['gradYear'])) echo $_POST['gradYear']; ?>" required>
+                                <input type="text" class="form-control" name="gradYear" placeholder="Graduation Year" value="<?php if (isset($_POST['gradYear'])) echo $_POST['gradYear']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Your Graduation Year is required.
                                 </div>
                             </div>
                         </div>
 
-                        <br><br>
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Parent/Guardian Name :</span></h5>
+                                <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="<?php if (isset($_POST['parentName'])) echo $_POST['parentName']; ?>" required/>
+                                <div class="invalid-feedback">
+                                    Your Parent/Guardian Name is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Parent/Guardian Email :</span></h5>
+                                <input type="email" class="form-control" name="parentEmail" placeholder="Enter Parent/Guardian Email" value="<?php if (isset($_POST['parentEmail'])) echo $_POST['parentEmail']; ?>" required/>
+                                <div class="invalid-feedback">
+                                    Your Parent/Guardian Email is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Parent/Guardian Number :</span></h5>
+                                <input type="text" class="form-control" name="parentNumber" placeholder="Enter Parent/Guardian Number" value="<?php if (isset($_POST['parentNumber'])) echo $_POST['parentNumber']; ?>" required/>
+                                <div class="invalid-feedback">
+                                    Your Parent/Guardian Number is required.
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/><br/>
                         <h2><span class="badge badge-pill badge-dark">ADDRESS</span></h2><br>
 
                         <div class="row">
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">Street Address :</span></h5>
-                                <input type="text" class="form-control" name="streetAddress" placeholder="Enter Street Address" value="<?php if (isset($_POST['streetAddress'])) echo $_POST['streetAddress']; ?>" required>
+                                <input type="text" class="form-control" name="streetAddress" placeholder="Enter Street Address" value="<?php if (isset($_POST['streetAddress'])) echo $_POST['streetAddress']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Street Address is required.
                                 </div>
@@ -235,7 +250,7 @@
 
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">City :</span></h5>
-                                <input type="text" class="form-control" name="city" placeholder="Enter City" value="<?php if (isset($_POST['city'])) echo $_POST['city']; ?>" required>
+                                <input type="text" class="form-control" name="city" placeholder="Enter City" value="<?php if (isset($_POST['city'])) echo $_POST['city']; ?>" required/>
                                 <div class="invalid-feedback">
                                     City Name is required.
                                 </div>
@@ -246,7 +261,7 @@
                         <div class="row">
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">State :</span></h5>
-                                <input type="text" class="form-control" name="state" placeholder="Enter State" value="<?php if (isset($_POST['state'])) echo $_POST['state']; ?>" required>
+                                <input type="text" class="form-control" name="state" placeholder="Enter State" value="<?php if (isset($_POST['state'])) echo $_POST['state']; ?>" required/>
                                 <div class="invalid-feedback">
                                     State Name is required.
                                 </div>
@@ -254,7 +269,7 @@
 
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">Zip Code :</span></h5>
-                                <input type="text" class="form-control" name="zipCode" placeholder="Enter Zip Code" value="<?php if (isset($_POST['zipCode'])) echo $_POST['zipCode']; ?>" required>
+                                <input type="text" class="form-control" name="zipCode" placeholder="Enter Zip Code" value="<?php if (isset($_POST['zipCode'])) echo $_POST['zipCode']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Zip Code is required.
                                 </div>

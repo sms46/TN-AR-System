@@ -24,6 +24,8 @@ class studentRegistrationController extends http\controller
             $user->studentName = $_POST['studentName'];
             $user->studentEmail = $_POST['email'];
             $user->parentName = $_POST['parentName'];
+            $user->parentEmail = $_POST['parentEmail'];
+            $user->parentNumber = $_POST['parentNumber'];
             $user->schoolName = $_POST['highSchool'];
             $user->gradYear = $_POST['gradYear'];
             $user->streetAddress = $_POST['streetAddress'];
