@@ -6,7 +6,10 @@ final class studentInfoModel extends \database\model
     public $studentName;
     public $studentEmail;
     public $parentName;
+    public $parentEmail;
+    public $parentNumber;
     public $schoolName;
+    public $gradYear;
     public $streetAddress;
     public $city;
     public $state;

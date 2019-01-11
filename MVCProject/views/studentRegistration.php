@@ -22,13 +22,13 @@
         <div class="container">
             <h3 class="text-danger" align="center"><strong>COURSE CHECKOUT</strong></h3><hr/><br/>
 
-            <div class="row">
+            <?php if(isset($_POST["save_details"])) { ?>
+                <div class="alert alert-success" role="alert">
+                    Student Information has been successfully saved. Please Proceed with the Payment !!
+                </div>
+            <?php } ?>
 
-                <?php if(isset($_POST["save_details"])) { ?>
-                    <div class="alert alert-success" role="alert">
-                        Student Information has been successfully saved. Please Proceed with the Payment !!
-                    </div>
-                <?php } ?>
+            <div class="row">
 
                 <!-- Wilfred-NOTE: Do Not change the positions of the below div-->
                 <!--Step 2: Order Cart-->
@@ -229,7 +229,7 @@
                         <div class="row">
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">Parent/Guardian Number :</span></h5>
-                                <input type="text" class="form-control" name="parentNumber" placeholder="Enter Parent/Guardian Number" value="<?php if (isset($_POST['parentNumber'])) echo $_POST['parentNumber']; ?>" required/>
+                                <input type="text" class="form-control" name="parentNumber" placeholder="Enter Phone Number" value="<?php if (isset($_POST['parentNumber'])) echo $_POST['parentNumber']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Your Parent/Guardian Number is required.
                                 </div>
