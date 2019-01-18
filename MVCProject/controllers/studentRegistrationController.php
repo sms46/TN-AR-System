@@ -22,6 +22,7 @@ class studentRegistrationController extends http\controller
             //Insert into the student info table
             $user = new studentInfoModel();
             $user->studentName = $_POST['studentName'];
+            $user->gender = $_POST['gender'];
             $user->studentEmail = $_POST['email'];
             $user->parentName = $_POST['parentName'];
             $user->parentEmail = $_POST['parentEmail'];

@@ -156,8 +156,8 @@
                             <input type="hidden" name="AMT" value="<?php print $finalAmt ?>"/>
                             <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data ?>"/>
                             <input type="hidden" name="VALIDATION_KEY" value="<?php print $hashedValidationKey ?>"/>
-                            <!--<input type="hidden" name="EXT_TRANS_ID_LABEL" value="Your Invoice Number is:">
-                            <input type="hidden" name="SUCCESS_LINK_TEXT" value="Click here to confirm your payment.">
+                            <input type="hidden" name="EXT_TRANS_ID_LABEL" value="Order:">
+                            <!--<input type="hidden" name="SUCCESS_LINK_TEXT" value="">
                             <input type="hidden" name="SUCCESS_LINK" size="10" value="">
                             <input type="hidden" name="ERROR_LINK_TEXT" size="10" value="New Error Link Text">
                             <input type="hidden" name="ERROR_LINK" size="10" value="">
@@ -188,6 +188,18 @@
                                     Please enter a valid email address.
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light"> Gender :</span></h5>
+                                <input type="text" class="form-control" name="gender" placeholder="Enter Gender" value="<?php if (isset($_POST['gender'])) echo $_POST['gender']; ?>" required/>
+                                <div class="invalid-feedback">
+                                    Your gender is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-2"></div>
                         </div>
 
                         <div class="row">

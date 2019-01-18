@@ -4,6 +4,7 @@ final class studentInfoModel extends \database\model
 {
     public $id;
     public $studentName;
+    public $gender;
     public $studentEmail;
     public $parentName;
     public $parentEmail;
