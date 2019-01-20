@@ -22,7 +22,14 @@ abstract class model
         $statement = $db->prepare($sql);
         $array = get_object_vars($this);
 
-        foreach (array_flip($array) as $key => $value) {
+        foreach ($array as $key => $value) {
+            if (!isset($value)) {
+                //echo $key . "is not set <br/>";
+                unset($array[$key]);
+            }
+        }
+
+        foreach (array_keys($array) as $key => $value) {
             $statement->bindParam(":$value", $this->$value);
         }
         $statement->execute();
@@ -35,9 +42,15 @@ abstract class model
         $modelName = static::$modelName;
         $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
-        unset($array['id']);
-        $columnString = implode(',', array_flip($array));
-        $valueString = ':' . implode(',:', array_flip($array));
+        //unset($array['id']);
+        foreach ($array as $key => $value) {
+            if (!isset($value)) {
+                unset($array[$key]);
+            }
+        }
+
+        $columnString = implode(',', array_keys($array));
+        $valueString = ':' . implode(',:', array_keys($array));
         $sql = 'INSERT INTO ' . $tableName . ' (' . $columnString . ') VALUES (' . $valueString . ')';
         return $sql;
     }
