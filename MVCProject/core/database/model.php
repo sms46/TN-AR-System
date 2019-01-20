@@ -43,6 +43,8 @@ abstract class model
         $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
         //unset($array['id']);
+
+        //Fix: Handles when input data a similar for different columns
         foreach ($array as $key => $value) {
             if (!isset($value)) {
                 unset($array[$key]);
