@@ -5,6 +5,7 @@ final class studentCourseInfoModel extends \database\model
     public $id;
     public $orderNum;
     public $studentName;
+    public $gender;
     public $studentEmail;
     public $parentName;
     public $course;
