@@ -103,38 +103,6 @@
     <!--Included javascript code for event click-->
     <?php include 'footer.php';?>
 
-    <!-- Sign In Modal -->
-    <!--<div class="modal" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">SIGN IN AS AN:</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="bg-info text-white shadow-lg p-3 mb-2 bg-info rounded">
-                                <div class="card-body bg-info text-center">
-                                    <a href="#"><h4><span data-toggle="modal" data-target="#modalLogIn">USER</span></h4></a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="bg-info text-white shadow-lg p-3 mb-2 bg-info rounded">
-                                <div class="card-body bg-info text-center">
-                                    <a href="#"><h4><span>ADMIN</span></h4></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>-->
-
     <!-- Log In Modal -->
     <div class="modal fade" id="modalLogIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-login" role="document">
@@ -174,8 +142,55 @@
                 </div>
                 <div class="modal-footer">
                     <a href="#" align="left" >Forgot Password?</a>
-                    <a href="#" align="right" >Request for an access</a>
+                    <a href="#" align="right" data-toggle="modal" data-target="#modalSignIn">Request for an access</a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="modal" id="modalSignIn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-login" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">REQUEST ACCESS</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <form action="index.php?page=adminHomepage&action=createLogin" method="POST">
+                        <div class="form-group">
+                            <i class="fa fa-user"></i><input type="text" class="form-control" placeholder="Username" name="userName" required="required">
+                        </div>
+                        <div class="form-group">
+                            <i class="fa fa-lock"></i>
+                            <input type="password" class="form-control" placeholder="Password" name="password" required="required">
+                        </div>
+
+                        <div class="form-group">
+                            <select class=" form-control" id="adminDropDown" name="adminDropDown" required>
+                                <option value="">Select a Department</option>
+                                <option value="COAD">College of Architecture and Design</option>
+                                <option value="YWCC">Ying Wu School of Computing</option>
+                                <option value="SM">School of Management</option>
+                            </select>
+                            <i class="fas fa-chevron-circle-down"></i>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-danger btn-block btn-lg" value="Request Access" name="btnRequest">
+                        </div>
+
+                    </form>
+                </div>
+
+                <div class="modal-footer">
+                   <!-- <a href="#" align="left" >Forgot Password?</a>
+                    <a href="#" align="right"</a>-->
+                </div>
+
             </div>
         </div>
     </div>

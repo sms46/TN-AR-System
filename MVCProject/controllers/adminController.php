@@ -6,16 +6,55 @@ class adminController extends http\controller
     {
         if(isset($_POST["btnSignIn"])) {
             $adminName = $_POST['userName'];
-            //PRINT $adminName;
             $password = $_POST['password'];
-            //PRINT $password;
-            $drpDown =  $_POST['adminDropDown'];
-            //PRINT $drpDown;
+
+            //Check the user in the DB
+            $user = adminAccounts::findUser($adminName);
 
 
-            $resultSet = studentOrderInfo::getDataForExcel();
-            self::getTemplate('adminHomepage', NULL, $resultSet);
-            
+            if ($user == FALSE) {
+                echo '<script>alert("No User Found")</script>';
+                self::getTemplate('landingPage', NULL, NULL);
+            } else {
+
+                if($user->checkPassword($password) == TRUE) {
+
+                    $resultSet = studentOrderInfo::getDataForExcel();
+                    self::getTemplate('adminHomepage', NULL, $resultSet);
+
+                } else {
+                    echo '<script>alert("Password does not match")</script>';
+                    self::getTemplate('landingPage', NULL, NULL);
+                }
+            }
+        }
+    }
+
+    public static function createLogin()
+    {
+        if(isset($_POST["btnRequest"])) {
+            $adminName = $_POST['userName'];
+            $password = $_POST['password'];
+            $appKey = $_POST['adminDropDown'];
+
+            //Check the user in the DB
+            $user = adminAccounts::findUser($adminName);
+
+            if ($user == FALSE) {
+                $user = new adminAccountsModel();
+                $user->userName = $adminName;
+                $user->password = $user->setPassword($password);
+                $user->appName = $appKey;
+                $user->hasAccess = 0;
+
+                $user->save();
+
+                header("Location: index.php");
+
+            } else {
+                echo '<script>alert("User already registered")</script>';
+                self::getTemplate('landingPage', NULL, NULL);
+            }
         }
     }
 

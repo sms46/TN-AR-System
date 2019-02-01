@@ -5,16 +5,10 @@ final class studentCourseInfoModel extends \database\model
     public $id;
     public $orderNum;
     public $studentName;
-    public $gender;
-    public $studentEmail;
-    public $parentName;
     public $course;
     public $department;
     public $startDate;
     public $year;
-    public $schoolName;
-    public $streetAddress;
-    public $zipCode;
     public $timestamp;
     public $appName;
 

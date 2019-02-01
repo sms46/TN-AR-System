@@ -2,12 +2,22 @@
 
 class adminAccounts extends \database\collection
 {
-    protected static $modelName = 'adminAccounts';
+    protected static $modelName = 'adminAccountsModel';
 
     // Static Functions
-    public static function randomCode($limit)
+    public static function findUser($name)
     {
-        return substr(base_convert(sha1(uniqid(mt_rand())), 16, 36), 0, $limit);
+        $tableName = get_called_class();
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE userName = ?';
+
+        //grab the only record for find one and return as an object
+        $recordsSet = self::getResults($sql, $name);
+
+        if (is_null($recordsSet)) {
+            return FALSE;
+        } else {
+            return $recordsSet[0];
+        }
     }
     
 }

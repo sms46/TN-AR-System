@@ -190,6 +190,7 @@
                             </div>
                         </div>
 
+                        <br>
                         <div class="row">
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light"> Gender :</span></h5>
@@ -199,10 +200,6 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5 mb-2"></div>
-                        </div>
-
-                        <div class="row">
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">High School :</span></h5>
                                 <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" value="<?php if (isset($_POST['highSchool'])) echo $_POST['highSchool']; ?>" required/>
@@ -210,15 +207,9 @@
                                     Your High School Name is required.
                                 </div>
                             </div>
-
-                            <div class="col-md-5 mb-2">
-                                <h5><span class="badge badge-light">Graduation Year :</span></h5>
-                                <input type="text" class="form-control" name="gradYear" placeholder="Graduation Year" value="<?php if (isset($_POST['gradYear'])) echo $_POST['gradYear']; ?>" required/>
-                                <div class="invalid-feedback">
-                                    Your Graduation Year is required.
-                                </div>
-                            </div>
                         </div>
+
+                        <hr>
 
                         <div class="row">
                             <div class="col-md-5 mb-2">
@@ -238,6 +229,7 @@
                             </div>
                         </div>
 
+                        <br>
                         <div class="row">
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">Parent/Guardian Number :</span></h5>
@@ -246,9 +238,18 @@
                                     Your Parent/Guardian Number is required.
                                 </div>
                             </div>
+
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Graduation Year :</span></h5>
+                                <input type="text" class="form-control" name="gradYear" placeholder="Graduation Year" value="<?php if (isset($_POST['gradYear'])) echo $_POST['gradYear']; ?>" required/>
+                                <div class="invalid-feedback">
+                                    Your Graduation Year is required.
+                                </div>
+                            </div>
+
                         </div>
 
-                        <br/><br/>
+                        <hr>
                         <h2><span class="badge badge-pill badge-dark">ADDRESS</span></h2><br>
 
                         <div class="row">

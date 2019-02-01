@@ -116,6 +116,15 @@ class routes
         //Validate the admin login credentials
         $route = new route();
         $route->http_method = 'POST';
+        $route->action = 'createLogin';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'createLogin';
+        $routes[] = $route;
+
+        //Validate the admin login credentials
+        $route = new route();
+        $route->http_method = 'POST';
         $route->action = 'export';
         $route->page = 'adminHomepage';
         $route->controller = 'adminController';

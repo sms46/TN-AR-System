@@ -3,20 +3,20 @@
 final class studentOrderInfoModel extends \database\model
 {
     public $id;
-    public $orderId;
+    //public $orderId;
     public $orderNum;
     public $studentName;
     public $studentEmail;
-    public $parentName;
+    //public $parentName;
     public $paymentType;
     public $courseAmt;
     public $amtPaid;
     public $dueAmt;
-    public $schoolName;
-    public $streetAddress;
-    public $city;
-    public $state;
-    public $zipCode;
+    //public $schoolName;
+    //public $streetAddress;
+    //public $city;
+    //public $state;
+    //public $zipCode;
     public $timestamp;
     public $orderConfirmed;
     public $paymentStatus;

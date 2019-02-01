@@ -17,6 +17,16 @@ final class adminAccountsModel extends \database\model
         return $tableName;
     }
 
+    //Add a method to compare the passwords with BCRYRT
+    public function setPassword($password) {
+        $hashPassword = password_hash($password, PASSWORD_BCRYPT);
+        return $hashPassword;
+    }
+
+    public function checkPassword($LoginPassword) {
+        return password_verify($LoginPassword, $this->password);
+    }
+
     public function validate()
     {
         $valid = TRUE;
