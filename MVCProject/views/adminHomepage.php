@@ -132,8 +132,7 @@
                     </div>
                 </div>
             </div>
-
-            <?php print_r($data->dueAmt);?>
+            
             <!--/row-->
 
             <hr>

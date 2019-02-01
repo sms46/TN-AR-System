@@ -73,9 +73,8 @@ class adminController extends http\controller
 
             foreach ($resultSet as $item){
                 $itemArray = array( array('Order Number' => $item->orderNum,'Student Name' => $item->studentName,'Student Email' => $item ->studentEmail,
-                    'Parent Name' => $item->parentName, 'Course Amount' => $item ->courseAmt, 'Payment Type' => $item ->paymentType,'Amount Paid' => $item ->amtPaid,
-                    'Due Amount' => $item ->dueAmt, 'School Name' => $item ->schoolName, 'Street Address' => $item ->streetAddress,'city' => $item ->city,
-                    'State' => $item ->state,'Zip Code' => $item ->zipCode,'Order Confirmed' => $item ->orderConfirmed,'Timestamp' => $item ->timestamp,
+                    'Course Amount' => $item ->courseAmt, 'Payment Type' => $item ->paymentType,'Amount Paid' => $item ->amtPaid,
+                    'Due Amount' => $item ->dueAmt,'Order Confirmed' => $item ->orderConfirmed,'Timestamp' => $item ->timestamp,
                     'Payment Status' => $item ->paymentStatus,'Confirmed Timestamp' => $item ->confirmedTimestamp));
 
                 $finalArray[] = $itemArray;
