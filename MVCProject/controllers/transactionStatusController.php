@@ -36,7 +36,7 @@ class transactionStatusController extends http\controller
 
         //Update the order status if successful payment done via touchnet
         studentOrderInfo::updateStudentOrder($orderNo);
-
+        
         //Retrieve the student info after successful payment
         $studentOrder = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
 

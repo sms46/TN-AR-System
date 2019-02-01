@@ -21,6 +21,7 @@ class studentRegistrationController extends http\controller
 
             //Insert into the student info table
             $user = new studentInfoModel();
+            $user->orderNum = $_POST['orderNum'];
             $user->studentName = $_POST['studentName'];
             $user->gender = $_POST['gender'];
             $user->studentEmail = $_POST['email'];
@@ -44,16 +45,16 @@ class studentRegistrationController extends http\controller
             $order->orderNum = $_POST['orderNum'];
             $order->studentName = $_POST['studentName'];
             $order->studentEmail = $_POST['email'];
-            $order->parentName = $_POST['parentName'];
+            //$order->parentName = $_POST['parentName'];
             $order->paymentType = $_POST['paymentTypeSelect'];
             $order->courseAmt = $english_format_number;
             $order->amtPaid = 0;
             $order->dueAmt =  $_POST['totalAmt'];
-            $order->schoolName = $_POST['highSchool'];
-            $order->streetAddress = $_POST['streetAddress'];
-            $order->city = $_POST['city'];
-            $order->state = $_POST['state'];
-            $order->zipCode = $_POST['zipCode'];
+            //$order->schoolName = $_POST['highSchool'];
+            //$order->streetAddress = $_POST['streetAddress'];
+            //$order->city = $_POST['city'];
+            //$order->state = $_POST['state'];
+            //$order->zipCode = $_POST['zipCode'];
             $order->timestamp = studentInfo::getTimestamp();
             $order->orderConfirmed = 'N';
             $order->paymentStatus = '0';
@@ -67,15 +68,15 @@ class studentRegistrationController extends http\controller
                 $studentInfo = new studentCourseInfoModel();
                 $studentInfo->orderNum = $_POST['orderNum'];
                 $studentInfo->studentName = $_POST['studentName'];
-                $studentInfo->studentEmail = $_POST['email'];
-                $studentInfo->parentName = $_POST['parentName'];
+                //$studentInfo->studentEmail = $_POST['email'];
+                //$studentInfo->parentName = $_POST['parentName'];
                 $studentInfo->course = $item['Description'];
                 $studentInfo->department = $item['Department'];
                 $studentInfo->startDate = $item['StartDate'];
                 $studentInfo->year = studentCourseInfo::getCurrentYear();
-                $studentInfo->schoolName = $_POST['highSchool'];
-                $studentInfo->streetAddress = $_POST['streetAddress'];
-                $studentInfo->zipCode = $_POST['zipCode'];
+                //$studentInfo->schoolName = $_POST['highSchool'];
+                //$studentInfo->streetAddress = $_POST['streetAddress'];
+                //$studentInfo->zipCode = $_POST['zipCode'];
                 $studentInfo->timestamp = studentInfo::getTimestamp();
                 $studentInfo->appName = 'COAD';
                 $studentInfo->save();
