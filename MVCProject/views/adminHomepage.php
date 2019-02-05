@@ -166,7 +166,6 @@
 
             <hr>
 
-           <?php //if(isset($_POST["add_to_cart"])) {?>
             <div class="row my-4">
                 <div class="col-lg-10 col-md-8 table-responsive">
                     <?php

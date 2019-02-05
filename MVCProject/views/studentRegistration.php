@@ -12,17 +12,17 @@
 <div class="wrapper">
 
     <!-- Navigation Side bar-->
-    <?php include 'navSideBar.php';?>-
+    <?php include 'navSideBar.php';?>
 
     <div id="content">
 
         <!-- Navigation bar-->
-        <?php include 'navBar.php';?>
+        <?//php include 'navBar.php';?>
 
         <div class="container">
             <h3 class="text-danger" align="center"><strong>COURSE CHECKOUT</strong></h3><hr/><br/>
 
-            <?php if(isset($_POST["save_details"])) { ?>
+            <?php if(isset($_POST["save_details"])) {?>
                 <div class="alert alert-success" role="alert">
                     Student Information has been successfully saved. Please Proceed with the Payment !!
                 </div>

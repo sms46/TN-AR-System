@@ -37,15 +37,14 @@ class studentOrderInfo extends \database\collection
     {
         $sql = 'SELECT TempTable.studentName , TempTable.studentEmail , TempTable.course, TempTable.startDate,TempTable.timestamp,
                   TempTable.orderConfirmed, TempTable.paymentStatus, TempTable.confirmedTimestamp, TempTable.courseAmt, TempTable.amtPaid,TempTable.orderNum,
-                  TempTable.dueAmt,TempTable.city, TempTable.state, TempTable.streetAddress, TempTable.zipCode, TempTable.paymentType, C.appName, C.SeatAvailable
+                  TempTable.dueAmt, TempTable.paymentType, C.appName, C.SeatAvailable, SI.streetAddress, SI.city, SI.state, SI.zipCode
                 FROM
                     (
-                        SELECT SC.studentName, SC.studentEmail, SC.course, SC.startDate,
-                        SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp,SO.courseAmt, SO.amtPaid, SO.dueAmt, SO.city, SO.state,
-                        SO.streetAddress, SO.zipCode, SO.paymentType,SO.orderNum
+                        SELECT SC.studentName, SO.studentEmail, SC.course, SC.startDate,
+                        SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp,SO.courseAmt, SO.amtPaid, SO.dueAmt,
+                        SO.paymentType,SO.orderNum
                         FROM studentOrderInfo SO JOIN studentCourseInfo SC
                         ON SO.studentName = SC.studentName
-                        AND SO.studentEmail = SC.studentEmail
 						AND SO.orderNum = SC.orderNum
             
                         WHERE SO.orderConfirmed = \'Y\'
@@ -56,7 +55,10 @@ class studentOrderInfo extends \database\collection
                     
                 JOIN courses C
                 ON  TempTable.course = C.Description
-                AND TempTable.startDate = C.StartDate';
+                AND TempTable.startDate = C.StartDate
+				
+			    JOIN studentInfo SI
+			    ON  TempTable.orderNum = SI.orderNum';
 
         return self::getResults($sql, $OrderNum);
     }
@@ -87,13 +89,6 @@ class studentOrderInfo extends \database\collection
     {
         $sql = "SELECT studentEmail, orderNum FROM studentOrderInfo WHERE orderNum  = '$OrderNum' ";
 
-        return self::getResults($sql);
-    }
-
-    public static function getDataForExcel($startDate, $endDate)
-    {
-        //$sql = "SELECT * FROM studentOrderInfo WHERE confirmedTimestamp BETWEEN '$startDate' AND ' $endDate'";
-        $sql = "SELECT * FROM studentOrderInfo";
         return self::getResults($sql);
     }
 
@@ -147,10 +142,25 @@ class studentOrderInfo extends \database\collection
         $order->save();
     }
 
+    // Static Functions for Admin Page
+
+    static public function getStudentInfo()
+    {
+        $sql = "SELECT orderNum AS 'Order No', studentName AS 'Student Name', studentEmail AS 'Email Address', FROM studentOrderInfo";
+        return self::getResults($sql);
+    }
+
     public static function getPartialPayment()
     {
         $sql = "SELECT * FROM studentOrderInfo WHERE dueAmt > 0 ";
 
+        return self::getResults($sql);
+    }
+
+    public static function getDataForExcel($startDate, $endDate)
+    {
+        //$sql = "SELECT * FROM studentOrderInfo WHERE confirmedTimestamp BETWEEN '$startDate' AND ' $endDate'";
+        $sql = "SELECT * FROM studentOrderInfo";
         return self::getResults($sql);
     }
 

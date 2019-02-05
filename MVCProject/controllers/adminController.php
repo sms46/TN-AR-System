@@ -101,9 +101,6 @@ class adminController extends http\controller
             exit;
         }
 
-            //$data = courses::findArchitectureCourses('Architecture');
-            //self::getTemplate('adminHomepage', NULL, $data);
-
     public static function viewRegistrations()
     {
         $resultSet = studentInfo::getStudentInfo();

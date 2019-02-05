@@ -23,10 +23,10 @@ class studentInfo extends \database\collection
         return base64_encode( pack('H*', md5($string)));
     }
 
-    static public function getStudentInfo()
+    public static function getOrderCount($OrderNum)
     {
-        $sql = "SELECT id AS 'ID', studentName AS 'Student Name', studentEmail AS 'Email Address',parentName AS 'Parent Name',
-                schoolName AS 'School Name', streetAddress AS 'Street Address', city AS 'City', state AS 'State' , zipCode AS 'ZipCode' FROM studentInfo";
+        $sql = "SELECT count(*) AS 'OrderCount' FROM studentInfo WHERE OrderNum = '$OrderNum'";
+
         return self::getResults($sql);
     }
 }

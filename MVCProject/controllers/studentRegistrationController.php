@@ -19,84 +19,86 @@ class studentRegistrationController extends http\controller
 
         if(isset($_POST["save_details"])) {
 
-            //Insert into the student info table
-            $user = new studentInfoModel();
-            $user->orderNum = $_POST['orderNum'];
-            $user->studentName = $_POST['studentName'];
-            $user->gender = $_POST['gender'];
-            $user->studentEmail = $_POST['email'];
-            $user->parentName = $_POST['parentName'];
-            $user->parentEmail = $_POST['parentEmail'];
-            $user->parentNumber = $_POST['parentNumber'];
-            $user->schoolName = $_POST['highSchool'];
-            $user->gradYear = $_POST['gradYear'];
-            $user->streetAddress = $_POST['streetAddress'];
-            $user->city = $_POST['city'];
-            $user->state = $_POST['state'];
-            $user->zipCode = $_POST['zipCode'];
-            $user->save();
+            //FIX: Check if the Order No exists in the student order info table
+            // to solve the issue of duplicate records saved when user refreshes the page
 
-            //fix: Course Amt Update for Student Order Table
-            $number = $_POST['courseAmt'];
-            $english_format_number = number_format($number, 2, '.', '');
+            $orderCount = studentInfo::getOrderCount($_POST['orderNum']);
 
-            //Insert into the student - order table
-            $order = new studentOrderInfoModel();
-            $order->orderNum = $_POST['orderNum'];
-            $order->studentName = $_POST['studentName'];
-            $order->studentEmail = $_POST['email'];
-            //$order->parentName = $_POST['parentName'];
-            $order->paymentType = $_POST['paymentTypeSelect'];
-            $order->courseAmt = $english_format_number;
-            $order->amtPaid = 0;
-            $order->dueAmt =  $_POST['totalAmt'];
-            //$order->schoolName = $_POST['highSchool'];
-            //$order->streetAddress = $_POST['streetAddress'];
-            //$order->city = $_POST['city'];
-            //$order->state = $_POST['state'];
-            //$order->zipCode = $_POST['zipCode'];
-            $order->timestamp = studentInfo::getTimestamp();
-            $order->orderConfirmed = 'N';
-            $order->paymentStatus = '0';
-            $order->save();
+            if($orderCount[0]->OrderCount == 0){
 
-            //Insert into the student course info table
-            foreach($_SESSION['cart_item'] as $key=>$item)
-            {
+                //Insert into the student info table
+                $user = new studentInfoModel();
+                $user->orderNum = $_POST['orderNum'];
+                $user->studentName = $_POST['studentName'];
+                $user->gender = $_POST['gender'];
+                $user->studentEmail = $_POST['email'];
+                $user->parentName = $_POST['parentName'];
+                $user->parentEmail = $_POST['parentEmail'];
+                $user->parentNumber = $_POST['parentNumber'];
+                $user->schoolName = $_POST['highSchool'];
+                $user->gradYear = $_POST['gradYear'];
+                $user->streetAddress = $_POST['streetAddress'];
+                $user->city = $_POST['city'];
+                $user->state = $_POST['state'];
+                $user->zipCode = $_POST['zipCode'];
+                $user->save();
 
-                //Insert into the course Info table
-                $studentInfo = new studentCourseInfoModel();
-                $studentInfo->orderNum = $_POST['orderNum'];
-                $studentInfo->studentName = $_POST['studentName'];
-                //$studentInfo->studentEmail = $_POST['email'];
-                //$studentInfo->parentName = $_POST['parentName'];
-                $studentInfo->course = $item['Description'];
-                $studentInfo->department = $item['Department'];
-                $studentInfo->startDate = $item['StartDate'];
-                $studentInfo->year = studentCourseInfo::getCurrentYear();
-                //$studentInfo->schoolName = $_POST['highSchool'];
-                //$studentInfo->streetAddress = $_POST['streetAddress'];
-                //$studentInfo->zipCode = $_POST['zipCode'];
-                $studentInfo->timestamp = studentInfo::getTimestamp();
-                $studentInfo->appName = 'COAD';
-                $studentInfo->save();
+                //fix: Course Amt Update for Student Order Table
+                $number = $_POST['courseAmt'];
+                $english_format_number = number_format($number, 2, '.', '');
+
+                //Insert into the student - order table
+                $order = new studentOrderInfoModel();
+                $order->orderNum = $_POST['orderNum'];
+                $order->studentName = $_POST['studentName'];
+                $order->studentEmail = $_POST['email'];
+                $order->paymentType = $_POST['paymentTypeSelect'];
+                $order->courseAmt = $english_format_number;
+                $order->amtPaid = 0;
+                $order->dueAmt =  $_POST['totalAmt'];
+                $order->timestamp = studentInfo::getTimestamp();
+                $order->orderConfirmed = 'N';
+                $order->paymentStatus = '0';
+                $order->save();
+
+                //Insert into the student course info table
+                foreach($_SESSION['cart_item'] as $key=>$item)
+                {
+
+                    //Insert into the course Info table
+                    $studentInfo = new studentCourseInfoModel();
+                    $studentInfo->orderNum = $_POST['orderNum'];
+                    $studentInfo->studentName = $_POST['studentName'];
+                    $studentInfo->course = $item['Description'];
+                    $studentInfo->department = $item['Department'];
+                    $studentInfo->startDate = $item['StartDate'];
+                    $studentInfo->year = studentCourseInfo::getCurrentYear();
+                    $studentInfo->timestamp = studentInfo::getTimestamp();
+                    $studentInfo->appName = 'COAD';
+                    $studentInfo->save();
+                }
+
+                //LOG USER INFO
+                $log = new userLogsModel();
+                $log->EXT_TRANS_ID = $_POST['orderNum'];
+                $log->studentName = $_POST['studentName'];
+                $log->studentEmail = $_POST['email'];
+                $log->amtPaid = 0;
+                $log->balanceAmt = $_POST['totalAmt'];
+                $log->paymentStatus = 'Ready to pay using Touchnet';
+                $log->description = 'Student data saved. Pending Payment';
+                $log->currentTimestamp = studentInfo::getTimestamp();
+                $log->save();
+
+                //FIX: Need to save the order no in a variable to pass the same no throughout a session.
+                $orderNum = $_POST['orderNum'];
+                self::getTemplate('studentRegistration',$orderNum, $orderNum);
+
+            } else{
+
+                $orderNum = $_POST['orderNum'];
+                self::getTemplate('studentRegistration',$orderNum, $orderNum);
             }
-
-            //LOG USER INFO
-            $log = new userLogsModel();
-            $log->EXT_TRANS_ID = $_POST['orderNum'];
-            $log->studentName = $_POST['studentName'];
-            $log->studentEmail = $_POST['email'];
-            $log->amtPaid = 0;
-            $log->balanceAmt = $_POST['totalAmt'];
-            $log->paymentStatus = 'Ready to pay using Touchnet';
-            $log->description = 'Student data saved. Pending Payment';
-            $log->currentTimestamp = studentInfo::getTimestamp();
-            $log->save();
-
-            //FIX: Need to save the order no in a variable to pass the same no throughout a session.
-            $orderNum = $_POST['orderNum'];
-            self::getTemplate('studentRegistration',$orderNum, $orderNum);
        }
     }
 }

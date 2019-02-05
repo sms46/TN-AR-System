@@ -113,7 +113,7 @@ class routes
         $route->method = 'validateLogin';
         $routes[] = $route;
 
-        //Validate the admin login credentials
+        //Request an access for admin login credentials
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'createLogin';
@@ -122,22 +122,22 @@ class routes
         $route->method = 'createLogin';
         $routes[] = $route;
 
-        //Validate the admin login credentials
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'export';
-        $route->page = 'adminHomepage';
-        $route->controller = 'adminController';
-        $route->method = 'export';
-        $routes[] = $route;
-
-        //Validate the admin login credentials
+        //Registered student report
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'viewRegistrations';
         $route->page = 'adminHomepage';
         $route->controller = 'adminController';
         $route->method = 'viewRegistrations';
+        $routes[] = $route;
+
+        //Export to Excel
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'export';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'export';
         $routes[] = $route;
 
         return $routes;
