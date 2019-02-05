@@ -64,7 +64,6 @@ class studentRegistrationController extends http\controller
                 //Insert into the student course info table
                 foreach($_SESSION['cart_item'] as $key=>$item)
                 {
-
                     //Insert into the course Info table
                     $studentInfo = new studentCourseInfoModel();
                     $studentInfo->orderNum = $_POST['orderNum'];
