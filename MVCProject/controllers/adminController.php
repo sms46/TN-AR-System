@@ -19,7 +19,7 @@ class adminController extends http\controller
 
                 if($user->checkPassword($password) == TRUE) {
 
-                    $resultSet = studentOrderInfo::getDataForExcel();
+                    $resultSet = studentOrderInfo::getRegisteredStudentInfo();
                     self::getTemplate('adminHomepage', NULL, $resultSet);
 
                 } else {
@@ -103,13 +103,19 @@ class adminController extends http\controller
 
     public static function viewRegistrations()
     {
-        $resultSet = studentInfo::getStudentInfo();
+        $resultSet = studentOrderInfo::getRegisteredStudentInfo();
         self::getTemplate('adminHomepage', NULL, $resultSet);
     }
 
     public static function viewPartialPayment()
     {
         $result = studentOrderInfo::getPartialPayment();
+        self::getTemplate('adminHomepage', NULL, $result);
+    }
+
+    public static function viewCoursesInfo()
+    {
+        $result = studentOrderInfo::getCoursesInfoAdmin();
         self::getTemplate('adminHomepage', NULL, $result);
     }
 }

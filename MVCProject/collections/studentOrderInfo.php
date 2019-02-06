@@ -144,15 +144,41 @@ class studentOrderInfo extends \database\collection
 
     // Static Functions for Admin Page
 
-    static public function getStudentInfo()
+    public static function getRegisteredStudentInfo()
     {
-        $sql = "SELECT orderNum AS 'Order No', studentName AS 'Student Name', studentEmail AS 'Email Address', FROM studentOrderInfo";
+        $sql = "SELECT SO.orderNum AS 'Order No',SO.studentName AS 'Student Name', SO.studentEmail AS 'Email Address',
+                       SI.gender AS 'Gender', SI.gradYear AS 'Grad Year', SO.paymentType AS 'Payment Type',SO.confirmedTimestamp AS 'Registered Date'
+                FROM studentOrderInfo SO JOIN studentInfo SI
+                
+                ON SO.studentName = SI.studentName
+                AND SO.orderNum = SI.orderNum
+                
+                WHERE SO.paymentStatus = 1";
+
         return self::getResults($sql);
     }
 
     public static function getPartialPayment()
     {
-        $sql = "SELECT * FROM studentOrderInfo WHERE dueAmt > 0 ";
+        $sql = "SELECT SO.orderNum AS 'Order No',SO.studentName AS 'Student Name', SO.studentEmail AS 'Email Address',
+                       SI.gradYear AS 'Grad Year', SO.courseAmt AS 'Course Amount($)',SO.AmtPaid AS 'Amount Paid($)', 
+                       SO.dueAmt AS 'Balance Due($)',SO.confirmedTimestamp AS 'Registered Date'
+                FROM studentOrderInfo SO JOIN studentInfo SI
+                
+                ON SO.studentName = SI.studentName
+                AND SO.orderNum = SI.orderNum
+                
+                WHERE SO.paymentStatus = 1
+                AND SO.paymentType = 'Deposit'";
+
+        return self::getResults($sql);
+    }
+
+    public static function getCoursesInfoAdmin()
+    {
+        $sql = "SELECT Session, Description,StartDate, EndDate, ResidentialPrice AS 'Residential Price',
+                CommuterPrice AS 'Commuter Price', Department, SeatAvailable AS 'Available Seats' 
+                FROM courses";
 
         return self::getResults($sql);
     }

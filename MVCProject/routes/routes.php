@@ -131,6 +131,24 @@ class routes
         $route->method = 'viewRegistrations';
         $routes[] = $route;
 
+        //Student with deposit payment type
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'viewPartialPayment';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'viewPartialPayment';
+        $routes[] = $route;
+
+        //View Couses on admin page
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'viewCoursesInfo';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'viewCoursesInfo';
+        $routes[] = $route;
+
         //Export to Excel
         $route = new route();
         $route->http_method = 'POST';

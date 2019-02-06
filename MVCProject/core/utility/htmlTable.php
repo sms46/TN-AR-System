@@ -42,43 +42,7 @@ class htmlTable
         }
     }
 
-    //TO-DO: Remove this function later
-    public static function generateTableForAdmin($array)
-{
-    if($array!= null) {
-        echo "<table class=\"table table-striped\">";
-
-        echo "<thead class=\"thead-dark shadow-lg p-3 mb-5 bg-white rounded \">";
-        echo "<tr>
-                        <th>ID</th>
-                        <th>Student Name</th>
-                        <th>Email</th>
-                        <th>Order Num</th>
-                        <th>Order Status</th>
-                        <th>Payment Status</th>
-                 </tr>";
-        echo "</thead>";
-
-        foreach ($array as $row) {
-            echo
-                "<tr>
-                          <td>" . $row->id . "</td>
-                          <td>" . $row->studentName . "</td>
-                          <td>" . $row->studentEmail . "</td>
-                          <td>" . $row-> orderNum . "</td>
-                          <td>" . $row-> orderConfirmed . "</td>
-                          <td>" . $row->paymentStatus . "</td>
-                    </tr>";
-        }
-
-        echo "</table>";
-    }
-    else{
-        $text = 'No Records present.Please Insert the records';
-        print $text;
-    }
-}
-
+    // Dynamic table generated for all html tables
     public static function generateTableForTest($array)
     {
         if($array!= null) {

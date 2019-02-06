@@ -76,7 +76,7 @@
             <h1 class="display-4 d-none d-sm-block">
                 College of Architecture and Design
             </h1>
-            <p class="lead d-none d-sm-block">This is User Dashboard</p>
+            <p class="lead d-none d-sm-block">This is Admin Dashboard</p>
 
             <div class="alert alert-warning fade collapse" role="alert" id="myAlert">
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -93,7 +93,7 @@
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Registered Students</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php print count($data)?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php  $resultSet = studentOrderInfo::getRegisteredStudentInfo(); print count($resultSet)?></a></h1>
 
                         </div>
                     </div>
@@ -105,7 +105,7 @@
                                 <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Partial Payment</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php print count($data)?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewPartialPayment"><?php $result = studentOrderInfo::getPartialPayment();print count($result)?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -113,10 +113,10 @@
                     <div class="card text-white bg-success h-100">
                         <div class="card-body bg-success">
                             <div class="rotate">
-                                <i class="fas fa-file-invoice-dollar fa-5x"></i>
+                                <i class="fas fa-book fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase" align="center">Full Payment</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php print count($data)?></a></h1>
+                            <h6 class="text-uppercase" align="center">Courses</h6>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCoursesInfo"><?php $course = studentOrderInfo::getCoursesInfoAdmin();print count($course)?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -126,8 +126,8 @@
                             <div class="rotate">
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase" align="center">Courses</h6>
-                            <h1 class="display-4" align="center">5</h1>
+                            <h6 class="text-uppercase" align="center">Student Course Info</h6>
+                            <!--<h1 class="display-4" align="center">5</h1>-->
                         </div>
                     </div>
                 </div>
@@ -170,7 +170,7 @@
                 <div class="col-lg-10 col-md-8 table-responsive">
                     <?php
                         //Print HTML Table
-                        print utility\htmlTable::generateTableForAdmin($data);
+                        print utility\htmlTable::generateTableForTest($data);
                     ?>
 
                 </div>
