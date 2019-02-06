@@ -173,13 +173,17 @@
 
                     <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
                         <div class="row">
-                            <div class="col-md-5 mb-2">
+                            <div class="col-md-10 mb-2">
                                 <h5><span class="badge badge-light">Student's Full Name :</span></h5>
                                 <input type="text" class="form-control" name="studentName" placeholder="Enter Full Name" value="<?php if (isset($_POST['studentName'])) echo $_POST['studentName']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Your Full Name is required.
                                 </div>
                             </div>
+
+                        </div>
+
+                        <div class="row">
 
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">Email :</span></h5>
@@ -188,10 +192,7 @@
                                     Please enter a valid email address.
                                 </div>
                             </div>
-                        </div>
 
-                        <br>
-                        <div class="row">
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light"> Gender :</span></h5>
                                 <input type="text" class="form-control" name="gender" placeholder="Enter Gender" value="<?php if (isset($_POST['gender'])) echo $_POST['gender']; ?>" required/>
@@ -200,42 +201,15 @@
                                 </div>
                             </div>
 
+                        </div>
+
+                        <div class="row">
+
                             <div class="col-md-5 mb-2">
                                 <h5><span class="badge badge-light">High School :</span></h5>
                                 <input type="text" class="form-control" name="highSchool" placeholder="Enter High School" value="<?php if (isset($_POST['highSchool'])) echo $_POST['highSchool']; ?>" required/>
                                 <div class="invalid-feedback">
                                     Your High School Name is required.
-                                </div>
-                            </div>
-                        </div>
-
-                        <hr>
-
-                        <div class="row">
-                            <div class="col-md-5 mb-2">
-                                <h5><span class="badge badge-light">Parent/Guardian Name :</span></h5>
-                                <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="<?php if (isset($_POST['parentName'])) echo $_POST['parentName']; ?>" required/>
-                                <div class="invalid-feedback">
-                                    Your Parent/Guardian Name is required.
-                                </div>
-                            </div>
-
-                            <div class="col-md-5 mb-2">
-                                <h5><span class="badge badge-light">Parent/Guardian Email :</span></h5>
-                                <input type="email" class="form-control" name="parentEmail" placeholder="Enter Parent/Guardian Email" value="<?php if (isset($_POST['parentEmail'])) echo $_POST['parentEmail']; ?>" required/>
-                                <div class="invalid-feedback">
-                                    Your Parent/Guardian Email is required.
-                                </div>
-                            </div>
-                        </div>
-
-                        <br>
-                        <div class="row">
-                            <div class="col-md-5 mb-2">
-                                <h5><span class="badge badge-light">Parent/Guardian Number :</span></h5>
-                                <input type="text" class="form-control" name="parentNumber" placeholder="Enter Phone Number" value="<?php if (isset($_POST['parentNumber'])) echo $_POST['parentNumber']; ?>" required/>
-                                <div class="invalid-feedback">
-                                    Your Parent/Guardian Number is required.
                                 </div>
                             </div>
 
@@ -247,6 +221,36 @@
                                 </div>
                             </div>
 
+                        </div>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="col-md-10 mb-2">
+                                <h5><span class="badge badge-light">Parent/Guardian Name :</span></h5>
+                                <input type="text" class="form-control" name="parentName" placeholder="Enter Parent/Guardian Name" value="<?php if (isset($_POST['parentName'])) echo $_POST['parentName']; ?>" required/>
+                                <div class="invalid-feedback">
+                                    Your Parent/Guardian Name is required.
+                                </div>
+                            </div>
+                        </div> <br>
+
+                        <div class="row">
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Parent/Guardian Email :</span></h5>
+                                <input type="email" class="form-control" name="parentEmail" placeholder="Enter Parent/Guardian Email" value="<?php if (isset($_POST['parentEmail'])) echo $_POST['parentEmail']; ?>" required/>
+                                <div class="invalid-feedback">
+                                    Your Parent/Guardian Email is required.
+                                </div>
+                            </div>
+
+                            <div class="col-md-5 mb-2">
+                                <h5><span class="badge badge-light">Parent/Guardian Number :</span></h5>
+                                <input type="text" class="form-control" name="parentNumber" placeholder="Enter Phone Number" value="<?php if (isset($_POST['parentNumber'])) echo $_POST['parentNumber']; ?>" required/>
+                                <div class="invalid-feedback">
+                                    Your Parent/Guardian Number is required.
+                                </div>
+                            </div>
                         </div>
 
                         <hr>
