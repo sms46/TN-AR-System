@@ -36,16 +36,14 @@ include 'headers.php';
             </div>
         </nav>
 
-        <h3 class="text-danger".text-danger align="center"><strong>USER PROFILE</strong></h3><hr></br>
+        <h3 class="text-danger".text-danger align="center"><strong>USER PROFILE</strong></h3><hr/><br/>
 
         <div class="container" style="width:1400px;">
             <div class="row">
                 <div class="col-md-5 order-md-3 mb-3 shadow-lg p-3 mb-5 bg-white rounded ">
 
-                    <h4 align="center" class="text-primary">Balance Info</h4><hr>
-                    <h4 class="list-group-item d-flex justify-content-between">
-                        <span class="badge badge-pill badge-primary">Courses Taken</span>
-                    </h4>
+                    <h4 align="center" class="text-primary">Balance Info</h4><hr/>
+                    <h4 class="list-group-item d-flex justify-content-between">Courses Taken</h4>
 
                     <ul class="list-group mb-3">
                         <?php  for ($i=0; $i< count($data); $i++){?>
@@ -90,7 +88,6 @@ include 'headers.php';
                                     <?php print '$'. $data[0]->dueAmt?>
                                 </strong>
                             </span>
-
                         </li>
 
                         <hr class="mb-4">

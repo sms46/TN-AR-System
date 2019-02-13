@@ -110,22 +110,21 @@
                         <br><br>
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
-                                <h6 class="my-0">Remaining Balance Due</h6>
+                                <h6 class="my-0">Remaining Balance (after payment)</h6>
                                 <small class="text-muted"><em>Amount to be paid later</em></small>
                             </div>
                             <span class="text-danger">
                             <?php
-                            $balanceAmt = 0;
-                            if($_POST["paymentTypeSelect"] == 'Deposit'){
+                                $balanceAmt = 0;
+                                if($_POST["paymentTypeSelect"] == 'Deposit'){
 
-                                //Didn't include App Fee in the transaction
-                                $balanceAmt = $_REQUEST["totalAmt"] - $paymentTypeAmt;
-                                echo '$' .$balanceAmt;
-                            }
-                            elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
-                                echo '$' .$balanceAmt;
-                            }
-
+                                    //Didn't include App Fee in the transaction
+                                    $balanceAmt = $_REQUEST["totalAmt"] - $paymentTypeAmt;
+                                    echo '$' .$balanceAmt;
+                                }
+                                elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
+                                    echo '$' .$balanceAmt;
+                                }
                             ?>
                         </span>
                         </li>
@@ -141,11 +140,12 @@
 
                             if(isset($_POST["save_details"])) {
                                 ?>
-                                <button class="btn btn-outline-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
+                                <button class="btn btn-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
                                     Pay <?php echo '$' . $finalAmt ?></button>
 
                                 <?php
-                            }else{
+                            }
+                            else{
                                 ?>
                                 <button class="btn btn-outline-primary btn-lg btn-block " name="btnPayment" type="submit" disabled>Continue to
                                     Pay <?php echo '$' . $finalAmt ?></button>
@@ -303,7 +303,7 @@
                                     <?php
                                 }else{
                                     ?>
-                                    <button type="submit" name="save_details" class="btn btn-outline-primary btn-lg ">Save Details</button>
+                                    <button type="submit" name="save_details" class="btn btn-primary btn-lg ">Save Details</button>
                                     <?php
                                 }
                                 ?>
