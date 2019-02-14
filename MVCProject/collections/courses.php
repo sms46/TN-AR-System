@@ -7,37 +7,48 @@ class courses extends database\collection
     //Static Functions
     static public function findArchitectureCourses()
     {
-        $sql = "SELECT * FROM courses WHERE Department = 'Architecture'";
+        $sql = "SELECT * FROM courses 
+                WHERE Department = 'Architecture'
+                AND Active = 1";
         return self::getResults($sql,NULL);
     }
 
     static public function findDesignCourses()
     {
-        $sql = "SELECT * FROM courses WHERE Department = 'Design + Make'";
+        $sql = "SELECT * FROM courses 
+                WHERE Department = 'Design + Make'
+                AND Active = 1";
         return self::getResults($sql,NULL);
     }
 
     static public function findInteriorCourses()
     {
-        $sql = "SELECT * FROM courses WHERE Department = 'Interior Design'";
+        $sql = "SELECT * FROM courses 
+                WHERE Department = 'Interior Design'
+                AND Active = 1";
         return self::getResults($sql, NULL);
     }
 
     static public function findGraphicDesignCourses()
     {
-        $sql = "SELECT * FROM courses WHERE Department = 'Graphic Design'";
+        $sql = "SELECT * FROM courses 
+                WHERE Department = 'Graphic Design'
+                AND Active = 1";
         return self::getResults($sql,NULL);
     }
 
     static public function findDigitalDesignCourses()
     {
-        $sql = "SELECT * FROM courses WHERE Department = 'Digital Design'";
+        $sql = "SELECT * FROM courses 
+                WHERE Department = 'Digital Design'
+                AND Active = 1";
         return self::getResults($sql, NULL);
     }
 
     static public function findCourses()
     {
-        $sql = "SELECT * FROM courses";
+        $sql = "SELECT * FROM courses
+                WHERE Active = 1";
         return self::getResults($sql);
     }
 
@@ -68,12 +79,6 @@ class courses extends database\collection
     static public function getAvailableSeats($course, $startDate,$appName)
     {
         $sql = "SELECT SeatAvailable FROM courses WHERE Description = '$course' AND StartDate = '$startDate' AND appName = '$appName'";
-        return self::getResults($sql);
-    }
-
-    static public function getCourses($course)
-    {
-        $sql = "SELECT * FROM courses WHERE Department = '$course'";
         return self::getResults($sql);
     }
 }

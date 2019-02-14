@@ -37,7 +37,7 @@ class htmlTable
             echo "</div>";
         }
         else{
-                $text = 'No Records present.Please Insert the records';
+                $text = 'No Records present. Please Insert the records';
                 print $text;
         }
     }
@@ -65,7 +65,7 @@ class htmlTable
             echo "</thead></table>";
         }
         else{
-            $text = 'No Records present.Please Insert the records';
+            $text = 'No Records present. Please Insert the records';
             print $text;
         }
     }

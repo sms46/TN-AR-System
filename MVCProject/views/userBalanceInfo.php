@@ -13,7 +13,7 @@ include 'headers.php';
 <div class="wrapper">
 
     <!-- Navigation Side bar-->
-    <?php include 'navSideBar.php';?>
+    <?php //include 'navSideBar.php';?>
 
     <div id="content">
 
