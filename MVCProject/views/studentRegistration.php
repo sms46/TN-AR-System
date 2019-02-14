@@ -2,11 +2,10 @@
 <html>
 
 <?php
-    //Included header tag
-    include 'headers.php';
-
-    //Get values from the config File
-    $configs = include('config.php');
+//Included header tag
+include 'headers.php';
+//Get values from the config File
+$configs = include('config.php');
 ?>
 
 <div class="wrapper">
@@ -65,14 +64,12 @@
                                 $paymentTypeAmt = null;
                                 $paymentTypeSelect = null;
                                 if($_POST["paymentTypeSelect"] == 'Deposit'){
-
                                     //Get Deposit Amount from the config file
                                     $depositAmt = $configs->depositAmt;
                                     $paymentTypeAmt = $depositAmt * count($_SESSION['cart_item']);
                                     $paymentTypeSelect = 'Deposit: ($'.$depositAmt.' per course)';
                                 }
                                 elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
-
                                     //Get Discount Percent from the config file
                                     $discount = $configs->discountPer;
                                     $paymentTypeAmt = $_REQUEST["totalAmt"] - ($discount * $_REQUEST["totalAmt"]);
@@ -91,9 +88,9 @@
                             </div>
                             <span class="text-muted">
                             <?php
-                                //Get Application Fee from the config file
-                                $applicationAmt = $configs->appFee;
-                                echo '$' .$applicationAmt;
+                            //Get Application Fee from the config file
+                            $applicationAmt = $configs->appFee;
+                            echo '$' .$applicationAmt;
                             ?>
                         </span>
                         </li>
@@ -110,14 +107,13 @@
                         <br><br>
                         <li class="list-group-item d-flex justify-content-between lh-condensed">
                             <div>
-                                <h6 class="my-0">Remaining Balance Due</h6>
+                                <h6 class="my-0">Remaining Balance (after payment)</h6>
                                 <small class="text-muted"><em>Amount to be paid later</em></small>
                             </div>
                             <span class="text-danger">
                             <?php
                             $balanceAmt = 0;
                             if($_POST["paymentTypeSelect"] == 'Deposit'){
-
                                 //Didn't include App Fee in the transaction
                                 $balanceAmt = $_REQUEST["totalAmt"] - $paymentTypeAmt;
                                 echo '$' .$balanceAmt;
@@ -125,7 +121,6 @@
                             elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
                                 echo '$' .$balanceAmt;
                             }
-
                             ?>
                         </span>
                         </li>
@@ -137,15 +132,14 @@
                             $passedAmt = '87ABD23777';
                             $validationKeyString = $passedAmt .$data .$finalAmt;
                             $hashedValidationKey = studentInfo::getHash($validationKeyString);
-
-
                             if(isset($_POST["save_details"])) {
                                 ?>
-                                <button class="btn btn-outline-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
+                                <button class="btn btn-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
                                     Pay <?php echo '$' . $finalAmt ?></button>
 
                                 <?php
-                            }else{
+                            }
+                            else{
                                 ?>
                                 <button class="btn btn-outline-primary btn-lg btn-block " name="btnPayment" type="submit" disabled>Continue to
                                     Pay <?php echo '$' . $finalAmt ?></button>
@@ -303,7 +297,7 @@
                                     <?php
                                 }else{
                                     ?>
-                                    <button type="submit" name="save_details" class="btn btn-outline-primary btn-lg ">Save Details</button>
+                                    <button type="submit" name="save_details" class="btn btn-primary btn-lg ">Save Details</button>
                                     <?php
                                 }
                                 ?>
