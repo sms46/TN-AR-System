@@ -143,6 +143,15 @@ class routes
         //View Couses on admin page
         $route = new route();
         $route->http_method = 'GET';
+        $route->action = 'viewCourses';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'viewCourses';
+        $routes[] = $route;
+
+        //View Couses on admin page
+        $route = new route();
+        $route->http_method = 'GET';
         $route->action = 'viewCoursesInfo';
         $route->page = 'adminHomepage';
         $route->controller = 'adminController';

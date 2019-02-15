@@ -113,6 +113,12 @@ class adminController extends http\controller
         self::getTemplate('adminHomepage', NULL, $result);
     }
 
+    public static function viewCourses()
+    {
+        $result = studentOrderInfo::getCoursesAdmin();
+        self::getTemplate('adminHomepage', NULL, $result);
+    }
+
     public static function viewCoursesInfo()
     {
         $result = studentOrderInfo::getCoursesInfoAdmin();

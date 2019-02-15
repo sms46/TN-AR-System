@@ -174,11 +174,20 @@ class studentOrderInfo extends \database\collection
         return self::getResults($sql);
     }
 
-    public static function getCoursesInfoAdmin()
+    public static function getCoursesAdmin()
     {
         $sql = "SELECT Session, Description,StartDate, EndDate, ResidentialPrice AS 'Residential Price',
-                CommuterPrice AS 'Commuter Price', Department, SeatAvailable AS 'Available Seats' 
+                CommuterPrice AS 'Commuter Price', Department, SeatAvailable AS 'Available Seats', Active 
                 FROM courses";
+
+        return self::getResults($sql);
+    }
+
+    public static function getCoursesInfoAdmin()
+    {
+        $sql = "SELECT orderNum AS 'Order No', studentName AS 'Student Name',course AS 'Registered Courses', 
+                department AS 'Department',startDate AS 'Start Date', year , timestamp AS 'Registered Date'
+                FROM studentCourseInfo ORDER BY timestamp";
 
         return self::getResults($sql);
     }
