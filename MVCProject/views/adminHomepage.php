@@ -21,7 +21,7 @@
     <script type="text/javascript" src="js/bootstrap-datepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="css/bootstrap-datepicker.css" >
 
-    <script>
+    <!--<script>
         $(function() {
             $('.dates #usr1').datepicker({
                 'format': 'yyyy-mm-dd',
@@ -29,6 +29,17 @@
             });
         });
 
+    </script>-->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var d = new Date();
+            for (var i = 0; i <= 10; i++) {
+                var option = "<option value=" + parseInt(d.getFullYear() + i) + ">" + parseInt(d.getFullYear() + i) + "</option>"
+                $('[id*=DropDownList1]').append(option);
+            }
+        });
     </script>
 
 </head>
@@ -91,7 +102,7 @@
                             </button>
                         </div>
 
-                        <form action="index.php?page=adminHomepage&action=export" method="post">
+                        <form action="index.php?page=adminHomepage&action=exportStudentInfo" method="post">
                             <div class="modal-body">
 
 
@@ -102,12 +113,8 @@
                                         <option value="Inactive">Inactive</option>
                                     </select>
 
-                                    <label for="yearSelect">Select Year:</label>
-                                    <select id="yearSelect" name="yearSelect" required>
-                                        <option value=""></option>
-                                        <option value="Active">Active</option>
-                                        <option value="Inactive">Inactive</option>
-                                    </select>
+                                    <label for="DropDownList1">Select Year:</label>
+                                <select id="DropDownList1" name="DropDownList1"></select>
                                
 
                             </div>
@@ -126,23 +133,32 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Check Balance Due</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Export Student Course Info</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
-                        <form action="index.php?page=homepage&action=checkBalance" method="post">
+                        <form action="index.php?page=adminHomepage&action=export" method="post">
                             <div class="modal-body">
 
-                                <!--Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>-->
-                                Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required/><br/>
-                                Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required/><br/>
+
+                                <label for="statusTypeSelect">Select Status:</label>
+                                <select id="statusTypeSelect" name="statusTypeSelect" required>
+                                    <option value=""></option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+
+                                <label for="DropDownList1">Select Year:</label>
+                                <select id="DropDownList1" name="DropDownList1"></select>
+
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <input type="submit" value="Check" name="checkBalance" class="btn btn-success"/>
+                                <button id="btnExport" type="submit" name="btnExport" class="btn btn-success clearfix">
+                                    <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
                             </div>
                         </form>
                     </div>
@@ -154,23 +170,32 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Check Balance Due</h5>
+                            <h5 class="modal-title" id="exampleModalLabel">Export Student Order Info</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
 
-                        <form action="index.php?page=homepage&action=checkBalance" method="post">
+                        <form action="index.php?page=adminHomepage&action=export" method="post">
                             <div class="modal-body">
 
-                                <!--Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>-->
-                                Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required/><br/>
-                                Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required/><br/>
+
+                                <label for="statusTypeSelect">Select Status:</label>
+                                <select id="statusTypeSelect" name="statusTypeSelect" required>
+                                    <option value=""></option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+
+                                <label for="DropDownList1">Select Year:</label>
+                                <select id="DropDownList1" name="DropDownList1"></select>
+
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                                <input type="submit" value="Check" name="checkBalance" class="btn btn-success"/>
+                                <button id="btnExport" type="submit" name="btnExport" class="btn btn-success clearfix">
+                                    <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
                             </div>
                         </form>
                     </div>

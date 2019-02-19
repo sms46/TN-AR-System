@@ -158,13 +158,13 @@ class routes
         $route->method = 'viewCoursesInfo';
         $routes[] = $route;
 
-        //Export to Excel
+        //Export to Excel - Student Info
         $route = new route();
         $route->http_method = 'POST';
-        $route->action = 'export';
+        $route->action = 'exportStudentInfo';
         $route->page = 'adminHomepage';
         $route->controller = 'adminController';
-        $route->method = 'export';
+        $route->method = 'exportStudentInfo';
         $routes[] = $route;
 
         return $routes;

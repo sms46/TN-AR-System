@@ -29,4 +29,12 @@ class studentInfo extends \database\collection
 
         return self::getResults($sql);
     }
+
+    public static function getDataForExcel($statusType, $dropDown)
+    {
+
+        $sql = "SELECT * FROM studentInfo";
+
+        return self::getResults($sql);
+    }
 }
