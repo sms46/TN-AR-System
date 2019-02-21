@@ -58,24 +58,24 @@ class adminController extends http\controller
         }
     }
 
-    public static function export()
+    public static function exportStudentInfo()
     {
 
         if(isset($_POST["btnExport"])) {
 
-            $startDate = $_POST['event_startDate'];
-            print $startDate;
-            $endDate = $_POST['event_endDate'];
-            print $endDate;
-            //$resultSet =  courses::findArchitectureCourses('Architecture');
-            $resultSet = studentOrderInfo::getDataForExcel($startDate,$endDate);
+            $statusType = $_POST['statusTypeSelect'];
+            $dropDown = $_POST['DropDownList1'];
+
+            //Get the Result set for data to be exported in excel
+            $resultSet = studentInfo::getDataForExcel($statusType,$dropDown);
             $finalArray = array();
 
             foreach ($resultSet as $item){
                 $itemArray = array( array('Order Number' => $item->orderNum,'Student Name' => $item->studentName,'Student Email' => $item ->studentEmail,
-                    'Course Amount' => $item ->courseAmt, 'Payment Type' => $item ->paymentType,'Amount Paid' => $item ->amtPaid,
-                    'Due Amount' => $item ->dueAmt,'Order Confirmed' => $item ->orderConfirmed,'Timestamp' => $item ->timestamp,
-                    'Payment Status' => $item ->paymentStatus,'Confirmed Timestamp' => $item ->confirmedTimestamp));
+                    'Gender' => $item ->gender, 'Parent Email' => $item ->parentEmail,'Parent Name' => $item ->parentName,
+                    'Parent Number' => $item ->parentNumber,'Street Address' => $item ->streetAddress,'City' => $item ->city,
+                    'State' => $item ->state,'Zip Code' => $item ->zipCode, 'Payment Type' => $item ->paymentType,
+                    'Order Confirmed' => $item ->orderConfirmed, 'Payment Status' => $item ->paymentStatus));
 
                 $finalArray[] = $itemArray;
             }
