@@ -42,7 +42,7 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>Sr.No</th>
+                        <!--<th>Sr.No</th>-->
                         <th>Description</th>
                         <th>Start Date</th>
                         <th>End Date</th>
@@ -53,7 +53,7 @@
 
                     <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
                         <tr>
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["id"]; ?></strong></td>
+                            <!--<td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["id"]; ?></strong></td>-->
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["StartDate"]; ?></td>
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["EndDate"]; ?></td>

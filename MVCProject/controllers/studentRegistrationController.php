@@ -64,16 +64,20 @@ class studentRegistrationController extends http\controller
                 //Insert into the student course info table
                 foreach($_SESSION['cart_item'] as $key=>$item)
                 {
+                    $courseName = $item['Description'];
+                    $deptName = $item['Department'];
+                    $startDate = $item['StartDate'];
+
+                    $getCourseId = studentCourseInfo::getCourseId($courseName, $deptName, $startDate );
+                    $courseId = $getCourseId[0]->id;
+
                     //Insert into the course Info table
                     $studentInfo = new studentCourseInfoModel();
                     $studentInfo->orderNum = $_POST['orderNum'];
+                    $studentInfo->courseId = $courseId;
                     $studentInfo->studentName = $_POST['studentName'];
-                    $studentInfo->course = $item['Description'];
-                    $studentInfo->department = $item['Department'];
-                    $studentInfo->startDate = $item['StartDate'];
-                    $studentInfo->year = studentCourseInfo::getCurrentYear();
+                    $studentInfo->regType = $item['Price'];
                     $studentInfo->timestamp = studentInfo::getTimestamp();
-                    $studentInfo->appName = 'COAD';
                     $studentInfo->save();
                 }
 

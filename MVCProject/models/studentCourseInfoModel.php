@@ -4,14 +4,11 @@ final class studentCourseInfoModel extends \database\model
 {
     public $id;
     public $orderNum;
+    public $courseId;
     public $studentName;
-    public $course;
-    public $department;
-    public $startDate;
-    public $year;
+    public $regType;
     public $timestamp;
-    public $appName;
-
+    
     protected static $modelName = 'studentCourseInfoModel';
 
     public static function getTablename()
