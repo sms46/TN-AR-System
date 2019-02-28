@@ -2,11 +2,13 @@
 <html>
 
 <?php
-    //Session start initiated on top of the page
-    session_start();
 
-    //Included header tag
-    include 'headers.php';
+//Session start initiated on top of the page
+session_start();
+
+//Included header tag
+include 'headers.php';
+
 ?>
 
 <body class="bg-light">

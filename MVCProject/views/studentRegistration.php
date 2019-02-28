@@ -2,10 +2,11 @@
 <html>
 
 <?php
-//Included header tag
-include 'headers.php';
-//Get values from the config File
-$configs = include('config.php');
+    //Included header tag
+    include 'headers.php';
+    //Get values from the config File
+    $configs = include('config.php');
+
 ?>
 
 <div class="wrapper">
