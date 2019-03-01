@@ -5,6 +5,9 @@ class courseRegistrationController extends http\controller
     public static function addCourses()
     {
         session_start();
+        $time = $_SERVER['REQUEST_TIME'];
+        $sessionId = session_id();
+
         if(isset($_POST["add_to_cart"])) {
 
             //Get one course selected by the user
@@ -22,6 +25,14 @@ class courseRegistrationController extends http\controller
                         'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["ResidentialPrice"],
                         'Department' => $productByCode["Department"], 'appName' => $productByCode["appName"],'SeatAvailable' => $productByCode["SeatAvailable"]));
 
+                    //LOG FOR TEST:
+                    $logs = new serverTimingLogsModal();
+                    $logs->sessionId = $sessionId;
+                    $logs->addCourseTime = $time;
+                    $logs->comments = 'User added a course';
+                    $logs->timestamp = studentInfo::getTimestamp();
+                    $logs->save();
+
                     //Condition to check if the course has been previously added
                     if (!empty($_SESSION["cart_item"])) {
                         if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
@@ -37,6 +48,13 @@ class courseRegistrationController extends http\controller
                     $itemArrayComPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
                         'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["CommuterPrice"],
                         'Department' => $productByCode["Department"], 'appName' => $productByCode["appName"],'SeatAvailable' => $productByCode["SeatAvailable"]));
+
+                    //LOG FOR TEST:
+                    $logs = new serverTimingLogsModal();
+                    $logs->sessionId = $sessionId;
+                    $logs->addCourseTime = $time;
+                    $logs->timestamp = studentInfo::getTimestamp();
+                    $logs->save();
 
                     //Condition to check if the course has been previously added
                     if (!empty($_SESSION["cart_item"])) {

@@ -2,6 +2,7 @@
 <html>
 
 <?php
+
     //Included header tag
     include 'headers.php';
     //Get values from the config File
@@ -17,7 +18,7 @@
     <div id="content">
 
         <!-- Navigation bar-->
-        <?php include 'navBar.php';?>
+        <?php //include 'navBar.php';?>
 
         <div class="container">
             <h3 class="text-danger" align="center"><strong>COURSE CHECKOUT</strong></h3><hr/><br/>

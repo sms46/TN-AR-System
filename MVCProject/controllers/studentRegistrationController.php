@@ -9,30 +9,28 @@ class studentRegistrationController extends http\controller
     public static function register()
     {
         if(isset($_POST["proceed_to_payment"]) && isset ($_POST["paymentTypeSelect"])) {
-
-            $time = $_SERVER['REQUEST_TIME'];
-            print($time);
-            print("  ");
-            print($_SESSION['LAST_ACTIVITY']);
-            $timeout_duration = 120;
-
-            if (isset($_SESSION['LAST_ACTIVITY']) &&
-                ($time - $_SESSION['LAST_ACTIVITY']) > $timeout_duration) {
-
-                session_unset();
-                session_destroy();
-                session_start();
-
-                echo '<script>alert("Your Session has expired. Please Try Again")</script>';
-            }
-
+            
             if(!empty($_SESSION["cart_item"])){
+
                 $orderNo = strtoupper(studentInfo::randomCode(6));
+                $time = $_SERVER['REQUEST_TIME'];
+                $sessionId = session_id();
+
+                //LOG FOR TEST:
+                $logs = new serverTimingLogsModal();
+                $logs->sessionId = $sessionId;
+                $logs->orderNum = $orderNo;
+                $logs->proceedPayment = $time;
+                $logs->comments = 'Session Active.User proceeds to checkout.';
+                $logs->timestamp = studentInfo::getTimestamp();
+                $logs->save();
+
+
                 self::getTemplate('studentRegistration',$orderNo, $orderNo);
             }else{
-
-               // $architectureRecordsRegister = courses::findCourses();
-              //  self::getTemplate('courseRegistration', null ,$architectureRecordsRegister);
+                echo '<script>alert("Your Session has been expired. Please Try Again")</script>';
+                $courseRegister = courses::findCourses();
+                self::getTemplate('courseRegistration',NULL,$courseRegister);
             }
         }
     }
