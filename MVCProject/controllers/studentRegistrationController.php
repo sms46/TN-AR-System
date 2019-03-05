@@ -113,6 +113,17 @@ class studentRegistrationController extends http\controller
                     $log->currentTimestamp = studentInfo::getTimestamp();
                     $log->save();
 
+                    $time = $_SERVER['REQUEST_TIME'];
+                    $sessionId = session_id();
+                    //LOG FOR TEST:
+                    $logs = new serverTimingLogsModal();
+                    $logs->sessionId = $sessionId;
+                    $logs->orderNum = $_POST['orderNum'];
+                    $logs->proceedPayment = $time;
+                    $logs->comments = 'Session Active.Current order num saved.User Ready to pay';
+                    $logs->timestamp = studentInfo::getTimestamp();
+                    $logs->save();
+
                     //FIX: Need to save the order no in a variable to pass the same no throughout a session.
                     $orderNum = $_POST['orderNum'];
                     self::getTemplate('studentRegistration', $orderNum, $orderNum);
