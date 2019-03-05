@@ -18,57 +18,30 @@ class courseRegistrationController extends http\controller
 
             if($availableSeats > 0){
 
-                //Display the price based on selection by the user
-                if($_POST["priceType"] == 'Residential Amount')
-                {
-                    $itemArrayResPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
-                        'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["ResidentialPrice"],
-                        'Department' => $productByCode["Department"], 'appName' => $productByCode["appName"],'SeatAvailable' => $productByCode["SeatAvailable"]));
+                $priceType = $_POST["priceType"];
 
-                    //LOG FOR TEST:
-                    $logs = new serverTimingLogsModal();
-                    $logs->sessionId = $sessionId;
-                    $logs->addCourseTime = $time;
-                    $logs->comments = 'User added a course';
-                    $logs->timestamp = studentInfo::getTimestamp();
-                    $logs->save();
+                //Get Session Info
+                $itemArray = coursePrice::getSessionInfo($productByCode,$priceType);
 
-                    //Condition to check if the course has been previously added
-                    if (!empty($_SESSION["cart_item"])) {
-                        if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
-                            echo '<script>alert("Course has already been added")</script>';
-                        } else {
-                            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArrayResPrice);
-                        }
+                //LOG FOR TEST:
+                $logs = new serverTimingLogsModal();
+                $logs->sessionId = $sessionId;
+                $logs->addCourseTime = $time;
+                $logs->comments = 'User added a course';
+                $logs->timestamp = studentInfo::getTimestamp();
+                $logs->save();
+
+                //Condition to check if the course has been previously added
+                if (!empty($_SESSION["cart_item"])) {
+                    if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
+                        echo '<script>alert("Course has already been added")</script>';
                     } else {
-                        $_SESSION["cart_item"] = $itemArrayResPrice;
+                        $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
                     }
                 } else {
-
-                    $itemArrayComPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
-                        'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $productByCode["CommuterPrice"],
-                        'Department' => $productByCode["Department"], 'appName' => $productByCode["appName"],'SeatAvailable' => $productByCode["SeatAvailable"]));
-
-                    //LOG FOR TEST:
-                    $logs = new serverTimingLogsModal();
-                    $logs->sessionId = $sessionId;
-                    $logs->addCourseTime = $time;
-                    $logs->timestamp = studentInfo::getTimestamp();
-                    $logs->save();
-
-                    //Condition to check if the course has been previously added
-                    if (!empty($_SESSION["cart_item"])) {
-                        if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
-                            echo '<script>alert("Course has already been added")</script>';
-                        } else {
-                            $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArrayComPrice);
-                        }
-                    } else {
-                        $_SESSION["cart_item"] = $itemArrayComPrice;
-                    }
+                    $_SESSION["cart_item"] = $itemArray;
                 }
             }else{
-
                 echo '<script>alert("There are no seats available for this course")</script>';
             }
         }

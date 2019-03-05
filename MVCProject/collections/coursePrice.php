@@ -18,5 +18,25 @@ class coursePrice extends database\collection
                 WHERE priceType = 'Commuter'";
         return self::getResults($sql,NULL);
     }
+
+    static public function getPrice($priceType)
+    {
+        $sql = "SELECT * FROM coursePrice 
+                WHERE priceType = $priceType";
+        return self::getResults($sql,NULL);
+    }
+
+    static public function getSessionInfo($productByCode, $priceType)
+    {
+
+        $strPrice = coursePrice::getPrice($priceType);
+        $price = $strPrice[0]->price;
+
+        $itemArrayResPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
+                                    'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $price,
+                                    'Department' => $productByCode["Department"], 'appName' => $productByCode["appName"],'SeatAvailable' => $productByCode["SeatAvailable"]));
+
+        return $itemArrayResPrice;
+    }
 }
 ?>
