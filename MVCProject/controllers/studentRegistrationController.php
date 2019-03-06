@@ -28,7 +28,7 @@ class studentRegistrationController extends http\controller
 
                 self::getTemplate('studentRegistration',$orderNo, $orderNo);
             }else{
-                echo '<script>alert("Your Session has been expired. Please Try Again")</script>';
+                echo '<script>alert("Your Session has been expired.Please Try Again")</script>';
                 $courseRegister = courses::findCourses();
                 self::getTemplate('courseRegistration',NULL,$courseRegister);
             }
