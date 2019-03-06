@@ -6,7 +6,7 @@ final class studentCourseInfoModel extends \database\model
     public $orderNum;
     public $courseId;
     public $studentName;
-    public $regType;
+    public $priceId;
     public $timestamp;
     
     protected static $modelName = 'studentCourseInfoModel';

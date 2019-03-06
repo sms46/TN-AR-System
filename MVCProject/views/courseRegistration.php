@@ -124,8 +124,8 @@
                                         <p style="text-align:center;" class="card-text">
                                             <select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" id="priceType" name="priceType" required>
                                                 <option value="">Select Amount Type</option>
-                                                <option>Residential Amount</option>
-                                                <option>Commuter Amount</option>
+                                                <option value="Residential">Residential Amount</option>
+                                                <option value="Commuter">Commuter Amount</option>
                                             </select>
                                         </p>
                                         <p style="text-align:center; color:red" class="card-text"><strong> Seats Available: <?php echo $product_array[$key]["SeatAvailable"];?></strong></p>
