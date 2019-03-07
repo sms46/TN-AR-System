@@ -4,7 +4,7 @@ namespace utility;
 
 class htmlTable
 {
-    public static function generateTableForCourses($array,$resPrice,$commPrice)
+    public static function generateTableForCourses($array)
     {
         if($array!= null) {
             echo "<div class=\"table-responsive\">";
@@ -28,8 +28,8 @@ class htmlTable
                           <td>" . $row['Description'] . "</td>
                           <td>" . $row['StartDate'] . "</td>
                           <td>" . $row['EndDate'] . "</td>
-                          <td>" .'$'. $resPrice . "</td>
-                          <td>" .'$'. $commPrice . "</td>
+                          <td>" .'$'. $row['ResidentialPrice'] . "</td>
+                          <td>" .'$'. $row['CommuterPrice'] . "</td>
                     </tr>";
              }
 
