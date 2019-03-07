@@ -65,12 +65,11 @@ class transactionStatusController extends http\controller
             // loop through all the courses taken by the student
             for ($i=0; $i< count($studentOrder); $i++)
             {
-                $confirmedCourses = $studentOrder[$i]->course;
-                $confirmedDates = $studentOrder[$i]->startDate;
+                $confirmedCourses = $studentOrder[$i]->courseId;
                 $seatsCount = $studentOrder[$i]->SeatAvailable;
 
                 //Update the no of seats available for all courses taken by the student to total count
-                studentOrderInfo::updateNoOfSeats($confirmedCourses,$confirmedDates,$seatsCount);
+                studentOrderInfo::updateNoOfSeats($confirmedCourses,$seatsCount);
             }
         }
     }

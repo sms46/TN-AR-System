@@ -65,15 +65,19 @@ class courseRegistrationController extends http\controller
         {
             if($_GET["action"] == "remove")
             {
-                foreach($_SESSION["cart_item"] as $keys => $values)
-                {
-                    if($values["id"] == $_GET["code"])
-                    {
-                        unset($_SESSION["cart_item"][$keys]);
-                        echo '<script>alert("Course Removed")</script>';
-                        $architectureRecordsRegister = courses::findCourses();
-                        self::getTemplate('courseRegistration', $_SESSION["cart_item"],$architectureRecordsRegister);
+                if(!empty($_SESSION["cart_item"])) {
+                    foreach ($_SESSION["cart_item"] as $keys => $values) {
+                        if ($values["id"] == $_GET["code"]) {
+                            unset($_SESSION["cart_item"][$keys]);
+                            echo '<script>alert("Course Removed")</script>';
+                            $architectureRecordsRegister = courses::findCourses();
+                            self::getTemplate('courseRegistration', $_SESSION["cart_item"], $architectureRecordsRegister);
+                        }
                     }
+                }else{
+                    echo '<script>alert("Your Session has been expired. Please Try Again")</script>';
+                    $courseRegister = courses::findCourses();
+                    self::getTemplate('courseRegistration',NULL,$courseRegister);
                 }
             }
         }

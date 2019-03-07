@@ -28,7 +28,7 @@ class studentRegistrationController extends http\controller
 
                 self::getTemplate('studentRegistration',$orderNo, $orderNo);
             }else{
-                echo '<script>alert("Your Session has been expired.Please Try Again")</script>';
+                echo '<script>alert("Your Session has been expired. Please Try Again")</script>';
                 $courseRegister = courses::findCourses();
                 self::getTemplate('courseRegistration',NULL,$courseRegister);
             }
@@ -87,7 +87,9 @@ class studentRegistrationController extends http\controller
                         $courseName = $item['Description'];
                         $deptName = $item['Department'];
                         $startDate = $item['StartDate'];
+                        $priceId = $item['PriceId'];
 
+                        //Get Course Id
                         $getCourseId = studentCourseInfo::getCourseId($courseName, $deptName, $startDate);
                         $courseId = $getCourseId[0]->id;
 
@@ -96,7 +98,7 @@ class studentRegistrationController extends http\controller
                         $studentInfo->orderNum = $_POST['orderNum'];
                         $studentInfo->courseId = $courseId;
                         $studentInfo->studentName = $_POST['studentName'];
-                        $studentInfo->regType = $item['Price'];
+                        $studentInfo->priceId = $priceId;
                         $studentInfo->timestamp = studentInfo::getTimestamp();
                         $studentInfo->save();
                     }
