@@ -87,9 +87,7 @@ class studentRegistrationController extends http\controller
                         $courseName = $item['Description'];
                         $deptName = $item['Department'];
                         $startDate = $item['StartDate'];
-                        $priceId = $item['PriceId'];
 
-                        //Get Course Id
                         $getCourseId = studentCourseInfo::getCourseId($courseName, $deptName, $startDate);
                         $courseId = $getCourseId[0]->id;
 
@@ -98,7 +96,7 @@ class studentRegistrationController extends http\controller
                         $studentInfo->orderNum = $_POST['orderNum'];
                         $studentInfo->courseId = $courseId;
                         $studentInfo->studentName = $_POST['studentName'];
-                        $studentInfo->priceId = $priceId;
+                        $studentInfo->regType = $item['Price'];
                         $studentInfo->timestamp = studentInfo::getTimestamp();
                         $studentInfo->save();
                     }

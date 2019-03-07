@@ -22,7 +22,7 @@ class coursePrice extends database\collection
     static public function getPrice($priceType)
     {
         $sql = "SELECT * FROM coursePrice 
-                WHERE priceType = '$priceType'";
+                WHERE priceType = $priceType";
         return self::getResults($sql,NULL);
     }
 
@@ -31,13 +31,12 @@ class coursePrice extends database\collection
 
         $strPrice = coursePrice::getPrice($priceType);
         $price = $strPrice[0]->price;
-        $priceId = $strPrice[0]->pid;
 
-        $itemArrayPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
-                                    'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $price,'PriceId' => $priceId,
+        $itemArrayResPrice = array($productByCode['id'] => array('id' => $productByCode["id"],'Session' => $productByCode["Session"],'Description' => $productByCode["Description"],
+                                    'StartDate' => $productByCode["StartDate"],'EndDate' => $productByCode["EndDate"], 'Price' => $price,
                                     'Department' => $productByCode["Department"], 'appName' => $productByCode["appName"],'SeatAvailable' => $productByCode["SeatAvailable"]));
 
-        return $itemArrayPrice;
+        return $itemArrayResPrice;
     }
 }
 ?>

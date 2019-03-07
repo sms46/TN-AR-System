@@ -35,12 +35,12 @@ class studentOrderInfo extends \database\collection
 
     public static function retrieveUpdatedStudentOrder($OrderNum)
     {
-        $sql = 'SELECT TempTable.studentName , TempTable.studentEmail , TempTable.courseId, TempTable.priceId,TempTable.timestamp,
+        $sql = 'SELECT TempTable.studentName , TempTable.studentEmail , TempTable.course, TempTable.startDate,TempTable.timestamp,
                   TempTable.orderConfirmed, TempTable.paymentStatus, TempTable.confirmedTimestamp, TempTable.courseAmt, TempTable.amtPaid,TempTable.orderNum,
                   TempTable.dueAmt, TempTable.paymentType, C.appName, C.SeatAvailable, SI.streetAddress, SI.city, SI.state, SI.zipCode
                 FROM
                     (
-                        SELECT SC.studentName, SO.studentEmail, SC.courseId, SC.priceId,
+                        SELECT SC.studentName, SO.studentEmail, SC.course, SC.startDate,
                         SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp,SO.courseAmt, SO.amtPaid, SO.dueAmt,
                         SO.paymentType,SO.orderNum
                         FROM studentOrderInfo SO JOIN studentCourseInfo SC
@@ -54,7 +54,8 @@ class studentOrderInfo extends \database\collection
                     ) TempTable
                     
                 JOIN courses C
-                ON  TempTable.courseId = C.id
+                ON  TempTable.course = C.Description
+                AND TempTable.startDate = C.StartDate
 				
 			    JOIN studentInfo SI
 			    ON  TempTable.orderNum = SI.orderNum';
@@ -62,16 +63,26 @@ class studentOrderInfo extends \database\collection
         return self::getResults($sql, $OrderNum);
     }
 
-    public static function updateNoOfSeats($courseId,$seatsAvailable)
+    public static function updateNoOfSeats($courseName, $startDate, $seatsAvailable)
     {
         if($seatsAvailable > 0){
 
             //Update the courses table with seats availability after successful payment
             $seats = new courseModel();
-            $seats->id = $courseId;
+
+            //get the course id from the courses table
+            $courseId = studentOrderInfo::getCourseId($courseName,$startDate);
+            $seats->id = $courseId[0]->id;
             $seats->SeatAvailable = $seatsAvailable - 1;
             $seats->save();
         }
+    }
+
+    public static function getCourseId($courseName,$startDate)
+    {
+        $sql = "SELECT * FROM courses WHERE Description = '$courseName' AND StartDate = '$startDate'";
+
+        return self::getResults($sql);
     }
 
     public static function getStudentDetails($OrderNum)
