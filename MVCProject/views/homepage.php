@@ -44,6 +44,12 @@ include 'headers.php';
                         $graphDesRecords = courses::findGraphicDesignCourses();
                         $digitDesRecords = courses::findDigitalDesignCourses();
 
+                        //Get Prices for Residential and Commuter
+                        $strResPrice = coursePrice::getResidentPrice();
+                        $resPrice = $strResPrice[0]->price;
+
+                        $strCommPrice = coursePrice::getCommuterPrice();
+                        $commPrice = $strCommPrice[0]->price;
                         ?>
 
                     <!--Only Pass Active Courses to HTML Table,
@@ -52,7 +58,7 @@ include 'headers.php';
                                 <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($arcRecords); ?> </h4>
                                 <?php
                                     //Print HTML Table
-                                    print utility\htmlTable::generateTableForCourses($arcRecords);}?>
+                                    print utility\htmlTable::generateTableForCourses($arcRecords,$resPrice,$commPrice);}?>
 
                         <?php if(!empty($desRecords)) { ?>
 
@@ -60,7 +66,7 @@ include 'headers.php';
                                 <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($desRecords); ?> </h4>
                                 <?php
                                     //Print HTML Table
-                                    print utility\htmlTable::generateTableForCourses($desRecords);}?>
+                                    print utility\htmlTable::generateTableForCourses($desRecords,$resPrice,$commPrice);}?>
 
                         <?php if(!empty($interiorRecords)) { ?>
 
@@ -68,7 +74,7 @@ include 'headers.php';
                                 <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($interiorRecords);?> </h4>
                                 <?php
                                     //Print HTML Table
-                                    print utility\htmlTable::generateTableForCourses($interiorRecords);}?>
+                                    print utility\htmlTable::generateTableForCourses($interiorRecords,$resPrice,$commPrice);}?>
 
                         <?php if(!empty($graphDesRecords)) { ?>
 
@@ -76,7 +82,7 @@ include 'headers.php';
                                 <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($graphDesRecords); ?> </h4>
                                 <?php
                                     //Print HTML Table
-                                    print utility\htmlTable::generateTableForCourses($graphDesRecords);}?>
+                                    print utility\htmlTable::generateTableForCourses($graphDesRecords,$resPrice,$commPrice);}?>
 
                         <?php if(!empty($digitDesRecords)) { ?>
 
@@ -84,7 +90,7 @@ include 'headers.php';
                                 <h4 class="text-danger"> <?php print utility\getTitle::getTitleForCourses($digitDesRecords);?> </h4>
                                 <?php
                                     //Print HTML Table
-                                    print utility\htmlTable::generateTableForCourses($digitDesRecords);}?>
+                                    print utility\htmlTable::generateTableForCourses($digitDesRecords,$resPrice,$commPrice);}?>
 
                          </br>
                          <form action="index.php?page=homepage&action=redirectToCourse" method="POST">
