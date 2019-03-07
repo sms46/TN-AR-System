@@ -1,7 +1,10 @@
 <?php
-        //Get values from the config File
-        $configs = include('config.php');
-        $titleName = $configs->title;
+    //Retrieve the site id passed on in the URL
+    $appId = $_GET['id'];
+
+    // Get the Application name based on site id
+    $appOut = appConfig::getAppName($appId);
+    $titleName = $appOut[0]->appName;
 ?>
 
 <!DOCTYPE html>
@@ -19,7 +22,7 @@
             <i class="fas fa-align-justify"></i>
         </button>
 
-        <a style="font-size: xx-large" href="index.php?page=homepage&action=redirectToCoad"><h1>&nbsp;&nbsp;&nbsp;<?php print $titleName;?></h1></a>
+        <a style="font-size: xx-large" href="index.php?page=homepage&action=redirectToCoad&id=<?php print $appId?>"><h1>&nbsp;&nbsp;&nbsp;<?php print $titleName;?></h1></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="nav navbar-nav ml-auto">
 

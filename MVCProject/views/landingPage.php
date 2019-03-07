@@ -65,15 +65,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <!--<h2 class="card-title">College of Architecture and Design</h2>-->
-
-                        <!--<form id="myform" method="GET" action="index.php?page=homepage&action=redirectToCoad">
-                            <!--<input type="hidden" name="title" value="College of Architecture and Design">
-                            <input type="hidden" name="appName" value="COAD">
-                            <input type="hidden" name="courseOne" value="Intro to Architecture + Interiors">
-                            <input type="hidden" name="courseTwo" value="Design + Make">-->
-                            <a href="index.php?page=homepage&action=redirectToCoad" onclick="document.getElementById('myform').submit();"><h2>College of Architecture and Design</h2></a>
-                        <!--</form>-->
+                        <a href="index.php?page=homepage&action=redirectToCoad&id=1" onclick="document.getElementById('myform').submit();"><h2>College of Architecture and Design</h2></a>
                     </div>
                 </div>
             </div>
@@ -81,7 +73,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <h2 class="card-title">Ying Wu School of Computing</h2>
+                        <a href="index.php?page=homepage&action=redirectToCoad&id=2" onclick="document.getElementById('myform').submit();"><h2>Ying Wu School of Computing</h2></a>
                     </div>
                 </div>
             </div>
