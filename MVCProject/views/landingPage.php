@@ -29,7 +29,7 @@
                         <a class="nav-link" href="#">Contact Us</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogIn"><h5><span class="badge badge-dark">Sign In</span></h5></a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#modalLogIn"><h5><span class="badge badge-dark">Log In</span></h5></a>
                     </li>
                 </ul>
             </div>
@@ -119,9 +119,8 @@
                         <div class="form-group">
                             <select class=" form-control" id="adminDropDown" name="adminDropDown" required>
                                 <option value="">Select a Department</option>
-                                <option value="COAD">College of Architecture and Design</option>
-                                <option value="YWCC">Ying Wu School of Computing</option>
-                                <option value="SM">School of Management</option>
+                                <option value="1">College of Architecture and Design</option>
+                                <option value="2">Ying Wu School of Computing</option>
                             </select>
                             <i class="fas fa-chevron-circle-down"></i>
                         </div>
@@ -164,9 +163,8 @@
                         <div class="form-group">
                             <select class=" form-control" id="adminDropDown" name="adminDropDown" required>
                                 <option value="">Select a Department</option>
-                                <option value="COAD">College of Architecture and Design</option>
-                                <option value="YWCC">Ying Wu School of Computing</option>
-                                <option value="SM">School of Management</option>
+                                <option value="1">College of Architecture and Design</option>
+                                <option value="2">Ying Wu School of Computing</option>
                             </select>
                             <i class="fas fa-chevron-circle-down"></i>
                         </div>

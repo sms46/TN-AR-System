@@ -37,7 +37,7 @@ include 'headers.php';
 
             // Get the Application name based on site id
             $appOut = appConfig::getAppName($appId);
-            $value = $appOut[0]->appCode;
+            $value = $appOut[0]->app_code;
 
                 switch ($value) {
                     case "COAD":?>

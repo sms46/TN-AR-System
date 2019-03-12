@@ -86,6 +86,8 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#">Grant Access</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Add Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Add Price Type</a></li>
                 </ul>
             </div>
             <!--/col-->
@@ -249,7 +251,7 @@
                                     <i class="fas fa-book fa-5x"></i>
                                 </div>
                                 <h6 class="text-uppercase" align="center">Courses</h6>
-                                <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCourses"><?php $course = studentOrderInfo::getCoursesAdmin();print count($course)?></a></h1>
+                                <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCourses"><?php //$course = studentOrderInfo::getCoursesAdmin();print count($course)?></a></h1>
                             </div>
                         </div>
                     </div>
@@ -260,7 +262,7 @@
                                     <i class="fas fa-book fa-5x"></i>
                                 </div>
                                 <h6 class="text-uppercase" align="center">Student Course Info</h6>
-                                <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCoursesInfo"><?php $course = studentOrderInfo::getCoursesInfoAdmin();print count($course)?></a></h1>
+                                <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCoursesInfo"><?php //$course = studentOrderInfo::getCoursesInfoAdmin();print count($course)?></a></h1>
                             </div>
                         </div>
                     </div>

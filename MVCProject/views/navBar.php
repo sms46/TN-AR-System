@@ -4,7 +4,7 @@
 
     // Get the Application name based on site id
     $appOut = appConfig::getAppName($appId);
-    $titleName = $appOut[0]->appName;
+    $titleName = $appOut[0]->app_name;
 ?>
 
 <!DOCTYPE html>

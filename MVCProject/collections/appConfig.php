@@ -8,7 +8,7 @@ class appConfig extends database\collection
     static public function getAppName($appId)
     {
         $sql = "SELECT * FROM appConfig 
-                WHERE appId = '$appId'";
+                WHERE app_id = '$appId'";
         return self::getResults($sql,NULL);
     }
 

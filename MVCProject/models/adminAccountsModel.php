@@ -3,11 +3,12 @@
 final class adminAccountsModel extends \database\model
 {
     public $id;
-    public $userName;
+    public $user_name;
     public $password;
-    public $appName;
-    public $hasAccess;
-    public $grantAccessBy;
+    public $app_id;
+    public $is_admin;
+    public $has_access;
+    public $grant_access_by;
 
     protected static $modelName = 'adminAccountsModel';
 

@@ -2,15 +2,16 @@
 
 class adminController extends http\controller
 {
+    //Function to validate a user in db based on appId
     public static function validateLogin()
     {
         if(isset($_POST["btnSignIn"])) {
             $adminName = $_POST['userName'];
             $password = $_POST['password'];
+            $appKey = $_POST['adminDropDown'];
 
             //Check the user in the DB
-            $user = adminAccounts::findUser($adminName);
-
+            $user = adminAccounts::findUser($adminName, $appKey);
 
             if ($user == FALSE) {
                 echo '<script>alert("No User Found")</script>';
@@ -19,6 +20,7 @@ class adminController extends http\controller
 
                 if($user->checkPassword($password) == TRUE) {
 
+                    //to-do: Fetch the app id for title on homepage
                     $resultSet = studentOrderInfo::getRegisteredStudentInfo();
                     self::getTemplate('adminHomepage', NULL, $resultSet);
 
@@ -30,6 +32,7 @@ class adminController extends http\controller
         }
     }
 
+    //Function to add a user in db when a user admin request an access
     public static function createLogin()
     {
         if(isset($_POST["btnRequest"])) {
@@ -38,18 +41,21 @@ class adminController extends http\controller
             $appKey = $_POST['adminDropDown'];
 
             //Check the user in the DB
-            $user = adminAccounts::findUser($adminName);
+            $user = adminAccounts::findUser($adminName, $appKey);
 
+            //Add the user admin if no records found
             if ($user == FALSE) {
-                $user = new adminAccountsModel();
-                $user->userName = $adminName;
-                $user->password = $user->setPassword($password);
-                $user->appName = $appKey;
-                $user->hasAccess = 0;
+                $addUser = new adminAccountsModel();
+                $addUser->user_name = $adminName;
+                $addUser->password = $addUser->setPassword($password);
+                $addUser->app_id = $appKey;
+                $addUser->is_admin = 0;
+                $addUser->has_access = 0;
 
-                $user->save();
+                $addUser->save();
 
-                header("Location: index.php");
+                echo '<script>alert("You have successfully requested for an admin access request.")</script>';
+                self::getTemplate('landingPage', NULL, NULL);
 
             } else {
                 echo '<script>alert("User already registered")</script>';

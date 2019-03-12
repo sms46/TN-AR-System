@@ -18,3 +18,4 @@ class homepageController extends http\controller
         self::getTemplate('courseRegistration',NULL,$courseRegister);
     }
 }
+

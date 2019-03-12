@@ -2,9 +2,9 @@
 
 final class appConfigModel extends \database\model
 {
-    public $appId;
-    public $appName;
-    public $appCode;
+    public $app_id;
+    public $app_name;
+    public $app_code;
 
     protected static $modelName = 'appConfigModel';
 
