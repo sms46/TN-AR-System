@@ -86,7 +86,7 @@
                         </ul>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="#">Grant Access</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Add Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddProducts">Add Products</a></li>
                     <li class="nav-item"><a class="nav-link" href="#">Add Price Type</a></li>
                 </ul>
             </div>
@@ -198,6 +198,44 @@
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <button id="btnExport" type="submit" name="btnExport" class="btn btn-success clearfix">
                                     <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. Add products-->
+            <div class="modal" id="modalAddProducts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Product</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+
+                        <form action="index.php?page=adminHomepage&action=addProducts" method="post">
+                            <div class="modal-body">
+
+                                Name:  <input type="text" class="form-control" name="productName" placeholder="Enter Product Name" required/><br/>
+                                Category:  <input type="text" class="form-control" name="category" placeholder="Enter Category" required/><br/>
+                                Description:  <input type="text" class="form-control" name="desc" placeholder="Enter Description" required/><br/>
+                                Total: <input type="text" class="form-control" name="total" placeholder="Enter Total Count" required/><br/>
+                                Sort ID: <input type="text" class="form-control" name="sort" placeholder="Enter Sort ID " required/><br/>
+
+                                <div class="form-group">
+                                    <select class=" form-control" id="addDropDown" name="addDropDown" required>
+                                        <option value="">Select Status</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Inactive</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <button id="btnAdd" type="submit" name="btnAdd" class="btn btn-success clearfix">Add Product</button>
                             </div>
                         </form>
                     </div>

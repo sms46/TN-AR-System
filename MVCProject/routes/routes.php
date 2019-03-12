@@ -14,6 +14,37 @@ class routes
         $route->method = 'showDefault';
         $routes[] = $route;
 
+        //Validate the admin login credentials
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'validateLogin';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'validateLogin';
+        $routes[] = $route;
+
+        //Request an access for admin login credentials
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'createLogin';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'createLogin';
+        $routes[] = $route;
+
+        //Add Products by the admin
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'addProducts';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'addProducts';
+        $routes[] = $route;
+
+
+        //TO-DO:
+
+
         //routing the default homepage
         $route = new route();
         $route->http_method = 'GET';
@@ -102,24 +133,6 @@ class routes
         $route->page = 'homepage';
         $route->controller = 'checkBalanceController';
         $route->method = 'checkBalance';
-        $routes[] = $route;
-
-        //Validate the admin login credentials
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'validateLogin';
-        $route->page = 'adminHomepage';
-        $route->controller = 'adminController';
-        $route->method = 'validateLogin';
-        $routes[] = $route;
-
-        //Request an access for admin login credentials
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'createLogin';
-        $route->page = 'adminHomepage';
-        $route->controller = 'adminController';
-        $route->method = 'createLogin';
         $routes[] = $route;
 
         //Registered student report

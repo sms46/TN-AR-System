@@ -20,7 +20,7 @@ class adminController extends http\controller
 
                 if($user->checkPassword($password) == TRUE) {
 
-                    //to-do: Fetch the app id for title on homepage
+                    //to-do: Fetch the app id dynamically for title on homepage
                     $resultSet = studentOrderInfo::getRegisteredStudentInfo();
                     self::getTemplate('adminHomepage', NULL, $resultSet);
 
@@ -61,6 +61,37 @@ class adminController extends http\controller
                 echo '<script>alert("User already registered")</script>';
                 self::getTemplate('landingPage', NULL, NULL);
             }
+        }
+    }
+
+    //Function to add product in  the product table
+    public static function addProducts()
+    {
+        if(isset($_POST["btnAdd"])) {
+            $productName = $_POST['productName'];
+            $category = $_POST['category'];
+            $description = $_POST['desc'];
+            $totalCount = $_POST['total'];
+            $sortId = $_POST['sort'];
+            $addDropDown = $_POST['addDropDown'];
+
+            //Add products in the product Table
+            $addProduct = new productsModel();
+            $addProduct->sort_count = $sortId;
+            $addProduct->name = $productName;
+            $addProduct->categories = $category;
+            $addProduct->description = $description;
+            $addProduct->app_id = 1;  //to-do: pass id dynamically
+            $addProduct->item_remain = $totalCount;
+            $addProduct->active = $addDropDown ;
+
+            $addProduct->save();
+
+            echo '<script>alert("You have successfully added a product in the database")</script>';
+
+            //to-do: Fetch the app id dynamically for title on homepage
+            $resultSet = studentOrderInfo::getRegisteredStudentInfo();
+            self::getTemplate('adminHomepage', $resultSet, $resultSet);
         }
     }
 
