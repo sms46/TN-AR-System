@@ -1,16 +1,17 @@
 <?php
 
-final class coursePriceModel extends \database\model
+final class productPriceModel extends \database\model
 {
-    public $pid;
+    public $price_id;
     public $priceType;
+    public $product_id;
     public $price;
 
-    protected static $modelName = 'coursePriceModel';
+    protected static $modelName = 'productPriceModel';
 
     public static function getTablename()
     {
-        $tableName = 'coursePrice';
+        $tableName = 'productPrice';
         return $tableName;
     }
 

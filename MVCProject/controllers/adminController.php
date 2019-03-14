@@ -19,11 +19,7 @@ class adminController extends http\controller
             } else {
 
                 if($user->checkPassword($password) == TRUE) {
-
-                    //to-do: Fetch the app id dynamically for title on homepage
-                    $resultSet = studentOrderInfo::getRegisteredStudentInfo();
-                    self::getTemplate('adminHomepage', NULL, $resultSet);
-
+                    self::getTemplate('adminHomepage', NULL, $appKey);
                 } else {
                     echo '<script>alert("Password does not match")</script>';
                     self::getTemplate('landingPage', NULL, NULL);
@@ -74,6 +70,7 @@ class adminController extends http\controller
             $totalCount = $_POST['total'];
             $sortId = $_POST['sort'];
             $addDropDown = $_POST['addDropDown'];
+            $appKey = $_POST['appId'];
 
             //Add products in the product Table
             $addProduct = new productsModel();
@@ -81,7 +78,7 @@ class adminController extends http\controller
             $addProduct->name = $productName;
             $addProduct->categories = $category;
             $addProduct->description = $description;
-            $addProduct->app_id = 1;  //to-do: pass id dynamically
+            $addProduct->app_id = $appKey;
             $addProduct->item_remain = $totalCount;
             $addProduct->active = $addDropDown ;
 
@@ -89,9 +86,32 @@ class adminController extends http\controller
 
             echo '<script>alert("You have successfully added a product in the database")</script>';
 
-            //to-do: Fetch the app id dynamically for title on homepage
-            $resultSet = studentOrderInfo::getRegisteredStudentInfo();
-            self::getTemplate('adminHomepage', $resultSet, $resultSet);
+            // Pass the app key back to admin homepage
+            self::getTemplate('adminHomepage', NULL, $appKey);
+        }
+    }
+
+    //Function to add product in  the product table
+    public static function addPriceType()
+    {
+        if(isset($_POST["btnAddPrice"])) {
+            $priceType = $_POST['priceType'];
+            $price = $_POST['price'];
+            $productId = $_POST['productDropDown'];
+            $appKey = $_POST['appId'];
+
+            //Add products in the product Table
+            $addPriceType = new productPriceModel();
+            $addPriceType->priceType = $priceType;
+            $addPriceType->product_id = $productId;
+            $addPriceType->price = $price;
+
+            $addPriceType->save();
+
+            echo '<script>alert("You have successfully added price type in the database")</script>';
+
+            // Pass the app key back to admin homepage
+            self::getTemplate('adminHomepage', NULL, $appKey);
         }
     }
 

@@ -132,7 +132,7 @@
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <a href="#" align="left" >Forgot Password?</a>
+                   <!-- <a href="#" align="left" >Forgot Password?</a>-->
                     <a href="#" align="right" data-toggle="modal" data-target="#modalSignIn">Request for an access</a>
                 </div>
             </div>

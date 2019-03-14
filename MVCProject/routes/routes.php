@@ -41,6 +41,15 @@ class routes
         $route->method = 'addProducts';
         $routes[] = $route;
 
+        //Add Products by the admin
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'addPriceType';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'addPriceType';
+        $routes[] = $route;
+
 
         //TO-DO:
 

@@ -1,27 +1,14 @@
 <?php
 
-class coursePrice extends database\collection
+class productPrice extends database\collection
 {
-    protected static $modelName = 'coursePriceModel';
+    protected static $modelName = 'productPriceModel';
 
     //Static Functions
-    static public function getResidentPrice()
-    {
-        $sql = "SELECT * FROM coursePrice 
-                WHERE priceType = 'Residential'";
-        return self::getResults($sql,NULL);
-    }
-
-    static public function getCommuterPrice()
-    {
-        $sql = "SELECT * FROM coursePrice 
-                WHERE priceType = 'Commuter'";
-        return self::getResults($sql,NULL);
-    }
 
     static public function getPrice($priceType)
     {
-        $sql = "SELECT * FROM coursePrice 
+        $sql = "SELECT id, name FROM productPrice 
                 WHERE priceType = '$priceType'";
         return self::getResults($sql,NULL);
     }
