@@ -5,7 +5,9 @@ class appConfig extends database\collection
     protected static $modelName = 'appConfigModel';
 
     //Static Functions
-    static public function getAppName($appId)
+
+    //Get App Name based on the app id passed
+    public static function getAppName($appId)
     {
         $sql = "SELECT * FROM appConfig 
                 WHERE app_id = '$appId'";

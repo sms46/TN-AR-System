@@ -14,6 +14,8 @@ class routes
         $route->method = 'showDefault';
         $routes[] = $route;
 
+        //--------ADMIN ROUTING-------------------------
+        //----------------------------------------------
         //Validate the admin login credentials
         $route = new route();
         $route->http_method = 'POST';
@@ -50,27 +52,18 @@ class routes
         $route->method = 'addPriceType';
         $routes[] = $route;
 
-
-        //TO-DO:
-
-
-        //routing the default homepage
+        //--------REGISTRATION ROUTING-------------------------
+        //----------------------------------------------
+        //Route to the Product Registration page
         $route = new route();
         $route->http_method = 'GET';
-        $route->action = 'redirectToCoad';
+        $route->action = 'redirectToProduct';
         $route->page = 'homepage';
         $route->controller = 'homepageController';
-        $route->method = 'redirectToCoad';
+        $route->method = 'redirectToProduct';
         $routes[] = $route;
 
-        //Route to the Course Registration page
-        $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'redirectToCourse';
-        $route->page = 'homepage';
-        $route->controller = 'homepageController';
-        $route->method = 'redirectToCourse';
-        $routes[] = $route;
+        //TO-DO:
 
         // Add Courses in cart
         $route = new route();

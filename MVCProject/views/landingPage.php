@@ -46,7 +46,7 @@
             </div>
 
             <div class="col-lg-5">
-                <h3 align="center">WELCOME TO NJIT COURSE REGISTRATION</h3>
+                <h3 align="center">WELCOME TO NJIT REGISTRATION</h3>
                 <p align="center">This is the landing page for all the schools to register for their courses.</p>
             </div>
 
@@ -65,7 +65,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <a href="index.php?page=homepage&action=redirectToCoad&id=1" onclick="document.getElementById('myform').submit();"><h2>College of Architecture and Design</h2></a>
+                        <a href="index.php?page=homepage&action=redirectToProduct&id=1" onclick="document.getElementById('myform').submit();"><h2>College of Architecture and Design</h2></a>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card h-100">
                     <div class="card-body">
-                        <a href="index.php?page=homepage&action=redirectToCoad&id=2" onclick="document.getElementById('myform').submit();"><h2>Ying Wu School of Computing</h2></a>
+                        <a href="index.php?page=homepage&action=redirectToProduct&id=2" onclick="document.getElementById('myform').submit();"><h2>Ying Wu School of Computing</h2></a>
                     </div>
                 </div>
             </div>
@@ -117,10 +117,15 @@
                         </div>
 
                         <div class="form-group">
+
+                            <?php
+                                $productNames = adminAccounts::getAppNameId();
+                                ?>
                             <select class=" form-control" id="adminDropDown" name="adminDropDown" required>
                                 <option value="">Select a Department</option>
-                                <option value="1">College of Architecture and Design</option>
-                                <option value="2">Ying Wu School of Computing</option>
+                                <?php for($i=0; $i< count($productNames); $i++) {?>
+                                    <option value="<?php print $productNames[$i]->app_id?>"><?php print $productNames[$i]->app_name ?></option>
+                                <?php } ?>
                             </select>
                             <i class="fas fa-chevron-circle-down"></i>
                         </div>
@@ -163,8 +168,9 @@
                         <div class="form-group">
                             <select class=" form-control" id="adminDropDown" name="adminDropDown" required>
                                 <option value="">Select a Department</option>
-                                <option value="1">College of Architecture and Design</option>
-                                <option value="2">Ying Wu School of Computing</option>
+                                <?php for($i=0; $i< count($productNames); $i++) {?>
+                                    <option value="<?php print $productNames[$i]->app_id?>"><?php print $productNames[$i]->app_name ?></option>
+                                <?php } ?>
                             </select>
                             <i class="fas fa-chevron-circle-down"></i>
                         </div>

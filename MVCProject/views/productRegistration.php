@@ -5,7 +5,7 @@
     //Included header tag
     include 'headers.php';
 
-    //Fix: Reset the session on every instance when user tries to register the course
+    //Fix: Reset the session on every instance when user tries to register the product
     if(isset($_POST["btnRegister"])) {
 
         session_start();
@@ -18,7 +18,7 @@
 <div class="wrapper">
 
     <!-- Navigation Side bar-->
-    <?php include 'navSideBar.php';?>
+    <?php // include 'navSideBar.php';?>
 
     <div id="content">
 
@@ -26,12 +26,12 @@
         <?php include 'navBar.php';?>
 
         <div class="container">
-            <h3 class="text-danger".text-danger align="center"><strong>COURSE REGISTRATION</strong></h3><hr></br>
+           <!-- <h3 class="text-danger".text-danger align="center"><strong>COURSE REGISTRATION</strong></h3><hr></br>-->
 
         <!--Added courses navbar-->
              <nav class="navbar navbar-inverse" style="background:#FFFFFF;">
                     <div class="container-fluid pull-left"  style="width:200px;">
-                         <div class="navbar-header"> <a class="navbar-brand text-primary" href="#" style="color:black;">COURSES ADDED</a> </div>
+                         <div class="navbar-header"> <a class="navbar-brand text-primary" href="#" style="color:black;">PRODUCTS ADDED</a> </div>
                     </div>
                  <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=courseRegistration&action=empty" class="btn btn-outline-info btn-rounded mb-4">Empty Cart</a></div>
              </nav>
@@ -82,45 +82,26 @@
                 </table>
             <?php endif;?>
 
-        <!--Courses navbar-->
+        <!--Products navbar
             <nav class="navbar navbar-inverse" style="background:#FFFFFF;">
                 <div class="container-fluid pull-left"  style="width:200px;">
-                    <div class="navbar-header"> <a class="navbar-brand text-primary" href="#" style="color:black;">COURSES</a> </div>
+                    <div class="navbar-header"> <a class="navbar-brand text-primary" href="#" style="color:black;">PRODUCTS</a> </div>
                 </div>
-                <div class="pull-right" style="margin-top:7px;margin-right:7px;"><span class="btn btn-info">Total - <?php print count($data)?></span></div>
-            </nav>
-
-            <!--<select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" onchange="myFunction()" id="category" name="category">
-                <option value="">Select Category</option>
-                <option>Architecture</option>
-                <option>Design + Make</option>
-            </select>
-
-            <p id="showCategory"></p>
-
-            <script>
-                function myFunction() {
-                    var x = document.getElementById("category").value;
-                    document.getElementById("showCategory").innerHTML = x;
-                }
-            </script>
-
-
-            <br><br>-->
-
+                <div class="pull-right" style="margin-top:7px;margin-right:7px;"><span class="btn btn-info">Total - <?php //print count($data)?></span></div>
+            </nav>-->
 
         <!--Display list of courses in a card-->
             <div class="row">
                     <?php
                     $product_array = $data;
-                    // print_r($product_array);
-                    foreach($product_array as $key=>$value):?>
+
+                    for($i=0; $i< count($product_array); $i++) {?>
                         <div class="col-md-4">
                             <div class="card shadow-lg p-3 mb-1 bg-white rounded">
                                 <figure class="card-body">
                                     <form method="post" action="index.php?page=courseRegistration&action=add&code=<?php echo $product_array[$key]["id"]; ?>">
-                                        <p style="text-align:center; color: black" class="card-title"><strong><?php echo $product_array[$key]["Description"];?></strong></p>
-                                        <p style="text-align:center;" class="card-subtitle mb-2 text-muted"><b><?php echo $product_array[$key]["StartDate"];?> - <?php echo $product_array[$key]["EndDate"];?> </b></p>
+                                        <p style="text-align:center; color: black" class="card-title"><strong><?php echo $product_array[$i]->name;?></strong></p>
+                                        <p style="text-align:center;" class="card-subtitle mb-2 text-muted"><b><?php echo $product_array[$i]->description;?></b></p>
                                         <p style="text-align:center;" class="card-text">
                                             <select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" id="priceType" name="priceType" required>
                                                 <option value="">Select Amount Type</option>
@@ -128,18 +109,17 @@
                                                 <option value="Commuter">Commuter Amount</option>
                                             </select>
                                         </p>
-                                        <p style="text-align:center; color:red" class="card-text"><strong> Seats Available: <?php echo $product_array[$key]["SeatAvailable"];?></strong></p>
+                                        <p style="text-align:center; color:red" class="card-text"><strong> Available: <?php echo $product_array[$i]->item_remain;?></strong></p>
                                         <p style="text-align:center;color:#04B745;" class="card-text">
-                                            <button type="submit" name="add_to_cart" class="btn btn-warning btn-rounded" id="myBtn">Add Course</button>
-                                            <input type="hidden" name="description" value="<?php echo $product_array[$key]["Description"];?>">
-                                            <input type="hidden" name="startDate" value="<?php echo $product_array[$key]["StartDate"];?>">
+                                            <button type="submit" name="add_to_cart" class="btn btn-warning btn-rounded" id="myBtn">Add</button>
+                                            <input type="hidden" name="name" value="<?php echo $product_array[$i]->name;?>">
+                                            <input type="hidden" name="description" value="<?php echo $product_array[$i]->description;?>">
                                         </p>
                                     </form>
                                 </figure>
                             </div>
                         </div>
-                    <?php endforeach;?>
-
+                    <?php }?>
             </div>
         </div>
     </div>

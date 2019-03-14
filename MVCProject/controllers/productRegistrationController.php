@@ -1,6 +1,6 @@
 <?php
 
-class courseRegistrationController extends http\controller
+class productRegistrationController extends http\controller
 {
     public static function addCourses()
     {

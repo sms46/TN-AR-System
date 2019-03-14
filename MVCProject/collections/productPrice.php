@@ -5,15 +5,16 @@ class productPrice extends database\collection
     protected static $modelName = 'productPriceModel';
 
     //Static Functions
-
-    static public function getPrice($priceType)
+    
+    //TO-DO:
+    public static function getPrice($priceType)
     {
         $sql = "SELECT id, name FROM productPrice 
                 WHERE priceType = '$priceType'";
         return self::getResults($sql,NULL);
     }
 
-    static public function getSessionInfo($productByCode, $priceType)
+    public static function getSessionInfo($productByCode, $priceType)
     {
 
         $strPrice = coursePrice::getPrice($priceType);

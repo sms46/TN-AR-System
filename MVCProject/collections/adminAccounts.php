@@ -5,6 +5,8 @@ class adminAccounts extends \database\collection
     protected static $modelName = 'adminAccountsModel';
 
     // Static Functions
+
+    //Check if the user exists in the records
     public static function findUser($name, $appId)
     {
         $tableName = get_called_class();
@@ -21,5 +23,11 @@ class adminAccounts extends \database\collection
             return $recordsSet[0];
         }
     }
-    
+
+    //Get the Application info to transfer to the product registration page
+    public static function getAppNameId()
+    {
+        $sql = "SELECT * FROM appConfig";
+        return self::getResults($sql,NULL);
+    }
 }

@@ -2,20 +2,20 @@
 
 class homepageController extends http\controller
 {
+    //Redirects to the landing page
     public static function showDefault()
     {
         self::getTemplate('landingPage', NULL, NULL);
     }
 
-    public static function redirectToCoad()
+    //Redirects to the product registration page
+    public static function redirectToProduct()
     {
-        self::getTemplate('homepage', NULL, NULL);
-    }
+        $appKey = $_REQUEST['id'];
 
-    public static function redirectToCourse()
-    {
-        $courseRegister = courses::findCourses();
-        self::getTemplate('courseRegistration',NULL,$courseRegister);
+        //Find all the products to display
+        $productRegister = products::findProducts($appKey);
+        self::getTemplate('productRegistration',NULL,$productRegister);
     }
 }
 
