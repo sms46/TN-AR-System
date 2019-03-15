@@ -4,37 +4,37 @@ class productRegistrationController extends http\controller
 {
     public static function addCourses()
     {
+        //Session Variables
         session_start();
         $time = $_SERVER['REQUEST_TIME'];
         $sessionId = session_id();
 
         if(isset($_POST["add_to_cart"])) {
 
-            //Get one course selected by the user
-            $productByCode = courses::findOneSession($_REQUEST['code']);
+            //Get one product selected by the user
+            $productByCode = products::findOneSession($_REQUEST['code']);
+            //print_r($productByCode);
+
+            //Get Session Info
+            $itemArray = productPrice::getSessionInfo($productByCode, $_REQUEST['code']);
 
             //Get the seats available based on the course selected by the user
-            $availableSeats = courses::findAvailableSeats($_REQUEST['description'],$_REQUEST['startDate']);
+            $available = products::getAvailability($_REQUEST['name'],$_REQUEST['description']);
 
-            if($availableSeats > 0){
-
-                $priceType = $_POST["priceType"];
-
-                //Get Session Info
-                $itemArray = coursePrice::getSessionInfo($productByCode,$priceType);
+            if($available > 0){
 
                 //LOG FOR TEST:
                 $logs = new serverTimingLogsModal();
                 $logs->sessionId = $sessionId;
                 $logs->addCourseTime = $time;
-                $logs->comments = 'User added a course';
+                $logs->comments = 'User added a product';
                 $logs->timestamp = studentInfo::getTimestamp();
                 $logs->save();
 
                 //Condition to check if the course has been previously added
                 if (!empty($_SESSION["cart_item"])) {
-                    if (in_array($productByCode["id"], array_keys($_SESSION["cart_item"]))) {
-                        echo '<script>alert("Course has already been added")</script>';
+                    if (in_array($productByCode->id, array_keys($_SESSION["cart_item"]))) {
+                        echo '<script>alert("Product has already been added")</script>';
                     } else {
                         $_SESSION["cart_item"] = array_merge($_SESSION["cart_item"], $itemArray);
                     }
@@ -42,25 +42,25 @@ class productRegistrationController extends http\controller
                     $_SESSION["cart_item"] = $itemArray;
                 }
             }else{
-                echo '<script>alert("There are no seats available for this course")</script>';
+                echo '<script>alert("There are no items available")</script>';
             }
         }
 
         //Condition added to handle when seats are not available and no session object needs to be sent.
-        $architectureRecordsRegister = courses::findCourses();
+        $productPage = products::findProducts(1);
 
         if(!empty($_SESSION["cart_item"])) {
-            self::getTemplate('courseRegistration', $_SESSION["cart_item"], $architectureRecordsRegister);
+            self::getTemplate('productRegistration', $_SESSION["cart_item"], $productPage);
         }
         else{
-            self::getTemplate('courseRegistration', $architectureRecordsRegister, $architectureRecordsRegister);
+            self::getTemplate('productRegistration', $productPage, $productPage);
         }
     }
 
     public static function removeCourses()
     {
         session_start();
-        //print_r($_SESSION["cart_item"]);
+
         if(isset($_GET["action"]))
         {
             if($_GET["action"] == "remove")
@@ -70,6 +70,7 @@ class productRegistrationController extends http\controller
                         if ($values["id"] == $_GET["code"]) {
                             unset($_SESSION["cart_item"][$keys]);
                             echo '<script>alert("Course Removed")</script>';
+
                             $architectureRecordsRegister = courses::findCourses();
                             self::getTemplate('courseRegistration', $_SESSION["cart_item"], $architectureRecordsRegister);
                         }

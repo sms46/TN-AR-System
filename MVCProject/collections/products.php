@@ -25,6 +25,29 @@ class products extends database\collection
         return self::getResults($sql);
     }
 
+    //Gets one record based on the session id
+    public static function findOneSession($sessionId)
+    {
+        $tableName = get_called_class();
+        $sql = 'SELECT * FROM ' . $tableName . ' WHERE id = ?';
 
+        //grab the only record for find one and return as an object
+        $recordsSet = self::getResults($sql, $sessionId);
+
+        if (is_null($recordsSet)) {
+            return FALSE;
+        } else {
+            return $recordsSet[0];
+        }
+    }
+    
+    //Get Availability from the products table
+    public static function getAvailability($productName,$desc)
+    {
+        $sql = "SELECT * FROM products 
+                WHERE name = '$productName' 
+                AND description = '$desc'";
+        return self::getResults($sql);
+    }
 }
 ?>

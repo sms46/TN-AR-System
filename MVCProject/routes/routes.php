@@ -63,14 +63,12 @@ class routes
         $route->method = 'redirectToProduct';
         $routes[] = $route;
 
-        //TO-DO:
-
         // Add Courses in cart
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'add';
-        $route->page = 'courseRegistration';
-        $route->controller = 'courseRegistrationController';
+        $route->page = 'productRegistration';
+        $route->controller = 'productRegistrationController';
         $route->method = 'addCourses';
         $routes[] = $route;
 
@@ -78,8 +76,8 @@ class routes
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'remove';
-        $route->page = 'courseRegistration';
-        $route->controller = 'courseRegistrationController';
+        $route->page = 'productRegistration';
+        $route->controller = 'productRegistrationController';
         $route->method = 'removeCourses';
         $routes[] = $route;
 
@@ -87,10 +85,12 @@ class routes
         $route = new route();
         $route->http_method = 'GET';
         $route->action = 'empty';
-        $route->page = 'courseRegistration';
-        $route->controller = 'courseRegistrationController';
+        $route->page = 'productRegistration';
+        $route->controller = 'productRegistrationController';
         $route->method = 'emptyCart';
         $routes[] = $route;
+
+        //TO-DO:
 
         //Redirect to Student Registration page
         $route = new route();

@@ -43,9 +43,8 @@
                     <thead>
                     <tr>
                         <!--<th>Sr.No</th>-->
+                        <th>Name</th>
                         <th>Description</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
                         <th>Amount</th>
                         <th>Action</th>
                     </tr>
@@ -54,9 +53,9 @@
                     <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
                         <tr>
                             <!--<td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["id"]; ?></strong></td>-->
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["StartDate"]; ?></td>
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["EndDate"]; ?></td>
+                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["name"]; ?></td>
+                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["description"]; ?></td>
+                            <!--<td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["EndDate"]; ?></td>-->
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;">$<?php echo $item["Price"]; ?></td>
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=courseRegistration&action=remove&code=<?php echo $item["id"]; ?>" class="btn btn-danger">Remove</a></td>
                         </tr>
@@ -99,15 +98,23 @@
                         <div class="col-md-4">
                             <div class="card shadow-lg p-3 mb-1 bg-white rounded">
                                 <figure class="card-body">
-                                    <form method="post" action="index.php?page=courseRegistration&action=add&code=<?php echo $product_array[$key]["id"]; ?>">
+                                    <form method="post" action="index.php?page=productRegistration&action=add&code=<?php echo $product_array[$i]->id; ?>">
                                         <p style="text-align:center; color: black" class="card-title"><strong><?php echo $product_array[$i]->name;?></strong></p>
                                         <p style="text-align:center;" class="card-subtitle mb-2 text-muted"><b><?php echo $product_array[$i]->description;?></b></p>
                                         <p style="text-align:center;" class="card-text">
-                                            <select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" id="priceType" name="priceType" required>
-                                                <option value="">Select Amount Type</option>
-                                                <option value="Residential">Residential Amount</option>
-                                                <option value="Commuter">Commuter Amount</option>
-                                            </select>
+
+                                            <?php
+                                            // Get price type of each Products
+                                                $price_type = productPrice::getPriceType($product_array[$i]->id);
+
+                                                if(!empty($price_type)){?>
+                                                        <select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" id="priceType" name="priceType" required>
+                                                            <option value="">Select Amount Type</option>
+                                                            <?php for($j=0; $j< count($price_type); $j++) {?>
+                                                                <option value="<?php print $price_type[$j]->price_id?>"><?php print $price_type[$j]->priceType ?></option>
+                                                            <?php }?>
+                                                        </select>
+                                            <?php }?>
                                         </p>
                                         <p style="text-align:center; color:red" class="card-text"><strong> Available: <?php echo $product_array[$i]->item_remain;?></strong></p>
                                         <p style="text-align:center;color:#04B745;" class="card-text">
