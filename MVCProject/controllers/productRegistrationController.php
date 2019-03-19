@@ -13,10 +13,9 @@ class productRegistrationController extends http\controller
 
             //Get one product selected by the user
             $productByCode = products::findOneSession($_REQUEST['code']);
-            //print_r($productByCode);
-
+            
             //Get Session Info
-            $itemArray = productPrice::getSessionInfo($productByCode, $_REQUEST['code']);
+            $itemArray = productPrice::getSessionInfo($productByCode, $_POST['priceType'],$_REQUEST['code']);
 
             //Get the seats available based on the course selected by the user
             $available = products::getAvailability($_REQUEST['name'],$_REQUEST['description']);
@@ -47,7 +46,8 @@ class productRegistrationController extends http\controller
         }
 
         //Condition added to handle when seats are not available and no session object needs to be sent.
-        $productPage = products::findProducts(1);
+        $app_id = $_REQUEST['app_id'];
+        $productPage = products::findProducts($app_id);
 
         if(!empty($_SESSION["cart_item"])) {
             self::getTemplate('productRegistration', $_SESSION["cart_item"], $productPage);
@@ -71,14 +71,17 @@ class productRegistrationController extends http\controller
                             unset($_SESSION["cart_item"][$keys]);
                             echo '<script>alert("Course Removed")</script>';
 
-                            $architectureRecordsRegister = courses::findCourses();
-                            self::getTemplate('courseRegistration', $_SESSION["cart_item"], $architectureRecordsRegister);
+                            $app_id = $_REQUEST['app_id'];
+                            $productPage = products::findProducts($app_id);
+                            self::getTemplate('productRegistration', $_SESSION["cart_item"], $productPage);
                         }
                     }
                 }else{
                     echo '<script>alert("Your Session has been expired. Please Try Again")</script>';
-                    $courseRegister = courses::findCourses();
-                    self::getTemplate('courseRegistration',NULL,$courseRegister);
+
+                    $app_id = $_REQUEST['app_id'];
+                    $productPage = products::findProducts($app_id);
+                    self::getTemplate('productRegistration',NULL,$productPage);
                 }
             }
         }
@@ -88,7 +91,10 @@ class productRegistrationController extends http\controller
     {
         session_start();
         unset($_SESSION["cart_item"]);
-        $architectureRecordsRegister = courses::findCourses();
-        self::getTemplate('courseRegistration', null ,$architectureRecordsRegister);
+
+
+        $app_id = $_REQUEST['app_id'];
+        $productPage = products::findProducts($app_id);
+        self::getTemplate('productRegistration',NULL,$productPage);
     }
 }

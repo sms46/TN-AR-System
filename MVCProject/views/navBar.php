@@ -1,10 +1,14 @@
 <?php
-    //Retrieve the site id passed on in the URL
-    //$appId = $_GET['id'];
-
-    // Get the Application name based on site id
-    $appOut = appConfig::getAppName(1);
-    $titleName = $appOut[0]->app_name;
+        // Get the Application name based on site id
+    if(isset($_REQUEST['id'])){
+        $appId = $_REQUEST['id'];
+        $appOut = appConfig::getAppName($appId);
+        $titleName = $appOut[0]->app_name;
+    }else{
+        $appId = $_REQUEST['app_id'];
+        $appOut = appConfig::getAppName($appId);
+        $titleName = $appOut[0]->app_name;
+    }
 ?>
 
 <!DOCTYPE html>

@@ -11,6 +11,9 @@
         session_start();
         unset($_SESSION["cart_item"]);
     }
+
+    $appData = $data;
+    $app_id = $appData[0]->app_id;
 ?>
 
 <body class="bg-light">
@@ -33,7 +36,7 @@
                     <div class="container-fluid pull-left"  style="width:200px;">
                          <div class="navbar-header"> <a class="navbar-brand text-primary" href="#" style="color:black;">PRODUCTS ADDED</a> </div>
                     </div>
-                 <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=courseRegistration&action=empty" class="btn btn-outline-info btn-rounded mb-4">Empty Cart</a></div>
+                 <div class="pull-right" style="margin-top:7px;margin-right:7px;"><a href="index.php?page=productRegistration&action=empty&app_id=<?php echo $app_id;?>" class="btn btn-outline-info btn-rounded mb-4">Empty Cart</a></div>
              </nav>
 
         <!-- Table that will show the list of courses added by the user-->
@@ -50,28 +53,29 @@
                     </tr>
                     </thead>
 
-                    <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
+
+                    <?php
+                    foreach($_SESSION['cart_item'] as $key=>$item):?>
                         <tr>
-                            <!--<td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><strong><?php echo $item["id"]; ?></strong></td>-->
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["name"]; ?></td>
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["description"]; ?></td>
-                            <!--<td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["EndDate"]; ?></td>-->
+                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Name"]; ?></td>
+                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><?php echo $item["Description"]; ?></td>
                             <td style="text-align:left;border-bottom:#F0F0F0 1px solid;">$<?php echo $item["Price"]; ?></td>
-                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=courseRegistration&action=remove&code=<?php echo $item["id"]; ?>" class="btn btn-danger">Remove</a></td>
+                            <td style="text-align:left;border-bottom:#F0F0F0 1px solid;"><a href="index.php?page=productRegistration&action=remove&app_id=<?php echo $app_id; ?>&code=<?php echo $item["id"]; ?>" class="btn btn-danger">Remove</a></td>
+
                         </tr>
                         <?php $total = $total+$item['Price'];?>
                     <?php endforeach;?>
 
                     <form action="index.php?page=studentRegistration&action=register" method="POST">
                         <tr>
-                            <td colspan="4" align="center">
+                            <td colspan="3" align="center">
                                 <select class="btn btn-default shadow-lg p-3 mb-3 bg-white rounded" id="paymentTypeSelect" name="paymentTypeSelect" required>
                                     <option value="">Select Payment Type</option>
                                     <option value="Deposit">Deposit</option>
                                     <option value="Full Payment">Full Payment</option>
                                 </select>
                             </td>
-                            <td colspan="5" align="left"><h4>Total: $<?php print $total?></h4></td>
+                            <td colspan="4" align="left"><h4>Total: $<?php print $total?></h4></td>
                         </tr>
                         <tr>
                             <td colspan="10" align="center"><button type="submit" name="proceed_to_payment" class="btn btn-success">Proceed to Payment</button></td>
@@ -80,6 +84,7 @@
                     </form>
                 </table>
             <?php endif;?>
+            <br><br>
 
         <!--Products navbar
             <nav class="navbar navbar-inverse" style="background:#FFFFFF;">
@@ -105,13 +110,13 @@
 
                                             <?php
                                             // Get price type of each Products
-                                                $price_type = productPrice::getPriceType($product_array[$i]->id);
+                                                $price_type = productPrice::getPriceTypeById($product_array[$i]->id);
 
                                                 if(!empty($price_type)){?>
                                                         <select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" id="priceType" name="priceType" required>
                                                             <option value="">Select Amount Type</option>
                                                             <?php for($j=0; $j< count($price_type); $j++) {?>
-                                                                <option value="<?php print $price_type[$j]->price_id?>"><?php print $price_type[$j]->priceType ?></option>
+                                                                <option value="<?php print $price_type[$j]->priceType?>"><?php print $price_type[$j]->priceType ?></option>
                                                             <?php }?>
                                                         </select>
                                             <?php }?>
@@ -121,6 +126,7 @@
                                             <button type="submit" name="add_to_cart" class="btn btn-warning btn-rounded" id="myBtn">Add</button>
                                             <input type="hidden" name="name" value="<?php echo $product_array[$i]->name;?>">
                                             <input type="hidden" name="description" value="<?php echo $product_array[$i]->description;?>">
+                                            <input type="hidden" name="app_id" value="<?php echo $product_array[$i]->app_id;?>">
                                         </p>
                                     </form>
                                 </figure>
