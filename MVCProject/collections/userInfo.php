@@ -27,8 +27,7 @@ class userInfo extends \database\collection
         return base64_encode( pack('H*', md5($string)));
     }
 
-
-    //TO:DO
+    //Gets the order count to check if order exists
     public static function getOrderCount($OrderNum)
     {
         $sql = "SELECT count(*) AS 'OrderCount' FROM userInfo WHERE OrderNum = '$OrderNum'";
@@ -36,6 +35,8 @@ class userInfo extends \database\collection
         return self::getResults($sql);
     }
 
+
+    //TO:DO
     public static function getDataForExcel($statusType, $dropDown)
     {
 

@@ -4,14 +4,14 @@ final class userLogsModel extends \database\model
 {
     public $id;
     public $EXT_TRANS_ID;
-    public $studentName;
-    public $studentEmail;
+    public $user_name;
+    public $user_email;
     public $tpg_trans_id;
-    public $amtPaid;
-    public $balanceAmt;
-    public $paymentStatus;
+    public $amt_paid;
+    public $balance_amt;
+    public $payment_status;
     public $description;
-    public $currentTimestamp;
+    public $current_timestamp;
 
     protected static $modelName = 'userLogsModel';
 

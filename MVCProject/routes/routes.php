@@ -101,16 +101,16 @@ class routes
         $route->method = 'register';
         $routes[] = $route;
 
-        //TO-DO:
-        //Store Student Information
+        //Store User Information in db
         $route = new route();
         $route->http_method = 'POST';
-        $route->action = 'storeStudentInfo';
-        $route->page = 'studentRegistration';
-        $route->controller = 'studentRegistrationController';
-        $route->method = 'storeStudentInfo';
+        $route->action = 'storeUserInfo';
+        $route->page = 'userRegistration';
+        $route->controller = 'userRegistrationController';
+        $route->method = 'storeUserInfo';
         $routes[] = $route;
-        
+
+        //TO-DO:
         //Post URL route back from successful transaction from TouchNet.
         $route = new route();
         $route->http_method = 'POST';

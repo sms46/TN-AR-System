@@ -24,10 +24,10 @@ class productRegistrationController extends http\controller
 
                 //LOG FOR TEST:
                 $logs = new serverTimingLogsModal();
-                $logs->sessionId = $sessionId;
+                $logs->session_id = $sessionId;
                 $logs->addCourseTime = $time;
                 $logs->comments = 'User added a product';
-                $logs->timestamp = studentInfo::getTimestamp();
+                $logs->timestamp = userInfo::getTimestamp();
                 $logs->save();
 
                 //Condition to check if the course has been previously added

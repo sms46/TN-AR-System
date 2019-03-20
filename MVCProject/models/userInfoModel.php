@@ -8,7 +8,7 @@ final class userInfoModel extends \database\model
     public $user_email;
     public $gender;
     public $parent_name;
-    public $parent_nmail;
+    public $parent_email;
     public $parent_number;
     public $school_name;
     public $grad_year;

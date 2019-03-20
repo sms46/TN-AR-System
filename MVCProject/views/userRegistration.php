@@ -38,15 +38,15 @@
                     <h4 align="center" class="text-primary">Order No: <?php echo $data ?></h4><hr>
                     <h4 class="list-group-item d-flex justify-content-between">
                         <span class="badge badge-pill badge-dark">STEP 2:</span>
-                        <span class="badge badge-pill badge-dark">Your Courses - <?php print count($_SESSION['cart_item'])?></span>
+                        <span class="badge badge-pill badge-dark">Total Products - <?php print count($_SESSION['cart_item'])?></span>
                     </h4>
 
                     <ul class="list-group mb-3">
                         <?php foreach($_SESSION['cart_item'] as $key=>$item):?>
                             <li class="list-group-item d-flex justify-content-between lh-condensed">
                                 <div>
-                                    <h6 class="my-0"><?php echo $item["Description"];?></h6>
-                                    <small class="text-muted"><?php echo $item["StartDate"]. '-' .$item["EndDate"] ;?></small>
+                                    <h6 class="my-0"><?php echo $item["Name"];?></h6>
+                                    <small class="text-muted"><?php echo $item["Description"] ;?></small>
                                 </div>
                                 <span class="text-muted"><?php echo '$'. $item["Price"];?></span>
                             </li>
@@ -133,7 +133,7 @@
                             <?php
                             $passedAmt = '87ABD23777';
                             $validationKeyString = $passedAmt .$data .$finalAmt;
-                            $hashedValidationKey = studentInfo::getHash($validationKeyString);
+                            $hashedValidationKey = userInfo::getHash($validationKeyString);
                             if(isset($_POST["save_details"])) {
                                 ?>
                                 <button class="btn btn-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
@@ -167,7 +167,7 @@
                 <div class="col-md-7 order-md-1 ">
                     <h2><span class="badge badge-pill badge-dark">STEP 1:</span>&nbsp;<span class="badge badge-pill badge-dark">USER INFORMATION</span></h2><br>
 
-                    <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
+                    <form action="index.php?page=userRegistration&action=storeUserInfo" method="POST" class="needs-validation" novalidate>
                         <div class="row">
                             <div class="col-md-10 mb-2">
                                 <h5><span class="badge badge-light">Student's Full Name :</span></h5>

@@ -1,8 +1,8 @@
 <?php
 
-class studentOrderInfo extends \database\collection
+class userOrderInfo extends \database\collection
 {
-    protected static $modelName = 'studentOrderInfo';
+    protected static $modelName = 'userOrderInfo';
 
     // Static Functions
 

@@ -12,13 +12,13 @@ class userProductInfo extends \database\collection
         return date('Y');
     }
 
-    //TO:DO
-    public static function getCourseId($courseName, $dept, $startDate)
+    //Gets the product id to store info
+    public static function getProductId($productName, $category, $desc)
     {
-        $sql = "SELECT id FROM courses 
-                WHERE Description = '$courseName'
-                AND StartDate = '$startDate'
-                AND Department = '$dept'";
+        $sql = "SELECT id FROM products 
+                WHERE name = '$productName'
+                AND description = '$desc'
+                AND categories = '$category'";
 
         return self::getResults($sql);
     }

@@ -3,12 +3,12 @@
 final class serverTimingLogsModal extends \database\model
 {
     public $id;
-    public $sessionId;
+    public $session_id;
     public $orderNum;
     public $addCourseTime;
-    public $proceedPayment;
+    public $proceed_payment;
     public $comments;
-    public $lastActivity;
+    public $last_activity;
     public $timestamp;
 
     protected static $modelName = 'serverTimingLogsModal';
