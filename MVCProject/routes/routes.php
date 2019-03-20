@@ -90,17 +90,18 @@ class routes
         $route->method = 'emptyCart';
         $routes[] = $route;
 
-        //TO-DO:
-
-        //Redirect to Student Registration page
+        //-------- USER REGISTRATION ROUTING-------------------------
+        //----------------------------------------------
+        //Redirect to User Registration page
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'register';
-        $route->page = 'studentRegistration';
-        $route->controller = 'studentRegistrationController';
+        $route->page = 'userRegistration';
+        $route->controller = 'userRegistrationController';
         $route->method = 'register';
         $routes[] = $route;
 
+        //TO-DO:
         //Store Student Information
         $route = new route();
         $route->http_method = 'POST';

@@ -2,7 +2,7 @@
 
 final class productPriceModel extends \database\model
 {
-    public $price_id;
+    public $id;
     public $priceType;
     public $product_id;
     public $price;

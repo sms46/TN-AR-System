@@ -27,7 +27,7 @@ class productPrice extends database\collection
     {
         $strPrice = productPrice::getPriceType($priceType, $prodId);
         $price = $strPrice[0]->price;
-        $priceId = $strPrice[0]->price_id;
+        $priceId = $strPrice[0]->id;
 
         $itemArrayPrice = array($productByCode->id => array('id' => $productByCode->id,'Session' => $productByCode->sort_count,'Name' => $productByCode->name,
                                     'Category' => $productByCode->categories,'Description' => $productByCode->description, 'Price' => $price, 'PriceId' => $priceId,

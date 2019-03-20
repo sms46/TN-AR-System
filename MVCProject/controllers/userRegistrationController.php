@@ -4,7 +4,7 @@
   session_start();
 
 //each page extends controller and the index.php?page=tasks causes the controller to be called
-class studentRegistrationController extends http\controller
+class userRegistrationController extends http\controller
 {
     public static function register()
     {
@@ -12,7 +12,7 @@ class studentRegistrationController extends http\controller
             
             if(!empty($_SESSION["cart_item"])){
 
-                $orderNo = strtoupper(studentInfo::randomCode(6));
+                $orderNo = strtoupper(userInfo::randomCode(6));
                 $time = $_SERVER['REQUEST_TIME'];
                 $sessionId = session_id();
 
@@ -22,15 +22,18 @@ class studentRegistrationController extends http\controller
                 $logs->orderNum = $orderNo;
                 $logs->proceedPayment = $time;
                 $logs->comments = 'Session Active.User proceeds to checkout.';
-                $logs->timestamp = studentInfo::getTimestamp();
+                $logs->timestamp = userInfo::getTimestamp();
                 $logs->save();
 
 
-                self::getTemplate('studentRegistration',$orderNo, $orderNo);
+                self::getTemplate('userRegistration',$orderNo, $orderNo);
             }else{
+
                 echo '<script>alert("Your Session has been expired. Please Try Again")</script>';
-                $courseRegister = courses::findCourses();
-                self::getTemplate('courseRegistration',NULL,$courseRegister);
+
+                $app_id = $_REQUEST['app_id'];
+                $productPage = products::findProducts($app_id);
+                self::getTemplate('productRegistration',NULL,$productPage);
             }
         }
     }

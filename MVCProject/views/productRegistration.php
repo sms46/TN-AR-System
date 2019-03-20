@@ -66,7 +66,7 @@
                         <?php $total = $total+$item['Price'];?>
                     <?php endforeach;?>
 
-                    <form action="index.php?page=studentRegistration&action=register" method="POST">
+                    <form action="index.php?page=userRegistration&action=register" method="POST">
                         <tr>
                             <td colspan="3" align="center">
                                 <select class="btn btn-default shadow-lg p-3 mb-3 bg-white rounded" id="paymentTypeSelect" name="paymentTypeSelect" required>
@@ -80,6 +80,7 @@
                         <tr>
                             <td colspan="10" align="center"><button type="submit" name="proceed_to_payment" class="btn btn-success">Proceed to Payment</button></td>
                             <input type="hidden"  name="totalAmt" value= "<?php print $total ?>" >
+                            <input type="hidden" name="app_id" value="<?php echo $app_id;?>">
                         </tr>
                     </form>
                 </table>

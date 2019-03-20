@@ -13,15 +13,15 @@
 <div class="wrapper">
 
     <!-- Navigation Side bar-->
-    <?php include 'navSideBar.php';?>
+    <?php// include 'navSideBar.php';?>
 
     <div id="content">
 
         <!-- Navigation bar-->
-        <?php //include 'navBar.php';?>
+        <?php include 'navBar.php';?>
 
         <div class="container">
-            <h3 class="text-danger" align="center"><strong>COURSE CHECKOUT</strong></h3><hr/><br/>
+            <h3 class="text-danger" align="center"><strong>CHECKOUT</strong></h3><hr/><br/>
 
             <?php if(isset($_POST["save_details"])) {?>
                 <div class="alert alert-success" role="alert">
@@ -163,9 +163,9 @@
                     </ul>
                 </div>
 
-                <!--Step 1: Enter the Student Information-->
+                <!--Step 1: Enter the User Information-->
                 <div class="col-md-7 order-md-1 ">
-                    <h2><span class="badge badge-pill badge-dark">STEP 1:</span>&nbsp;<span class="badge badge-pill badge-dark">STUDENT INFORMATION</span></h2><br>
+                    <h2><span class="badge badge-pill badge-dark">STEP 1:</span>&nbsp;<span class="badge badge-pill badge-dark">USER INFORMATION</span></h2><br>
 
                     <form action="index.php?page=studentRegistration&action=storeStudentInfo" method="POST" class="needs-validation" novalidate>
                         <div class="row">

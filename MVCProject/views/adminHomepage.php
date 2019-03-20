@@ -320,7 +320,7 @@
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Registered Students</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php  $resultSet = studentOrderInfo::getRegisteredStudentInfo(); print count($resultSet)?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php  $resultSet = studentOrderInfo::getRegisteredStudentInfo(); print count($resultSet);?></a></h1>
 
                         </div>
                     </div>
@@ -332,7 +332,7 @@
                                 <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Partial Payment</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewPartialPayment"><?php $result = studentOrderInfo::getPartialPayment();print count($result)?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewPartialPayment"><?php $result = studentOrderInfo::getPartialPayment();print count($result);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -343,7 +343,7 @@
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Courses</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCourses"><?php //$course = studentOrderInfo::getCoursesAdmin();print count($course)?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCourses"><?php //$course = studentOrderInfo::getCoursesAdmin();print count($course);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -354,7 +354,7 @@
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Student Course Info</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCoursesInfo"><?php //$course = studentOrderInfo::getCoursesInfoAdmin();print count($course)?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCoursesInfo"><?php //$course = studentOrderInfo::getCoursesInfoAdmin();print count($course);?></a></h1>
                         </div>
                     </div>
                 </div>
