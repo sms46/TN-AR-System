@@ -69,7 +69,7 @@ class productRegistrationController extends http\controller
                     foreach ($_SESSION["cart_item"] as $keys => $values) {
                         if ($values["id"] == $_GET["code"]) {
                             unset($_SESSION["cart_item"][$keys]);
-                            echo '<script>alert("Course Removed")</script>';
+                            echo '<script>alert("Product Removed")</script>';
 
                             $app_id = $_REQUEST['app_id'];
                             $productPage = products::findProducts($app_id);

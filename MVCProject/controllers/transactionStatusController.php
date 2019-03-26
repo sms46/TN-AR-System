@@ -32,28 +32,28 @@ class transactionStatusController extends http\controller
         $amtPaid = $_POST['pmt_amt'];
 
         //Update the Amt Paid and balance info of the transaction
-        studentOrderInfo::updateTransaction($orderNo, $amtPaid);
+        userOrderInfo::updateTransaction($orderNo, $amtPaid);
 
         //Update the order status if successful payment done via touchnet
-        studentOrderInfo::updateStudentOrder($orderNo);
+        userOrderInfo::updateUserOrder($orderNo);
         
-        //Retrieve the student info after successful payment
-        $studentOrder = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
+        //Retrieve the user info after successful payment
+        $userOrder = userOrderInfo::retrieveUpdatedUserOrder($orderNo);
 
         //Retrieve Student Info for logs
-        $studentInfoLogs = userLogs::retrieveStudentInfoForLogs($orderNo);
+        $userInfoLogs = userLogs::retrieveUserInfoForLogs($orderNo);
 
         //LOG USER INFO
         $log = new userLogsModel();
         $log->EXT_TRANS_ID = $_POST['EXT_TRANS_ID'];
-        $log->studentName = $studentInfoLogs[0]->studentName;
-        $log->studentEmail = $studentInfoLogs[0]->studentEmail;
+        $log->user_name = $userInfoLogs[0]->user_name;
+        $log->user_email = $userInfoLogs[0]->user_email;
         $log->tpg_trans_id = $_POST['tpg_trans_id'];
-        $log->amtPaid = $_POST['pmt_amt'];
-        $log->balanceAmt = ($studentInfoLogs[0]->dueAmt);
-        $log->paymentStatus = 'Transaction complete using Touchnet';
+        $log->amt_paid = $_POST['pmt_amt'];
+        $log->balance_amt = ($userInfoLogs[0]->due_amt);
+        $log->payment_status = 'Transaction complete using Touchnet';
         $log->description = 'Payment Success';
-        $log->currentTimestamp = studentInfo::getTimestamp();
+        $log->current_timestamp = userInfo::getTimestamp();
         $log->save();
 
         //get log data for particular order num
@@ -63,13 +63,13 @@ class transactionStatusController extends http\controller
 
         if($countDataAf < 3 && $countDataAf > 0){
             // loop through all the courses taken by the student
-            for ($i=0; $i< count($studentOrder); $i++)
+            for ($i=0; $i< count($userOrder); $i++)
             {
-                $confirmedCourses = $studentOrder[$i]->courseId;
-                $seatsCount = $studentOrder[$i]->SeatAvailable;
+                $confirmedCourses = $userOrder[$i]->product_id;
+                $seatsCount = $userOrder[$i]->item_remain;
 
                 //Update the no of seats available for all courses taken by the student to total count
-                studentOrderInfo::updateNoOfSeats($confirmedCourses,$seatsCount);
+                userOrderInfo::updateNoOfSeats($confirmedCourses,$seatsCount);
             }
         }
     }

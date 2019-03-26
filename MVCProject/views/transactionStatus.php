@@ -8,13 +8,12 @@
 
 <?php $orderNo = $_REQUEST['EXT_TRANS_ID'];
 
-$studentInfo = studentOrderInfo::getOrderId($orderNo);
-$courseAmt = $studentInfo->courseAmt;
-$amtPaid = $studentInfo->amtPaid;
+$userInfo = userOrderInfo::getOrderId($orderNo);
+$Amt = $userInfo->course_amt;
+$amtPaid = $userInfo->amt_paid;
 
-$dueAmt = $studentInfo->dueAmt;
+$dueAmt = $userInfo->due_amt;
 //echo '<pre>'; var_dump($_GET);
-
 ?>
 
 

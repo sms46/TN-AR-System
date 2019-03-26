@@ -5,16 +5,18 @@ class userLogs extends \database\collection
     protected static $modelName = 'userLogs';
 
     //static functions
-    public static function getLogData($orderNum)
+    public static function retrieveUserInfoForLogs($orderNum)
     {
-        $sql = "SELECT * FROM userLogs WHERE EXT_TRANS_ID = '$orderNum'";
+        $sql = "SELECT user_name, user_email, due_amt 
+                FROM userOrderInfo 
+                WHERE orderNum = '$orderNum'";
 
         return self::getResults($sql);
     }
 
-    public static function retrieveStudentInfoForLogs($orderNum)
+    public static function getLogData($orderNum)
     {
-        $sql = "SELECT studentName, studentEmail, dueAmt FROM studentOrderInfo WHERE orderNum = '$orderNum'";
+        $sql = "SELECT * FROM userLogs WHERE EXT_TRANS_ID = '$orderNum'";
 
         return self::getResults($sql);
     }

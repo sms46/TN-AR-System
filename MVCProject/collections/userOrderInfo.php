@@ -6,15 +6,54 @@ class userOrderInfo extends \database\collection
 
     // Static Functions
 
-    public static function updateStudentOrder($num)
+    //Update Transaction
+    public static function updateTransaction($OrderNum, $AmtPaid)
     {
-        //Update the student order table after successful payment
-        $order = new studentOrderInfoModel();
-        $orderId = studentOrderInfo::getOrderId($num);
-        $order->id = $orderId->id;
-        $order->orderConfirmed = 'Y';
-        $order->paymentStatus = '1';
-        $order->confirmedTimestamp = studentInfo::getTimestamp();
+        //Get values from the config File
+        $configs = include('config.php');
+
+        //Get Application Fee from the config file
+        $applicationAmt = $configs->appFee;
+
+        //Subtracting Aff Fee from the Amount Paid:
+        $totalAmtPaid = $AmtPaid - $applicationAmt;
+
+        $orderInfo = userOrderInfo::getOrderId($OrderNum);
+
+        //Get the Payment type selected by the user
+        $payType = $orderInfo->payment_type;
+
+        if($payType == 'Deposit'){
+
+            //Get Order Confirmation Status
+            $status = $orderInfo->order_confirmed;
+
+            if($status == 'N'){
+
+                //Update the Balance Due for deposit
+                $updatedBalDue = ($orderInfo->due_amt) - $totalAmtPaid;
+            }else{
+
+                //Update the Balance Due for deposit
+                $updatedBalDue = ($orderInfo->due_amt) - $AmtPaid;
+            }
+
+            //Update the Amount Due for deposit
+            $updatedAmtPaid = ($orderInfo->amt_paid) + $AmtPaid;
+
+        }else{
+
+            //Update the Amount Paid and Balance Due for deposit
+            $updatedBalDue = 0;
+            $updatedAmtPaid = $AmtPaid;
+        }
+
+        //Update the Student Order Info Table
+        $order = new userOrderInfoModel();
+        $order->id = $orderInfo->id;
+        $order->amt_paid = $updatedAmtPaid;
+        $order->due_amt = $updatedBalDue;
+        $order->confirmed_timestamp = userInfo::getTimestamp();
         $order->save();
     }
 
@@ -33,43 +72,56 @@ class userOrderInfo extends \database\collection
         }
     }
 
-    public static function retrieveUpdatedStudentOrder($OrderNum)
+    public static function updateUserOrder($num)
     {
-        $sql = 'SELECT TempTable.studentName , TempTable.studentEmail , TempTable.courseId, TempTable.priceId,TempTable.timestamp,
-                  TempTable.orderConfirmed, TempTable.paymentStatus, TempTable.confirmedTimestamp, TempTable.courseAmt, TempTable.amtPaid,TempTable.orderNum,
-                  TempTable.dueAmt, TempTable.paymentType, C.appName, C.SeatAvailable, SI.streetAddress, SI.city, SI.state, SI.zipCode
-                FROM
-                    (
-                        SELECT SC.studentName, SO.studentEmail, SC.courseId, SC.priceId,
-                        SO.timestamp,SO.orderConfirmed, SO.paymentStatus,SO.confirmedTimestamp,SO.courseAmt, SO.amtPaid, SO.dueAmt,
-                        SO.paymentType,SO.orderNum
-                        FROM studentOrderInfo SO JOIN studentCourseInfo SC
-                        ON SO.studentName = SC.studentName
-						AND SO.orderNum = SC.orderNum
-            
-                        WHERE SO.orderConfirmed = \'Y\'
-                        AND SO.paymentStatus = 1
-                        AND SO.orderNum = ?
-                        
-                    ) TempTable
-                    
-                JOIN courses C
-                ON  TempTable.courseId = C.id
-				
-			    JOIN studentInfo SI
-			    ON  TempTable.orderNum = SI.orderNum';
+        //Update the student order table after successful payment
+        $order = new userOrderInfoModel();
+        $orderId = userOrderInfo::getOrderId($num);
+        $order->id = $orderId->id;
+        $order->order_confirmed = 'Y';
+        $order->payment_status = '1';
+        $order->confirmed_timestamp = userInfo::getTimestamp();
+        $order->save();
+    }
+
+    public static function retrieveUpdatedUserOrder($OrderNum)
+    {
+        $sql = 'SELECT TempTable.user_name, TempTable.user_email, TempTable.product_id, TempTable.price_id, TempTable.timestamp,
+	                   TempTable.order_confirmed, TempTable.payment_status, TempTable.confirmed_timestamp, TempTable.course_amt, 
+                       TempTable.amt_paid, TempTable.due_amt, TempTable.payment_type, TempTable.orderNum, P.app_id, 
+                       P.item_remain, UI.street_address, UI.city, UI.state, UI.zipCode
+                            FROM
+                                (
+                                    SELECT UPI.user_name, UOI.user_email, UPI.product_id, UPI.price_id, UOI.timestamp,
+                                           UOI.order_confirmed, UOI.payment_status, UOI.confirmed_timestamp, UOI.course_amt, 
+                                           UOI.amt_paid, UOI.due_amt, UOI.payment_type, UOI.orderNum
+                                    FROM userOrderInfo UOI JOIN userProductInfo UPI
+                                    ON UOI.user_name = UPI.user_name
+                                    AND UOI.orderNum = UPI.order_num
+                            
+                                    WHERE UOI.order_confirmed = \'Y\'
+                                    AND UOI.payment_status = 1
+                                    AND UOI.orderNum = ?
+                                        
+                                ) TempTable
+                                    
+                            JOIN products P
+                            ON  TempTable.product_id = P.id
+                                
+                            JOIN userInfo UI
+                            ON  TempTable.orderNum = UI.orderNum';
 
         return self::getResults($sql, $OrderNum);
     }
 
-    public static function updateNoOfSeats($courseId,$seatsAvailable)
+    public static function updateNoOfSeats($productId,$seatsAvailable)
     {
         if($seatsAvailable > 0){
 
             //Update the courses table with seats availability after successful payment
-            $seats = new courseModel();
-            $seats->id = $courseId;
-            $seats->SeatAvailable = $seatsAvailable - 1;
+            $seats = new productsModel();
+            $seats->id = $productId;
+            $seats->item_remain = $seatsAvailable - 1;
             $seats->save();
         }
     }
@@ -81,55 +133,6 @@ class userOrderInfo extends \database\collection
         return self::getResults($sql);
     }
 
-    public static function updateTransaction($OrderNum, $AmtPaid)
-    {
-        //Get values from the config File
-        $configs = include('config.php');
-
-        //Get Application Fee from the config file
-        $applicationAmt = $configs->appFee;
-
-        //Subtracting Aff Fee from the Amount Paid:
-        $totalAmtPaid = $AmtPaid - $applicationAmt;
-
-        $orderInfo =studentOrderInfo::getOrderId($OrderNum);
-
-        //Get the Payment type selected by the user
-        $payType = $orderInfo->paymentType;
-
-        if($payType == 'Deposit'){
-
-            //Get Order Confirmation Status
-            $status = $orderInfo->orderConfirmed;
-
-            if($status == 'N'){
-
-                //Update the Balance Due for deposit
-                $updatedBalDue = ($orderInfo->dueAmt) - $totalAmtPaid;
-            }else{
-
-                //Update the Balance Due for deposit
-                $updatedBalDue = ($orderInfo->dueAmt) - $AmtPaid;
-            }
-
-            //Update the Amount Due for deposit
-            $updatedAmtPaid = ($orderInfo->amtPaid) + $AmtPaid;
-
-        }else{
-
-            //Update the Amount Paid and Balance Due for deposit
-            $updatedBalDue = 0;
-            $updatedAmtPaid = $AmtPaid;
-        }
-
-        //Update the Student Order Info Table
-        $order = new studentOrderInfoModel();
-        $order->id = $orderInfo->id;
-        $order->amtPaid = $updatedAmtPaid;
-        $order->dueAmt = $updatedBalDue;
-        $order->confirmedTimestamp = studentInfo::getTimestamp();
-        $order->save();
-    }
 
     // Static Functions for Admin Page
 
