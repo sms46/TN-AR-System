@@ -6,7 +6,7 @@
     include 'headers.php';
 
     //Fix: Reset the session on every instance when user tries to register the product
-    if(isset($_POST["btnRegister"])) {
+    if(isset($_REQUEST['id'])) {
 
         session_start();
         unset($_SESSION["cart_item"]);

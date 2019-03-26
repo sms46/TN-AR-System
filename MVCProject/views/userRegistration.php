@@ -130,11 +130,18 @@
                         <hr class="mb-4">
                         <form action="https://test.secure.touchnet.net:8443/C20146test_upay/web/index.jsp" method="POST">
 
-                            <?php
-                            $passedAmt = '87ABD23777';
-                            $validationKeyString = $passedAmt .$data .$finalAmt;
+
+                            <?php if(isset($_POST["save_details"])) {
+                                $appId = $_REQUEST['app_id'];
+                                $appOut = appConfig::getAppName($appId);
+                                $app_key = $appOut[0]->app_key;
+
+                            //$passedAmt = '87ABD23777';
+                            $validationKeyString = $app_key .$data .$finalAmt;
                             $hashedValidationKey = userInfo::getHash($validationKeyString);
-                            if(isset($_POST["save_details"])) {
+                            } ?>
+
+                            <?php if(isset($_POST["save_details"])) {
                                 ?>
                                 <button class="btn btn-primary btn-lg btn-block " name="btnPayment" type="submit">Continue to
                                     Pay <?php echo '$' . $finalAmt ?></button>
@@ -310,6 +317,7 @@
                                 <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
                                 <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
                                 <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
+                                <input type="hidden" name="app_id" value= "<?php print $_REQUEST["app_id"]?>" >
                             </div>
                         </div>
 
