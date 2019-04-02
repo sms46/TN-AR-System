@@ -97,6 +97,7 @@
                 <li class="nav-item"><a class="nav-link" href="#">Grant Access</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddProducts">Add Products</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddPriceType">Add Price Type</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddUserQuest">Add User Questions</a></li>
             </ul>
         </div>
         <!--/col-->
@@ -287,6 +288,48 @@
             </div>
         </div>
 
+        <!-- 6. Add user Questions-->
+        <div class="modal" id="modalAddUserQuest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Add User Questions</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <form action="index.php?page=adminHomepage&action=addUserQuest" method="post">
+                        <div class="modal-body">
+
+                            Add User Info:  <input type="text" class="form-control" name="addQuest" placeholder="Enter User Question" required/><br/>
+
+                            <select class="form-control" name="infoDropDown" required>
+                                <option value="">Select Info Type</option>
+                                <option value="text">Text</option>
+                                <option value="email">Email</option>
+                                <option value="password">Password</option>
+                                <option value="date">Date</option>
+                            </select>
+
+                            <br>
+                            <select class="form-control" name="fieldDropDown" required>
+                                <option value="">Is field required</option>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button id="btnAdd" type="submit" name="btnAddPrice" class="btn btn-success clearfix">Add Price Type</button>
+                            <input type="hidden" name="appId" value="<?php print $appId ?>"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
         <!--Registration Details-->
         <div class="col main pt-5 mt-3">
 
@@ -320,7 +363,7 @@
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Registered Students</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php  $resultSet = studentOrderInfo::getRegisteredStudentInfo(); print count($resultSet);?></a></h1>
+                           <!-- <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewRegistrations"><?php  //$resultSet = studentOrderInfo::getRegisteredStudentInfo(); print count($resultSet);?></a></h1>-->
 
                         </div>
                     </div>
@@ -332,7 +375,7 @@
                                 <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Partial Payment</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewPartialPayment"><?php $result = studentOrderInfo::getPartialPayment();print count($result);?></a></h1>
+                           <!-- <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewPartialPayment"><?php //$result = studentOrderInfo::getPartialPayment();print count($result);?></a></h1>-->
                         </div>
                     </div>
                 </div>
@@ -343,7 +386,7 @@
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Courses</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCourses"><?php //$course = studentOrderInfo::getCoursesAdmin();print count($course);?></a></h1>
+                           <!-- <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCourses"><?php //$course = studentOrderInfo::getCoursesAdmin();print count($course);?></a></h1>-->
                         </div>
                     </div>
                 </div>
@@ -354,7 +397,7 @@
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Student Course Info</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCoursesInfo"><?php //$course = studentOrderInfo::getCoursesInfoAdmin();print count($course);?></a></h1>
+                            <!--<h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCoursesInfo"><?php //$course = studentOrderInfo::getCoursesInfoAdmin();print count($course);?></a></h1>-->
                         </div>
                     </div>
                 </div>
@@ -393,9 +436,9 @@
                 <div class="col-lg-10 col-md-8 table-responsive">
                     <?php
                         //to-do: Fetch the app id dynamically for title on homepage
-                        $resultSet = studentOrderInfo::getRegisteredStudentInfo();
+                        //$resultSet = studentOrderInfo::getRegisteredStudentInfo();
                         //Print HTML Table
-                        print utility\htmlTable::generateTableForTest($productNames);
+                        //print utility\htmlTable::generateTableForTest($productNames);
                     ?>
 
                 </div>

@@ -140,7 +140,7 @@ class userOrderInfo extends \database\collection
     {
         $sql = "SELECT SO.orderNum AS 'Order No',SO.studentName AS 'Student Name', SO.studentEmail AS 'Email Address',
                        SI.gender AS 'Gender', SI.gradYear AS 'Grad Year', SO.paymentType AS 'Payment Type',SO.confirmedTimestamp AS 'Registered Date'
-                FROM studentOrderInfo SO JOIN studentInfo SI
+                FROM userOrderInfo SO JOIN userInfo SI
                 
                 ON SO.studentName = SI.studentName
                 AND SO.orderNum = SI.orderNum

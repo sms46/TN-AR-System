@@ -160,25 +160,25 @@ class adminController extends http\controller
 
     public static function viewRegistrations()
     {
-        $resultSet = studentOrderInfo::getRegisteredStudentInfo();
+        $resultSet = userOrderInfo::getRegisteredStudentInfo();
         self::getTemplate('adminHomepage', NULL, $resultSet);
     }
 
     public static function viewPartialPayment()
     {
-        $result = studentOrderInfo::getPartialPayment();
+        $result = userOrderInfo::getPartialPayment();
         self::getTemplate('adminHomepage', NULL, $result);
     }
 
     public static function viewCourses()
     {
-        $result = studentOrderInfo::getCoursesAdmin();
+        $result = userOrderInfo::getCoursesAdmin();
         self::getTemplate('adminHomepage', NULL, $result);
     }
 
     public static function viewCoursesInfo()
     {
-        $result = studentOrderInfo::getCoursesInfoAdmin();
+        $result = userOrderInfo::getCoursesInfoAdmin();
         self::getTemplate('adminHomepage', NULL, $result);
     }
 }
