@@ -126,6 +126,27 @@
                 <strong>This is the admin page.</strong>
             </div>
 
+            <!-- Success Alert message when successfully saved in the db-->
+
+            <?php if(isset($_POST["btnAdd"])) {?>
+                <div class="alert alert-success" role="alert">
+                    Success! Product has been added to the database
+                </div>
+            <?php } ?>
+
+
+            <?php if(isset($_POST["btnAddPrice"])) {?>
+                <div class="alert alert-success" role="alert">
+                    Success! Price Type has been added to the database
+                </div>
+            <?php } ?>
+
+            <?php if(isset($_POST["btnAddQuest"])) {?>
+                <div class="alert alert-success" role="alert">
+                    Success! Question has been added to the database
+                </div>
+            <?php } ?>
+
             <!--Cards Display-->
             <div class="row mb-3">
                 <div class="col-xl-3 col-sm-6 py-2">
@@ -221,7 +242,7 @@
     <!--/main col-->
 </div>
 
-<!--Export Data Modals-->
+<!--Data Modals-->
 <!-- 1. Student Info-->
 <div class="modal" id="modalExportStudentInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
