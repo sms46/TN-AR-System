@@ -2,6 +2,6 @@
 
 class serverTimingLogs extends \database\collection
 {
-    protected static $modelName = 'serverTimingLogs';
+    protected static $modelName = 'serverTimingLogsModel';
 
 }

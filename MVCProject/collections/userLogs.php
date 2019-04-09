@@ -2,7 +2,7 @@
 
 class userLogs extends \database\collection
 {
-    protected static $modelName = 'userLogs';
+    protected static $modelName = 'userLogsModel';
 
     //static functions
     public static function retrieveUserInfoForLogs($orderNum)

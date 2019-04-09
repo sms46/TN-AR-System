@@ -84,8 +84,6 @@ class adminController extends http\controller
 
             $addProduct->save();
 
-            echo '<script>alert("You have successfully added a product in the database")</script>';
-
             // Pass the app key back to admin homepage
             self::getTemplate('adminHomepage', NULL, $appKey);
         }
@@ -108,7 +106,28 @@ class adminController extends http\controller
 
             $addPriceType->save();
 
-            echo '<script>alert("You have successfully added price type in the database")</script>';
+            // Pass the app key back to admin homepage
+            self::getTemplate('adminHomepage', NULL, $appKey);
+        }
+    }
+
+    //Function to add product in  the product table
+    public static function addUserQuest()
+    {
+        if(isset($_POST["btnAddQuest"])) {
+            $userInfo = $_POST['addQuest'];
+            $infoType = $_POST['infoDropDown'];
+            $fieldRequired = $_POST['fieldDropDown'];
+            $appKey = $_POST['appId'];
+
+            //Add products in the product Table
+            $addQuest = new userQuestTemplateModel();
+            $addQuest->quest = $userInfo;
+            $addQuest->quest_type = $infoType;
+            $addQuest->is_required = $fieldRequired;
+            $addQuest->app_id = $appKey;
+
+            $addQuest->save();
 
             // Pass the app key back to admin homepage
             self::getTemplate('adminHomepage', NULL, $appKey);

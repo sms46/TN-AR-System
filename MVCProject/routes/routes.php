@@ -52,6 +52,15 @@ class routes
         $route->method = 'addPriceType';
         $routes[] = $route;
 
+        //Add Questions by the admin
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'addUserQuest';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'addUserQuest';
+        $routes[] = $route;
+
         //--------REGISTRATION ROUTING-------------------------
         //----------------------------------------------
         //Route to the Product Registration page

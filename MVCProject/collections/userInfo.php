@@ -2,7 +2,7 @@
 
 class userInfo extends \database\collection
 {
-    protected static $modelName = 'userInfo';
+    protected static $modelName = 'userInfoModel';
 
     // Static Functions
 

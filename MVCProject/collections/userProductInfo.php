@@ -2,7 +2,7 @@
 
 class userProductInfo extends \database\collection
 {
-    protected static $modelName = 'userProductInfo';
+    protected static $modelName = 'userProductInfoModel';
 
     // Static Functions
 
