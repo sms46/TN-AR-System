@@ -53,22 +53,35 @@ class userRegistrationController extends http\controller
 
                 if(!empty($_SESSION["cart_item"])) {
 
+                    $myArray = array();
+
+                    // receive all data in an array
+                    $fields = $_POST['field'];
+
+                    $questArray = userQuestTemplate::getUserQuest($_REQUEST["app_id"]);
+                    $k=0;
+                    // output / process all data
+                    foreach ($fields as $value) {
+                        $myArray[$questArray[$k]->quest] = $value;
+                        $k+=1;
+                    }
+
                     //Insert into the user info table
                     $user = new userInfoModel();
                     $user->orderNum = $_POST['orderNum'];
-                    $user->user_name = $_POST['studentName'];
-                    $user->user_email = $_POST['email'];
-                    $user->gender = $_POST['gender'];
-                    $user->parent_name = $_POST['parentName'];
-                    $user->parent_email = $_POST['parentEmail'];
-                    $user->parent_number = $_POST['parentNumber'];
-                    $user->school_name = $_POST['highSchool'];
-                    $user->grad_year = $_POST['gradYear'];
-                    $user->street_address = $_POST['streetAddress'];
-                    $user->city = $_POST['city'];
-                    $user->state = $_POST['state'];
-                    $user->zipCode = $_POST['zipCode'];
+                    $user->user_name = $_POST['user_name'];
+                    $user->user_email = $_POST['user_email'];
                     $user->save();
+
+                    foreach ($myArray as $key=>$value) {
+
+                        //Insert into the user add details table
+                        $userDetails = new userAddDetailsModel();
+                        $userDetails->orderNum = $_POST['orderNum'];
+                        $userDetails->user_data = $key;
+                        $userDetails->user_value = $value;
+                        $userDetails->save();
+                    }
 
                     //fix: Course Amt Update for UserOrderInfo Table
                     $number = $_POST['courseAmt'];
@@ -77,8 +90,8 @@ class userRegistrationController extends http\controller
                     //Insert into the UserOrderInfo table
                     $order = new userOrderInfoModel();
                     $order->orderNum = $_POST['orderNum'];
-                    $order->user_name = $_POST['studentName'];
-                    $order->user_email = $_POST['email'];
+                    $order->user_name = $_POST['user_name'];
+                    $order->user_email = $_POST['user_email'];
                     $order->payment_type = $_POST['paymentTypeSelect'];
                     $order->course_amt = $english_format_number;
                     $order->amt_paid = 0;
@@ -103,7 +116,7 @@ class userRegistrationController extends http\controller
                         //Insert into the user product Info table
                         $userProdInfo = new userProductInfoModel();
                         $userProdInfo->order_num = $_POST['orderNum'];
-                        $userProdInfo->user_name = $_POST['studentName'];
+                        $userProdInfo->user_name = $_POST['user_name'];
                         $userProdInfo->product_id = $prodId;
                         $userProdInfo->price_id = $priceId;
                         $userProdInfo->timestamp = userInfo::getTimestamp();
@@ -113,8 +126,8 @@ class userRegistrationController extends http\controller
                     //LOG USER INFO
                     $log = new userLogsModel();
                     $log->EXT_TRANS_ID = $_POST['orderNum'];
-                    $log->user_name = $_POST['studentName'];
-                    $log->user_email = $_POST['email'];
+                    $log->user_name = $_POST['user_name'];
+                    $log->user_email = $_POST['user_email'];
                     $log->amt_paid = 0;
                     $log->balance_amt = $_POST['totalAmt'];
                     $log->payment_status = 'Ready to pay using Touchnet';
