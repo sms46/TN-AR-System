@@ -16,7 +16,8 @@ class userLogs extends \database\collection
 
     public static function getLogData($orderNum)
     {
-        $sql = "SELECT * FROM userLogs WHERE EXT_TRANS_ID = '$orderNum'";
+        $sql = "SELECT * FROM userLogs 
+                WHERE EXT_TRANS_ID = '$orderNum'";
 
         return self::getResults($sql);
     }

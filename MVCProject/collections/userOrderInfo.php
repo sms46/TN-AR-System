@@ -86,10 +86,10 @@ class userOrderInfo extends \database\collection
 
     public static function retrieveUpdatedUserOrder($OrderNum)
     {
-        $sql = 'SELECT TempTable.user_name, TempTable.user_email, TempTable.product_id, TempTable.price_id, TempTable.timestamp,
+        $sql = "SELECT TempTable.user_name, TempTable.user_email, TempTable.product_id, TempTable.price_id, TempTable.timestamp,
 	                   TempTable.order_confirmed, TempTable.payment_status, TempTable.confirmed_timestamp, TempTable.course_amt, 
                        TempTable.amt_paid, TempTable.due_amt, TempTable.payment_type, TempTable.orderNum, P.app_id, 
-                       P.item_remain, UI.street_address, UI.city, UI.state, UI.zipCode
+                       P.item_remain
                             FROM
                                 (
                                     SELECT UPI.user_name, UOI.user_email, UPI.product_id, UPI.price_id, UOI.timestamp,
@@ -99,9 +99,9 @@ class userOrderInfo extends \database\collection
                                     ON UOI.user_name = UPI.user_name
                                     AND UOI.orderNum = UPI.order_num
                             
-                                    WHERE UOI.order_confirmed = \'Y\'
+                                    WHERE UOI.order_confirmed = 'Y'
                                     AND UOI.payment_status = 1
-                                    AND UOI.orderNum = ?
+                                    AND UOI.orderNum = '$OrderNum'
                                         
                                 ) TempTable
                                     
@@ -109,9 +109,9 @@ class userOrderInfo extends \database\collection
                             ON  TempTable.product_id = P.id
                                 
                             JOIN userInfo UI
-                            ON  TempTable.orderNum = UI.orderNum';
+                            ON  TempTable.orderNum = UI.orderNum";
 
-        return self::getResults($sql, $OrderNum);
+        return self::getResults($sql);
     }
 
     public static function updateNoOfSeats($productId,$seatsAvailable)

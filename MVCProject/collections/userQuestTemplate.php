@@ -10,7 +10,8 @@ class userQuestTemplate extends \database\collection
     public static function getUserQuest($appId)
     {
         $sql = "SELECT * FROM userQuestTemplate
-                WHERE app_id = '$appId'";
+                WHERE app_id = '$appId'
+                ORDER BY sort_count";
 
         return self::getResults($sql);
     }

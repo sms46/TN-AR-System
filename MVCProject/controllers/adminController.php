@@ -115,6 +115,8 @@ class adminController extends http\controller
     public static function addUserQuest()
     {
         if(isset($_POST["btnAddQuest"])) {
+
+            $sort_id = $_POST['sort'];
             $userInfo = $_POST['addQuest'];
             $infoType = $_POST['infoDropDown'];
             $fieldRequired = $_POST['fieldDropDown'];
@@ -122,6 +124,7 @@ class adminController extends http\controller
 
             //Add products in the product Table
             $addQuest = new userQuestTemplateModel();
+            $addQuest->sort_count = $sort_id;
             $addQuest->quest = $userInfo;
             $addQuest->quest_type = $infoType;
             $addQuest->is_required = $fieldRequired;

@@ -443,6 +443,7 @@
                 <div class="modal-body">
 
                     Add User Info:  <input type="text" class="form-control" name="addQuest" placeholder="Enter User Question" required/><br/>
+                    Sort ID: <input type="text" class="form-control" name="sort" placeholder="Enter Sort ID " required/><br/>
 
                     <select class="form-control" name="infoDropDown" required>
                         <option value="">Select Info Type</option>
@@ -451,7 +452,6 @@
                         <option value="password">Password</option>
                         <option value="date">Date</option>
                     </select>
-
                     <br>
                     <select class="form-control" name="fieldDropDown" required>
                         <option value="">Is field required</option>

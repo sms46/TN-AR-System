@@ -179,7 +179,7 @@
                         <h5><strong>Primary Contact Information</strong></h5>
 
                         <div class="col-md-8 mb-2">
-                            Student's Full Name:
+                            Enter Full Name:
                             <input type="text" class="form-control" name="user_name" value="<?php if (isset($_POST['user_name'])) echo $_POST['user_name']; ?>" required/>
                             <div class="invalid-feedback">
                                 This is a required field.
@@ -194,7 +194,7 @@
                             </div>
                         </div><br>
 
-                        <h5><strong>Other Information</strong></h5>
+                        <h5><strong>Additional Information</strong></h5>
 
                         <!--Get the question from the user quest table based on app id-->
                             <?php $questArray = userQuestTemplate::getUserQuest($_REQUEST["app_id"]);?>
