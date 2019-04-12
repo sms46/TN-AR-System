@@ -36,9 +36,6 @@ class transactionStatusController extends http\controller
 
         //Update the order status if successful payment done via touchnet
         userOrderInfo::updateUserOrder($orderNo);
-        
-        //Retrieve the user info after successful payment
-        $userOrder = userOrderInfo::retrieveUpdatedUserOrder($orderNo);
 
         //Retrieve Student Info for logs
         $userInfoLogs = userLogs::retrieveUserInfoForLogs($orderNo);
@@ -50,11 +47,13 @@ class transactionStatusController extends http\controller
         $log->user_email = $userInfoLogs[0]->user_email;
         $log->tpg_trans_id = $_POST['tpg_trans_id'];
         $log->amt_paid = $_POST['pmt_amt'];
-        $log->balance_amt = ($userInfoLogs[0]->due_amt);
+        $log->balance_amt = $userInfoLogs[0]->due_amt;
         $log->payment_status = 'Transaction complete using Touchnet';
         $log->description = 'Payment Success';
-        $log->current_timestamp = userInfo::getTimestamp();
         $log->save();
+
+        //Retrieve the user info after successful payment
+        $userOrder = userOrderInfo::retrieveUpdatedUserOrder($orderNo);
 
         //get log data for particular order num
         $userLogsAf = userLogs::getLogData($orderNo);

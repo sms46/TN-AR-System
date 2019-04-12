@@ -126,14 +126,7 @@ class userOrderInfo extends \database\collection
         }
     }
 
-    public static function getStudentDetails($OrderNum)
-    {
-        $sql = "SELECT studentEmail, orderNum FROM studentOrderInfo WHERE orderNum  = '$OrderNum' ";
-
-        return self::getResults($sql);
-    }
-
-
+    
     // Static Functions for Admin Page
 
     public static function getRegisteredStudentInfo()

@@ -11,7 +11,6 @@ final class userLogsModel extends \database\model
     public $balance_amt;
     public $payment_status;
     public $description;
-    public $current_timestamp;
 
     protected static $modelName = 'userLogsModel';
 
