@@ -7,34 +7,34 @@ class checkBalanceController extends http\controller
         if(isset($_POST["checkBalance"])) {
 
             //$studentName = $_POST['studentName'];
-            $email = $_POST['email'];
+            //$email = $_POST['email'];
             $orderNo = $_POST['orderNo'];
 
-            $studentDetails = studentOrderInfo::getStudentDetails($orderNo);
+            //FIX: Added a condition to handle multiple records having same email address
+            $userDetailsArray = userOrderInfo::retrieveUpdatedUserOrder($orderNo);
 
-            if($studentDetails != null){
+            if($userDetailsArray != null){
 
-                //$queryStdName = $studentDetails[0]->studentName;
-                $queryStdEmail = $studentDetails[0]->studentEmail;
-                $queryStdOrdNum = $studentDetails[0]->orderNum;
+                //$queryStdName = $userDetailsArray[0]->studentName;
+                //$queryStdEmail = $userDetailsArray[0]->studentEmail;
+                $queryStdOrdNum = $userDetailsArray[0]->orderNum;
 
-                if(($email == $queryStdEmail)&&($orderNo == $queryStdOrdNum)){
-
-                    //FIX: Added a condition to handle multiple records having same email address
-                    $studentDetailsArray = studentOrderInfo::retrieveUpdatedStudentOrder($orderNo);
-                    self::getTemplate('userBalanceInfo',$studentDetailsArray,$studentDetailsArray);
+                if($orderNo == $queryStdOrdNum){
+                    self::getTemplate('userBalanceInfo',NULL,$userDetailsArray);
 
                 } else {
                          echo '<script>alert("No matching records found. Please try again with correct Email Address and Order Number.")</script>';
-                        $courseRegister = courses::findCourses();
-                        self::getTemplate('courseRegistration',NULL,$courseRegister);
+                         $app_id = $_REQUEST['app_id'];
+                         $productPage = products::findProducts($app_id);
+                         self::getTemplate('productRegistration',NULL,$productPage);
                 }
 
             } else{
 
                 echo '<script>alert("No records available for the user. Please Try Again")</script>';
-                $courseRegister = courses::findCourses();
-                self::getTemplate('courseRegistration',NULL,$courseRegister);
+                $app_id = $_REQUEST['app_id'];
+                $productPage = products::findProducts($app_id);
+                self::getTemplate('productRegistration',NULL,$productPage);
             }
         }
     }

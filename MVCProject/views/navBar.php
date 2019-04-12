@@ -35,11 +35,6 @@
                     <br>
                 </li>
 
-                <li class="nav-item active">
-                    <form action="index.php?page=homepage&action=redirectToCourse" method="POST">
-                        <button class="btn btn-outline-primary" name="btnRegister" type="submit">Register</button>
-                    </form>
-                </li>
             </ul>
 
             <!-- Check Balance Due Modal -->
@@ -57,13 +52,15 @@
                             <div class="modal-body">
 
                                 <!--Student's Full Name: <input type="text" class="form-control" name="studentName" placeholder="Enter Student's Full Name" value="" required><br/>-->
-                                Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required/><br/>
-                                Order Number:  <input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required/><br/>
+                                <!--Email Address:  <input type="email" class="form-control" name="email" placeholder="you@example.com" required/><br/>-->
+                                Order Number:<input type="text" class="form-control" name="orderNo" placeholder="Enter your Order Number" required/><br/>
 
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                                 <input type="submit" value="Check" name="checkBalance" class="btn btn-success"/>
+                                <input type="hidden" name="app_id" value= "<?php print $_REQUEST["app_id"]?>" >
+                                <input type="hidden" name="app_id" value= "<?php print $_REQUEST["id"]?>" >
                             </div>
                         </form>
                     </div>

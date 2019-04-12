@@ -86,14 +86,14 @@ class userOrderInfo extends \database\collection
 
     public static function retrieveUpdatedUserOrder($OrderNum)
     {
-        $sql = "SELECT TempTable.user_name, TempTable.user_email, TempTable.product_id, TempTable.price_id, TempTable.timestamp,
-	                   TempTable.order_confirmed, TempTable.payment_status, TempTable.confirmed_timestamp, TempTable.course_amt, 
-                       TempTable.amt_paid, TempTable.due_amt, TempTable.payment_type, TempTable.orderNum, P.app_id, 
-                       P.item_remain
+        $sql = "SELECT TempTable.user_name, TempTable.user_email, TempTable.product_id, P.name, P.description, TempTable.price_id, 
+                       TempTable.timestamp, TempTable.order_confirmed, TempTable.payment_status, TempTable.confirmed_timestamp, 
+                       TempTable.product_amt, TempTable.amt_paid, TempTable.due_amt, TempTable.payment_type, TempTable.orderNum, 
+                       P.app_id, P.item_remain
                             FROM
                                 (
                                     SELECT UPI.user_name, UOI.user_email, UPI.product_id, UPI.price_id, UOI.timestamp,
-                                           UOI.order_confirmed, UOI.payment_status, UOI.confirmed_timestamp, UOI.course_amt, 
+                                           UOI.order_confirmed, UOI.payment_status, UOI.confirmed_timestamp, UOI.product_amt, 
                                            UOI.amt_paid, UOI.due_amt, UOI.payment_type, UOI.orderNum
                                     FROM userOrderInfo UOI JOIN userProductInfo UPI
                                     ON UOI.user_name = UPI.user_name

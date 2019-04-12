@@ -236,7 +236,7 @@
                                 <input type="hidden" name="totalAmt" value= "<?php print $_REQUEST["totalAmt"] ?>" >
                                 <input type="hidden" name="paymentTypeSelect" value= "<?php print $_POST["paymentTypeSelect"]?>" >
                                 <input type="hidden" name="orderNum" value= "<?php print $data ?>" >
-                                <input type="hidden" name="courseAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
+                                <input type="hidden" name="productAmt" value= "<?php print $_REQUEST["totalAmt"]?>" >
                                 <input type="hidden" name="dueAmt" value= "<?php print $balanceAmt ?>" >
                                 <input type="hidden" name="app_id" value= "<?php print $_REQUEST["app_id"]?>" >
                             </div>

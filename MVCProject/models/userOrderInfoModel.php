@@ -7,7 +7,7 @@ final class userOrderInfoModel extends \database\model
     public $user_name;
     public $user_email;
     public $payment_type;
-    public $course_amt;
+    public $product_amt;
     public $amt_paid;
     public $due_amt;
     public $timestamp;

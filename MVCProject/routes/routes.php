@@ -119,7 +119,8 @@ class routes
         $route->method = 'storeUserInfo';
         $routes[] = $route;
 
-        //TO-DO:
+        //-------- POSTBACK ROUTING(AFTER SUCCESS FROM TOUCHNET)-------------------------
+        //----------------------------------------------
         //Post URL route back from successful transaction from TouchNet.
         $route = new route();
         $route->http_method = 'POST';
@@ -138,6 +139,8 @@ class routes
         $route->method = 'displayTranStatus';
         $routes[] = $route;
 
+        //-------- CHECK BALANCE ROUTING-------------------------
+        //----------------------------------------------
         //Redirect to check balance page.
         $route = new route();
         $route->http_method = 'POST';
@@ -147,6 +150,9 @@ class routes
         $route->method = 'checkBalance';
         $routes[] = $route;
 
+
+
+        //to:do
         //Registered student report
         $route = new route();
         $route->http_method = 'GET';

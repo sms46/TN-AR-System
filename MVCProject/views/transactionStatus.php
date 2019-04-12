@@ -9,7 +9,7 @@
 <?php $orderNo = $_REQUEST['EXT_TRANS_ID'];
 
 $userInfo = userOrderInfo::getOrderId($orderNo);
-$Amt = $userInfo->course_amt;
+$Amt = $userInfo->product_amt;
 $amtPaid = $userInfo->amt_paid;
 
 $dueAmt = $userInfo->due_amt;

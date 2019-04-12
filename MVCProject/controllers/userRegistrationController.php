@@ -84,7 +84,7 @@ class userRegistrationController extends http\controller
                     }
 
                     //fix: Course Amt Update for UserOrderInfo Table
-                    $number = $_POST['courseAmt'];
+                    $number = $_POST['productAmt'];
                     $english_format_number = number_format($number, 2, '.', '');
 
                     //Insert into the UserOrderInfo table
@@ -93,7 +93,7 @@ class userRegistrationController extends http\controller
                     $order->user_name = $_POST['user_name'];
                     $order->user_email = $_POST['user_email'];
                     $order->payment_type = $_POST['paymentTypeSelect'];
-                    $order->course_amt = $english_format_number;
+                    $order->product_amt = $english_format_number;
                     $order->amt_paid = 0;
                     $order->due_amt = $_POST['totalAmt'];
                     $order->timestamp = userInfo::getTimestamp();
