@@ -69,10 +69,15 @@
                     <form action="index.php?page=userRegistration&action=register" method="POST">
                         <tr>
                             <td colspan="3" align="center">
+
+                                <?php $payType = paymentType::getPaymentTypeById($app_id);?>
+
+                                <!--Dynamically add payment type by app_id-->
                                 <select class="btn btn-default shadow-lg p-3 mb-3 bg-white rounded" id="paymentTypeSelect" name="paymentTypeSelect" required>
                                     <option value="">Select Payment Type</option>
-                                    <option value="Deposit">Deposit</option>
-                                    <option value="Full Payment">Full Payment</option>
+                                    <?php for($i=0; $i< count($payType); $i++) {?>
+                                        <option value="<?php print $payType[$i]->pay_type?>"><?php print $payType[$i]->pay_type ?></option>
+                                    <?php } ?>
                                 </select>
                             </td>
                             <td colspan="4" align="left"><h4>Total: $<?php print $total?></h4></td>

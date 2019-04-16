@@ -61,6 +61,15 @@ class routes
         $route->method = 'addUserQuest';
         $routes[] = $route;
 
+        //Add Pay Type by the admin
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'addPayType';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'addPayType';
+        $routes[] = $route;
+
         //--------REGISTRATION ROUTING-------------------------
         //----------------------------------------------
         //Route to the Product Registration page

@@ -60,7 +60,7 @@ class adminController extends http\controller
         }
     }
 
-    //Function to add product in  the product table
+    //Function to add product in the product table
     public static function addProducts()
     {
         if(isset($_POST["btnAdd"])) {
@@ -89,7 +89,7 @@ class adminController extends http\controller
         }
     }
 
-    //Function to add product in  the product table
+    //Function to add product in the product price table
     public static function addPriceType()
     {
         if(isset($_POST["btnAddPrice"])) {
@@ -111,7 +111,7 @@ class adminController extends http\controller
         }
     }
 
-    //Function to add product in  the product table
+    //Function to add product in the user quest template table
     public static function addUserQuest()
     {
         if(isset($_POST["btnAddQuest"])) {
@@ -131,6 +131,37 @@ class adminController extends http\controller
             $addQuest->app_id = $appKey;
 
             $addQuest->save();
+
+            // Pass the app key back to admin homepage
+            self::getTemplate('adminHomepage', NULL, $appKey);
+        }
+    }
+
+    //Function to add product in the payment type table
+    public static function addPayType()
+    {
+        if(isset($_POST["btnAddPayType"])) {
+
+            $payType = $_POST['payType'];
+            $appKey = $_POST['appId'];
+            $myArray = array();
+            $k=0;
+
+            // output / process all data
+            foreach ($payType as $value) {
+                $myArray[$k] = $value;
+                $k+=1;
+            }
+
+            //Add products in the product Table
+            for($c= 0; $c < count($myArray);$c++){
+
+                $addPayType = new paymentTypeModel();
+                $addPayType->pay_type = $myArray[$c];
+                $addPayType->app_id = $appKey;
+                $addPayType->save();
+            }
+
 
             // Pass the app key back to admin homepage
             self::getTemplate('adminHomepage', NULL, $appKey);

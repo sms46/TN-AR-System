@@ -98,6 +98,7 @@
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddProducts">Add Products</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddPriceType">Add Price Type</a></li>
                 <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddUserQuest">Add User Questions</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddPayType">Add Payment Type </a></li>
             </ul>
         </div>
         <!--/col-->
@@ -463,6 +464,35 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     <button id="btnAdd" type="submit" name="btnAddQuest" class="btn btn-success clearfix">Add Question</button>
+                    <input type="hidden" name="appId" value="<?php print $appId ?>"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- 7. Add payment type-->
+<div class="modal" id="modalAddPayType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add Payment Type</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="index.php?page=adminHomepage&action=addPayType" method="post">
+                <div class="modal-body">
+
+                    <h6><strong>Select Payment Type:</strong></h6>
+                    <input type="checkbox" name="payType[]" value="Deposit" /> Deposit <br>
+                    <input type="checkbox" name="payType[]" value="Full Payment" /> Full Payment
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button id="btnAdd" type="submit" name="btnAddPayType" class="btn btn-success clearfix">Add Payment Type</button>
                     <input type="hidden" name="appId" value="<?php print $appId ?>"/>
                 </div>
             </form>
