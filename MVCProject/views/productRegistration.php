@@ -24,7 +24,7 @@
     <?php // include 'navSideBar.php';?>
 
     <div id="content">
-
+        
         <!-- Navigation bar-->
         <?php include 'navBar.php';?>
 

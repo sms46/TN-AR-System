@@ -143,6 +143,13 @@ class adminController extends http\controller
         if(isset($_POST["btnAddPayType"])) {
 
             $payType = $_POST['payType'];
+            $discount = $_POST['discount'];
+            $appFee = $_POST['AppFee'];
+
+            $depositAmt = $_POST['depAmt'];
+            $discPer = $_POST['discPer'];
+            $appFeeAmt = $_POST['appFeeAmt'];
+
             $appKey = $_POST['appId'];
             $myArray = array();
             $k=0;
@@ -154,13 +161,39 @@ class adminController extends http\controller
             }
 
             //Add products in the product Table
-            for($c= 0; $c < count($myArray);$c++){
+            for($c= 0; $c < count($myArray);$c++) {
 
                 $addPayType = new paymentTypeModel();
                 $addPayType->pay_type = $myArray[$c];
                 $addPayType->app_id = $appKey;
                 $addPayType->save();
             }
+
+            for($s= 0; $s < count($myArray);$s++) {
+
+                if ($myArray[$s] == 'Deposit') {
+                    //Save the details in the appConfig Table
+                    $updateAppConfig = new appConfigModel();
+                    $updateAppConfig->app_id = $appKey;
+                    $updateAppConfig->is_deposit = 1;
+                    $updateAppConfig->deposit_amt = $depositAmt;
+                    $updateAppConfig->save();
+                }
+            }
+
+
+            $AppConfig = new appConfigModel();
+            $AppConfig->app_id = $appKey;
+            $AppConfig->is_discount = $discount;
+
+            if($discount == '1'){
+                $AppConfig->disc_percent = $discPer;
+            }
+
+            if($appFee == '1'){
+                $AppConfig->app_fee = $appFeeAmt;
+            }
+            $updateAppConfig->save();
 
 
             // Pass the app key back to admin homepage

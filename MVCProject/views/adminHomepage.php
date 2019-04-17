@@ -148,6 +148,12 @@
                 </div>
             <?php } ?>
 
+            <?php if(isset($_POST["btnAddPayType"])) {?>
+                <div class="alert alert-success" role="alert">
+                    Success! Payment Type has been added to the database
+                </div>
+            <?php } ?>
+
             <!--Cards Display-->
             <div class="row mb-3">
                 <div class="col-xl-3 col-sm-6 py-2">
@@ -486,8 +492,18 @@
                 <div class="modal-body">
 
                     <h6><strong>Select Payment Type:</strong></h6>
-                    <input type="checkbox" name="payType[]" value="Deposit" /> Deposit <br>
+                    <input type="checkbox" name="payType[]" value="Deposit" /> Deposit &nbsp;&nbsp; <input type="text" name="depAmt" placeholder="Enter Deposit Amount"/><br/>
                     <input type="checkbox" name="payType[]" value="Full Payment" /> Full Payment
+
+                    <br/><br/>
+                    <h6><strong>Apply Discount:</strong></h6>
+                    <input type="radio" name="discount" value="1" /> Yes &nbsp;&nbsp; <input type="text" name="discPer" placeholder="Enter Discount Percent"/><br/>
+                    <input type="radio" name="discount" value="0" /> No
+
+                    <br/><br/>
+                    <h6><strong>Has Application Fee:</strong></h6>
+                    <input type="radio" name="AppFee" value="1" /> Yes &nbsp;&nbsp; <input type="text" name="appFeeAmt" placeholder="Enter Application Fee"/><br/>
+                    <input type="radio" name="AppFee" value="0" /> No
 
                 </div>
                 <div class="modal-footer">
