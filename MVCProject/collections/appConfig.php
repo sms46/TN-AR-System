@@ -6,7 +6,7 @@ class appConfig extends database\collection
 
     //Static Functions
 
-    //Get App Name based on the app id passed
+    //Get App Details based on the app id passed
     public static function getAppName($appId)
     {
         $sql = "SELECT * FROM appConfig 

@@ -174,7 +174,7 @@ class adminController extends http\controller
                 if ($myArray[$s] == 'Deposit') {
                     //Save the details in the appConfig Table
                     $updateAppConfig = new appConfigModel();
-                    $updateAppConfig->app_id = $appKey;
+                    $updateAppConfig->id = $appKey;
                     $updateAppConfig->is_deposit = 1;
                     $updateAppConfig->deposit_amt = $depositAmt;
                     $updateAppConfig->save();
@@ -183,7 +183,7 @@ class adminController extends http\controller
 
 
             $AppConfig = new appConfigModel();
-            $AppConfig->app_id = $appKey;
+            $AppConfig->id = $appKey;
             $AppConfig->is_discount = $discount;
 
             if($discount == '1'){
@@ -193,8 +193,7 @@ class adminController extends http\controller
             if($appFee == '1'){
                 $AppConfig->app_fee = $appFeeAmt;
             }
-            $updateAppConfig->save();
-
+            $AppConfig->save();
 
             // Pass the app key back to admin homepage
             self::getTemplate('adminHomepage', NULL, $appKey);

@@ -124,7 +124,7 @@
                             <select class=" form-control" id="adminDropDown" name="adminDropDown" required>
                                 <option value="">Select a Department</option>
                                 <?php for($i=0; $i< count($productNames); $i++) {?>
-                                    <option value="<?php print $productNames[$i]->app_id?>"><?php print $productNames[$i]->app_name ?></option>
+                                    <option value="<?php print $productNames[$i]->id?>"><?php print $productNames[$i]->app_name ?></option>
                                 <?php } ?>
                             </select>
                             <i class="fas fa-chevron-circle-down"></i>
@@ -169,7 +169,7 @@
                             <select class=" form-control" id="adminDropDown" name="adminDropDown" required>
                                 <option value="">Select a Department</option>
                                 <?php for($i=0; $i< count($productNames); $i++) {?>
-                                    <option value="<?php print $productNames[$i]->app_id?>"><?php print $productNames[$i]->app_name ?></option>
+                                    <option value="<?php print $productNames[$i]->id?>"><?php print $productNames[$i]->app_name ?></option>
                                 <?php } ?>
                             </select>
                             <i class="fas fa-chevron-circle-down"></i>

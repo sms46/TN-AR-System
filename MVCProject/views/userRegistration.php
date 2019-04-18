@@ -65,17 +65,29 @@
                                 <?php
                                 $paymentTypeAmt = null;
                                 $paymentTypeSelect = null;
+
+                                $appId = $_REQUEST['app_id'];
+                                $appOut = appConfig::getAppName($appId);
+
                                 if($_POST["paymentTypeSelect"] == 'Deposit'){
                                     //Get Deposit Amount from the config file
-                                    $depositAmt = $configs->depositAmt;
+                                    $depositAmt = $appOut[0]->deposit_amt;
+
                                     $paymentTypeAmt = $depositAmt * count($_SESSION['cart_item']);
                                     $paymentTypeSelect = 'Deposit: ($'.$depositAmt.' per course)';
                                 }
                                 elseif ($_POST["paymentTypeSelect"] == 'Full Payment'){
-                                    //Get Discount Percent from the config file
-                                    $discount = $configs->discountPer;
-                                    $paymentTypeAmt = $_REQUEST["totalAmt"] - ($discount * $_REQUEST["totalAmt"]);
-                                    $paymentTypeSelect = 'Full Payment - (10% discount applied)';
+
+                                    //Get Discount Percent from the config table
+                                    $discount = $appOut[0]->disc_percent;
+                                    $discPercent = $discount/100;
+                                    $paymentTypeAmt = $_REQUEST["totalAmt"] - ($discPercent * $_REQUEST["totalAmt"]);
+
+                                    if($discPercent != 0){
+                                        $paymentTypeSelect = 'Full Payment - ('.$discount.'% discount applied)';
+                                    }else{
+                                        $paymentTypeSelect = 'Full Payment';
+                                    }
                                 }
                                 ?>
                                 <small class="text-muted"><em><?php echo $paymentTypeSelect?></em></small>
@@ -90,8 +102,8 @@
                             </div>
                             <span class="text-muted">
                             <?php
-                            //Get Application Fee from the config file
-                            $applicationAmt = $configs->appFee;
+                            //Get Application Fee from the config table
+                            $applicationAmt = $appOut[0]->app_fee;
                             echo '$' .$applicationAmt;
                             ?>
                         </span>
@@ -132,9 +144,9 @@
 
 
                             <?php if(isset($_POST["save_details"])) {
-                                $appId = $_REQUEST['app_id'];
-                                $appOut = appConfig::getAppName($appId);
+
                                 $app_key = $appOut[0]->app_key;
+                                $site_id = $appOut[0]->site_id;
 
                             //$passedAmt = '87ABD23777';
                             $validationKeyString = $app_key .$data .$finalAmt;
@@ -155,7 +167,7 @@
                                 <?php
                             }
                             ?>
-                            <input type="hidden" name="UPAY_SITE_ID" value="8"/>
+                            <input type="hidden" name="UPAY_SITE_ID" value="<?php print $site_id ?>"/>
                             <input type="hidden" name="AMT" value="<?php print $finalAmt ?>"/>
                             <input type="hidden" name="EXT_TRANS_ID" value="<?php print $data ?>"/>
                             <input type="hidden" name="VALIDATION_KEY" value="<?php print $hashedValidationKey ?>"/>
