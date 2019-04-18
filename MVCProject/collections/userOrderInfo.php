@@ -129,50 +129,64 @@ class userOrderInfo extends \database\collection
     
     // Static Functions for Admin Page
 
-    public static function getRegisteredStudentInfo()
+    public static function getRegisteredUserInfo($appId)
     {
-        $sql = "SELECT SO.orderNum AS 'Order No',SO.studentName AS 'Student Name', SO.studentEmail AS 'Email Address',
-                       SI.gender AS 'Gender', SI.gradYear AS 'Grad Year', SO.paymentType AS 'Payment Type',SO.confirmedTimestamp AS 'Registered Date'
-                FROM userOrderInfo SO JOIN userInfo SI
-                
-                ON SO.studentName = SI.studentName
-                AND SO.orderNum = SI.orderNum
-                
-                WHERE SO.paymentStatus = 1";
+        $sql = "SELECT UO.orderNum AS 'Order No', UO.user_name AS 'User', UO.user_email AS 'Primary Email',
+	                   UO.confirmed_timestamp AS 'Date Registered' 
+                FROM userOrderInfo UO JOIN (
+										      SELECT DISTINCT UPI.order_num
+										      FROM userProductInfo UPI JOIN products P
+										      ON UPI.product_id = P.id
+										      WHERE P.app_id = '$appId'
+										      AND P.active = '1'
+								           ) Temp
+									  
+                ON UO.orderNum = Temp.order_num
+        
+                WHERE UO.order_confirmed = 'Y'
+                AND UO.payment_status = '1'";
 
         return self::getResults($sql);
     }
 
-    public static function getPartialPayment()
+    public static function getPartialPayment($appId)
     {
-        $sql = "SELECT SO.orderNum AS 'Order No',SO.studentName AS 'Student Name', SO.studentEmail AS 'Email Address',
-                       SI.gradYear AS 'Grad Year', SO.courseAmt AS 'Course Amount($)',SO.AmtPaid AS 'Amount Paid($)', 
-                       SO.dueAmt AS 'Balance Due($)',SO.confirmedTimestamp AS 'Registered Date'
-                FROM studentOrderInfo SO JOIN studentInfo SI
-                
-                ON SO.studentName = SI.studentName
-                AND SO.orderNum = SI.orderNum
-                
-                WHERE SO.paymentStatus = 1
-                AND SO.paymentType = 'Deposit'";
+        $sql = "SELECT UO.orderNum AS 'Order No', UO.user_name AS 'User', UO.user_email AS 'Primary Email',
+	                   UO.product_amt AS 'Total Amt', UO.due_amt AS 'Due Amt', UO.confirmed_timestamp AS 'Date Registered' 
+                FROM userOrderInfo UO JOIN (
+                                              SELECT DISTINCT UPI.order_num
+                                              FROM userProductInfo UPI JOIN products P
+                                              ON UPI.product_id = P.id
+                                              WHERE P.app_id = '$appId'
+                                              AND P.active = '1'
+                                           ) Temp
+                                              
+                ON UO.orderNum = Temp.order_num
+        
+                WHERE UO.order_confirmed = 'Y'
+                AND UO.payment_status = '1'
+                AND UO.payment_type = 'Deposit'";
 
         return self::getResults($sql);
     }
 
-    public static function getCoursesAdmin()
+    public static function getProductsAdmin($appId)
     {
-        $sql = "SELECT Session, Description,StartDate, EndDate, ResidentialPrice AS 'Residential Price',
-                CommuterPrice AS 'Commuter Price', Department, SeatAvailable AS 'Available Seats', Active 
-                FROM courses";
+        $sql = "SELECT id AS 'Product Id', name AS 'Name', categories AS 'Category', description, 
+	                   item_remain AS 'Items Remaining', active AS 'Active Status'
+                FROM products
+                WHERE app_id = '$appId'
+                AND active = '1'";
 
         return self::getResults($sql);
     }
 
-    public static function getCoursesInfoAdmin()
+    public static function getProductsInfoAdmin($appId)
     {
-        $sql = "SELECT orderNum AS 'Order No', studentName AS 'Student Name',course AS 'Registered Courses', 
-                department AS 'Department',startDate AS 'Start Date', year , timestamp AS 'Registered Date'
-                FROM studentCourseInfo ORDER BY timestamp";
+        $sql = "SELECT UPI.order_num, UPI.user_name , P.name, P.categories, P.description
+                FROM userProductInfo UPI JOIN products P
+                ON UPI.product_id = P.id
+                WHERE P.app_id = '$appId'";
 
         return self::getResults($sql);
     }

@@ -159,44 +159,7 @@ class routes
         $route->method = 'checkBalance';
         $routes[] = $route;
 
-
-
         //to:do
-        //Registered student report
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'viewRegistrations';
-        $route->page = 'adminHomepage';
-        $route->controller = 'adminController';
-        $route->method = 'viewRegistrations';
-        $routes[] = $route;
-
-        //Student with deposit payment type
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'viewPartialPayment';
-        $route->page = 'adminHomepage';
-        $route->controller = 'adminController';
-        $route->method = 'viewPartialPayment';
-        $routes[] = $route;
-
-        //View Couses on admin page
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'viewCourses';
-        $route->page = 'adminHomepage';
-        $route->controller = 'adminController';
-        $route->method = 'viewCourses';
-        $routes[] = $route;
-
-        //View Couses on admin page
-        $route = new route();
-        $route->http_method = 'GET';
-        $route->action = 'viewCoursesInfo';
-        $route->page = 'adminHomepage';
-        $route->controller = 'adminController';
-        $route->method = 'viewCoursesInfo';
-        $routes[] = $route;
 
         //Export to Excel - Student Info
         $route = new route();

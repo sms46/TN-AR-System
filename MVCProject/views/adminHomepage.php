@@ -95,10 +95,14 @@
                     </ul>
                 </li>
                 <li class="nav-item"><a class="nav-link" href="#">Grant Access</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddProducts">Add Products</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddPriceType">Add Price Type</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddUserQuest">Add User Questions</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddPayType">Add Payment Type </a></li>
+
+                <a class="nav-link" href="#submenu2" data-toggle="collapse" data-target="#submenu2">Add Data▾</a>
+                <ul class="list-unstyled flex-column pl-3 collapse" id="submenu2" aria-expanded="false">
+                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddProducts">Add Products</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddPriceType">Add Price Type</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddUserQuest">Add User Questions</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddPayType">Add Payment Type </a></li>
+                </ul>
             </ul>
         </div>
         <!--/col-->
@@ -135,7 +139,6 @@
                 </div>
             <?php } ?>
 
-
             <?php if(isset($_POST["btnAddPrice"])) {?>
                 <div class="alert alert-success" role="alert">
                     Success! Price Type has been added to the database
@@ -162,8 +165,8 @@
                             <div class="rotate">
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase" align="center">Registered Students</h6>
-
+                            <h6 class="text-uppercase" align="center">Registered Users</h6>
+                            <h1 align="center"><a class="display-4 text-white" href="#"><?php $result = userOrderInfo::getRegisteredUserInfo($appId);print count($result);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -174,7 +177,7 @@
                                 <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Partial Payment</h6>
-                            <!-- <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewPartialPayment"><?php //$result = studentOrderInfo::getPartialPayment();print count($result);?></a></h1>-->
+                            <h1 align="center"><a class="display-4 text-white" href="#"><?php $result = userOrderInfo::getPartialPayment($appId);print count($result);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -184,8 +187,8 @@
                             <div class="rotate">
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase" align="center">Courses</h6>
-                            <!-- <h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCourses"><?php //$course = studentOrderInfo::getCoursesAdmin();print count($course);?></a></h1>-->
+                            <h6 class="text-uppercase" align="center">Products</h6>
+                            <h1 align="center"><a class="display-4 text-white" href="#"><?php $product = userOrderInfo::getProductsAdmin($appId);print count($product);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -195,8 +198,8 @@
                             <div class="rotate">
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
-                            <h6 class="text-uppercase" align="center">Student Course Info</h6>
-                            <!--<h1 align="center"><a class="display-4 text-white" href="index.php?page=adminHomepage&action=viewCoursesInfo"><?php //$course = studentOrderInfo::getCoursesInfoAdmin();print count($course);?></a></h1>-->
+                            <h6 class="text-uppercase" align="center">User Product Info</h6>
+                            <h1 align="center"><a class="display-4 text-white" href="#"><?php $productInfo = userOrderInfo::getProductsInfoAdmin($appId);print count($productInfo);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -234,10 +237,11 @@
             <div class="row my-4">
                 <div class="col-lg-10 col-md-8 table-responsive">
                     <?php
-                    //to-do: Fetch the app id dynamically for title on homepage
-                    //$resultSet = studentOrderInfo::getRegisteredStudentInfo();
+
+                    $resultSet = userOrderInfo::getRegisteredUserInfo($appId);
+
                     //Print HTML Table
-                    //print utility\htmlTable::generateTableForTest($productNames);
+                    //print utility\htmlTable::generateTableForTest($resultSet);
                     ?>
 
                 </div>

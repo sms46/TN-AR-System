@@ -200,6 +200,7 @@ class adminController extends http\controller
         }
     }
 
+    //to-do
     public static function exportStudentInfo()
     {
 
@@ -243,27 +244,4 @@ class adminController extends http\controller
             exit;
         }
 
-    public static function viewRegistrations()
-    {
-        $resultSet = userOrderInfo::getRegisteredStudentInfo();
-        self::getTemplate('adminHomepage', NULL, $resultSet);
-    }
-
-    public static function viewPartialPayment()
-    {
-        $result = userOrderInfo::getPartialPayment();
-        self::getTemplate('adminHomepage', NULL, $result);
-    }
-
-    public static function viewCourses()
-    {
-        $result = userOrderInfo::getCoursesAdmin();
-        self::getTemplate('adminHomepage', NULL, $result);
-    }
-
-    public static function viewCoursesInfo()
-    {
-        $result = userOrderInfo::getCoursesInfoAdmin();
-        self::getTemplate('adminHomepage', NULL, $result);
-    }
 }
