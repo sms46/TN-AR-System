@@ -19,7 +19,12 @@ class adminController extends http\controller
             } else {
 
                 if($user->checkPassword($password) == TRUE) {
-                    self::getTemplate('adminHomepage', NULL, $appKey);
+                    if($user->has_access == 1){
+                        self::getTemplate('adminHomepage', NULL, $appKey);
+                    }else{
+                        echo '<script>alert("Access Denied. Contact Admin for Access")</script>';
+                        self::getTemplate('landingPage', NULL, NULL);
+                    }
                 } else {
                     echo '<script>alert("Password does not match")</script>';
                     self::getTemplate('landingPage', NULL, NULL);

@@ -24,10 +24,20 @@ class adminAccounts extends \database\collection
         }
     }
 
+    //Check if the user exists in the records
+    public static function findUserAccess($appId)
+    {
+        $sql = "SELECT user_name FROM adminAccounts
+                WHERE app_id = '$appId'
+                AND has_access = 0";
+        return self::getResults($sql,NULL);
+    }
+
     //Get the Application info to transfer to the product registration page
     public static function getAppNameId()
     {
         $sql = "SELECT * FROM appConfig";
         return self::getResults($sql,NULL);
     }
+
 }

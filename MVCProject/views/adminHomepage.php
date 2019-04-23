@@ -94,8 +94,6 @@
                         <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportOrderInfo">Student Order Info</a></li>
                     </ul>
                 </li>
-                <li class="nav-item"><a class="nav-link" href="#">Grant Access</a></li>
-
                 <a class="nav-link" href="#submenu2" data-toggle="collapse" data-target="#submenu2">Add Data▾</a>
                 <ul class="list-unstyled flex-column pl-3 collapse" id="submenu2" aria-expanded="false">
                     <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddProducts">Add Products</a></li>
@@ -103,6 +101,21 @@
                     <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddUserQuest">Add User Questions</a></li>
                     <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalAddPayType">Add Payment Type </a></li>
                 </ul>
+
+                <?php
+
+                //Grant Access visible only to admin
+                if(isset($_POST["btnSignIn"])) {
+                    $adminName = $_POST['userName'];
+                    $appKey = $_POST['adminDropDown'];
+
+                    $user = adminAccounts::findUser($adminName, $appKey);
+
+                    if($user->is_admin == 1){
+                        echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\" data-toggle=\"modal\" data-target=\"#modalGrantAccess\">Grant Access</a></li>";
+                    }
+                }?>
+
             </ul>
         </div>
         <!--/col-->
@@ -520,11 +533,41 @@
     </div>
 </div>
 
+<!-- 8. Grant Access Modal-->
+<div class="modal" id="modalGrantAccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Grant Access</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <form action="index.php?page=adminHomepage&action=addPayType" method="post">
+                <div class="modal-body">
+
+                    <?php
+
+                    $userAccess = adminAccounts::findUserAccess($appId);
+
+                    //Print HTML Table
+                    print utility\htmlTable::generateTableForAccess($userAccess);?>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    <button id="btnGrant" type="submit" name="btnGrantAccess" class="btn btn-success clearfix">Grant Access</button>
+                    <input type="hidden" name="appId" value="<?php print $appId ?>"/>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <!--scripts loaded here for modal-->
 <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-
-
 
 </body>
 </html>
