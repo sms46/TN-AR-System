@@ -237,48 +237,39 @@ class adminController extends http\controller
         }
     }
 
-    //to-do
-    public static function exportStudentInfo()
+    //Export User Info Details
+    public static function exportUserInfo()
     {
+        $app_id = $_GET['appId'];
 
-        if(isset($_POST["btnExport"])) {
+        //Get the Result set for data to be exported in excel
+        $resultSet = userOrderInfo::getRegisteredUserInfo($app_id);
+        $finalArray = array();
 
-            $statusType = $_POST['statusTypeSelect'];
-            $dropDown = $_POST['DropDownList1'];
+        foreach ($resultSet as $item){
+            $itemArray = array( array('Order Number' => $item->OrderNo,'User' => $item->User,
+                'Primary Email' => $item ->PrimaryEmail, 'Date Registered' => $item ->DateRegistered));
 
-            //Get the Result set for data to be exported in excel
-            $resultSet = studentInfo::getDataForExcel($statusType,$dropDown);
-            $finalArray = array();
-
-            foreach ($resultSet as $item){
-                $itemArray = array( array('Order Number' => $item->orderNum,'Student Name' => $item->studentName,'Student Email' => $item ->studentEmail,
-                    'Gender' => $item ->gender, 'Parent Email' => $item ->parentEmail,'Parent Name' => $item ->parentName,
-                    'Parent Number' => $item ->parentNumber,'Street Address' => $item ->streetAddress,'City' => $item ->city,
-                    'State' => $item ->state,'Zip Code' => $item ->zipCode, 'Payment Type' => $item ->paymentType,
-                    'Order Confirmed' => $item ->orderConfirmed, 'Payment Status' => $item ->paymentStatus));
-
-                $finalArray[] = $itemArray;
-            }
-
-            $filename = "NJIT_File_Test".date('Ymd') . ".xls";
-            header("Content-Type: application/vnd.ms-excel");
-            header("Content-Disposition: attachment; filename=\"$filename\"");
-
-            //echo var_dump($itemArray)."<br>";
-            $isColumn = false;
-            if(!empty($finalArray)) {
-                foreach($finalArray as $value) {
-
-                        if(!$isColumn) {
-                            print implode("\t", array_keys($value[0])) . "\n";
-                            $isColumn = true;
-                        }
-
-                        print implode("\t", array_values($value[0])) . "\n";
-                    }
-                }
-            }
-            exit;
+            $finalArray[] = $itemArray;
         }
 
+        $filename = "NJIT_File_".date('Ymd') . ".xls";
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+
+        //echo var_dump($itemArray)."<br>";
+        $isColumn = false;
+        if(!empty($finalArray)) {
+            foreach($finalArray as $value) {
+
+                if(!$isColumn) {
+                    print implode("\t", array_keys($value[0])) . "\n";
+                    $isColumn = true;
+                }
+
+                print implode("\t", array_values($value[0])) . "\n";
+            }
+        }
+        exit;
+    }
 }

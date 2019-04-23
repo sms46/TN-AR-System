@@ -131,8 +131,8 @@ class userOrderInfo extends \database\collection
 
     public static function getRegisteredUserInfo($appId)
     {
-        $sql = "SELECT UO.orderNum AS 'Order No', UO.user_name AS 'User', UO.user_email AS 'Primary Email',
-	                   UO.confirmed_timestamp AS 'Date Registered' 
+        $sql = "SELECT UO.orderNum AS 'OrderNo', UO.user_name AS 'User', UO.user_email AS 'PrimaryEmail',
+	                   UO.confirmed_timestamp AS 'DateRegistered' 
                 FROM userOrderInfo UO JOIN (
 										      SELECT DISTINCT UPI.order_num
 										      FROM userProductInfo UPI JOIN products P

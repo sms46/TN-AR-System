@@ -4,7 +4,8 @@ namespace utility;
 
 class htmlTable
 {
-    public static function generateTableForCourses($array,$resPrice,$commPrice)
+    //Table for admin page display
+    public static function generateTableForAdminPage($array,$resPrice,$commPrice)
     {
         if($array!= null) {
             echo "<div class=\"table-responsive\">";
@@ -12,24 +13,20 @@ class htmlTable
 
             echo "<thead class=\"thead-dark shadow-lg p-3 mb-5 bg-white rounded \">";
             echo "<tr>
-                        <th>Session</th>
-                        <th>Description</th>
-                        <th>Start Date</th>
-                        <th>End Date</th>
-                        <th>Residential Price</th>
-                        <th>Commuter Price</th>
+                        <th>Order No</th>
+                        <th>User</th>
+                        <th>Primary Email</th>
+                        <th>Date Registered</th>
                  </tr>";
             echo "</thead>";
 
             foreach ($array as $row) {
                 echo
                     "<tr>
-                          <td>" . $row['Session'] . "</td>
-                          <td>" . $row['Description'] . "</td>
-                          <td>" . $row['StartDate'] . "</td>
-                          <td>" . $row['EndDate'] . "</td>
-                          <td>" .'$'. $resPrice . "</td>
-                          <td>" .'$'. $commPrice . "</td>
+                          <td>" . $row->OrderNo . "</td>
+                          <td>" . $row->User . "</td>
+                          <td>" . $row->PrimaryEmail . "</td>
+                          <td>" . $row->DateRegistered . "</td>
                     </tr>";
              }
 
@@ -42,7 +39,7 @@ class htmlTable
         }
     }
 
-    //Table for user grant access by the admin 
+    //Table for user grant access by the admin
     public static function generateTableForAccess($array)
     {
         if($array!= null) {

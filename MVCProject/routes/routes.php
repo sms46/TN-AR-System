@@ -168,15 +168,15 @@ class routes
         $route->method = 'checkBalance';
         $routes[] = $route;
 
-        //to:do
-
-        //Export to Excel - Student Info
+        //-------- EXPORT FUNCTIONALITY-------------------------
+        //----------------------------------------------
+        //Export to Excel - User Info
         $route = new route();
-        $route->http_method = 'POST';
-        $route->action = 'exportStudentInfo';
+        $route->http_method = 'GET';
+        $route->action = 'exportUserInfo';
         $route->page = 'adminHomepage';
         $route->controller = 'adminController';
-        $route->method = 'exportStudentInfo';
+        $route->method = 'exportUserInfo';
         $routes[] = $route;
 
         return $routes;

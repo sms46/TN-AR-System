@@ -89,9 +89,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports▾</a>
                     <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
-                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportStudentInfo">Student Info</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportCourseInfo">Course Info</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportOrderInfo">Student Order Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?page=adminHomepage&action=exportUserInfo&appId=<?php print $appId;?> ">User Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportPPInfo">Partial Payment Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportProductInfo">Product Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportUserProdInfo">User Product Info</a></li>
                     </ul>
                 </li>
                 <a class="nav-link" href="#submenu2" data-toggle="collapse" data-target="#submenu2">Add Data▾</a>
@@ -266,7 +267,7 @@
                     $resultSet = userOrderInfo::getRegisteredUserInfo($appId);
 
                     //Print HTML Table
-                    //print utility\htmlTable::generateTableForTest($resultSet);
+                    print utility\htmlTable::generateTableForAdminPage($resultSet);
                     ?>
 
                 </div>
@@ -279,8 +280,8 @@
 </div>
 
 <!--Data Modals-->
-<!-- 1. Student Info-->
-<div class="modal" id="modalExportStudentInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- 1. User Info-->
+<div class="modal" id="modalExportUserInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
