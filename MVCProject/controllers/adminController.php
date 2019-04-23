@@ -205,6 +205,38 @@ class adminController extends http\controller
         }
     }
 
+    //Function to grant access to the users by the admin
+    public static function grantAccess()
+    {
+        if(isset($_POST["btnGrant"])) {
+
+            $grantUsers = $_POST['grant'];
+            $appKey = $_POST['appId'];
+            $admin = $_POST['adminName'];
+            $myArray = array();
+            $k=0;
+
+            // output / process all data
+            foreach ($grantUsers as $value) {
+                $myArray[$k] = $value;
+                $k+=1;
+            }
+
+            for($c= 0; $c < count($myArray);$c++) {
+
+                $user = adminAccounts::findUser($myArray[$c], $appKey);
+                $grant = new adminAccountsModel();
+                $grant->id = $user->id;
+                $grant->has_access = 1;
+                $grant->grant_access_by = $admin;
+                $grant->save();
+            }
+
+            // Pass the app key back to admin homepage
+            self::getTemplate('adminHomepage', NULL, $appKey);
+        }
+    }
+
     //to-do
     public static function exportStudentInfo()
     {

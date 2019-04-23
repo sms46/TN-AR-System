@@ -114,6 +114,18 @@
                     if($user->is_admin == 1){
                         echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\" data-toggle=\"modal\" data-target=\"#modalGrantAccess\">Grant Access</a></li>";
                     }
+                }
+
+                //Grant Access visible only to admin
+                if(isset($_POST["btnGrant"])) {
+                    $adminName = $_POST['adminName'];
+                    $appKey = $_POST['appId'];
+
+                    $user = adminAccounts::findUser($adminName, $appKey);
+
+                    if($user->is_admin == 1){
+                        echo "<li class=\"nav-item\"><a class=\"nav-link\" href=\"#\" data-toggle=\"modal\" data-target=\"#modalGrantAccess\">Grant Access</a></li>";
+                    }
                 }?>
 
             </ul>
@@ -544,7 +556,7 @@
                 </button>
             </div>
 
-            <form action="index.php?page=adminHomepage&action=addPayType" method="post">
+            <form action="index.php?page=adminHomepage&action=grantAccess" method="post">
                 <div class="modal-body">
 
                     <?php
@@ -557,8 +569,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button id="btnGrant" type="submit" name="btnGrantAccess" class="btn btn-success clearfix">Grant Access</button>
+                    <button id="btnGrant" type="submit" name="btnGrant" class="btn btn-success clearfix">Grant Access</button>
                     <input type="hidden" name="appId" value="<?php print $appId ?>"/>
+                    <input type="hidden" name="adminName" value="<?php print $adminName ?>"/>
                 </div>
             </form>
         </div>

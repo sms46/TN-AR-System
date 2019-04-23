@@ -42,6 +42,7 @@ class htmlTable
         }
     }
 
+    //Table for user grant access by the admin 
     public static function generateTableForAccess($array)
     {
         if($array!= null) {
@@ -59,7 +60,7 @@ class htmlTable
                 echo
                     "<tr>
                          <td>" . $row->user_name. "</td>
-                         <td><input type=\"checkbox\" name=\"grant[]\" value=". $row->user_name."/></td>
+                         <td><input type=\"checkbox\" name=\"grant[]\" value=". $row->user_name."></td>
                     </tr>";
             }
 
@@ -67,7 +68,7 @@ class htmlTable
             echo "</div>";
         }
         else{
-            $text = 'No Records present. Please Insert the records';
+            $text = 'No Records present.';
             print $text;
         }
     }

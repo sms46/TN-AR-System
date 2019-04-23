@@ -70,6 +70,15 @@ class routes
         $route->method = 'addPayType';
         $routes[] = $route;
 
+        //Add Pay Type by the admin
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'grantAccess';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'grantAccess';
+        $routes[] = $route;
+
         //--------REGISTRATION ROUTING-------------------------
         //----------------------------------------------
         //Route to the Product Registration page
