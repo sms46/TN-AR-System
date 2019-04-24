@@ -272,4 +272,114 @@ class adminController extends http\controller
         }
         exit;
     }
+
+    //Export Partial Payment Details
+    public static function exportPPInfo()
+    {
+        $app_id = $_GET['appId'];
+
+        //Get the Result set for data to be exported in excel
+        $resultSet = userOrderInfo::getPartialPayment($app_id);
+        $finalArray = array();
+
+        foreach ($resultSet as $item){
+            $itemArray = array( array('Order Number' => $item->OrderNo,'User' => $item->User,
+                'Primary Email' => $item ->PrimaryEmail, 'Total Amount' => $item ->TotalAmt, 'Due Amount' => $item ->DueAmt,
+                'Date Registered' => $item ->DateRegistered));
+
+            $finalArray[] = $itemArray;
+        }
+
+        $filename = "NJIT_File_".date('Ymd') . ".xls";
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+
+        //echo var_dump($itemArray)."<br>";
+        $isColumn = false;
+        if(!empty($finalArray)) {
+            foreach($finalArray as $value) {
+
+                if(!$isColumn) {
+                    print implode("\t", array_keys($value[0])) . "\n";
+                    $isColumn = true;
+                }
+
+                print implode("\t", array_values($value[0])) . "\n";
+            }
+        }
+        exit;
+    }
+
+    //Export Product Info Details
+    public static function exportProductInfo()
+    {
+        $app_id = $_GET['appId'];
+
+        //Get the Result set for data to be exported in excel
+        $resultSet = userOrderInfo::getProductsAdmin($app_id);
+        $finalArray = array();
+
+        foreach ($resultSet as $item){
+            $itemArray = array( array('Product ID' => $item->ProductId,'Name' => $item->Name,
+                'Category' => $item ->Category, 'Description' => $item ->description,
+                'Items Remaining' => $item ->ItemsRemaining,'Active Status' => $item ->ActiveStatus ));
+
+            $finalArray[] = $itemArray;
+        }
+
+        $filename = "NJIT_File_".date('Ymd') . ".xls";
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+
+        //echo var_dump($itemArray)."<br>";
+        $isColumn = false;
+        if(!empty($finalArray)) {
+            foreach($finalArray as $value) {
+
+                if(!$isColumn) {
+                    print implode("\t", array_keys($value[0])) . "\n";
+                    $isColumn = true;
+                }
+
+                print implode("\t", array_values($value[0])) . "\n";
+            }
+        }
+        exit;
+    }
+
+    //Export User Product Info Details
+    public static function exportUserProdInfo()
+    {
+        $app_id = $_GET['appId'];
+
+        //Get the Result set for data to be exported in excel
+        $resultSet = userOrderInfo::getProductsInfoAdmin($app_id);
+        $finalArray = array();
+
+        foreach ($resultSet as $item){
+            $itemArray = array( array('Order Number' => $item->OrderNo,'User' => $item->UserName,
+                'Product Name' => $item ->ProdName, 'Category' => $item ->Category, 'Description' => $item ->Desc ));
+
+            $finalArray[] = $itemArray;
+        }
+
+        $filename = "NJIT_File_".date('Ymd') . ".xls";
+        header("Content-Type: application/vnd.ms-excel");
+        header("Content-Disposition: attachment; filename=\"$filename\"");
+
+        //echo var_dump($itemArray)."<br>";
+        $isColumn = false;
+        if(!empty($finalArray)) {
+            foreach($finalArray as $value) {
+
+                if(!$isColumn) {
+                    print implode("\t", array_keys($value[0])) . "\n";
+                    $isColumn = true;
+                }
+
+                print implode("\t", array_values($value[0])) . "\n";
+            }
+        }
+        exit;
+    }
 }

@@ -70,7 +70,7 @@ class routes
         $route->method = 'addPayType';
         $routes[] = $route;
 
-        //Add Pay Type by the admin
+        //Grant Access by the admin
         $route = new route();
         $route->http_method = 'POST';
         $route->action = 'grantAccess';
@@ -177,6 +177,33 @@ class routes
         $route->page = 'adminHomepage';
         $route->controller = 'adminController';
         $route->method = 'exportUserInfo';
+        $routes[] = $route;
+
+        //Export to Excel - Partial Payment Info
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'exportPPInfo';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'exportPPInfo';
+        $routes[] = $route;
+
+        //Export to Excel - Product Info
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'exportProductInfo';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'exportProductInfo';
+        $routes[] = $route;
+
+        //Export to Excel - User Product Info
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'exportUserProdInfo';
+        $route->page = 'adminHomepage';
+        $route->controller = 'adminController';
+        $route->method = 'exportUserProdInfo';
         $routes[] = $route;
 
         return $routes;

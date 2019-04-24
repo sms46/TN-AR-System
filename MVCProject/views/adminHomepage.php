@@ -90,9 +90,9 @@
                     <a class="nav-link" href="#submenu1" data-toggle="collapse" data-target="#submenu1">Reports▾</a>
                     <ul class="list-unstyled flex-column pl-3 collapse" id="submenu1" aria-expanded="false">
                         <li class="nav-item"><a class="nav-link" href="index.php?page=adminHomepage&action=exportUserInfo&appId=<?php print $appId;?> ">User Info</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportPPInfo">Partial Payment Info</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportProductInfo">Product Info</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#modalExportUserProdInfo">User Product Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?page=adminHomepage&action=exportPPInfo&appId=<?php print $appId;?> ">Partial Payment Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?page=adminHomepage&action=exportProductInfo&appId=<?php print $appId;?> ">Product Info</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.php?page=adminHomepage&action=exportUserProdInfo&appId=<?php print $appId;?> ">User Product Info</a></li>
                     </ul>
                 </li>
                 <a class="nav-link" href="#submenu2" data-toggle="collapse" data-target="#submenu2">Add Data▾</a>
@@ -280,118 +280,8 @@
 </div>
 
 <!--Data Modals-->
-<!-- 1. User Info-->
-<div class="modal" id="modalExportUserInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Export Student Info</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
 
-            <form action="index.php?page=adminHomepage&action=exportStudentInfo" method="post">
-                <div class="modal-body">
-
-
-                    <label for="statusTypeSelect">Select Status:</label>
-                    <select id="statusTypeSelect" name="statusTypeSelect" required>
-                        <option value=""></option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-
-                    <label for="DropDownList1">Select Year:</label>
-                    <select id="DropDownList1" name="DropDownList1"></select>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button id="btnExport" type="submit" name="btnExport" class="btn btn-success clearfix">
-                        <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- 2. Student-Course Info-->
-<div class="modal" id="modalExportCourseInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Export Student Course Info</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <form action="index.php?page=adminHomepage&action=export" method="post">
-                <div class="modal-body">
-
-
-                    <label for="statusTypeSelect">Select Status:</label>
-                    <select id="statusTypeSelect" name="statusTypeSelect" required>
-                        <option value=""></option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-
-                    <label for="DropDownList1">Select Year:</label>
-                    <select id="DropDownList1" name="DropDownList1"></select>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button id="btnExport" type="submit" name="btnExport" class="btn btn-success clearfix">
-                        <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- 3. Student-Order Info-->
-<div class="modal" id="modalExportOrderInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Export Student Order Info</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-
-            <form action="index.php?page=adminHomepage&action=export" method="post">
-                <div class="modal-body">
-
-
-                    <label for="statusTypeSelect">Select Status:</label>
-                    <select id="statusTypeSelect" name="statusTypeSelect" required>
-                        <option value=""></option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-
-                    <label for="DropDownList1">Select Year:</label>
-                    <select id="DropDownList1" name="DropDownList1"></select>
-
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                    <button id="btnExport" type="submit" name="btnExport" class="btn btn-success clearfix">
-                        <i class="far fa-file-excel" style="font-size:24px;"></i>&nbsp; Export to Excel</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-
-<!-- 4. Add products-->
+<!-- 1. Add products-->
 <div class="modal" id="modalAddProducts" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -430,7 +320,7 @@
     </div>
 </div>
 
-<!-- 5. Add price type-->
+<!-- 2. Add price type-->
 <div class="modal" id="modalAddPriceType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
@@ -465,7 +355,7 @@
     </div>
 </div>
 
-<!-- 6. Add user Questions-->
+<!-- 3. Add user Questions-->
 <div class="modal" id="modalAddUserQuest" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -507,7 +397,7 @@
     </div>
 </div>
 
-<!-- 7. Add payment type-->
+<!-- 4. Add payment type-->
 <div class="modal" id="modalAddPayType" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -546,7 +436,7 @@
     </div>
 </div>
 
-<!-- 8. Grant Access Modal-->
+<!-- 5. Grant Access Modal-->
 <div class="modal" id="modalGrantAccess" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

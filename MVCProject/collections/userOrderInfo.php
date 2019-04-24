@@ -151,8 +151,8 @@ class userOrderInfo extends \database\collection
 
     public static function getPartialPayment($appId)
     {
-        $sql = "SELECT UO.orderNum AS 'Order No', UO.user_name AS 'User', UO.user_email AS 'Primary Email',
-	                   UO.product_amt AS 'Total Amt', UO.due_amt AS 'Due Amt', UO.confirmed_timestamp AS 'Date Registered' 
+        $sql = "SELECT UO.orderNum AS 'OrderNo', UO.user_name AS 'User', UO.user_email AS 'PrimaryEmail',
+	                   UO.product_amt AS 'TotalAmt', UO.due_amt AS 'DueAmt', UO.confirmed_timestamp AS 'DateRegistered' 
                 FROM userOrderInfo UO JOIN (
                                               SELECT DISTINCT UPI.order_num
                                               FROM userProductInfo UPI JOIN products P
@@ -172,8 +172,8 @@ class userOrderInfo extends \database\collection
 
     public static function getProductsAdmin($appId)
     {
-        $sql = "SELECT id AS 'Product Id', name AS 'Name', categories AS 'Category', description, 
-	                   item_remain AS 'Items Remaining', active AS 'Active Status'
+        $sql = "SELECT id AS 'ProductId', name AS 'Name', categories AS 'Category', description, 
+	                   item_remain AS 'ItemsRemaining', active AS 'ActiveStatus'
                 FROM products
                 WHERE app_id = '$appId'
                 AND active = '1'";
@@ -183,7 +183,8 @@ class userOrderInfo extends \database\collection
 
     public static function getProductsInfoAdmin($appId)
     {
-        $sql = "SELECT UPI.order_num, UPI.user_name , P.name, P.categories, P.description
+        $sql = "SELECT UPI.order_num AS 'OrderNo', UPI.user_name AS 'UserName' , P.name AS 'ProdName', 
+                      P.categories AS 'Category', P.description AS 'Desc'
                 FROM userProductInfo UPI JOIN products P
                 ON UPI.product_id = P.id
                 WHERE P.app_id = '$appId'";
