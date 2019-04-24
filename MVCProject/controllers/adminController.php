@@ -165,13 +165,18 @@ class adminController extends http\controller
                 $k+=1;
             }
 
-            //Add products in the product Table
-            for($c= 0; $c < count($myArray);$c++) {
+            //Check if the payment type already exists
+            $payType = paymentType::getPaymentTypeById($appKey);
 
-                $addPayType = new paymentTypeModel();
-                $addPayType->pay_type = $myArray[$c];
-                $addPayType->app_id = $appKey;
-                $addPayType->save();
+            if($payType == FALSE){
+                //Add products in the product Table
+                for($c= 0; $c < count($myArray);$c++) {
+
+                    $addPayType = new paymentTypeModel();
+                    $addPayType->pay_type = $myArray[$c];
+                    $addPayType->app_id = $appKey;
+                    $addPayType->save();
+                }
             }
 
             for($s= 0; $s < count($myArray);$s++) {

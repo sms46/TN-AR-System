@@ -47,7 +47,7 @@ class userRegistrationController extends http\controller
             //FIX: Check if the Order No exists in the student order info table
             // to solve the issue of duplicate records saved when user refreshes the page
 
-            $orderCount = userInfo::getOrderCount($_POST['orderNum']);
+            $orderCount = userOrderInfo::getOrderCount($_POST['orderNum']);
 
             if($orderCount[0]->OrderCount == 0){
 
@@ -66,13 +66,7 @@ class userRegistrationController extends http\controller
                         $k+=1;
                     }
 
-                    //Insert into the user info table
-                    $user = new userInfoModel();
-                    $user->orderNum = $_POST['orderNum'];
-                    $user->user_name = $_POST['user_name'];
-                    $user->user_email = $_POST['user_email'];
-                    $user->save();
-
+                    //Insert add details in user Add table
                     foreach ($myArray as $key=>$value) {
 
                         //Insert into the user add details table

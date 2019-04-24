@@ -192,7 +192,7 @@
                                 <i class="fa fa-user fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Registered Users</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="#"><?php $result = userOrderInfo::getRegisteredUserInfo($appId);print count($result);?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white"><?php $result = userOrderInfo::getRegisteredUserInfo($appId);print count($result);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                                 <i class="fas fa-file-invoice-dollar fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Partial Payment</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="#"><?php $result = userOrderInfo::getPartialPayment($appId);print count($result);?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white"><?php $result = userOrderInfo::getPartialPayment($appId);print count($result);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -214,7 +214,7 @@
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">Products</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="#"><?php $product = userOrderInfo::getProductsAdmin($appId);print count($product);?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white"><?php $product = userOrderInfo::getProductsAdmin($appId);print count($product);?></a></h1>
                         </div>
                     </div>
                 </div>
@@ -225,7 +225,7 @@
                                 <i class="fas fa-book fa-5x"></i>
                             </div>
                             <h6 class="text-uppercase" align="center">User Product Info</h6>
-                            <h1 align="center"><a class="display-4 text-white" href="#"><?php $productInfo = userOrderInfo::getProductsInfoAdmin($appId);print count($productInfo);?></a></h1>
+                            <h1 align="center"><a class="display-4 text-white"><?php $productInfo = userOrderInfo::getProductsInfoAdmin($appId);print count($productInfo);?></a></h1>
                         </div>
                     </div>
                 </div>

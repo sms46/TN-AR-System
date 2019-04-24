@@ -108,7 +108,7 @@ class userOrderInfo extends \database\collection
                             JOIN products P
                             ON  TempTable.product_id = P.id
                                 
-                            JOIN userInfo UI
+                            JOIN userOrderInfo UI
                             ON  TempTable.orderNum = UI.orderNum";
 
         return self::getResults($sql);
@@ -124,6 +124,14 @@ class userOrderInfo extends \database\collection
             $seats->item_remain = $seatsAvailable - 1;
             $seats->save();
         }
+    }
+
+    //Gets the order count to check if order exists
+    public static function getOrderCount($OrderNum)
+    {
+        $sql = "SELECT count(*) AS 'OrderCount' FROM userOrderInfo WHERE OrderNum = '$OrderNum'";
+
+        return self::getResults($sql);
     }
 
     
