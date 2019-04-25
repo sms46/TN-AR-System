@@ -417,13 +417,13 @@
 
                     <br/><br/>
                     <h6><strong>Apply Discount:</strong></h6>
-                    <input type="radio" name="discount" value="1" /> Yes &nbsp;&nbsp; <input type="text" name="discPer" placeholder="Enter Discount Percent"/><br/>
-                    <input type="radio" name="discount" value="0" /> No
+                    <input type="radio" name="discount" value="1" required /> Yes &nbsp;&nbsp; <input type="text" name="discPer" placeholder="Enter Discount Percent"/><br/>
+                    <input type="radio" name="discount" value="0" required /> No
 
                     <br/><br/>
                     <h6><strong>Has Application Fee:</strong></h6>
-                    <input type="radio" name="AppFee" value="1" /> Yes &nbsp;&nbsp; <input type="text" name="appFeeAmt" placeholder="Enter Application Fee"/><br/>
-                    <input type="radio" name="AppFee" value="0" /> No
+                    <input type="radio" name="AppFee" value="1" required /> Yes &nbsp;&nbsp; <input type="text" name="appFeeAmt" placeholder="Enter Application Fee"/><br/>
+                    <input type="radio" name="AppFee" value="0" required/> No
 
                 </div>
                 <div class="modal-footer">

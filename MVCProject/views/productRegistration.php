@@ -122,7 +122,7 @@
                                                         <select class="btn btn-default dropdown-toggle shadow-lg p-3 mb-2 bg-white rounded" id="priceType" name="priceType" required>
                                                             <option value="">Select Amount Type</option>
                                                             <?php for($j=0; $j < count($price_type); $j++) {?>
-                                                                <option value="<?php print $price_type[$j]->priceType?>"><?php print $price_type[$j]->priceType ?></option>
+                                                                <option value="<?php print $price_type[$j]->priceType?>"><?php print $price_type[$j]->priceType .' - $'.$price_type[$j]->price ?></option>
                                                             <?php }?>
                                                         </select>
                                             <?php }?>
